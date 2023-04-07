@@ -1,0 +1,3 @@
+[submodule "nf1_data_repo"]
+	path = nf1_data_repo
+	url = https://github.com/WayScience/NF1_SchwannCell_data
