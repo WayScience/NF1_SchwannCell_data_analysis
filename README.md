@@ -1,5 +1,5 @@
 # NF1_SchwannCell_data_analysis
-## Cloning the Repo and Submodules
+## Steps to Reproduce
 ### Step 1. Clone the analysis repo
 ```sh
 git clone https://github.com/WayScience/NF1_SchwannCell_data_analysis.git`<br>
