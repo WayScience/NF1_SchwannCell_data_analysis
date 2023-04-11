@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Feature Analysis and Genotype Classification
+
+# ## Imports
+
 # In[1]:
 
 
@@ -19,12 +23,16 @@ import matplotlib.pyplot as plt
 import umap
 
 
+# # Seed and Generator for Reproducibility
+
 # In[2]:
 
 
 rnd_val = 0 # Random value for all seeds
 rng = np.random.default_rng(seed=rnd_val) # random number generator
 
+
+# # Converting csv to pandas dataframe
 
 # In[3]:
 
@@ -49,10 +57,11 @@ if not data_comp.is_file():
 morph_feat = pd.read_csv(data_comp)
 
 
+# # Creating binary labels for the genotype
+
 # In[6]:
 
 
-# Creating binary labels for the genotype:
 lb = LabelBinarizer()
 morph_feat['genotype_label'] = lb.fit_transform(morph_feat['Metadata_genotype'])
 featdf = morph_feat # Create a copy for modification
@@ -74,9 +83,9 @@ featdf = featdf.loc[:,featdf.columns != 'Unnamed: 0'] # Remove the unamed column
 # In[8]:
 
 
-min_class_samps_size = min(featdf['genotype_label'].value_counts().values)
-dsamp_featdf = featdf.groupby('genotype_label', group_keys=False).apply(lambda x: x.sample(n=min_class_samps_size, random_state=rnd_val))
-traindf, testdf = train_test_split(dsamp_featdf, random_state=rnd_val, shuffle=True, train_size=0.9)
+min_class_samps_size = min(featdf['genotype_label'].value_counts().values) # Sample size for the minority class
+dsamp_featdf = featdf.groupby('genotype_label', group_keys=False).apply(lambda x: x.sample(n=min_class_samps_size, random_state=rnd_val)) # Down-sample features according to minority class
+traindf, testdf = train_test_split(dsamp_featdf, random_state=rnd_val, shuffle=True, train_size=0.9) # Train and Test Dataframes
 
 
 # In[9]:
@@ -86,36 +95,49 @@ train_feat = traindf.to_numpy()
 test_feat = testdf.to_numpy()
 
 
-# # PCA Visualization
+# # Principle Component Analysis (PCA) Visualization
 
 # In[10]:
 
 
-pca = PCA(n_components=2)
-pca_features = pca.fit_transform(train_feat[:,0:-1])
-print(f'Explained variation = {np.sum(pca.explained_variance_ratio_)}')
-
-plt.scatter(pca_features[:,0],pca_features[:,1], c=train_feat[:,-1])
-plt.show()
+null_idx = np.nonzero(train_feat[:,-1] == 0)[0]
+wt_idx = np.nonzero(train_feat[:,-1] != 0)[0]
 
 
 # In[11]:
+
+
+pca = PCA(n_components=2)
+pca_features = pca.fit_transform(train_feat[:,0:-1])
+print(f'Explained variance in PC1 and PC2 = {np.sum(pca.explained_variance_ratio_)}')
+null = plt.scatter(pca_features[null_idx,0],pca_features[null_idx,1], marker='x', color='r')
+wt = plt.scatter(pca_features[wt_idx,0],pca_features[wt_idx,1], marker='.', color='b')
+plt.xlabel('PC1')
+plt.ylabel('PC2')
+plt.legend((null, wt), ('null', 'wt'))
+plt.show()
+
+
+# In[12]:
 
 
 reducer = umap.UMAP(random_state=rnd_val)
 reducer.fit(train_feat[:,0:-1])
 
 
-# In[12]:
+# In[28]:
 
 
-plt.scatter(reducer.embedding_[:, 0], reducer.embedding_[:, 1], s= 5, c=train_feat[:,-1], cmap='Spectral')
-plt.title('Embedding of the training set by UMAP', fontsize=24);
+null = plt.scatter(reducer.embedding_[null_idx,0],reducer.embedding_[null_idx,1], marker='x', color='r')
+wt = plt.scatter(reducer.embedding_[wt_idx,0],reducer.embedding_[wt_idx,1], marker='.', color='b')
+plt.title('Embedding of the training set by UMAP', fontsize=24)
+plt.legend((null, wt), ('null', 'wt'), loc='lower right')
+plt.show()
 
 
 # # K Cross Validation
 
-# In[13]:
+# In[14]:
 
 
 num_splits = 5 # Default number of splits
@@ -134,7 +156,7 @@ def kcross_val(model, feat, splits=num_splits):
         model.fit(Xtrain, ytrain)
         acc = model.score(Xval, yval)
 
-        if max_acc < acc: # Find the model with the best accuracy
+        if max_acc < acc: # Find the model with the best validation accuracy
             
             max_acc, best_model, best_preds, val_labels = acc, model, model.predict(Xval), yval
     
@@ -143,7 +165,7 @@ def kcross_val(model, feat, splits=num_splits):
     return res
 
 
-# In[14]:
+# In[15]:
 
 
 # Returns the naive accuracy:
@@ -155,7 +177,7 @@ def naive_acc(labels):
 
 # ## Confusion Matrix
 
-# In[15]:
+# In[16]:
 
 
 def conf_mat(model_res, mat_title='Confusion Matrix'):
@@ -168,7 +190,7 @@ def conf_mat(model_res, mat_title='Confusion Matrix'):
 
 # # LRC Model
 
-# In[16]:
+# In[17]:
 
 
 lrc = LogisticRegression(random_state=rnd_val)
@@ -176,20 +198,20 @@ lrc = LogisticRegression(random_state=rnd_val)
 lrc_results = kcross_val(lrc, train_feat)
 
 
-# In[17]:
+# In[18]:
 
 
 print(f"Validation model accuracy = {lrc_results['acc']}")
 print(f"Naive accuracy = {naive_acc(lrc_results['preds'])}")
 
 
-# In[18]:
+# In[19]:
 
 
 conf_mat(lrc_results, 'Confusion Matrix for Logistic Regression')
 
 
-# In[19]:
+# In[20]:
 
 
 lrc_test_acc = lrc.score(test_feat[:,0:-1], test_feat[:,-1].astype(np.int64))
@@ -198,7 +220,7 @@ print(f'Logistic Regression Test Accuracy: {lrc_test_acc:.2f}')
 
 # # Adaboost
 
-# In[20]:
+# In[21]:
 
 
 adab = AdaBoostClassifier(n_estimators=100, random_state=rnd_val)
@@ -206,20 +228,20 @@ adab = AdaBoostClassifier(n_estimators=100, random_state=rnd_val)
 adab_results = kcross_val(adab,train_feat)
 
 
-# In[21]:
+# In[22]:
 
 
 print(f"Model Validation accuracy = {adab_results['acc']}")
 print(f"Naive accuracy = {naive_acc(adab_results['preds'])}")
 
 
-# In[22]:
+# In[23]:
 
 
 conf_mat(adab_results, 'Confusion Matrix for Adaboost Regression')
 
 
-# In[23]:
+# In[24]:
 
 
 adab_test_acc = adab.score(test_feat[:,0:-1], test_feat[:,-1].astype(np.int64))
