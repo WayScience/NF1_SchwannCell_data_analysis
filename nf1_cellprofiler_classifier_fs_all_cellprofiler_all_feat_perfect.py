@@ -75,17 +75,46 @@ featdf = morph_feat # Create a copy for modification
 feat_col = [col for col in featdf.columns if 'Metadata' not in col] # Select all columns that don't contain the Metadata in their name
 
 featdf = featdf[feat_col]
-featdf = featdf.loc[:,featdf.columns != 'Unnamed: 0'] # Remove the unamed column
+featdf = featdf.loc[:,featdf.columns != 'Unnamed: 0'] # Remove the unnamed column
 
 
 # # Sampling
 
-# In[8]:
+# In[19]:
 
+
+def down_sample(df, samp_size):
+    """
+    Parameters
+    ----------
+    df: Pandas Dataframe
+        The dataframe to be sampled.
+    samp_size
+        The sample size to be sampled from each class.
+
+    Returns
+    -------
+    Pandas Dataframe
+        The sampled dataframe.
+
+    """
+    return df.sample(n=samp_size, random_state=rnd_val)
 
 min_class_samps_size = min(featdf['genotype_label'].value_counts().values) # Sample size for the minority class
-dsamp_featdf = featdf.groupby('genotype_label', group_keys=False).apply(lambda x: x.sample(n=min_class_samps_size, random_state=rnd_val)) # Down-sample features according to minority class
+dsamp_featdf = featdf.groupby('genotype_label', group_keys=False).apply(down_sample, min_class_samps_size) # Down-sample features according to minority class
 traindf, testdf = train_test_split(dsamp_featdf, random_state=rnd_val, shuffle=True, train_size=0.9) # Train and Test Dataframes
+
+
+# In[20]:
+
+
+dsamp_featdf
+
+
+# In[25]:
+
+
+traindf
 
 
 # In[9]:
@@ -125,7 +154,7 @@ reducer = umap.UMAP(random_state=rnd_val)
 reducer.fit(train_feat[:,0:-1])
 
 
-# In[28]:
+# In[13]:
 
 
 null = plt.scatter(reducer.embedding_[null_idx,0],reducer.embedding_[null_idx,1], marker='x', color='r')
@@ -143,18 +172,32 @@ plt.show()
 num_splits = 5 # Default number of splits
 
 def kcross_val(model, feat, splits=num_splits):
+    """
+    Parameters
+    ----------
+    model: sklearn model
+        The model to be trained and evaluated.
+    feat : Pandas Dataframe
+        The preprocessed dataframe with features and labels.
+
+    Returns
+    -------
+    dict
+        A dictionary containing: {Best validation accuracy, Best model, Prediction of best model, Validation set labels}.
+        "Best" corresponds to the greatest validation accuracy.
+    """
 
     cv = KFold(n_splits = splits, random_state=rnd_val, shuffle=True)
     max_acc = 0 # Keep track of the maximum accuracy
 
-    for idx, (train_idx, val_idx) in enumerate(cv.split(X=feat)):
-        yval = feat[val_idx,-1].astype(np.int64)
-        ytrain = feat[train_idx,-1].astype(np.int64)
-        Xval = feat[val_idx,0:-1]
-        Xtrain = feat[train_idx,0:-1]
+    for idx, (train_idx, val_idx) in enumerate(cv.split(X=feat)): # iterates through index splits
+        yval = feat[val_idx,-1].astype(np.int64) # Validation labels converted to ints
+        ytrain = feat[train_idx,-1].astype(np.int64) # Training labels converted to ints
+        Xval = feat[val_idx,0:-1] # Validation features
+        Xtrain = feat[train_idx,0:-1] # Training features
 
-        model.fit(Xtrain, ytrain)
-        acc = model.score(Xval, yval)
+        model.fit(Xtrain, ytrain) # Fitting the model
+        acc = model.score(Xval, yval) # Scoring the model on the validation set
 
         if max_acc < acc: # Find the model with the best validation accuracy
             
@@ -170,6 +213,17 @@ def kcross_val(model, feat, splits=num_splits):
 
 # Returns the naive accuracy:
 def naive_acc(labels):
+    """
+    Parameters
+    ----------
+    labels
+        The genotype labels.
+
+    Returns
+    -------
+    float
+        A naive accuracy (baseline) for the given labels.
+    """
     naive_pred = rng.integers(low=0, high=2, size=labels.shape[0])
     naive_acc = accuracy_score(naive_pred,labels)
     return naive_acc
@@ -181,6 +235,18 @@ def naive_acc(labels):
 
 
 def conf_mat(model_res, mat_title='Confusion Matrix'):
+    """
+    Parameters
+    ----------
+    model_res : dict
+        A dictionary containing: Best validation accuracy, Best model, Prediction of best model, Validation set labels.
+        "Best" corresponds to the greatest validation accuracy.
+
+    Returns
+    -------
+    dict
+        A naive accuracy (baseline) for the given labels.
+    """
     cm = confusion_matrix(model_res['labels'],model_res['preds'])
     fig, ax = plt.subplots(figsize=(5,5), dpi=100)
     display = ConfusionMatrixDisplay(cm, display_labels=np.unique(model_res['labels']))
