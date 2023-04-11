@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -71,15 +71,15 @@ featdf = featdf.loc[:,featdf.columns != 'Unnamed: 0'] # Remove the unamed column
 
 # # Sampling
 
-# In[10]:
+# In[8]:
 
 
 min_class_samps_size = min(featdf['genotype_label'].value_counts().values)
-strat_featdf = featdf.groupby('genotype_label', group_keys=False).apply(lambda x: x.sample(n=min_class_samps_size, random_state=rnd_val))
-traindf, testdf = train_test_split(strat_featdf, random_state=rnd_val, shuffle=True, train_size=0.9)
+dsamp_featdf = featdf.groupby('genotype_label', group_keys=False).apply(lambda x: x.sample(n=min_class_samps_size, random_state=rnd_val))
+traindf, testdf = train_test_split(dsamp_featdf, random_state=rnd_val, shuffle=True, train_size=0.9)
 
 
-# In[11]:
+# In[9]:
 
 
 train_feat = traindf.to_numpy()
@@ -88,7 +88,7 @@ test_feat = testdf.to_numpy()
 
 # # PCA Visualization
 
-# In[12]:
+# In[10]:
 
 
 pca = PCA(n_components=2)
@@ -99,14 +99,14 @@ plt.scatter(pca_features[:,0],pca_features[:,1], c=train_feat[:,-1])
 plt.show()
 
 
-# In[13]:
+# In[11]:
 
 
 reducer = umap.UMAP(random_state=rnd_val)
 reducer.fit(train_feat[:,0:-1])
 
 
-# In[14]:
+# In[12]:
 
 
 plt.scatter(reducer.embedding_[:, 0], reducer.embedding_[:, 1], s= 5, c=train_feat[:,-1], cmap='Spectral')
@@ -115,7 +115,7 @@ plt.title('Embedding of the training set by UMAP', fontsize=24);
 
 # # K Cross Validation
 
-# In[15]:
+# In[13]:
 
 
 num_splits = 5 # Default number of splits
@@ -143,7 +143,7 @@ def kcross_val(model, feat, splits=num_splits):
     return res
 
 
-# In[16]:
+# In[14]:
 
 
 # Returns the naive accuracy:
@@ -155,7 +155,7 @@ def naive_acc(labels):
 
 # ## Confusion Matrix
 
-# In[17]:
+# In[15]:
 
 
 def conf_mat(model_res, mat_title='Confusion Matrix'):
@@ -168,7 +168,7 @@ def conf_mat(model_res, mat_title='Confusion Matrix'):
 
 # # LRC Model
 
-# In[18]:
+# In[16]:
 
 
 lrc = LogisticRegression(random_state=rnd_val)
@@ -176,20 +176,20 @@ lrc = LogisticRegression(random_state=rnd_val)
 lrc_results = kcross_val(lrc, train_feat)
 
 
-# In[19]:
+# In[17]:
 
 
 print(f"Validation model accuracy = {lrc_results['acc']}")
 print(f"Naive accuracy = {naive_acc(lrc_results['preds'])}")
 
 
-# In[20]:
+# In[18]:
 
 
 conf_mat(lrc_results, 'Confusion Matrix for Logistic Regression')
 
 
-# In[21]:
+# In[19]:
 
 
 lrc_test_acc = lrc.score(test_feat[:,0:-1], test_feat[:,-1].astype(np.int64))
@@ -198,7 +198,7 @@ print(f'Logistic Regression Test Accuracy: {lrc_test_acc:.2f}')
 
 # # Adaboost
 
-# In[22]:
+# In[20]:
 
 
 adab = AdaBoostClassifier(n_estimators=100, random_state=rnd_val)
@@ -206,20 +206,20 @@ adab = AdaBoostClassifier(n_estimators=100, random_state=rnd_val)
 adab_results = kcross_val(adab,train_feat)
 
 
-# In[23]:
+# In[21]:
 
 
 print(f"Model Validation accuracy = {adab_results['acc']}")
 print(f"Naive accuracy = {naive_acc(adab_results['preds'])}")
 
 
-# In[24]:
+# In[22]:
 
 
 conf_mat(adab_results, 'Confusion Matrix for Adaboost Regression')
 
 
-# In[25]:
+# In[23]:
 
 
 adab_test_acc = adab.score(test_feat[:,0:-1], test_feat[:,-1].astype(np.int64))
