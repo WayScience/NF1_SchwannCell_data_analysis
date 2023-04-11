@@ -80,7 +80,7 @@ featdf = featdf.loc[:,featdf.columns != 'Unnamed: 0'] # Remove the unnamed colum
 
 # # Sampling
 
-# In[19]:
+# In[8]:
 
 
 def down_sample(df, samp_size):
@@ -105,19 +105,7 @@ dsamp_featdf = featdf.groupby('genotype_label', group_keys=False).apply(down_sam
 traindf, testdf = train_test_split(dsamp_featdf, random_state=rnd_val, shuffle=True, train_size=0.9) # Train and Test Dataframes
 
 
-# In[20]:
-
-
-dsamp_featdf
-
-
-# In[25]:
-
-
-traindf
-
-
-# In[9]:
+# In[11]:
 
 
 train_feat = traindf.to_numpy()
@@ -126,14 +114,14 @@ test_feat = testdf.to_numpy()
 
 # # Principle Component Analysis (PCA) Visualization
 
-# In[10]:
+# In[12]:
 
 
 null_idx = np.nonzero(train_feat[:,-1] == 0)[0]
 wt_idx = np.nonzero(train_feat[:,-1] != 0)[0]
 
 
-# In[11]:
+# In[13]:
 
 
 pca = PCA(n_components=2)
@@ -147,14 +135,14 @@ plt.legend((null, wt), ('null', 'wt'))
 plt.show()
 
 
-# In[12]:
+# In[14]:
 
 
 reducer = umap.UMAP(random_state=rnd_val)
 reducer.fit(train_feat[:,0:-1])
 
 
-# In[13]:
+# In[15]:
 
 
 null = plt.scatter(reducer.embedding_[null_idx,0],reducer.embedding_[null_idx,1], marker='x', color='r')
@@ -166,7 +154,7 @@ plt.show()
 
 # # K Cross Validation
 
-# In[14]:
+# In[16]:
 
 
 num_splits = 5 # Default number of splits
@@ -208,7 +196,7 @@ def kcross_val(model, feat, splits=num_splits):
     return res
 
 
-# In[15]:
+# In[17]:
 
 
 # Returns the naive accuracy:
@@ -231,7 +219,7 @@ def naive_acc(labels):
 
 # ## Confusion Matrix
 
-# In[16]:
+# In[18]:
 
 
 def conf_mat(model_res, mat_title='Confusion Matrix'):
@@ -256,7 +244,7 @@ def conf_mat(model_res, mat_title='Confusion Matrix'):
 
 # # LRC Model
 
-# In[17]:
+# In[19]:
 
 
 lrc = LogisticRegression(random_state=rnd_val)
@@ -264,20 +252,20 @@ lrc = LogisticRegression(random_state=rnd_val)
 lrc_results = kcross_val(lrc, train_feat)
 
 
-# In[18]:
+# In[20]:
 
 
 print(f"Validation model accuracy = {lrc_results['acc']}")
 print(f"Naive accuracy = {naive_acc(lrc_results['preds'])}")
 
 
-# In[19]:
+# In[21]:
 
 
 conf_mat(lrc_results, 'Confusion Matrix for Logistic Regression')
 
 
-# In[20]:
+# In[22]:
 
 
 lrc_test_acc = lrc.score(test_feat[:,0:-1], test_feat[:,-1].astype(np.int64))
@@ -286,7 +274,7 @@ print(f'Logistic Regression Test Accuracy: {lrc_test_acc:.2f}')
 
 # # Adaboost
 
-# In[21]:
+# In[23]:
 
 
 adab = AdaBoostClassifier(n_estimators=100, random_state=rnd_val)
@@ -294,20 +282,20 @@ adab = AdaBoostClassifier(n_estimators=100, random_state=rnd_val)
 adab_results = kcross_val(adab,train_feat)
 
 
-# In[22]:
+# In[24]:
 
 
 print(f"Model Validation accuracy = {adab_results['acc']}")
 print(f"Naive accuracy = {naive_acc(adab_results['preds'])}")
 
 
-# In[23]:
+# In[25]:
 
 
 conf_mat(adab_results, 'Confusion Matrix for Adaboost Regression')
 
 
-# In[24]:
+# In[26]:
 
 
 adab_test_acc = adab.score(test_feat[:,0:-1], test_feat[:,-1].astype(np.int64))
