@@ -15,7 +15,6 @@ import pathlib
 from sklearn.preprocessing import LabelBinarizer, StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import AdaBoostClassifier
-from xgboost import XGBClassifier
 from sklearn.model_selection import KFold, train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 from sklearn.decomposition import PCA
@@ -105,7 +104,7 @@ dsamp_featdf = featdf.groupby('genotype_label', group_keys=False).apply(down_sam
 traindf, testdf = train_test_split(dsamp_featdf, random_state=rnd_val, shuffle=True, train_size=0.9) # Train and Test Dataframes
 
 
-# In[11]:
+# In[9]:
 
 
 train_feat = traindf.to_numpy()
@@ -114,14 +113,14 @@ test_feat = testdf.to_numpy()
 
 # # Principle Component Analysis (PCA) Visualization
 
-# In[12]:
+# In[10]:
 
 
 null_idx = np.nonzero(train_feat[:,-1] == 0)[0]
 wt_idx = np.nonzero(train_feat[:,-1] != 0)[0]
 
 
-# In[13]:
+# In[11]:
 
 
 pca = PCA(n_components=2)
@@ -135,14 +134,14 @@ plt.legend((null, wt), ('null', 'wt'))
 plt.show()
 
 
-# In[14]:
+# In[12]:
 
 
 reducer = umap.UMAP(random_state=rnd_val)
 reducer.fit(train_feat[:,0:-1])
 
 
-# In[15]:
+# In[13]:
 
 
 null = plt.scatter(reducer.embedding_[null_idx,0],reducer.embedding_[null_idx,1], marker='x', color='r')
@@ -154,7 +153,7 @@ plt.show()
 
 # # K Cross Validation
 
-# In[16]:
+# In[14]:
 
 
 num_splits = 5 # Default number of splits
@@ -196,30 +195,34 @@ def kcross_val(model, feat, splits=num_splits):
     return res
 
 
-# In[17]:
+# In[15]:
 
 
-# Returns the naive accuracy:
-def naive_acc(labels):
-    """
-    Parameters
-    ----------
-    labels
-        The genotype labels.
+# Naive Model:
+class naive_model:
+    def __init__(self):
+        pass
+    
+    def score(self, labels):
+        """
+        Parameters
+        ----------
+        labels
+            The genotype labels.
 
-    Returns
-    -------
-    float
-        A naive accuracy (baseline) for the given labels.
-    """
-    naive_pred = rng.integers(low=0, high=2, size=labels.shape[0])
-    naive_acc = accuracy_score(naive_pred,labels)
-    return naive_acc
+        Returns
+        -------
+        float
+            A naive accuracy (baseline accuracy) for the given labels without considering any features.
+        """
+        naive_pred = rng.integers(low=0, high=2, size=labels.shape[0])
+        naive_acc = accuracy_score(naive_pred,labels)
+        return naive_acc
 
 
 # ## Confusion Matrix
 
-# In[18]:
+# In[16]:
 
 
 def conf_mat(model_res, mat_title='Confusion Matrix'):
@@ -244,7 +247,7 @@ def conf_mat(model_res, mat_title='Confusion Matrix'):
 
 # # LRC Model
 
-# In[19]:
+# In[17]:
 
 
 lrc = LogisticRegression(random_state=rnd_val)
@@ -252,20 +255,27 @@ lrc = LogisticRegression(random_state=rnd_val)
 lrc_results = kcross_val(lrc, train_feat)
 
 
-# In[20]:
+# In[18]:
+
+
+naive_lrc = naive_model() # Naive results for the logistic regression validation data
+naive_acc = naive_lrc.score(lrc_results['labels']) # Naive accuracy
+
+
+# In[19]:
 
 
 print(f"Validation model accuracy = {lrc_results['acc']}")
-print(f"Naive accuracy = {naive_acc(lrc_results['preds'])}")
+print(f"Naive accuracy = {naive_acc}")
 
 
-# In[21]:
+# In[20]:
 
 
 conf_mat(lrc_results, 'Confusion Matrix for Logistic Regression')
 
 
-# In[22]:
+# In[21]:
 
 
 lrc_test_acc = lrc.score(test_feat[:,0:-1], test_feat[:,-1].astype(np.int64))
@@ -274,7 +284,7 @@ print(f'Logistic Regression Test Accuracy: {lrc_test_acc:.2f}')
 
 # # Adaboost
 
-# In[23]:
+# In[22]:
 
 
 adab = AdaBoostClassifier(n_estimators=100, random_state=rnd_val)
@@ -282,11 +292,18 @@ adab = AdaBoostClassifier(n_estimators=100, random_state=rnd_val)
 adab_results = kcross_val(adab,train_feat)
 
 
+# In[23]:
+
+
+naive_adab = naive_model() # Naive model for the Adaboost validation data
+naive_acc = naive_adab.score(adab_results['labels']) # Naive accuracy
+
+
 # In[24]:
 
 
 print(f"Model Validation accuracy = {adab_results['acc']}")
-print(f"Naive accuracy = {naive_acc(adab_results['preds'])}")
+print(f"Naive accuracy = {naive_acc}")
 
 
 # In[25]:
