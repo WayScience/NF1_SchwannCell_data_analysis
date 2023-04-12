@@ -3,6 +3,9 @@
 
 # # Feature Analysis and Genotype Classification
 
+# ### Note
+# This notebook did not stratify samples. Accuracies may not be reflective of class distributions
+
 # ## Imports
 
 # In[1]:
@@ -166,6 +169,8 @@ def kcross_val(model, feat, splits=num_splits):
         The model to be trained and evaluated.
     feat : Pandas Dataframe
         The preprocessed dataframe with features and labels.
+    splits: int
+        The number of splits for k cross validation
 
     Returns
     -------
@@ -225,6 +230,7 @@ class naive_model:
 # In[16]:
 
 
+# Display Confusion matrix
 def conf_mat(model_res, mat_title='Confusion Matrix'):
     """
     Parameters
@@ -232,11 +238,9 @@ def conf_mat(model_res, mat_title='Confusion Matrix'):
     model_res : dict
         A dictionary containing: Best validation accuracy, Best model, Prediction of best model, Validation set labels.
         "Best" corresponds to the greatest validation accuracy.
-
-    Returns
-    -------
-    dict
-        A naive accuracy (baseline) for the given labels.
+    
+    mat_title: str
+        The title of the confusion matrix.
     """
     cm = confusion_matrix(model_res['labels'],model_res['preds'])
     fig, ax = plt.subplots(figsize=(5,5), dpi=100)
