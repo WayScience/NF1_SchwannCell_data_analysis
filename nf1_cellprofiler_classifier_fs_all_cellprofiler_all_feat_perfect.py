@@ -177,7 +177,7 @@ def kcross_val(model, feat, splits=num_splits):
     cv = KFold(n_splits = splits, random_state=rnd_val, shuffle=True)
     max_acc = 0 # Keep track of the maximum accuracy
 
-    for idx, (train_idx, val_idx) in enumerate(cv.split(X=feat)): # iterates through index splits
+    for train_idx, val_idx in cv.split(X=feat): # iterates through index splits
         yval = feat[val_idx,-1].astype(np.int64) # Validation labels converted to ints
         ytrain = feat[train_idx,-1].astype(np.int64) # Training labels converted to ints
         Xval = feat[val_idx,0:-1] # Validation features
@@ -242,7 +242,7 @@ def conf_mat(model_res, mat_title='Confusion Matrix'):
     fig, ax = plt.subplots(figsize=(5,5), dpi=100)
     display = ConfusionMatrixDisplay(cm, display_labels=np.unique(model_res['labels']))
     ax.set(title=mat_title)
-    display.plot(ax=ax);
+    display.plot(ax=ax)
 
 
 # # LRC Model
