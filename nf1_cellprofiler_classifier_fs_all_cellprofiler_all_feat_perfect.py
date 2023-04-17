@@ -205,6 +205,10 @@ def kcross_val(model, feat, splits=num_splits):
 
 # Naive Model:
 class naive_model:
+    """
+    A naive model, which chosses a random class to generate predictions.
+    """
+    
     def __init__(self):
         pass
     
