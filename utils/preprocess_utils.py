@@ -4,14 +4,35 @@ import pathlib
 from sklearn.preprocessing import LabelBinarizer
 import os
 
-class preprocess_data:
+class Preprocess_data:
+    """
+    A simplified means to retrieving dataframes from files and removing choosen metadata.
+    """
 
     rnd_val = 0 # Random value for all seeds
     rng = np.random.default_rng(seed=rnd_val) # random number generator
 
     def __init__(self, plate, filename, rel_root, kept_meta_columns=None, cell_method='cellprofiler'):
+        """
+        Parameters
+        ----------
+        plate: int
+            The plate number corresponding to the file
+
+        filename: string
+            The name of the file to be retrieved, including the extension
+
+        rel_root: Pathlib path
+            The root location of the project relative to the code location.
+
+        kept_meta_columns: list of strings
+            Metadata column names to be kept in the retrieved dataframe (optional)
+
+        cell_method: string
+            The feature extraction method used (2 options: 'cellprofiler' or 'deepprofiler') (optional)
+        """
         cell_methods = ('cellprofiler','deepprofiler')
-        plates = np.array([1,2])
+        plates = np.array([1,2,3])
         self.kept_meta_columns = kept_meta_columns
 
         root_folder = 'nf1_data_repo'
@@ -36,6 +57,9 @@ class preprocess_data:
                 data_dir = data_dir / "4_processing_features/data/Plate1/CellProfiler"
             elif cell_method == cell_methods[1]:
                 data_dir = data_dir / "4_processing_features/data/Plate1/DeepProfiler"
+                
+        if plate == 3:
+            data_dir = pathlib.Path('Plate_3_prime.parquet')
 
         full_path = pathlib.Path(data_dir) / filename
         
