@@ -12,62 +12,32 @@ class Preprocess_data:
     rnd_val = 0 # Random value for all seeds
     rng = np.random.default_rng(seed=rnd_val) # random number generator
 
-    def __init__(self, plate, filename, rel_root, kept_meta_columns=None, cell_method='cellprofiler'):
+    def __init__(self, path, kept_meta_columns=None):
         """
         Parameters
         ----------
-        plate: int
-            The plate number corresponding to the file
-
-        filename: string
-            The name of the file to be retrieved, including the extension
-
-        rel_root: Pathlib path
-            The root location of the project relative to the code location.
-
+        path: string or pathlib path
+            The path of the data file
         kept_meta_columns: list of strings
             Metadata column names to be kept in the retrieved dataframe (optional)
-
-        cell_method: string
-            The feature extraction method used (2 options: 'cellprofiler' or 'deepprofiler') (optional)
         """
-        cell_methods = ('cellprofiler','deepprofiler')
-        plates = np.array([1,2,3])
-        self.kept_meta_columns = kept_meta_columns
-
-        root_folder = 'nf1_data_repo'
-        root_dir_path = rel_root / pathlib.Path(root_folder) # Relative path to data repo folder
-        data_dir = rel_root / root_folder
-
-        if not root_dir_path.is_dir():
-            raise FileNotFoundError(f"The directory {root_folder} is not found in the '{rel_root.resolve()}' path.")
-
-        if not cell_method in cell_methods:
-            raise ValueError(f"No Matching cell method can be found. Possible options include:\n{str(cell_methods)}")
-
-        if not bool(np.isin(plate,plates)):
-            raise ValueError(f"No Matching plate can be found. Possible options include:\n{str(plates)}")
-
-        if plate == 2:
-            if cell_method == cell_methods[0]:
-                data_dir = data_dir / "4_processing_features/data/Plate2/CellProfiler"
-
-        if plate == 1:
-            if cell_method == cell_methods[0]:
-                data_dir = data_dir / "4_processing_features/data/Plate1/CellProfiler"
-            elif cell_method == cell_methods[1]:
-                data_dir = data_dir / "4_processing_features/data/Plate1/DeepProfiler"
-                
-        if plate == 3:
-            data_dir = pathlib.Path('Plate_3_prime.parquet')
-
-        full_path = pathlib.Path(data_dir) / filename
-        
+        path = pathlib.Path(path)
+                     
         # If the file isn't found in the path above then raise an error.
-        if not full_path.is_file():
+        if not path.is_file():
             raise FileNotFoundError(f"File '{full_path}' does not exist")
-        
-        self.df = pd.read_csv(full_path)
+            
+        if 'parquet' in path.name:
+            self.df = pd.read_parquet(path)
+            
+        elif 'csv' in path.name:
+            self.df = pd.read_parquet(path)
+            
+        elif 'tsv' in path.name:
+            self.df = pd.read_csv(path, delimiter='\t')
+            
+        else
+            raise ValueError("The file must be a parquet, csv, or tsv, with the applicable extension included in the filename.")
 
         self.df = self.df.loc[:,self.df.columns != 'Unnamed: 0'] # Remove the unnamed column
 
@@ -138,7 +108,7 @@ class Preprocess_data:
         Returns
         -------
         Pandas Dataframe
-            The dataframe without all metadata columns, excluding any metadata that was previously specifed to keep.
+            The dataframe without all metadata columns, excluding any metadata that was previously specifed to keep. If no dataframe is specified, the object's dataframe is returned.
         """
         if df is None:
             df = self.df
