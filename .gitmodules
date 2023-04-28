@@ -1,6 +1,0 @@
-[submodule "nf1_benchmark_repo"]
-	path = nf1_benchmark_repo
-	url = https://github.com/jenna-tomkinson/Benchmarking_NF1_data.git
-[submodule "nf1_painting_repo"]
-	path = nf1_painting_repo
-	url = https://github.com/jenna-tomkinson/nf1_cellpainting_data.git
