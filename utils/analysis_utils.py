@@ -1,3 +1,5 @@
+""" This file provides analysis utilities for a variety of tasks """
+
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 import umap
@@ -10,11 +12,21 @@ from collections import defaultdict
 rnd_val = 0 # Random value for all seeds
 rng = np.random.default_rng(seed=rnd_val) # random number generator
 
-# Displays a plot of the first two principal components
-def plot_pca(df, loc='lower right', title='Principal component plot of training set'):
+def plot_pca(feats, labels, save_args, loc='lower right', title='Principal component plot of training set'):
     """
+    Plots the first two principal components and displays the explained variance.
+    
     Parameters
     ----------
+    feats: Pandas Dataframe of numerical values
+        The dataframe of features to use for the pca plot
+        
+    labels: Pandas Dataframe of strings
+        The dataframe of labels to use for labeling points on the plot
+    
+    save_args: dictionary
+        The arguments to pass to the savefig function (Please see https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html for all possible options)
+        
     data: pandas dataframe of shape (samples, features)
         The data to be plotted, where the last column contains the labels that will be in the legend
         
@@ -25,8 +37,6 @@ def plot_pca(df, loc='lower right', title='Principal component plot of training 
         The title of the PC plot. (optional)
 
     """
-    feats = df.iloc[:,:-1]
-    labels = df.iloc[:,-1]
     
     unique_labels = labels.unique()
     labelsdt = {lab: np.nonzero(labels.isin([lab]))[0] for lab in unique_labels}
@@ -40,14 +50,23 @@ def plot_pca(df, loc='lower right', title='Principal component plot of training 
     plt.ylabel('PC2')
     plt.title(title, fontsize=24)
     plt.legend(loc=loc)
-    plt.show()
+    plt.savefig(**save_args)
     print(f'Explained variance in PC1 and PC2 = {np.sum(pca.explained_variance_ratio_)}')
 
 # Displays a plot of the umap components
-def plot_umap(df, loc='lower right', title='Embedding of the training set by UMAP'):
+def plot_umap(feats, labels, save_args, loc='lower right', title='Embedding of the training set by UMAP'):
     """
     Parameters
     ----------
+    feats: Pandas Dataframe of numerical values
+        The dataframe of features to use for the pca plot
+        
+    labels: Pandas Dataframe of strings
+        The dataframe of labels to use for labeling points on the plot
+    
+    save_args: dictionary
+        The arguments to pass to the savefig function (Please see https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html for all possible options)
+    
     data: pandas dataframe of shape (samples, features)
         The data to be plotted, where the last column contains the labels that will be in the legend
         
@@ -58,8 +77,6 @@ def plot_umap(df, loc='lower right', title='Embedding of the training set by UMA
         The title of the UMAP plot. (optional)
 
     """
-    feats = df.iloc[:,:-1]
-    labels = df.iloc[:,-1]
     
     unique_labels = labels.unique()
     labelsdt = {lab: np.nonzero(labels.isin([lab]))[0] for lab in unique_labels}
@@ -72,7 +89,7 @@ def plot_umap(df, loc='lower right', title='Embedding of the training set by UMA
     
     plt.title(title, fontsize=24)
     plt.legend(loc=loc)
-    plt.show()
+    plt.savefig(**save_args)
     
 class Sig_testing():
     def __init__(self, plates):
@@ -216,6 +233,8 @@ class Sig_testing():
         
     def get_columns(self, sig_feat_phoc):
         """
+        This function finds the significant column names from the dictionary of groups specified
+        
         Parameters
         ----------
         sig_feat_phoc: Dictionary of dictionaries 
