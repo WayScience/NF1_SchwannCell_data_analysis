@@ -34,129 +34,9 @@ rnd_val = 0 # Random value for all seeds
 rng = np.random.default_rng(seed=rnd_val) # random number generator
 
 
-# # Converting csv to pandas dataframe
-
-# In[3]:
-
-
-morph_features = 'nf1_sc_norm_fs_all_cellprofiler.csv.gz'
-
-
-# In[4]:
-
-
-data_dir = pathlib.Path("nf1_data_repo/4_processing_features/data/Plate1/CellProfiler")
-data_comp = data_dir / morph_features
-
-
-# In[5]:
-
-
-# If the file isn't found in the path above then raise an error.
-if not data_comp.is_file():
-    raise FileNotFoundError(f"File '{data_comp}' does not exist")
-    
-morph_feat = pd.read_csv(data_comp)
-
-
-# # Creating binary labels for the genotype
-
-# In[6]:
-
-
-lb = LabelBinarizer()
-morph_feat['genotype_label'] = lb.fit_transform(morph_feat['Metadata_genotype'])
-featdf = morph_feat # Create a copy for modification
-
-
-# # Selecting Features
-
-# In[7]:
-
-
-feat_col = [col for col in featdf.columns if 'Metadata' not in col] # Select all columns that don't contain the Metadata in their name
-
-featdf = featdf[feat_col]
-featdf = featdf.loc[:,featdf.columns != 'Unnamed: 0'] # Remove the unnamed column
-
-
-# # Sampling
-
-# In[8]:
-
-
-def down_sample(df, samp_size):
-    """
-    Parameters
-    ----------
-    df: Pandas Dataframe
-        The dataframe to be sampled.
-    samp_size
-        The sample size to be sampled from each class.
-
-    Returns
-    -------
-    Pandas Dataframe
-        The sampled dataframe.
-
-    """
-    return df.sample(n=samp_size, random_state=rnd_val)
-
-min_class_samps_size = min(featdf['genotype_label'].value_counts().values) # Sample size for the minority class
-dsamp_featdf = featdf.groupby('genotype_label', group_keys=False).apply(down_sample, min_class_samps_size) # Down-sample features according to minority class
-traindf, testdf = train_test_split(dsamp_featdf, random_state=rnd_val, shuffle=True, train_size=0.9) # Train and Test Dataframes
-
-
-# In[9]:
-
-
-train_feat = traindf.to_numpy()
-test_feat = testdf.to_numpy()
-
-
-# # Principle Component Analysis (PCA) Visualization
-
-# In[10]:
-
-
-null_idx = np.nonzero(train_feat[:,-1] == 0)[0]
-wt_idx = np.nonzero(train_feat[:,-1] != 0)[0]
-
-
-# In[11]:
-
-
-pca = PCA(n_components=2)
-pca_features = pca.fit_transform(train_feat[:,0:-1])
-print(f'Explained variance in PC1 and PC2 = {np.sum(pca.explained_variance_ratio_)}')
-null = plt.scatter(pca_features[null_idx,0],pca_features[null_idx,1], marker='x', color='r')
-wt = plt.scatter(pca_features[wt_idx,0],pca_features[wt_idx,1], marker='.', color='b')
-plt.xlabel('PC1')
-plt.ylabel('PC2')
-plt.legend((null, wt), ('null', 'wt'))
-plt.show()
-
-
-# In[12]:
-
-
-reducer = umap.UMAP(random_state=rnd_val)
-reducer.fit(train_feat[:,0:-1])
-
-
-# In[13]:
-
-
-null = plt.scatter(reducer.embedding_[null_idx,0],reducer.embedding_[null_idx,1], marker='x', color='r')
-wt = plt.scatter(reducer.embedding_[wt_idx,0],reducer.embedding_[wt_idx,1], marker='.', color='b')
-plt.title('Embedding of the training set by UMAP', fontsize=24)
-plt.legend((null, wt), ('null', 'wt'), loc='lower right')
-plt.show()
-
-
 # # K Cross Validation
 
-# In[14]:
+# In[3]:
 
 
 num_splits = 5 # Default number of splits
@@ -200,7 +80,7 @@ def kcross_val(model, feat, splits=num_splits):
     return res
 
 
-# In[15]:
+# In[4]:
 
 
 # Naive Model:
@@ -231,7 +111,7 @@ class naive_model:
 
 # ## Confusion Matrix
 
-# In[16]:
+# In[5]:
 
 
 # Display Confusion matrix
@@ -251,6 +131,125 @@ def conf_mat(model_res, mat_title='Confusion Matrix'):
     display = ConfusionMatrixDisplay(cm, display_labels=np.unique(model_res['labels']))
     ax.set(title=mat_title)
     display.plot(ax=ax)
+
+
+# # Converting csv to pandas dataframe
+
+# In[6]:
+
+
+data_dir = pathlib.Path("nf1_data_repo/4_processing_features/data/Plate1/CellProfiler/nf1_sc_norm_fs_all_cellprofiler.csv.gz")
+
+
+# In[7]:
+
+
+# If the file isn't found in the path above then raise an error.
+if not data_dir.is_file():
+    raise FileNotFoundError(f"File '{data_dir}' does not exist")
+    
+morph_feat = pd.read_csv(data_dir)
+
+
+# # Creating binary labels for the genotype
+
+# In[8]:
+
+
+lb = LabelBinarizer()
+morph_feat['genotype_label'] = lb.fit_transform(morph_feat['Metadata_genotype'])
+featdf = morph_feat # Create a copy for modification
+
+
+# # Sampling
+
+# In[9]:
+
+
+def down_sample(df, samp_size):
+    """
+    Samples the dataframe according to the sample size.
+    
+    Parameters
+    ----------
+    df: Pandas Dataframe
+        The dataframe to be sampled.
+    samp_size
+        The sample size to be sampled from each class.
+
+    Returns
+    -------
+    Pandas Dataframe
+        The sampled dataframe.
+
+    """
+    return df.sample(n=samp_size, random_state=rnd_val)
+
+
+# # Selecting Features
+
+# In[10]:
+
+
+feat_col = [col for col in featdf.columns if 'Metadata' not in col] # Select all columns that don't contain the Metadata in their name
+
+featdf = featdf[feat_col]
+featdf = featdf.loc[:,featdf.columns != 'Unnamed: 0'] # Remove the unnamed column
+
+
+# In[11]:
+
+
+min_class_samps_size = min(featdf['genotype_label'].value_counts().values) # Sample size for the minority class
+dsamp_featdf = featdf.groupby('genotype_label', group_keys=False).apply(down_sample, min_class_samps_size) # Down-sample features according to minority class
+traindf, testdf = train_test_split(dsamp_featdf, random_state=rnd_val, shuffle=True, train_size=0.9) # Train and Test Dataframes
+
+
+# In[12]:
+
+
+train_feat = traindf.to_numpy()
+test_feat = testdf.to_numpy()
+
+
+# # Principle Component Analysis (PCA) Visualization
+
+# In[13]:
+
+
+null_idx = np.nonzero(train_feat[:,-1] == 0)[0]
+wt_idx = np.nonzero(train_feat[:,-1] != 0)[0]
+
+
+# In[14]:
+
+
+pca = PCA(n_components=2)
+pca_features = pca.fit_transform(train_feat[:,0:-1])
+print(f'Explained variance in PC1 and PC2 = {np.sum(pca.explained_variance_ratio_)}')
+null = plt.scatter(pca_features[null_idx,0],pca_features[null_idx,1], marker='x', color='r')
+wt = plt.scatter(pca_features[wt_idx,0],pca_features[wt_idx,1], marker='.', color='b')
+plt.xlabel('PC1')
+plt.ylabel('PC2')
+plt.legend((null, wt), ('null', 'wt'))
+plt.show()
+
+
+# In[15]:
+
+
+reducer = umap.UMAP(random_state=rnd_val)
+reducer.fit(train_feat[:,0:-1])
+
+
+# In[16]:
+
+
+null = plt.scatter(reducer.embedding_[null_idx,0],reducer.embedding_[null_idx,1], marker='x', color='r')
+wt = plt.scatter(reducer.embedding_[wt_idx,0],reducer.embedding_[wt_idx,1], marker='.', color='b')
+plt.title('Embedding of the training set by UMAP', fontsize=24)
+plt.legend((null, wt), ('null', 'wt'), loc='lower right')
+plt.show()
 
 
 # # LRC Model
