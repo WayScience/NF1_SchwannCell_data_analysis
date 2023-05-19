@@ -7,7 +7,7 @@ git clone https://github.com/WayScience/NF1_SchwannCell_data_analysis.git`<br>
 
 ### Step 2. cd into the repo<br>
 
-### Step 3. Populate the nf1_data_repo folder from the NF1_SchwannCell_data repo 
+### Step 3. Populate the nf1_data_repo folder from the NF1_SchwannCell_data repo
 ```sh
 git submodule update --init --recursive
 ```
