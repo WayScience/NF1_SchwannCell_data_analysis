@@ -14,7 +14,6 @@ import numpy as np
 from pathlib import Path
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
 
 from sklearn.metrics import (
     confusion_matrix,
@@ -22,12 +21,10 @@ from sklearn.metrics import (
     precision_score,
     accuracy_score,
 )
-from sklearn.feature_selection import SequentialFeatureSelector as sfs
 from sklearn.model_selection import train_test_split
 
 import matplotlib.pyplot as plt
 import seaborn as sns
-import itertools
 
 from joblib import dump, load
 
