@@ -268,6 +268,7 @@ totfeatimp = totfeatimp.sort_values(ascending=False)
 featdf = featdf.sort_values("abs_HET", ascending=False)
 
 disp_feat = 30
+gtype = "HET"
 
 feat_imp = featdf["abs_HET"][:disp_feat]
 col_names = featdf["features"][:disp_feat]
@@ -276,9 +277,9 @@ ax = sns.barplot(x=np.arange(disp_feat), y=feat_imp)
 ax.set_xticklabels(col_names, rotation=40, ha="right")
 plt.ylabel("Feature importances by weight")
 plt.xlabel(f"Top {disp_feat} features")
-plt.title(f"Best features for {genotype}")
+plt.title(f"Best features for {gtype}")
 plt.tight_layout()
-plt.savefig(f"{out_path}/{genotype}_average_feature_importances.png")
+plt.savefig(f"{out_path}/{gtype}_feature_importances_by_weight")
 
 
 # In[6]:
