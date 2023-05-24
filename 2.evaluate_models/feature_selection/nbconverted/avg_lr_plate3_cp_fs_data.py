@@ -5,7 +5,7 @@
 
 # ## Imports
 
-# In[1]:
+# In[ ]:
 
 
 import sys
@@ -29,7 +29,7 @@ import itertools
 
 from joblib import dump, load
 
-sys.path.append("../utils")
+sys.path.append("../../utils")
 import analysis_utils as au
 import preprocess_utils as ppu
 import eval_utils as eu
@@ -48,7 +48,7 @@ rng = np.random.default_rng(seed=rnd_val)  # random number generator
 # In[ ]:
 
 
-out_path = Path("feature_importance_figures")
+out_path = Path("tuned_model_feature_importance_figures")
 
 if not out_path.exists():
     out_path.mkdir()
@@ -71,8 +71,8 @@ lr = load(models_path / "lr_model.joblib")
 # In[ ]:
 
 
-testdf = load(models_path / "testdf.joblib")
-le = load(models_path / "label_encoder.joblib")
+testdf = load(models_path / "testdf_tuned.joblib")
+le = load(models_path / "label_encoder_tuned.joblib")
 
 
 # ## Make Predictions
@@ -83,7 +83,7 @@ le = load(models_path / "label_encoder.joblib")
 testdf["preds"] = lr.predict(testdf.drop("label", axis="columns"))
 
 
-# In[2]:
+# In[1]:
 
 
 print(f"Accuracy = {accuracy_score(testdf['label'], testdf['preds'])}")
@@ -112,7 +112,7 @@ featdf["abs_HET"] = featdf["HET"].abs()
 
 # ## Find Confusion Matrix
 
-# In[3]:
+# In[2]:
 
 
 plt.clf()
@@ -130,7 +130,7 @@ sns.heatmap(
 plt.savefig(f"{out_path}/lr_conf_mat.png")
 
 
-# In[4]:
+# In[3]:
 
 
 ### Find the number of incorrect predicted examples for each predicted label
@@ -262,7 +262,7 @@ totfeatimp = totfeatimp.sort_values(ascending=False)
 
 # ## Create an output path for figures
 
-# In[5]:
+# In[4]:
 
 
 featdf = featdf.sort_values("abs_HET", ascending=False)
@@ -282,7 +282,7 @@ plt.tight_layout()
 plt.savefig(f"{out_path}/{gtype}_feature_importances_by_weight")
 
 
-# In[6]:
+# In[5]:
 
 
 for genotype in featdf[pos_genes]:
@@ -298,7 +298,7 @@ for genotype in featdf[pos_genes]:
     plt.savefig(f"{out_path}/{genotype}_average_feature_importances.png")
 
 
-# In[7]:
+# In[6]:
 
 
 feat_imp = totfeatimp[:disp_feat]
