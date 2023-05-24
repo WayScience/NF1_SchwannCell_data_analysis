@@ -48,7 +48,7 @@ rng = np.random.default_rng(seed=rnd_val)  # random number generator
 # In[ ]:
 
 
-out_path = Path("tuned_model_feature_importance_figures")
+out_path = Path("feature_importance_figures")
 
 if not out_path.exists():
     out_path.mkdir()
@@ -71,8 +71,8 @@ lr = load(models_path / "lr_model.joblib")
 # In[ ]:
 
 
-testdf = load(models_path / "testdf_tuned.joblib")
-le = load(models_path / "label_encoder_tuned.joblib")
+testdf = load(models_path / "testdf.joblib")
+le = load(models_path / "label_encoder.joblib")
 
 
 # ## Make Predictions
