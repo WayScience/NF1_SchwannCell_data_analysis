@@ -120,13 +120,16 @@ plt.clf()
 cm3 = pd.crosstab(
     testdf["label"], testdf["preds"], rownames=["True"], colnames=["Predicted"]
 )
-sns.heatmap(
+ax = sns.heatmap(
     cm3,
     annot=True,
     cmap="Blues",
     xticklabels=le.classes_.tolist(),
     yticklabels=le.classes_.tolist(),
 )
+cbar = ax.collections[0].colorbar
+cbar.set_label("Number of Single Cells")
+plt.title("Performance predicting Genotype")
 plt.savefig(f"{out_path}/lr_conf_mat.png")
 
 
@@ -244,7 +247,7 @@ for idx in common_indices:
     ) / 3
 
 
-# ## Convert Importances to sorted normalized series
+# ## Convert Overall Importances to sorted normalized series
 
 # In[ ]:
 
@@ -267,7 +270,7 @@ totfeatimp = totfeatimp.sort_values(ascending=False)
 
 featdf = featdf.sort_values("abs_HET", ascending=False)
 
-disp_feat = 30
+disp_feat = 10
 gtype = "HET"
 
 feat_imp = featdf["abs_HET"][:disp_feat]
@@ -301,13 +304,34 @@ for genotype in featdf[pos_genes]:
 # In[6]:
 
 
-feat_imp = totfeatimp[:disp_feat]
+feat_imp = pd.DataFrame(totfeatimp[:disp_feat], columns=["avg_importance"])
+feat_imp["category"] = ["Overall"] * disp_feat
 col_names = totfeatimp[:disp_feat].index
+
+for genotype in featdf[pos_genes]:
+    tempdf = pd.DataFrame(
+        featimp[genotype]["featnorm_avg_norm"][col_names], columns=["avg_importance"]
+    )
+    tempdf["category"] = [genotype] * disp_feat
+    feat_imp = pd.concat([feat_imp, tempdf], axis=0)
+
+"Cells_Texture_InfoMeas1_DAPI_3_03_256"
+feat_imp["features"] = feat_imp.index
+
 plt.figure(figsize=(17, 6))
-ax = sns.barplot(x=np.arange(disp_feat), y=feat_imp)
+ax = sns.barplot(
+    x=feat_imp["features"], y=feat_imp["avg_importance"], hue=feat_imp["category"]
+)
 ax.set_xticklabels(col_names, rotation=40, ha="right")
 plt.ylabel("Average of relative feature importances")
 plt.xlabel("Top n features")
 plt.xlabel(f"Top {disp_feat} features")
 plt.tight_layout()
-plt.savefig(f"{out_path}/overall_average_feature_importances.png")
+plt.legend(loc="upper center")
+plt.savefig(f"{out_path}/collective_average_feature_importances.png")
+
+
+# In[ ]:
+
+
+col_names[0]
