@@ -186,38 +186,27 @@ for genotype in featdf[pos_genes]:
     featimp[genotype]["featdf"] = pd.DataFrame(
         mat_imp, columns=kept_cols.to_list()
     )  # Create the dataframe of product of model weights by the feature values
-    row_sums = featimp[genotype]["featdf"].apply(
-        lambda row: row[row > 0].sum(), axis=1
-    )  # Find the sum for each row
-    featimp[genotype]["featnorm"] = featimp[genotype]["featdf"].div(
-        row_sums, axis=0
-    )  # Find the relative product importances for each feature
 
     # Calculate quartiles and IQR:
-    q1 = featimp[genotype]["featnorm"].quantile(0.25)
-    q3 = featimp[genotype]["featnorm"].quantile(0.75)
+    q1 = featimp[genotype]["featdf"].quantile(0.25)
+    q3 = featimp[genotype]["featdf"].quantile(0.75)
     iqr = q3 - q1
     # Calculate bounds:
     lower_bound = q1 - 1.5 * iqr
     upper_bound = q3 + 1.5 * iqr
     # Remove outliers:
-    featimp[genotype]["featnorm"] = featimp[genotype]["featnorm"][
-        (featimp[genotype]["featnorm"] >= lower_bound)
-        & (featimp[genotype]["featnorm"] <= upper_bound)
+    featimp[genotype]["featdf"] = featimp[genotype]["featdf"][
+        (featimp[genotype]["featdf"] >= lower_bound)
+        & (featimp[genotype]["featdf"] <= upper_bound)
     ]
 
-    featimp[genotype]["featnorm_avg"] = featimp[genotype]["featnorm"][
-        featimp[genotype]["featnorm"] > 0
+    featimp[genotype]["featnorm_avg"] = featimp[genotype]["featdf"][
+        featimp[genotype]["featdf"] > 0
     ].mean()  # Calculate the mean of samples that contributed to the correct prediction
     featimp[genotype]["featnorm_avg"].dropna(inplace=True)
-    min_val = featimp[genotype]["featnorm_avg"].min()
-    max_val = featimp[genotype]["featnorm_avg"].max()
     featimp[genotype]["featnorm_avg_norm"] = (
-        featimp[genotype]["featnorm_avg"] - min_val
-    ) / (
-        max_val - min_val
-    )  # Normalize averaged features, since feature importance is hierarchical
-
+        featimp[genotype]["featnorm_avg"] / featimp[genotype]["featnorm_avg"].sum()
+    )
     featimp[genotype]["featnorm_avg_norm"] = featimp[genotype][
         "featnorm_avg_norm"
     ].sort_values(
@@ -256,9 +245,7 @@ totfeatimp = pd.Series(totfeatimp)
 
 min_val = totfeatimp.min()
 max_val = totfeatimp.max()
-totfeatimp = (totfeatimp - min_val) / (
-    max_val - min_val
-)  # Normalize averaged features, since feature importance is hierarchical
+totfeatimp = totfeatimp / totfeatimp.sum()
 
 totfeatimp = totfeatimp.sort_values(ascending=False)
 
@@ -315,7 +302,6 @@ for genotype in featdf[pos_genes]:
     tempdf["category"] = [genotype] * disp_feat
     feat_imp = pd.concat([feat_imp, tempdf], axis=0)
 
-"Cells_Texture_InfoMeas1_DAPI_3_03_256"
 feat_imp["features"] = feat_imp.index
 
 plt.figure(figsize=(17, 6))
@@ -329,9 +315,3 @@ plt.xlabel(f"Top {disp_feat} features")
 plt.tight_layout()
 plt.legend(loc="upper center")
 plt.savefig(f"{out_path}/collective_average_feature_importances.png")
-
-
-# In[ ]:
-
-
-col_names[0]
