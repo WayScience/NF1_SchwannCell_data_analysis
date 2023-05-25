@@ -48,10 +48,14 @@ rng = np.random.default_rng(seed=rnd_val)  # random number generator
 # In[ ]:
 
 
-out_path = Path("feature_importance_figures")
+fig_out_path = Path("feature_importance_figures")
+data_path = Path("data")
 
-if not out_path.exists():
-    out_path.mkdir()
+if not fig_out_path.exists():
+    fig_out_path.mkdir()
+
+if not data_path.exists():
+    data_path.mkdir()
 
 
 # ## Load Model
@@ -130,7 +134,7 @@ ax = sns.heatmap(
 cbar = ax.collections[0].colorbar
 cbar.set_label("Number of Single Cells")
 plt.title("Performance predicting Genotype")
-plt.savefig(f"{out_path}/lr_conf_mat.png")
+plt.savefig(f"{fig_out_path}/lr_conf_mat.png")
 
 
 # In[3]:
@@ -200,9 +204,11 @@ for genotype in featdf[pos_genes]:
         & (featimp[genotype]["featdf"] <= upper_bound)
     ]
 
-    featimp[genotype]["featnorm_avg"] = featimp[genotype]["featdf"][
+    featimp[genotype]["featdf"] = featimp[genotype]["featdf"][
         featimp[genotype]["featdf"] > 0
-    ].mean()  # Calculate the mean of samples that contributed to the correct prediction
+    ]
+
+    featimp[genotype]["featnorm_avg"] = featimp[genotype]["featdf"].mean()
     featimp[genotype]["featnorm_avg"].dropna(inplace=True)
     featimp[genotype]["featnorm_avg_norm"] = (
         featimp[genotype]["featnorm_avg"] / featimp[genotype]["featnorm_avg"].sum()
@@ -228,12 +234,38 @@ common_indices = (
     .index.intersection(featimp["Null"]["featnorm_avg"].index)
     .intersection(featimp["WT"]["featnorm_avg"].index)
 )
-for idx in common_indices:
-    totfeatimp[idx] = (
-        featimp["HET"]["featnorm_avg"][idx]
-        + featimp["Null"]["featnorm_avg"][idx]
-        + featimp["WT"]["featnorm_avg"][idx]
-    ) / 3
+
+avgfeatimpdf = pd.DataFrame(common_indices.tolist(), columns=["Features"])
+featimpdf = pd.DataFrame([])
+
+for genotype in pos_genes:
+    avgfeatimpdf = pd.merge(
+        avgfeatimpdf,
+        pd.DataFrame(
+            list(featimp[genotype]["featnorm_avg"].items()),
+            columns=["Features", genotype],
+        ),
+        on="Features",
+        how="inner",
+    )
+    featimp[genotype]["featdf"]["genotype"] = [genotype] * len(
+        featimp[genotype]["featdf"]
+    )
+    featimpdf = pd.concat([featimpdf, featimp[genotype]["featdf"]], axis=0)
+
+avgfeatimpdf["Overall"] = (
+    avgfeatimpdf[pos_genes[0]] + avgfeatimpdf[pos_genes[1]] + avgfeatimpdf[pos_genes[2]]
+)
+avgfeatimpdf["Overall"] = avgfeatimpdf["Overall"] / 3
+
+
+# In[ ]:
+
+
+featimpdf.to_csv(data_path / "feature_importances.tsv", sep="\t", index=False)
+avgfeatimpdf.to_csv(
+    data_path / "avg_norm_feature_importances.tsv", sep="\t", index=False
+)
 
 
 # ## Convert Overall Importances to sorted normalized series
@@ -241,7 +273,7 @@ for idx in common_indices:
 # In[ ]:
 
 
-totfeatimp = pd.Series(totfeatimp)
+totfeatimp = pd.Series(avgfeatimpdf["Overall"].values, index=avgfeatimpdf["Features"])
 
 min_val = totfeatimp.min()
 max_val = totfeatimp.max()
@@ -269,7 +301,7 @@ plt.ylabel("Feature importances by weight")
 plt.xlabel(f"Top {disp_feat} features")
 plt.title(f"Best features for {gtype}")
 plt.tight_layout()
-plt.savefig(f"{out_path}/{gtype}_feature_importances_by_weight")
+plt.savefig(f"{fig_out_path}/{gtype}_feature_importances_by_weight")
 
 
 # In[5]:
@@ -285,7 +317,7 @@ for genotype in featdf[pos_genes]:
     plt.xlabel(f"Top {disp_feat} features")
     plt.title(f"Best features for {genotype}")
     plt.tight_layout()
-    plt.savefig(f"{out_path}/{genotype}_average_feature_importances.png")
+    plt.savefig(f"{fig_out_path}/{genotype}_average_feature_importances.png")
 
 
 # In[6]:
@@ -314,4 +346,4 @@ plt.xlabel("Top n features")
 plt.xlabel(f"Top {disp_feat} features")
 plt.tight_layout()
 plt.legend(loc="upper center")
-plt.savefig(f"{out_path}/collective_average_feature_importances.png")
+plt.savefig(f"{fig_out_path}/collective_average_feature_importances.png")
