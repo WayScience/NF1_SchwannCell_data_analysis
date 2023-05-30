@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Train a Logistic Regression Model
+# # Training a Logistic Regression Model
 
 # ## Imports
 
@@ -28,7 +28,36 @@ import seaborn as sns
 
 from joblib import dump, load
 
-sys.path.append("../utils")
+
+# ## Find the git root Directory
+
+# In[ ]:
+
+
+# Get the current working directory
+cwd = Path.cwd()
+
+if (cwd / ".git").is_dir():
+    root_dir = cwd
+
+else:
+    root_dir = None
+    for parent in cwd.parents:
+        if (parent / ".git").is_dir():
+            root_dir = parent
+            break
+
+# Check if a Git root directory was found
+if root_dir is None:
+    raise FileNotFoundError("No Git root directory found.")
+
+
+# ## Import Utils
+
+# In[ ]:
+
+
+sys.path.append(f"{root_dir}/utils")
 import analysis_utils as au
 import preprocess_utils as ppu
 import eval_utils as eu
@@ -51,15 +80,13 @@ rng = np.random.default_rng(seed=rnd_val)  # random number generator
 
 filename3 = "Plate_3_sc_norm_fs.parquet"
 filename3p = "Plate_3_prime_sc_norm_fs.parquet"
+plate_path = Path(
+    f"{root_dir}/nf1_painting_repo/3.processing_features/data/feature_selected_data"
+)
 
-path3 = (
-    Path("../nf1_painting_repo/3.processing_features/data/feature_selected_data")
-    / filename3
-)
-path3p = (
-    Path("../nf1_painting_repo/3.processing_features/data/feature_selected_data")
-    / filename3p
-)
+path3 = plate_path / filename3
+
+path3p = plate_path / filename3p
 
 po3 = ppu.Preprocess_data(path=path3)
 po3p = ppu.Preprocess_data(path=path3p)
@@ -157,11 +184,7 @@ testdf = po3.remove_meta(df=testdf)
 
 
 lr = LogisticRegression(
-    max_iter=1000,
-    solver="sag",
-    multi_class="multinomial",
-    random_state=rnd_val,
-    n_jobs=-1,
+    max_iter=1000, solver="sag", multi_class="ovr", random_state=rnd_val, n_jobs=-1
 )
 lr.fit(X=traindf.drop("label", axis="columns"), y=traindf["label"])
 
@@ -171,9 +194,11 @@ lr.fit(X=traindf.drop("label", axis="columns"), y=traindf["label"])
 # In[2]:
 
 
-data_path = Path("trained_models_feature_selection/plate3_cp_fs_data")
+data_path = Path(f"{root_dir}/2.evaluate_models/model_data/lr_plate3_cp_fs_data")
 
-data_path.mkdir(parents=True, exist_ok=True)
+data_path.parents[0].mkdir(
+    parents=True, exist_ok=True
+)  # Create the parent directories if they don't exist
 
 dump(lr, data_path / "lr_model.joblib")
 
