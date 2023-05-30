@@ -72,6 +72,7 @@ import train_utils as tu
 
 rnd_val = 0  # Random value for all seeds
 rng = np.random.default_rng(seed=rnd_val)  # random number generator
+plt.switch_backend("Agg")  # Switch to non-interactive backend
 
 
 # ## Create the directory path if non-existent
@@ -90,9 +91,7 @@ if not fig_out_path.exists():
 # In[ ]:
 
 
-models_path = Path(
-    f"{root_dir}/1.train_models/trained_models_feature_selection/plate3_cp_fs_data"
-)
+models_path = Path(f"{root_dir}/2.evaluate_models/model_data/lr_plate3_cp_fs_data")
 
 lr = load(models_path / "lr_model.joblib")
 
@@ -108,16 +107,24 @@ le = load(models_path / "label_encoder.joblib")
 
 # ## Make Predictions
 
-# In[ ]:
+# In[1]:
 
 
 testdf["preds"] = lr.predict(testdf.drop("label", axis="columns"))
 
 
-# In[1]:
+# In[2]:
 
 
 print(f"Accuracy = {accuracy_score(testdf['label'], testdf['preds'])}")
+
+
+# ## Resave the testdf with Predictions
+
+# In[3]:
+
+
+dump(testdf, models_path / "testdf.joblib")
 
 
 # ## Create Dataframe with coefficients for each Genotype
@@ -143,7 +150,7 @@ featdf["abs_HET"] = featdf["HET"].abs()
 
 # ## Find Confusion Matrix
 
-# In[2]:
+# In[ ]:
 
 
 cm3 = pd.crosstab(
@@ -162,7 +169,7 @@ plt.title("Performance predicting Genotype")
 plt.savefig(f"{fig_out_path}/lr_conf_mat.png")
 
 
-# In[3]:
+# In[4]:
 
 
 print(
