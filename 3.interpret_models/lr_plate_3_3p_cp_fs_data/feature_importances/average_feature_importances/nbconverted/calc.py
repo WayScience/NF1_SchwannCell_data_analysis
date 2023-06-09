@@ -59,10 +59,7 @@ if root_dir is None:
 
 
 sys.path.append(f"{root_dir}/utils")
-import analysis_utils as au
 import preprocess_utils as ppu
-import eval_utils as eu
-import train_utils as tu
 
 
 # # Seed and Generator for Reproducibility
@@ -238,7 +235,6 @@ avgfeatimpdf = pd.DataFrame(common_indices.tolist(), columns=["Features"])
 featimpdf = pd.DataFrame([])
 
 for genotype in pos_genes:
-
     # Create a dataframe for each genotype's feature importances
     avgfeatimpdf = pd.merge(
         avgfeatimpdf,
