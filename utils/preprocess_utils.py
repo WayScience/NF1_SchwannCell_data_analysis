@@ -43,7 +43,7 @@ class Preprocess_data:
 
         self.df = self.df.loc[
             :, self.df.columns != "Unnamed: 0"
-        ]  # Remove the unnamed column
+        ]  # Remove any unnamed columns
 
     def remove_meta(self, df, kept_meta_columns=None):
         """

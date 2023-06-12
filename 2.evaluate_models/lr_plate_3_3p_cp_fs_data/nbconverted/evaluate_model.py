@@ -104,13 +104,7 @@ le = load(models_path / "label_encoder.joblib")
 
 # ## Make Predictions
 
-# In[ ]:
-
-
-testdf["preds"] = lr.predict(testdf.drop("label", axis="columns"))
-
-
-# In[ ]:
+# In[1]:
 
 
 print(f"Accuracy = {accuracy_score(testdf['label'], testdf['preds'])}")
@@ -118,7 +112,7 @@ print(f"Accuracy = {accuracy_score(testdf['label'], testdf['preds'])}")
 
 # ## Resave the testdf with Predictions
 
-# In[ ]:
+# In[2]:
 
 
 dump(testdf, models_path / "testdf.joblib")
@@ -146,7 +140,7 @@ featdf = pd.concat(
 
 # ## Find Confusion Matrix
 
-# In[ ]:
+# In[3]:
 
 
 cm3 = pd.crosstab(
@@ -165,7 +159,7 @@ plt.title("Performance predicting Genotype")
 plt.savefig(f"{fig_out_path}/lr_conf_mat.png")  # Save the Confusion Matrix
 
 
-# In[ ]:
+# In[4]:
 
 
 print(
@@ -195,7 +189,7 @@ df["genotype"] = pos_genes * (len(df) // len(pos_genes))
 
 # ## Plot the performance of the Logistic Regression
 
-# In[ ]:
+# In[5]:
 
 
 plt.figure(figsize=(12, 12))

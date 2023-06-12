@@ -154,13 +154,37 @@ correctdf = correctdf.reset_index(drop=True)
 # In[ ]:
 
 
+def remove_outliers(column):
+    """
+    removes the outliers from each column
+
+    Parameters
+    ----------
+    columns: The dataframe column to remove the data
+
+    Returns
+    -------
+    A column with the filtered data
+    """
+
+    q1 = column.quantile(0.25)
+    q3 = column.quantile(0.75)
+    iqr = q3 - q1
+    lower_bound = q1 - 1.5 * iqr
+    upper_bound = q3 + 1.5 * iqr
+    return column[(column >= lower_bound) & (column <= upper_bound)]
+
+
+# In[ ]:
+
+
 featimp = {}
 
 # Columns to be used as features
 kept_cols = correctdf.drop(["label", "preds"], axis="columns").columns
-
+i = 0
 for genotype in featdf[pos_genes]:
-    featimp[genotype] = {}  # Create a DataFrame for each genotype
+    featimp[genotype] = {}  # Create a dictionary for each genotype
     label = gene2label[genotype]  # Get the label for the genotype
     gene_filt = correctdf["label"] == label  # Filter to get the data for a genotype
 
@@ -173,25 +197,10 @@ for genotype in featdf[pos_genes]:
     # Create the dataframe of product of model weights by the feature values
     featimp[genotype]["featdf"] = pd.DataFrame(mat_imp, columns=kept_cols.to_list())
 
-    # Calculate quartiles and IQR:
-    q1 = featimp[genotype]["featdf"].quantile(0.25)
-    q3 = featimp[genotype]["featdf"].quantile(0.75)
-    iqr = q3 - q1
-
-    # Calculate bounds:
-    lower_bound = q1 - 1.5 * iqr
-    upper_bound = q3 + 1.5 * iqr
-
-    # Identify outliers from bounds:
-    featimp[genotype]["featdf"] = featimp[genotype]["featdf"][
-        (featimp[genotype]["featdf"] >= lower_bound)
-        & (featimp[genotype]["featdf"] <= upper_bound)
-    ]
-
-    # Select inliers
-    featimp[genotype]["featdf"] = featimp[genotype]["featdf"][
-        featimp[genotype]["featdf"] > 0
-    ]
+    # Remove outliers from each column in the dataframe
+    featimp[genotype]["featdf"] = featimp[genotype]["featdf"].apply(
+        remove_outliers, axis=0
+    )
 
     # Calculate the mean for each (cell feature value / feature coefficient) product
     featimp[genotype]["featnorm_avg"] = featimp[genotype]["featdf"].mean()
