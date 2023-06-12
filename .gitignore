@@ -3,3 +3,4 @@ install_pgks.sh
 !/**/nbconverted/*.py
 **/.jukit/
 .ipynb_checkpoints/
+.virtual_documents/
