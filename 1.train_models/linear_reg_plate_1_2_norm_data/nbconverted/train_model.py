@@ -158,8 +158,11 @@ for cp_feature in cp_features:
     # Calculate the p-value for the F-statistic
     p_value = 1 - stats.f.cdf(f_value, dfreg, dfres)
 
+    # Calculate the negative log of the p value
+    nlogp = -1 * np.log10(p_value)
+
     # Add results to a growing list
-    lm_results.append([cp_feature, r2_score, p_value] + list(coef))
+    lm_results.append([cp_feature, r2_score, p_value, nlogp] + list(coef))
 
 
 # In[ ]:
@@ -172,6 +175,7 @@ lm_results = pd.DataFrame(
         "feature",
         "r2_score",
         "p_value",
+        "-log_p",
         "cell_count_coef",
         "plate_coef",
         "Null_coef",
