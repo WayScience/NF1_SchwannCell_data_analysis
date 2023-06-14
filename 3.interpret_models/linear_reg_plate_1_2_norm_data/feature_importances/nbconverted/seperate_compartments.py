@@ -6,7 +6,7 @@
 # In[1]:
 
 
-#%%--%%| <qGnYViiwRD|SyZ3qa8iz3>
+# %%--%%| <qGnYViiwRD|SyZ3qa8iz3>
 r"""°°°
 ## Imports
 °°°"""
@@ -117,7 +117,6 @@ other_compartment = feature_properties[
 
 # Find intersected rows between each pair of compartments
 for pair in pairs:
-
     # Create placeholder dataframes for each comparment in the pair
     df1 = compartment_data[pair[0]]
     df2 = compartment_data[pair[1]]
@@ -162,6 +161,6 @@ concatenated_df = pd.concat(compartment_data.values(), ignore_index=True)
 concatenated_df.to_csv(output_path / "feature_compartments.tsv", sep="\t", index=False)
 
 # Create a dataframe with only significant models
-concatenated_df.loc[concatenated_df["p_value"] >= 0.05].to_csv(
+concatenated_df.loc[concatenated_df["p_value"] <= 0.05].to_csv(
     output_path / "significant_feature_compartments.tsv", sep="\t", index=False
 )
