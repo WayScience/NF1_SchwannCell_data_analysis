@@ -88,7 +88,7 @@ if not fig_out_path.exists():
 # In[ ]:
 
 
-models_path = Path(f"{root_dir}/1.train_models/lr_plate3_cp_fs_data/data")
+models_path = Path(f"{root_dir}/1.train_models/log_reg_plate_3_3p_cp_fs_data/data")
 
 lr = load(models_path / "lr_model.joblib")
 
