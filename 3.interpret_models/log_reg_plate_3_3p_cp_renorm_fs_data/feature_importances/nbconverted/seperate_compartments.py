@@ -12,17 +12,17 @@ r"""°°°
 °°°"""
 
 
-# In[2]:
+# In[ ]:
 
 
+import itertools
 import pandas as pd
 from pathlib import Path
-import itertools
 
 
 # ## Find the git root Directory
 
-# In[3]:
+# In[ ]:
 
 
 # Get the current working directory
@@ -43,9 +43,9 @@ if root_dir is None:
     raise FileNotFoundError("No Git root directory found.")
 
 
-# ## Create the output path if it doesn't exist
+# ## Specify Paths
 
-# In[4]:
+# In[ ]:
 
 
 output_path = Path("data")
@@ -55,10 +55,12 @@ output_path.mkdir(
     parents=True, exist_ok=True
 )  # Create the parent directories if they don't exist
 
+comparments_output_path = output_path / "feature_compartments.tsv"
+
 
 # ## Import the model data as a dataframe
 
-# In[5]:
+# In[ ]:
 
 
 feature_properties = pd.read_csv(output_path / feature_file, sep="\t")
@@ -66,7 +68,7 @@ feature_properties = pd.read_csv(output_path / feature_file, sep="\t")
 
 # ## Seperate cell data by channel
 
-# In[6]:
+# In[ ]:
 
 
 # A map for comparments to channel
@@ -81,7 +83,7 @@ compartment_data = {
 
 # ## Find the features that use more than one compartment
 
-# In[7]:
+# In[ ]:
 
 
 # Create a list of all possible comparment pairs
@@ -112,7 +114,7 @@ for pair in pairs:
 
 # ## Organize the data according to compartment in one dataframe
 
-# In[8]:
+# In[ ]:
 
 
 # Remove features from each compartment dataframe if they are duplicates in other dataframes, or if the features only exist in the other_compartment dataframe
@@ -135,7 +137,7 @@ concatenated_df = pd.concat(compartment_data.values(), ignore_index=True)
 
 # ## Save the dataframes
 
-# In[9]:
+# In[ ]:
 
 
-concatenated_df.to_csv(output_path / "feature_compartments.tsv", sep="\t", index=False)
+concatenated_df.to_csv(comparments_output_path, sep="\t", index=False)

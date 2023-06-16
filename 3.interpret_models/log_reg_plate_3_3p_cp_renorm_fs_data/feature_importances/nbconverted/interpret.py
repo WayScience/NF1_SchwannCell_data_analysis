@@ -56,7 +56,7 @@ rnd_val = 0  # Random value for all seeds
 rng = np.random.default_rng(seed=rnd_val)  # random number generator
 
 
-# ## Create output paths if they don't exist
+# ## Define Paths
 
 # In[ ]:
 
@@ -69,6 +69,9 @@ if not fig_out_path.exists():
 
 if not data_path.exists():
     data_path.mkdir()
+
+overall_feature_output_path = f"{fig_out_path}/overall_feature_importances.png"
+gene_importances_output_path = f"{fig_out_path}/gene_feature_importances.png"
 
 
 # ## Read the calculated dataframes
@@ -147,7 +150,7 @@ plt.xlabel(f"Top {disp_feat} features")
 plt.title(f"Best features")
 plt.legend(loc="lower right")
 plt.tight_layout()
-plt.savefig(f"{fig_out_path}/overall_feature_importances.png")
+plt.savefig(overall_feature_output_path)
 
 
 # ## Feature importances per genotype
@@ -162,7 +165,6 @@ fig, axes = plt.subplots(nrows=len(pos_genes), figsize=(15, 15))
 
 # Iterate through each genotype
 for i, gene in enumerate(pos_genes):
-
     overall_filt = featdf["genotype"] == gene
     df = featdf.loc[overall_filt].sort_values("importance", ascending=False)[
         :number_features
@@ -188,7 +190,7 @@ for i, gene in enumerate(pos_genes):
 
 fig.suptitle(f"Feature importances per gene")
 plt.tight_layout()
-plt.savefig(f"{fig_out_path}/gene_feature_importances.png")
+plt.savefig(gene_importances_output_path)
 
 
 # ## Plot feature importances per compartment for each genotype

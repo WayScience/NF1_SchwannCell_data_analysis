@@ -5,7 +5,7 @@
 
 # ## Imports
 
-# In[1]:
+# In[ ]:
 
 
 import sys
@@ -17,7 +17,7 @@ from joblib import load
 
 # ## Find the git root Directory
 
-# In[2]:
+# In[ ]:
 
 
 # Get the current working directory
@@ -40,7 +40,7 @@ if root_dir is None:
 
 # ## Import Utilities
 
-# In[3]:
+# In[ ]:
 
 
 sys.path.append(f"{root_dir}/utils")
@@ -48,14 +48,16 @@ sys.path.append(f"{root_dir}/utils")
 
 # # Seed and Generator for Reproducibility
 
-# In[4]:
+# In[ ]:
 
 
 rnd_val = 0  # Random value for all seeds
 rng = np.random.default_rng(seed=rnd_val)  # random number generator
 
 
-# In[5]:
+# ## Specify paths
+
+# In[ ]:
 
 
 data_path = Path("data")
@@ -67,29 +69,35 @@ if not data_path.exists():
 data_path = data_path / filename
 
 
-# ## Load Model
-
-# In[6]:
-
-
 models_path = Path(
     f"{root_dir}/1.train_models/log_reg_plate_3_3p_cp_renorm_fs_data/data"
 )
-lr = load(models_path / "lr_model.joblib")
+
+lr_output_path = models_path / "lr_model.joblib"
+testdf_output_path = models_path / "testdf.joblib"
+le_output_path = models_path / "label_encoder.joblib"
 
 
-# ## Save Data
+# ## Load Model
 
-# In[7]:
+# In[ ]:
 
 
-testdf = load(models_path / "testdf.joblib")
-le = load(models_path / "label_encoder.joblib")
+lr = load(lr_output_path)
+
+
+# ## Load data
+
+# In[ ]:
+
+
+testdf = load(testdf_output_path)
+le = load(le_output_path)
 
 
 # ## Create Dataframe with coefficients for each Genotype
 
-# In[8]:
+# In[ ]:
 
 
 featdf = pd.DataFrame(lr.coef_.T, columns=le.classes_.tolist())
@@ -98,7 +106,7 @@ featdf["feature"] = testdf.drop(["label"], axis=1).columns
 
 # ## Save the feature importance data
 
-# In[9]:
+# In[ ]:
 
 
 featdf.to_csv(data_path, sep="\t", index=False)
