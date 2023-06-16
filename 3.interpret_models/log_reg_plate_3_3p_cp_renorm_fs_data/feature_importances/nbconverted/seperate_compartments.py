@@ -12,7 +12,7 @@ r"""°°°
 °°°"""
 
 
-# In[ ]:
+# In[2]:
 
 
 import pandas as pd
@@ -22,7 +22,7 @@ import itertools
 
 # ## Find the git root Directory
 
-# In[ ]:
+# In[3]:
 
 
 # Get the current working directory
@@ -45,7 +45,7 @@ if root_dir is None:
 
 # ## Create the output path if it doesn't exist
 
-# In[ ]:
+# In[4]:
 
 
 output_path = Path("data")
@@ -58,7 +58,7 @@ output_path.mkdir(
 
 # ## Import the model data as a dataframe
 
-# In[ ]:
+# In[5]:
 
 
 feature_properties = pd.read_csv(output_path / feature_file, sep="\t")
@@ -66,7 +66,7 @@ feature_properties = pd.read_csv(output_path / feature_file, sep="\t")
 
 # ## Seperate cell data by channel
 
-# In[ ]:
+# In[6]:
 
 
 # A map for comparments to channel
@@ -81,7 +81,7 @@ compartment_data = {
 
 # ## Find the features that use more than one compartment
 
-# In[ ]:
+# In[7]:
 
 
 # Create a list of all possible comparment pairs
@@ -112,7 +112,7 @@ for pair in pairs:
 
 # ## Organize the data according to compartment in one dataframe
 
-# In[ ]:
+# In[8]:
 
 
 # Remove features from each compartment dataframe if they are duplicates in other dataframes, or if the features only exist in the other_compartment dataframe
@@ -135,7 +135,7 @@ concatenated_df = pd.concat(compartment_data.values(), ignore_index=True)
 
 # ## Save the dataframes
 
-# In[ ]:
+# In[9]:
 
 
 concatenated_df.to_csv(output_path / "feature_compartments.tsv", sep="\t", index=False)

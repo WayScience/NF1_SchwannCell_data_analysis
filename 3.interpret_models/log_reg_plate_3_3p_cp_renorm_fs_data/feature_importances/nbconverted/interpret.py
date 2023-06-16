@@ -150,13 +150,56 @@ plt.tight_layout()
 plt.savefig(f"{fig_out_path}/overall_feature_importances.png")
 
 
-# ## Plot feature importances per compartment for each genotype
+# ## Feature importances per genotype
 
 # In[2]:
 
 
+# The number of features to display
+number_features = 10
+
+fig, axes = plt.subplots(nrows=len(pos_genes), figsize=(15, 15))
+
+# Iterate through each genotype
+for i, gene in enumerate(pos_genes):
+
+    overall_filt = featdf["genotype"] == gene
+    df = featdf.loc[overall_filt].sort_values("importance", ascending=False)[
+        :number_features
+    ]
+    ax = sns.heatmap([df["importance"]], ax=axes[i], cmap="viridis", cbar=False)
+    ax.set_yticklabels([])  # Remove y-axis tick labels
+    ax.set_ylabel(gene)  # Set y-axis label for each row
+    ax.set_xticklabels(df["feature"].tolist(), fontsize=8, rotation=20, ha="right")
+    ax.set_aspect(0.4)
+    quar = df["importance"].quantile(q=0.85)
+
+    # Annotate each cell with the corresponding feature importance
+    for j, (idx, row) in enumerate(df.iterrows()):
+        text_color = "white" if row["importance"] < quar else "black"
+        ax.text(
+            j + 0.5,
+            0.5,
+            f"{row['importance']:.2f}",
+            ha="center",
+            va="center",
+            color=text_color,
+        )
+
+fig.suptitle(f"Feature importances per gene")
+plt.tight_layout()
+plt.savefig(f"{fig_out_path}/gene_feature_importances.png")
+
+
+# ## Plot feature importances per compartment for each genotype
+
+# In[3]:
+
+
 # Create a grid of subplots
 pos_compartments = featdf["compartment"].unique()
+
+# The number of features to display
 number_features = 10
 
 # Iterate through each geneotype
