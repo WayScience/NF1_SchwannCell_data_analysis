@@ -82,8 +82,7 @@ concatenated_df = pd.read_csv(
 
 
 # Set significance threshold and fold change threshold
-significance_threshold = -np.log10(0.05)
-fold_change_threshold = 1.0
+significance_threshold = -np.log10(concatenated_df["critical_threshold"].iloc[0])
 colors = ["#ca0020", "#f4a582", "#92c5de", "#0571b0"]
 
 # Set the figure size

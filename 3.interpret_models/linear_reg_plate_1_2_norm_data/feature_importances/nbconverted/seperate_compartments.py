@@ -149,7 +149,10 @@ concatenated_df = pd.concat(compartment_data.values(), ignore_index=True)
 
 concatenated_df.to_csv(output_path, sep="\t", index=False)
 
+# Define the critical threshold
+critical_threshold = concatenated_df["critical_threshold"].iloc[0]
+
 # Create a dataframe with only significant models
-concatenated_df.loc[concatenated_df["corrected_p_value"] <= 0.05].to_csv(
+concatenated_df.loc[concatenated_df["corrected_p_value"] <= critical_threshold].to_csv(
     sig_output_path, sep="\t", index=False
 )
