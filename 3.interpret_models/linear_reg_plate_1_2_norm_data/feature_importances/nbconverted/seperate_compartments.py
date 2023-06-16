@@ -16,27 +16,11 @@ r"""°°°
 
 
 import pandas as pd
-import numpy as np
 from pathlib import Path
-from sklearn.preprocessing import LabelEncoder
-from sklearn.linear_model import LogisticRegression
-
-from sklearn.metrics import (
-    confusion_matrix,
-    ConfusionMatrixDisplay,
-    precision_score,
-    accuracy_score,
-)
-from sklearn.model_selection import train_test_split
-
-import matplotlib.pyplot as plt
-import seaborn as sns
 import itertools
 
-from joblib import dump, load
 
-
-# ## Find the git root Directory
+# ## Finding the git root directory to reference paths on any system
 
 # In[ ]:
 
@@ -70,6 +54,9 @@ output_path.mkdir(
     parents=True, exist_ok=True
 )  # Create the parent directories if they don't exist
 
+sig_output_path = output_path / "significant_feature_compartments.tsv"
+output_path = output_path / "feature_compartments.tsv"
+
 
 # ## Import the model data as a dataframe
 
@@ -85,6 +72,8 @@ feature_properties = pd.read_csv(
 
 
 # ## Seperate cell data by channel
+#
+# We are analyzing the data according to compartment. To accomplish this we must group the data by compartment, where the channels of the image represent the compartments. However, in some cases, morphology features may use multiple channels, or no specific compartment channels. These features are considered apart of the "other" category in our data.
 
 # In[ ]:
 
@@ -104,7 +93,7 @@ compartment_data = {
 # In[ ]:
 
 
-# Create a list of all possible comparment pairs
+# Create a list of all possible compartment pairs
 pairs = list(itertools.combinations(compartment_data.keys(), 2))
 
 # Use a list of possible compartments for find compartment agnostic features
@@ -158,9 +147,9 @@ concatenated_df = pd.concat(compartment_data.values(), ignore_index=True)
 # In[ ]:
 
 
-concatenated_df.to_csv(output_path / "feature_compartments.tsv", sep="\t", index=False)
+concatenated_df.to_csv(output_path, sep="\t", index=False)
 
 # Create a dataframe with only significant models
-concatenated_df.loc[concatenated_df["p_value"] <= 0.05].to_csv(
-    output_path / "significant_feature_compartments.tsv", sep="\t", index=False
+concatenated_df.loc[concatenated_df["corrected_p_value"] <= 0.05].to_csv(
+    sig_output_path, sep="\t", index=False
 )
