@@ -8,7 +8,7 @@
 # In[1]:
 
 
-#%%--%%| <qGnYViiwRD|SyZ3qa8iz3>
+# %%--%%| <qGnYViiwRD|SyZ3qa8iz3>
 r"""°°°
 ## Imports
 °°°"""
@@ -20,25 +20,11 @@ r"""°°°
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from sklearn.preprocessing import LabelEncoder
-from sklearn.linear_model import LogisticRegression
-
-from sklearn.metrics import (
-    confusion_matrix,
-    ConfusionMatrixDisplay,
-    precision_score,
-    accuracy_score,
-)
-from sklearn.model_selection import train_test_split
-
 import matplotlib.pyplot as plt
 import seaborn as sns
-import itertools
-
-from joblib import dump, load
 
 
-# ## Find the git root Directory
+# ## Finding the git root directory to reference paths on any system
 
 # In[ ]:
 
@@ -61,6 +47,8 @@ if root_dir is None:
     raise FileNotFoundError("No Git root directory found.")
 
 
+# ## Defining Paths
+
 # In[ ]:
 
 
@@ -69,6 +57,10 @@ output_path = Path("figures")
 output_path.mkdir(
     parents=True, exist_ok=True
 )  # Create the parent directories if they don't exist
+
+output_path = (
+    output_path / "feature_wt_contribution_and_significance_with_correlation.png"
+)
 
 
 # ## Import the model data as a dataframe
@@ -92,7 +84,7 @@ concatenated_df = pd.read_csv(
 # Set significance threshold and fold change threshold
 significance_threshold = -np.log10(0.05)
 fold_change_threshold = 1.0
-colors = ["red", "green", "blue", "black"]
+colors = ["#ca0020", "#f4a582", "#92c5de", "#0571b0"]
 
 # Set the figure size
 plt.figure(figsize=(15, 10))
@@ -101,7 +93,7 @@ plt.figure(figsize=(15, 10))
 sns.scatterplot(
     data=concatenated_df,
     x="WT_coef",
-    y="-log_p",
+    y="neg_log_p",
     size="r2_score",
     hue="compartment",
     palette=colors,
@@ -109,7 +101,10 @@ sns.scatterplot(
 
 # Add threshold lines
 plt.axhline(
-    significance_threshold, color="cyan", linestyle="--", label="Significance Threshold"
+    significance_threshold,
+    color="black",
+    linestyle="--",
+    label="Significance Threshold",
 )
 
 # For adding contours:
@@ -121,6 +116,4 @@ plt.ylabel("-log10(p-value)")
 plt.title("Significance of WT Contribution per Morphology Feature")
 
 # Show the plot
-plt.savefig(
-    output_path / "feature_wt_contribution_and_significance_with_correlation.png"
-)
+plt.savefig(output_path)
