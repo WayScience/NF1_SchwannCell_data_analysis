@@ -193,15 +193,20 @@ lm_results = pd.DataFrame(
 
 # ## Controlling for FDR
 
-# In[ ]:
+# In[1]:
 
 
 # Benjamini-Hochberg procedure has a greater power than Bonferroni, and still controls for FDR
-_, corrected_pvalues, _, _ = multipletests(
-    lm_results["p_value"].tolist(), method="fdr_bh"
+# Here, alpha is the FDR level
+rejected, corrected_pvalues, _, _ = multipletests(
+    lm_results["p_value"].tolist(), method="fdr_bh", alpha=0.05
 )
 
+# Store the correcte p values
 lm_results["corrected_p_value"] = corrected_pvalues
+
+# Store the critical threshold value in one column
+lm_results["critical_threshold"] = [max(corrected_pvalues[rejected])] * len(lm_results)
 
 # Taking the negative log of the corrected p values
 lm_results["neg_log_p"] = -np.log10(lm_results["corrected_p_value"])
