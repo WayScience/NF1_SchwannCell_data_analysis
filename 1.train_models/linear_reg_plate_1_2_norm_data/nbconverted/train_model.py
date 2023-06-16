@@ -11,11 +11,15 @@
 
 from pathlib import Path
 import pandas as pd
+import sys
 
 from sklearn.linear_model import LinearRegression
 import numpy as np
 from scipy import stats
+from statsmodels.stats.multitest import multipletests
 
+
+# ## Finding the git root directory to reference paths on any system
 
 # In[ ]:
 
@@ -45,6 +49,8 @@ sys.path.append(f"{root_dir}/utils")
 import preprocess_utils as ppu
 
 
+# ## Specify paths
+
 # In[ ]:
 
 
@@ -54,13 +60,17 @@ data_path.mkdir(
     parents=True, exist_ok=True
 )  # Create the parent directories if they don't exist
 
-
-# In[ ]:
-
-
 plate_path = Path(
     f"{root_dir}/nf1_painting_repo/3.processing_features/data/normalized_data"
 )
+
+model_data_path = f"{data_path}/model_properties.tsv"
+
+
+# ## Combine data
+
+# In[ ]:
+
 
 filename1 = "Plate_1_sc_norm.parquet"
 filename2 = "Plate_2_sc_norm.parquet"
@@ -84,21 +94,20 @@ plate2df = plate2df.loc[:, common_columns]
 
 # Combine the plate dataframes:
 cp_df = pd.concat([plate1df, plate2df], axis="rows")
+
+
+# ## Preprocessing
+
+# In[ ]:
+
+
+# Removes columns that contain all zeros
 cp_df = cp_df.loc[:, (cp_df != 0).any(axis=0)]
 cp_df.reset_index(inplace=True, drop=True)
 
-
-# In[ ]:
-
-
+# Removes metadata
 pcp_features = po1.remove_meta(cp_df)
 cp_features = pcp_features.columns
-
-
-# ## Fit linear model
-
-# In[ ]:
-
 
 # Setup linear modeling framework
 variables = ["Metadata_number_of_singlecells", "Metadata_plate"]
@@ -113,6 +122,8 @@ X_arr = X.values
 dfreg = X.shape[1]
 dfres = X.shape[0] - dfreg - 1
 
+
+# ## Fit linear model
 
 # In[ ]:
 
@@ -158,11 +169,8 @@ for cp_feature in cp_features:
     # Calculate the p-value for the F-statistic
     p_value = 1 - stats.f.cdf(f_value, dfreg, dfres)
 
-    # Calculate the negative log of the p value
-    nlogp = -1 * np.log10(p_value)
-
     # Add results to a growing list
-    lm_results.append([cp_feature, r2_score, p_value, nlogp] + list(coef))
+    lm_results.append([cp_feature, r2_score, p_value] + list(coef))
 
 
 # In[ ]:
@@ -175,7 +183,6 @@ lm_results = pd.DataFrame(
         "feature",
         "r2_score",
         "p_value",
-        "-log_p",
         "cell_count_coef",
         "plate_coef",
         "Null_coef",
@@ -183,4 +190,26 @@ lm_results = pd.DataFrame(
     ],
 )
 
-lm_results.to_csv(f"{data_path}/model_properties.tsv", sep="\t", index=False)
+
+# ## Controlling for FDR
+
+# In[ ]:
+
+
+# Benjamini-Hochberg procedure has a greater power than Bonferroni, and still controls for FDR
+_, corrected_pvalues, _, _ = multipletests(
+    lm_results["p_value"].tolist(), method="fdr_bh"
+)
+
+lm_results["corrected_p_value"] = corrected_pvalues
+
+# Taking the negative log of the corrected p values
+lm_results["neg_log_p"] = -np.log10(lm_results["corrected_p_value"])
+
+
+# ## Save the results
+
+# In[ ]:
+
+
+lm_results.to_csv(model_data_path, sep="\t", index=False)
