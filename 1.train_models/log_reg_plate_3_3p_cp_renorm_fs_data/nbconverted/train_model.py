@@ -12,21 +12,10 @@ import sys
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder, MinMaxScaler
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from sklearn.linear_model import LogisticRegression
-
-from sklearn.metrics import (
-    confusion_matrix,
-    ConfusionMatrixDisplay,
-    precision_score,
-    accuracy_score,
-)
 from sklearn.model_selection import train_test_split
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-from joblib import dump, load
+from joblib import dump
 
 
 # ## Find the git root Directory
@@ -207,7 +196,7 @@ traindf, testdf = train_test_split(
 
 # ## Encode Labels
 
-# In[ ]:
+# In[1]:
 
 
 le = LabelEncoder()
@@ -226,7 +215,7 @@ testdf = po3.remove_meta(df=testdf)
 
 # # Model Training
 
-# In[1]:
+# In[2]:
 
 
 lr = LogisticRegression(
@@ -237,7 +226,7 @@ lr.fit(X=traindf.drop("label", axis="columns"), y=traindf["label"])
 
 # ## Save Model
 
-# In[2]:
+# In[3]:
 
 
 data_path = Path("data")
@@ -251,7 +240,7 @@ dump(lr, data_path / "lr_model.joblib")
 
 # ## Save Data
 
-# In[3]:
+# In[4]:
 
 
 dump(testdf, data_path / "testdf.joblib")
