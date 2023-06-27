@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Determine the best features using a Logistic Regression Model
+# # Evaluate the performance of the logistic regression on plate 2 data
 
 # ## Imports
 
