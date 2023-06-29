@@ -5,32 +5,24 @@
 
 # ## Imports
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LogisticRegression
 
-from sklearn.metrics import (
-    confusion_matrix,
-    ConfusionMatrixDisplay,
-    precision_score,
-    accuracy_score,
-)
 from sklearn.model_selection import train_test_split
 
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-from joblib import dump, load
+from joblib import dump
 
 
 # ## Find the git root Directory
 
-# In[ ]:
+# In[2]:
 
 
 # Get the current working directory
@@ -53,7 +45,7 @@ if root_dir is None:
 
 # # Seed and Generator for Reproducibility
 
-# In[ ]:
+# In[3]:
 
 
 rnd_val = 0  # Random value for all seeds
@@ -62,7 +54,7 @@ rng = np.random.default_rng(seed=rnd_val)  # random number generator
 
 # # Converting csv to pandas dataframe
 
-# In[ ]:
+# In[4]:
 
 
 filename3 = "Plate_3_sc_norm_fs.parquet"
@@ -84,7 +76,7 @@ path3p = plate_path / filename3p
 
 # ## Generate plate dataframes
 
-# In[ ]:
+# In[5]:
 
 
 # Returns the dataframe returned by the plate 3 parquet file
@@ -98,7 +90,7 @@ plate3pdf = pd.read_parquet(path3p)
 
 # ## Use only common columns
 
-# In[ ]:
+# In[6]:
 
 
 # Set plate column:
@@ -115,7 +107,7 @@ platedf = pd.concat([plate3df, plate3pdf], axis="rows")
 
 # ## Create Classes
 
-# In[ ]:
+# In[7]:
 
 
 target_column = "Metadata_genotype"
@@ -123,13 +115,11 @@ stratify_column = "Metadata_Well"
 
 # These represent the fractions of the entire dataset
 train_val_frac = 0.85
-test_frac = 1 - train_val_frac
-val_frac = 0.15
 
 
 # ## Down-sample and stratify by well
 
-# In[ ]:
+# In[8]:
 
 
 smallest_gene = platedf[target_column].value_counts().min()
@@ -146,7 +136,7 @@ for gene in platedf[target_column].unique():
 
 # ## Stratified Train-test split
 
-# In[ ]:
+# In[9]:
 
 
 traindf, testdf = train_test_split(
@@ -160,7 +150,7 @@ traindf, testdf = train_test_split(
 
 # ## Encode Labels
 
-# In[ ]:
+# In[10]:
 
 
 le = LabelEncoder()
@@ -170,7 +160,7 @@ traindf["label"] = le.transform(traindf[target_column].values)
 
 # ## Remove unecessary columns
 
-# In[ ]:
+# In[11]:
 
 
 # Remove Metadata
@@ -185,7 +175,7 @@ testdf = testdf[feat_col]
 
 # # Model Training
 
-# In[ ]:
+# In[12]:
 
 
 lr = LogisticRegression(
@@ -196,7 +186,7 @@ lr.fit(X=traindf.drop("label", axis="columns"), y=traindf["label"])
 
 # ## Save Data
 
-# In[ ]:
+# In[13]:
 
 
 dump(lr, data_path / "lr_model.joblib")
