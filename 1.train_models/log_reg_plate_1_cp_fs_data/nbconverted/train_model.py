@@ -91,7 +91,6 @@ stratify_column = "Metadata_Well"
 
 # These represent the fractions of the entire dataset
 train_val_frac = 0.85
-test_frac = 1 - train_val_frac
 
 
 # ## Down-sample and stratify by well
@@ -183,7 +182,6 @@ def kcross_val(model, X_data, y_data, splits=num_splits):
 
     # iterates through index splits
     for train_idx, val_idx in cv.split(X=X_data, y=y_data):
-
         # Validation labels converted to ints
         yval = y_data.iloc[val_idx].astype(np.int64)
 
