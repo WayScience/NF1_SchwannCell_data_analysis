@@ -11,9 +11,8 @@
 from pathlib import Path
 
 import pandas as pd
-from sklearn.preprocessing import LabelBinarizer as labi
 
-from nbconverted import analysis_utils as au
+from utils import analysis_utils as au
 
 
 # ## Find the root directory of the repo regardless of repo location on system
