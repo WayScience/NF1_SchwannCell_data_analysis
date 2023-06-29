@@ -5,7 +5,7 @@
 
 # ## Imports
 
-# In[ ]:
+# In[1]:
 
 
 from pathlib import Path
@@ -17,7 +17,7 @@ from utils import analysis_utils as au
 
 # ## Find the root directory of the repo regardless of repo location on system
 
-# In[ ]:
+# In[2]:
 
 
 # Get the current working directory
@@ -40,7 +40,7 @@ if root_dir is None:
 
 # ## Specify data paths
 
-# In[ ]:
+# In[3]:
 
 
 plates = {}
@@ -58,7 +58,7 @@ if not out_path.exists():
 
 # ## Filter data
 
-# In[ ]:
+# In[4]:
 
 
 # Remove metadata columns and create a label column for each plate
@@ -87,7 +87,7 @@ plate2df = plates["2"]["df"]
 
 # ## Visualization
 
-# In[1]:
+# In[5]:
 
 
 save_args = {"fname": out_path / "pca_plate2"}
@@ -99,7 +99,7 @@ au.plot_pca(
 )
 
 
-# In[2]:
+# In[6]:
 
 
 save_args = {"fname": out_path / "umap_plate2"}
