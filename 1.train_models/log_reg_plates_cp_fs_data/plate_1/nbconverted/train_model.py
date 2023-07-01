@@ -88,7 +88,7 @@ platedf = pd.read_parquet(path)
 
 lr = LogisticRegression(max_iter=1000, solver="sag", random_state=rnd_val, n_jobs=-1)
 
-lr, testdf, le = au.get_model_data(platedf, lr)
+lr, testdf, le = au.get_model_data(platedf, lr, will_cross_validate=True)
 
 
 # ## Save Data
