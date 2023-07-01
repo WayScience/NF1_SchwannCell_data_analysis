@@ -12,6 +12,7 @@ import pandas as pd
 import sys
 from pathlib import Path
 from joblib import dump
+from sklearn.linear_model import LogisticRegression
 
 
 # ## Find the git root Directory
@@ -85,7 +86,9 @@ platedf = pd.read_parquet(path)
 # In[7]:
 
 
-lr, testdf, le = au.get_model_data(platedf)
+lr = LogisticRegression(max_iter=1000, solver="sag", random_state=rnd_val, n_jobs=-1)
+
+lr, testdf, le = au.get_model_data(platedf, lr)
 
 
 # ## Save Data
