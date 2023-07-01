@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 rnd_val = 0
 
 
-def get_model_data(traindf):
+def get_model_data(traindf, lr):
     """
     Coordinates all of the actions to get the model data
 
@@ -14,6 +14,9 @@ def get_model_data(traindf):
     ----------
     traindf: Pandas Dataframe
         The training and validation dataset
+
+    lr: Sklearn Logistic Regression Model
+        An untrained Logistic Regression model
 
     Returns
     -------
@@ -25,6 +28,7 @@ def get_model_data(traindf):
 
     le: The label encoder used to create the labels
     """
+
     traindf, testdf, le = split_plate(traindf)
     models = train_models(traindf)
     lr = get_best_model(models)
@@ -32,7 +36,7 @@ def get_model_data(traindf):
     return lr, testdf, le
 
 
-def train_models(traindf):
+def train_models(traindf, lr):
     """
     Trains the model and returns a dictionary of model outputs. Please see https://scikit-learn.org/stable/modules/cross_validation.html for more details
 
@@ -45,6 +49,9 @@ def train_models(traindf):
     -------
     models: Dictionary
         Please see this link on model outputs returned (https://scikit-learn.org/stable/modules/cross_validation.html)
+
+    lr: Sklearn Logistic Regression Model
+        An untrained Logistic Regression model
     """
 
     # Default number of splits
