@@ -1,12 +1,11 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split, cross_validate, StratifiedKFold
-from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import LabelEncoder
 
 rnd_val = 0
 
 
-def get_model_data(traindf, lr):
+def get_model_data(traindf, lr, will_cross_validate):
     """
     Coordinates all of the actions to get the model data
 
@@ -17,6 +16,9 @@ def get_model_data(traindf, lr):
 
     lr: Sklearn Logistic Regression Model
         An untrained Logistic Regression model
+
+    will_cross_validate: Boolean
+        Determines if cross validation would be used
 
     Returns
     -------
@@ -30,13 +32,17 @@ def get_model_data(traindf, lr):
     """
 
     traindf, testdf, le = split_plate(traindf)
-    models = train_models(traindf, lr)
-    lr = get_best_model(models)
+
+    if will_cross_validate:
+        models = cross_train(traindf, lr)
+        lr = get_best_model(models)
+    else:
+        lr.fit(X=traindf.drop("label", axis="columns"), y=traindf["label"])
 
     return lr, testdf, le
 
 
-def train_models(traindf, lr):
+def cross_train(traindf, lr):
     """
     Trains the model and returns a dictionary of model outputs. Please see https://scikit-learn.org/stable/modules/cross_validation.html for more details
 
@@ -59,10 +65,6 @@ def train_models(traindf, lr):
 
     # Default number of splits
     num_splits = 5
-
-    lr = LogisticRegression(
-        max_iter=1000, solver="sag", random_state=rnd_val, n_jobs=-1
-    )
 
     skf = StratifiedKFold(n_splits=num_splits, shuffle=True, random_state=rnd_val)
 
