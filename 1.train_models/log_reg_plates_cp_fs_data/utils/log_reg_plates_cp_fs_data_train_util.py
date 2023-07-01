@@ -30,7 +30,7 @@ def get_model_data(traindf, lr):
     """
 
     traindf, testdf, le = split_plate(traindf)
-    models = train_models(traindf)
+    models = train_models(traindf, lr)
     lr = get_best_model(models)
 
     return lr, testdf, le
@@ -44,6 +44,9 @@ def train_models(traindf, lr):
     ----------
     traindf: Pandas Dataframe
         The training and validation dataset
+
+    lr: Sklearn Logistic Regression Model
+        An untrained Logistic Regression model
 
     Returns
     -------
