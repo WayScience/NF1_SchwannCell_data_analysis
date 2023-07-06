@@ -4,9 +4,6 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 import umap
 import numpy as np
-import pandas as pd
-from scipy.stats import f_oneway
-import itertools
 
 rnd_val = 0  # Random value for all seeds
 rng = np.random.default_rng(seed=rnd_val)  # random number generator

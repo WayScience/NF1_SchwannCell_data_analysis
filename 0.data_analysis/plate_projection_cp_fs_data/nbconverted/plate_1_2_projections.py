@@ -5,20 +5,19 @@
 
 # ## Imports
 
-# In[ ]:
+# In[1]:
 
 
 from pathlib import Path
 
 import pandas as pd
-from sklearn.preprocessing import LabelBinarizer as labi
 
-from nbconverted import analysis_utils as au
+from utils import analysis_utils as au
 
 
 # ## Find the root directory of the repo regardless of repo location on system
 
-# In[ ]:
+# In[2]:
 
 
 # Get the current working directory
@@ -41,7 +40,7 @@ if root_dir is None:
 
 # ## Specify data paths
 
-# In[ ]:
+# In[3]:
 
 
 plates = {}
@@ -60,7 +59,7 @@ if not out_path.exists():
 
 # ## Filter data
 
-# In[ ]:
+# In[4]:
 
 
 # Remove metadata columns and create a label column for each plate
@@ -88,14 +87,14 @@ for plate, vals in plates.items():
 
 # ## Combining Data
 
-# In[ ]:
+# In[5]:
 
 
 plate1df = plates["1"]["df"]
 plate2df = plates["2"]["df"]
 
 
-# In[ ]:
+# In[6]:
 
 
 ### Use only the common columns between both plates:
@@ -109,7 +108,7 @@ platescomb = pd.concat([plate1df, plate2df], axis=0)
 
 # ## Filtering data
 
-# In[ ]:
+# In[7]:
 
 
 # Create a dataframe with WT data
@@ -121,7 +120,7 @@ platesnull = platescomb.loc[~platescomb["labels"].str.contains("WT")]
 
 # ## Visualization
 
-# In[1]:
+# In[8]:
 
 
 save_args = {"fname": out_path / "pca_plates_1_2"}
@@ -133,7 +132,7 @@ au.plot_pca(
 )
 
 
-# In[2]:
+# In[9]:
 
 
 save_args = {"fname": out_path / "umap_plates_1_2"}
@@ -146,7 +145,7 @@ au.plot_umap(
 )
 
 
-# In[3]:
+# In[10]:
 
 
 save_args = {"fname": out_path / "umap_wt_plates_1_2"}
@@ -159,7 +158,7 @@ au.plot_umap(
 )
 
 
-# In[4]:
+# In[11]:
 
 
 save_args = {"fname": out_path / "pca_wt_plates_1_2"}
@@ -171,7 +170,7 @@ au.plot_pca(
 )
 
 
-# In[5]:
+# In[12]:
 
 
 save_args = {"fname": out_path / "umap_null_plates_1_2"}
@@ -183,7 +182,7 @@ au.plot_umap(
 )
 
 
-# In[6]:
+# In[13]:
 
 
 save_args = {"fname": out_path / "pca_null_plates_1_2"}
