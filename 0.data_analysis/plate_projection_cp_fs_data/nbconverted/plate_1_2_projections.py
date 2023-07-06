@@ -64,6 +64,7 @@ if not out_path.exists():
 
 # Remove metadata columns and create a label column for each plate
 for plate, vals in plates.items():
+
     # Read the parquet
     platedf = pd.read_parquet(vals["path"])
 
