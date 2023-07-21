@@ -160,7 +160,7 @@ def get_correlations(same_construct):
     Parameters
     ----------
     same_construct: Boolean
-        Whether to consider different construct or the same constructs with calculate cross correlations between cells
+        Whether to consider different construct or the same constructs when calculating cross correlations between cells
 
     Returns
     -------
@@ -168,8 +168,18 @@ def get_correlations(same_construct):
     Contains the cell correlation vectors for each group
     """
 
+    # Specify the comparison type for tidy long format reconstruction
+    if same_construct:
+        comp = "same_construct"
+
+    else:
+        comp = "different_construct"
+
     # Groups that have already been considered
     tried_wells = []
+
+    # Dictionary for reconstructing the correlation data
+    corr_data = defaultdict(list)
 
     # Holds correlations for siRNA constructs and concentrations
     transwell = defaultdict(list)
@@ -207,13 +217,16 @@ def get_correlations(same_construct):
                 & (platedf["Metadata_Well"] != well)
             ]
 
+        num_cellsa = len(welldf)
+        num_cellsb = len(other_welldf)
+
         # If there are no cells from either of these groups to cross correlate, the next group is considered
-        if len(welldf) == 0 or len(other_welldf) == 0:
+        if num_cellsa == 0 or num_cellsb == 0:
             continue
 
         # Get the indices corresponding to each cell for the two dataframes to compare, where the indices are also used to reference the columns
-        welldf_idx = welldf[not_meta_cols].index
-        other_welldf_idx = other_welldf[not_meta_cols].index
+        welldf_idx = welldf.index
+        other_welldf_idx = other_welldf.index
 
         # Find the correlation coefficients from the indices
         corr_df = allcorr.loc[welldf_idx, other_welldf_idx]
@@ -221,17 +234,24 @@ def get_correlations(same_construct):
         # Convert the correlation values and flatten them
         corr_vec = corr_df.values.flatten()
 
-        # There shouldn't be nans, but remove numpy nans from each correlation vector if nans exist
-        nan_idx = np.isnan(corr_vec)
-        corr_vec = corr_vec[~nan_idx]
+        # Number of correlation values
+        num_corr = corr_vec.shape[0]
+
+        # Record the correlation data
+        corr_data["first_well"].extend(welldf_idx.repeat(num_cellsb).tolist())
+        corr_data["second_well"].extend(other_welldf_idx.tolist() * num_cellsa)
+        corr_data["pearsons_coef"].append(corr_vec)
+        corr_data["construct"] += [construct] * num_corr
+        corr_data["concentration"] += [conc] * num_corr
 
         # Keep track of the wells used for the correlation
         tried_wells.append(well)
 
-        # Record the correlations constructs and SiRNA concentrations
-        transwell[f"{construct}_{conc}"].append(corr_vec)
+    # Combine the correlation data
+    corr_data["comparison"] = [comp] * len(corr_data["first_well"])
+    corr_data["pearsons_coef"] = np.concatenate(corr_data["pearsons_coef"])
 
-    return transwell
+    return corr_data
 
 
 # ## Get the correlations for the same constructs
@@ -241,11 +261,8 @@ def get_correlations(same_construct):
 
 same_transwell = get_correlations(same_construct=True)
 
-# Concatenate all correlation values in one numpy array for each group
-same_construct = {
-    sirna_group: np.concatenate(corr_vecs)
-    for sirna_group, corr_vecs in same_transwell.items()
-}
+# Create a dataframe for the correlation data
+same_construct = pd.DataFrame(same_transwell)
 
 
 # ## Get the correlations for different constructs
@@ -256,15 +273,20 @@ same_construct = {
 diff_transwell = get_correlations(same_construct=False)
 
 # Concatenate all correlation values in one numpy array for each group
-diff_construct = {
-    sirna_group: np.concatenate(corr_vecs)
-    for sirna_group, corr_vecs in diff_transwell.items()
-}
+diff_construct = pd.DataFrame(diff_transwell)
+
+
+# ## Combine the comparison data
+
+# In[14]:
+
+
+final_construct = pd.concat([same_construct, diff_construct], axis=0)
 
 
 # ## Prepare data for plotting
 
-# In[14]:
+# In[15]:
 
 
 # Get unique siRNA construct concentrations
@@ -277,15 +299,16 @@ pos_const = platedf[construct_col].unique()
 xs = np.linspace(-1, 1, 500)
 
 # Define correlation distributions in a dictionary
+pos_comparisons = final_construct["comparison"].unique()
 corr_dists = {
-    "Same Construct Across Wells": same_construct,
-    "Different Construct Across Wells": diff_construct,
+    "Same Construct Across Wells": pos_comparisons[0],
+    "Different Construct Across Wells": pos_comparisons[1],
 }
 
 
 # ## Plot PDF Curves
 
-# In[15]:
+# In[16]:
 
 
 # Iterate through each covariate group (just concentration in this case)
@@ -296,13 +319,17 @@ for row, group in enumerate(pos_covar):
         fig, ax = plt.subplots(figsize=(15, 11))
 
         # Define each combination to reference correlation distributions
-        panel = f"{const}_{group}"
+        panel = (final_construct["construct"] == const) & (
+            final_construct["concentration"] == group
+        )
+
+        df = final_construct.loc[panel]
 
         # Plot each distribution for a given panel
-        for dlabel, dist in corr_dists.items():
+        for dlabel, comp in corr_dists.items():
 
             # Get the kde distribtion for the correlation data
-            w_x = dist[panel]
+            w_x = df.loc[df["comparison"] == comp]["pearsons_coef"].values
             w_density = gaussian_kde(w_x)
             w_y = w_density(xs)
 
@@ -311,9 +338,8 @@ for row, group in enumerate(pos_covar):
         ax.set_xlabel("Pairwise Correlation")
         ax.set_ylabel("Probability Density")
         ax.legend()
-        ax.set_title(panel)
         ax.set_title(f"KDE of Pairwise Correlations: ({const} Construct at {group}nM)")
-        fig.savefig(f"{output_path}/pdf_{panel}.png")
+        fig.savefig(f"{output_path}/pdf_{const}_{group}.png")
 
 # Show the plot
 plt.show()
