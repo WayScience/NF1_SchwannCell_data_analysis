@@ -1,5 +1,5 @@
 # Correlation Analysis
-In this analysis, the features values were compared for all cells for the following groups:
+In this analysis, the features values were compared for all cells.
 ### Correlation Comparisons
 Pairwise correlations were calculated for the following groups:
 - Across Well within each construct concentration
