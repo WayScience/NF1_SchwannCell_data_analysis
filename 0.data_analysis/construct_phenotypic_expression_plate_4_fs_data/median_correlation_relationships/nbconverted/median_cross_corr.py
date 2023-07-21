@@ -9,10 +9,10 @@
 # In[1]:
 
 
-import pandas as pd
-from pathlib import Path
 import sys
+from pathlib import Path
 
+import pandas as pd
 
 # ## Find the git root Directory
 
@@ -47,7 +47,6 @@ sys.path.append(
 )
 import create_correlations as cc
 
-
 # ## Define Paths
 
 # In[4]:
@@ -62,10 +61,13 @@ path = Path(
 )
 
 # Add the output path here:
-output_path = Path("figures")
+output_path_figures = Path("figures")
 
-# Create the directory if it doesn't exist
-output_path.mkdir(parents=True, exist_ok=True)
+output_path_data = Path("data")
+
+# Create the directories if they don't exist
+output_path_figures.mkdir(parents=True, exist_ok=True)
+output_path_data.mkdir(parents=True, exist_ok=True)
 
 
 # ## Load the data
@@ -84,9 +86,18 @@ platedf = pd.read_parquet(path)
 corr_obj = cc.CreateCorrelations(platedf=platedf, aggregate=True)
 
 
-# ## Create correlation pdfs
+# ## Save the correlation data
 
 # In[7]:
 
 
-corr_obj.plot_correlations(output_path=output_path)
+corr_obj.final_construct.to_csv(output_path_data / "correlation_data.tsv", sep="\t")
+
+
+# ## Create correlation pdfs
+
+# In[8]:
+
+
+corr_obj.plot_correlations(output_path=output_path_figures)
+
