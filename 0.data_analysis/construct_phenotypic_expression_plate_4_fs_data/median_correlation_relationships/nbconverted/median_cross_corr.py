@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Determine expression relationships between constructs
-# Correlations between aggregate replicates are compared
+# Correlations between aggregate groups are compared
 
 # ## Imports
 
@@ -14,7 +14,7 @@ from pathlib import Path
 
 import pandas as pd
 
-# ## Find the git root Directory
+# ## Find the root of the git repo on the host system
 
 # In[2]:
 
@@ -53,7 +53,7 @@ import create_correlations as cc
 
 
 # Change this filename when plate 4 is available
-filename = "Plate_4_sc_norm_fs.parquet"
+filename = "Plate_4_bulk_norm_fs.parquet"
 
 # Path to the plate data
 path = Path(
@@ -83,7 +83,7 @@ platedf = pd.read_parquet(path)
 # In[6]:
 
 
-corr_obj = cc.CreateCorrelations(platedf=platedf, aggregate=True)
+corr_obj = cc.CreateCorrelations(platedf=platedf)
 
 
 # ## Save the correlation data

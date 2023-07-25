@@ -7,7 +7,7 @@ from scipy.stats import gaussian_kde
 
 
 class CreateCorrelations:
-    def __init__(self, platedf, aggregate):
+    def __init__(self, platedf):
         """
         Parameters
         ----------
@@ -36,9 +36,6 @@ class CreateCorrelations:
 
         self.preprocess_data()
 
-        if aggregate:
-            self.aggregate_features()
-
         self.compute_correlations()
 
         self.merge_constructs()
@@ -65,37 +62,14 @@ class CreateCorrelations:
         Preprocess the data so that the constructs are compared for each type of comparison
         """
 
-        # Get cells that only contains NF1 siRNA constructs
-        self.platedf[self.construct_col].fillna(value="None", inplace=True)
-        platefilt = self.platedf[self.construct_col].str.contains("NF1")
-        self.platedf = self.platedf.loc[platefilt]
+        # Fill None values with no_treatment
+        self.platedf[self.construct_col].fillna(value="no_treatment", inplace=True)
 
         # Column for filtering correlation data
         self.platedf["Metadata_group"] = self.platedf.apply(
             lambda row: f"{row['Metadata_Well']}_{row[self.conc_col]}_{row[self.construct_col]}",
             axis=1,
         )
-
-    def aggregate_features(self):
-        """
-        Aggregate well cells using the Median and keep other metadata
-        """
-
-        # Columns that should be used to take the median
-        median_cols = {col_name: "median" for col_name in self.not_meta_cols}
-
-        # Set metadata columns to lambda functions set to the first row
-        meta_cols = {
-            col_name: lambda x: x.iloc[0]
-            for col_name in self.platedf.columns
-            if self.meta_prefix in col_name
-        }
-
-        # Combine the dictionaries
-        median_cols.update(meta_cols)
-
-        # Aggregate the plate data
-        self.platedf = self.platedf.groupby("Metadata_Well").agg(median_cols)
 
     def compute_correlations(self):
         """
@@ -173,7 +147,7 @@ class CreateCorrelations:
             num_cellsb = len(other_welldf)
 
             # If there are no cells from either of these groups to cross correlate, the next group is considered
-            if num_cellsa == 0 or num_cellsb == 0:
+            if (num_cellsa == 0) or (num_cellsb == 0) :
                 continue
 
             # Get the indices corresponding to each cell for the two dataframes to compare, where the indices are also used to reference the columns
@@ -207,55 +181,51 @@ class CreateCorrelations:
 
     def plot_correlations(self, output_path):
 
-        # Get unique siRNA construct concentrations
-        pos_covar = self.platedf[self.conc_col].unique()
-
-        # Get unique siRNA constructs
-        pos_const = self.platedf[self.construct_col].unique()
+        # Get unique siRNA concentrations and construct pairs
+        sirna_pairs = set(zip(self.final_construct['concentration'], self.final_construct['construct']))
 
         # Define the domain for plotting
         xs = np.linspace(-1, 1, 500)
 
-        # Define correlation distributions in a dictionary
-        pos_comparisons = self.final_construct["comparison"].unique()
-
         # Define the label and the comparison to plot
-        corr_dists = {
-            "Same Construct Across Wells": pos_comparisons[0],
-            "Different Construct Across Wells": pos_comparisons[1],
+        corr_map = {
+            "same_construct": "Same Construct Across Wells",
+            "different_construct": "Different Construct Across Wells"
         }
 
-        # Iterate through each covariate group (just concentration in this case)
-        for row, group in enumerate(pos_covar):
+        # Iterate through concentrations and constructs
+        for group, const in sirna_pairs:
+            fig, ax = plt.subplots(figsize=(15, 11))
 
-            # Iterate through each siRNA construct
-            for const in pos_const:
-                fig, ax = plt.subplots(figsize=(15, 11))
-
-                # Define each combination to reference correlation distributions
-                panel = (self.final_construct["construct"] == const) & (
+            # Define each combination to reference correlation distributions
+            panel = (self.final_construct["construct"] == const) & (
                     self.final_construct["concentration"] == group
-                )
+                    )
 
-                df = self.final_construct.loc[panel]
+            df = self.final_construct.loc[panel]
 
-                # Plot each distribution for a given panel
-                for dlabel, comp in corr_dists.items():
+            # Get the unique distribution for each panel
+            corr_dists = df["comparison"].unique()
 
-                    # Get the kde distribtion for the correlation data
-                    w_x = df.loc[df["comparison"] == comp]["pearsons_coef"].values
-                    w_density = gaussian_kde(w_x)
-                    w_y = w_density(xs)
+            # Plot each distribution for a given panel
+            for comp in corr_dists:
 
-                    ax.plot(xs, w_y, label=dlabel)
+                dlabel = corr_map[comp]
 
-                ax.set_xlabel("Pairwise Correlation")
-                ax.set_ylabel("Probability Density")
-                ax.legend()
-                ax.set_title(
+                # Get the kde distribtion for the correlation data
+                w_x = df.loc[df["comparison"] == comp]["pearsons_coef"].values
+                w_density = gaussian_kde(w_x)
+                w_y = w_density(xs)
+
+                ax.plot(xs, w_y, label=dlabel)
+
+            ax.set_xlabel("Pairwise Correlation")
+            ax.set_ylabel("Probability Density")
+            ax.legend()
+            ax.set_title(
                     f"KDE of Pairwise Correlations: ({const} Construct at {group}nM)"
-                )
-                fig.savefig(f"{output_path}/pdf_{const}_{group}.png")
+                    )
+            fig.savefig(f"{output_path}/pdf_{const}_{group}.png")
 
         # Show the plot
         plt.show()
