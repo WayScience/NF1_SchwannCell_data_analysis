@@ -1,121 +1,421 @@
 	first_well	second_well	pearsons_coef	construct	concentration	comparison
-0	C10	C4	0.6863891066778058	NF1 Target 1	0.005	same_construct
-1	C10	C7	0.7551794146967601	NF1 Target 1	0.005	same_construct
-2	C3	C6	0.6614242891632972	NF1 Target 1	0.05	same_construct
-3	C3	C9	0.8029637501762079	NF1 Target 1	0.05	same_construct
-4	C4	C7	0.65705585712768	NF1 Target 1	0.005	same_construct
-5	C6	C9	0.7460879471534566	NF1 Target 1	0.05	same_construct
-6	D10	D4	0.39716303785660895	NF1 Target 2	0.005	same_construct
-7	D10	D7	0.6707000661817069	NF1 Target 2	0.005	same_construct
-8	D3	D6	0.4032838159626677	NF1 Target 2	0.05	same_construct
-9	D3	D9	0.5712940728281766	NF1 Target 2	0.05	same_construct
-10	D4	D7	0.3853683696230523	NF1 Target 2	0.005	same_construct
-11	D6	D9	0.40214613837974944	NF1 Target 2	0.05	same_construct
-12	F10	F4	0.597068050339021	NF1 Target 1	0.001	same_construct
-13	F10	F7	0.6611827935917013	NF1 Target 1	0.001	same_construct
-14	F2	F5	0.7723335977604094	NF1 Target 1	0.1	same_construct
-15	F2	F8	0.8204027797702709	NF1 Target 1	0.1	same_construct
-16	F3	F6	0.6593275106981045	NF1 Target 1	0.01	same_construct
-17	F3	F9	0.5219433325550605	NF1 Target 1	0.01	same_construct
-18	F4	F7	0.7016142751542528	NF1 Target 1	0.001	same_construct
-19	F5	F8	0.8326445343582022	NF1 Target 1	0.1	same_construct
-20	F6	F9	0.6199971068934114	NF1 Target 1	0.01	same_construct
-21	G10	G4	0.7882184164014429	NF1 Target 2	0.001	same_construct
-22	G10	G7	0.5398448650943174	NF1 Target 2	0.001	same_construct
-23	G2	G5	0.6743657933083531	NF1 Target 2	0.1	same_construct
-24	G2	G8	0.7543341473341327	NF1 Target 2	0.1	same_construct
-25	G3	G6	0.7261755909944744	NF1 Target 2	0.01	same_construct
-26	G3	G9	0.7816899410591966	NF1 Target 2	0.01	same_construct
-27	G4	G7	0.7319221570086585	NF1 Target 2	0.001	same_construct
-28	G5	G8	0.7137176051076584	NF1 Target 2	0.1	same_construct
-29	G6	G9	0.6678665472079747	NF1 Target 2	0.01	same_construct
-0	C10	D10	0.6961699461151375	NF1 Target 1	0.005	different_construct
-1	C10	D4	0.47938638510401815	NF1 Target 1	0.005	different_construct
-2	C10	D7	0.7339597226592943	NF1 Target 1	0.005	different_construct
-3	C3	D3	0.5042766374320117	NF1 Target 1	0.05	different_construct
-4	C3	D6	0.7929384214229537	NF1 Target 1	0.05	different_construct
-5	C3	D9	0.41873170765724926	NF1 Target 1	0.05	different_construct
-6	C4	D10	0.5364751701930319	NF1 Target 1	0.005	different_construct
-7	C4	D4	0.6308691498412656	NF1 Target 1	0.005	different_construct
-8	C4	D7	0.6978832636351807	NF1 Target 1	0.005	different_construct
-9	C6	D3	0.07056239660173491	NF1 Target 1	0.05	different_construct
-10	C6	D6	0.7780499264907208	NF1 Target 1	0.05	different_construct
-11	C6	D9	0.24351012795371482	NF1 Target 1	0.05	different_construct
-12	C7	D10	0.5036785891123831	NF1 Target 1	0.005	different_construct
-13	C7	D4	0.31552731157613234	NF1 Target 1	0.005	different_construct
-14	C7	D7	0.7067476997275061	NF1 Target 1	0.005	different_construct
-15	C9	D3	0.3674876775878048	NF1 Target 1	0.05	different_construct
-16	C9	D6	0.7787712428812084	NF1 Target 1	0.05	different_construct
-17	C9	D9	0.31081552458067935	NF1 Target 1	0.05	different_construct
-18	D10	C10	0.6961699461151375	NF1 Target 2	0.005	different_construct
-19	D10	C4	0.5364751701930319	NF1 Target 2	0.005	different_construct
-20	D10	C7	0.5036785891123831	NF1 Target 2	0.005	different_construct
-21	D3	C3	0.5042766374320117	NF1 Target 2	0.05	different_construct
-22	D3	C6	0.07056239660173491	NF1 Target 2	0.05	different_construct
-23	D3	C9	0.3674876775878048	NF1 Target 2	0.05	different_construct
-24	D4	C10	0.47938638510401815	NF1 Target 2	0.005	different_construct
-25	D4	C4	0.6308691498412656	NF1 Target 2	0.005	different_construct
-26	D4	C7	0.31552731157613234	NF1 Target 2	0.005	different_construct
-27	D6	C3	0.7929384214229537	NF1 Target 2	0.05	different_construct
-28	D6	C6	0.7780499264907208	NF1 Target 2	0.05	different_construct
-29	D6	C9	0.7787712428812084	NF1 Target 2	0.05	different_construct
-30	D7	C10	0.7339597226592943	NF1 Target 2	0.005	different_construct
-31	D7	C4	0.6978832636351807	NF1 Target 2	0.005	different_construct
-32	D7	C7	0.7067476997275061	NF1 Target 2	0.005	different_construct
-33	D9	C3	0.41873170765724926	NF1 Target 2	0.05	different_construct
-34	D9	C6	0.24351012795371482	NF1 Target 2	0.05	different_construct
-35	D9	C9	0.31081552458067935	NF1 Target 2	0.05	different_construct
-36	F10	G10	0.5943568296984019	NF1 Target 1	0.001	different_construct
-37	F10	G4	0.7641229232368895	NF1 Target 1	0.001	different_construct
-38	F10	G7	0.6604323397314823	NF1 Target 1	0.001	different_construct
-39	F2	G2	0.7158423913627849	NF1 Target 1	0.1	different_construct
-40	F2	G5	0.6594166751814019	NF1 Target 1	0.1	different_construct
-41	F2	G8	0.7174244875969017	NF1 Target 1	0.1	different_construct
-42	F3	G3	0.6023214759889313	NF1 Target 1	0.01	different_construct
-43	F3	G6	0.5143213618517348	NF1 Target 1	0.01	different_construct
-44	F3	G9	0.3417575385422088	NF1 Target 1	0.01	different_construct
-45	F4	G10	0.21716682514171556	NF1 Target 1	0.001	different_construct
-46	F4	G4	0.5347924263348333	NF1 Target 1	0.001	different_construct
-47	F4	G7	0.5568045683684486	NF1 Target 1	0.001	different_construct
-48	F5	G2	0.663918327340177	NF1 Target 1	0.1	different_construct
-49	F5	G5	0.5418906149357304	NF1 Target 1	0.1	different_construct
-50	F5	G8	0.6927287466694952	NF1 Target 1	0.1	different_construct
-51	F6	G3	0.6972381296262057	NF1 Target 1	0.01	different_construct
-52	F6	G6	0.7068050821565504	NF1 Target 1	0.01	different_construct
-53	F6	G9	0.4953731262300471	NF1 Target 1	0.01	different_construct
-54	F7	G10	0.430361101867776	NF1 Target 1	0.001	different_construct
-55	F7	G4	0.6480923924950452	NF1 Target 1	0.001	different_construct
-56	F7	G7	0.7144260511928642	NF1 Target 1	0.001	different_construct
-57	F8	G2	0.759588347715522	NF1 Target 1	0.1	different_construct
-58	F8	G5	0.5494189173291938	NF1 Target 1	0.1	different_construct
-59	F8	G8	0.7288126619172737	NF1 Target 1	0.1	different_construct
-60	F9	G3	0.8278572647022514	NF1 Target 1	0.01	different_construct
-61	F9	G6	0.7087156035838084	NF1 Target 1	0.01	different_construct
-62	F9	G9	0.8446957458789517	NF1 Target 1	0.01	different_construct
-63	G10	F10	0.5943568296984019	NF1 Target 2	0.001	different_construct
-64	G10	F4	0.21716682514171556	NF1 Target 2	0.001	different_construct
-65	G10	F7	0.430361101867776	NF1 Target 2	0.001	different_construct
-66	G2	F2	0.7158423913627849	NF1 Target 2	0.1	different_construct
-67	G2	F5	0.663918327340177	NF1 Target 2	0.1	different_construct
-68	G2	F8	0.759588347715522	NF1 Target 2	0.1	different_construct
-69	G3	F3	0.6023214759889313	NF1 Target 2	0.01	different_construct
-70	G3	F6	0.6972381296262057	NF1 Target 2	0.01	different_construct
-71	G3	F9	0.8278572647022514	NF1 Target 2	0.01	different_construct
-72	G4	F10	0.7641229232368895	NF1 Target 2	0.001	different_construct
-73	G4	F4	0.5347924263348333	NF1 Target 2	0.001	different_construct
-74	G4	F7	0.6480923924950452	NF1 Target 2	0.001	different_construct
-75	G5	F2	0.6594166751814019	NF1 Target 2	0.1	different_construct
-76	G5	F5	0.5418906149357304	NF1 Target 2	0.1	different_construct
-77	G5	F8	0.5494189173291938	NF1 Target 2	0.1	different_construct
-78	G6	F3	0.5143213618517348	NF1 Target 2	0.01	different_construct
-79	G6	F6	0.7068050821565504	NF1 Target 2	0.01	different_construct
-80	G6	F9	0.7087156035838084	NF1 Target 2	0.01	different_construct
-81	G7	F10	0.6604323397314823	NF1 Target 2	0.001	different_construct
-82	G7	F4	0.5568045683684486	NF1 Target 2	0.001	different_construct
-83	G7	F7	0.7144260511928642	NF1 Target 2	0.001	different_construct
-84	G8	F2	0.7174244875969017	NF1 Target 2	0.1	different_construct
-85	G8	F5	0.6927287466694952	NF1 Target 2	0.1	different_construct
-86	G8	F8	0.7288126619172737	NF1 Target 2	0.1	different_construct
-87	G9	F3	0.3417575385422088	NF1 Target 2	0.01	different_construct
-88	G9	F6	0.4953731262300471	NF1 Target 2	0.01	different_construct
-89	G9	F9	0.8446957458789517	NF1 Target 2	0.01	different_construct
+0	0	3	0.020185628102701685	no_treatment	0.0	same_construct
+1	0	6	0.044378560803891465	no_treatment	0.0	same_construct
+2	0	9	-0.034815383116547464	no_treatment	0.0	same_construct
+3	0	10	-0.2907783583915557	no_treatment	0.0	same_construct
+4	0	13	-0.23768956594686402	no_treatment	0.0	same_construct
+5	0	16	-0.2834473372441358	no_treatment	0.0	same_construct
+6	0	19	-0.06579241149544601	no_treatment	0.0	same_construct
+7	0	20	-0.2290537226428069	no_treatment	0.0	same_construct
+8	0	23	-0.21736401251781987	no_treatment	0.0	same_construct
+9	0	26	-0.2515447288755443	no_treatment	0.0	same_construct
+10	0	29	-0.11649385609252706	no_treatment	0.0	same_construct
+11	0	39	0.01477816628663002	no_treatment	0.0	same_construct
+12	0	49	-0.3138771463274125	no_treatment	0.0	same_construct
+13	0	59	-0.39727453629656306	no_treatment	0.0	same_construct
+14	1	5	-0.035322827356051786	Scramble	0.05	same_construct
+15	1	7	-0.00618295657572514	Scramble	0.05	same_construct
+16	2	4	0.03257583473813502	Scramble	0.005	same_construct
+17	2	8	0.14469381728110398	Scramble	0.005	same_construct
+18	3	6	-0.0530623633798992	no_treatment	0.0	same_construct
+19	3	9	0.09718058686682456	no_treatment	0.0	same_construct
+20	3	10	0.09390927026185647	no_treatment	0.0	same_construct
+21	3	13	0.09830701459540979	no_treatment	0.0	same_construct
+22	3	16	0.11757168073783007	no_treatment	0.0	same_construct
+23	3	19	0.08623026126442523	no_treatment	0.0	same_construct
+24	3	20	-0.007314731271551316	no_treatment	0.0	same_construct
+25	3	23	0.05793882065896047	no_treatment	0.0	same_construct
+26	3	26	-0.06276568233185688	no_treatment	0.0	same_construct
+27	3	29	0.06608889110628025	no_treatment	0.0	same_construct
+28	3	39	0.07358249633089245	no_treatment	0.0	same_construct
+29	3	49	0.02683835164342534	no_treatment	0.0	same_construct
+30	3	59	-0.0032942638174596997	no_treatment	0.0	same_construct
+31	4	8	-0.04480057260735781	Scramble	0.005	same_construct
+32	5	7	0.1352884401398237	Scramble	0.05	same_construct
+33	6	9	-0.10434355687279834	no_treatment	0.0	same_construct
+34	6	10	0.01095547725127999	no_treatment	0.0	same_construct
+35	6	13	-0.06822697919187008	no_treatment	0.0	same_construct
+36	6	16	0.09831198203364348	no_treatment	0.0	same_construct
+37	6	19	-0.024523628256304875	no_treatment	0.0	same_construct
+38	6	20	-0.01354467363681642	no_treatment	0.0	same_construct
+39	6	23	-0.004517096130275334	no_treatment	0.0	same_construct
+40	6	26	0.02169777894769872	no_treatment	0.0	same_construct
+41	6	29	-0.041733322694644276	no_treatment	0.0	same_construct
+42	6	39	-0.00011412882442293948	no_treatment	0.0	same_construct
+43	6	49	0.04403169506021844	no_treatment	0.0	same_construct
+44	6	59	0.028146128123438936	no_treatment	0.0	same_construct
+45	9	10	-0.019734147171266113	no_treatment	0.0	same_construct
+46	9	13	-0.07303390167346821	no_treatment	0.0	same_construct
+47	9	16	-0.07530626607129638	no_treatment	0.0	same_construct
+48	9	19	0.07077938437464545	no_treatment	0.0	same_construct
+49	9	20	-0.082828472125889	no_treatment	0.0	same_construct
+50	9	23	0.0001721952536024272	no_treatment	0.0	same_construct
+51	9	26	-0.03650961889570596	no_treatment	0.0	same_construct
+52	9	29	0.08122637011854016	no_treatment	0.0	same_construct
+53	9	39	-0.21012124164739432	no_treatment	0.0	same_construct
+54	9	49	-0.06877955366394169	no_treatment	0.0	same_construct
+55	9	59	0.05643486503350701	no_treatment	0.0	same_construct
+56	10	13	0.1666378142273543	no_treatment	0.0	same_construct
+57	10	16	0.4325399222467585	no_treatment	0.0	same_construct
+58	10	19	-0.18178270219362594	no_treatment	0.0	same_construct
+59	10	20	0.3512238027499292	no_treatment	0.0	same_construct
+60	10	23	0.28834757157977003	no_treatment	0.0	same_construct
+61	10	26	0.28691156276800944	no_treatment	0.0	same_construct
+62	10	29	-0.12377332320203667	no_treatment	0.0	same_construct
+63	10	39	0.15371236665787436	no_treatment	0.0	same_construct
+64	10	49	0.47274692555626197	no_treatment	0.0	same_construct
+65	10	59	0.3188055894289191	no_treatment	0.0	same_construct
+66	11	14	0.14031961364395054	NF1 Target 1	0.05	same_construct
+67	11	17	0.29068440223708647	NF1 Target 1	0.05	same_construct
+68	12	15	0.13661571641803824	NF1 Target 1	0.005	same_construct
+69	12	18	0.1112327750751599	NF1 Target 1	0.005	same_construct
+70	13	16	0.27571753771960517	no_treatment	0.0	same_construct
+71	13	19	-0.00919126998289516	no_treatment	0.0	same_construct
+72	13	20	0.3300963177585821	no_treatment	0.0	same_construct
+73	13	23	0.15338411929284673	no_treatment	0.0	same_construct
+74	13	26	0.12370729194295618	no_treatment	0.0	same_construct
+75	13	29	0.1080929214188765	no_treatment	0.0	same_construct
+76	13	39	0.08576161329732776	no_treatment	0.0	same_construct
+77	13	49	0.14655773283690715	no_treatment	0.0	same_construct
+78	13	59	0.10821341853926916	no_treatment	0.0	same_construct
+79	14	17	0.2749845381018974	NF1 Target 1	0.05	same_construct
+80	15	18	0.16522966114484244	NF1 Target 1	0.005	same_construct
+81	16	19	-0.07140013116289415	no_treatment	0.0	same_construct
+82	16	20	0.33554978272541314	no_treatment	0.0	same_construct
+83	16	23	0.32698031823762663	no_treatment	0.0	same_construct
+84	16	26	0.23963347953858494	no_treatment	0.0	same_construct
+85	16	29	-0.054988896182747424	no_treatment	0.0	same_construct
+86	16	39	0.11120743345519073	no_treatment	0.0	same_construct
+87	16	49	0.31722820194545015	no_treatment	0.0	same_construct
+88	16	59	0.18872520790903613	no_treatment	0.0	same_construct
+89	19	20	-0.04792854927158944	no_treatment	0.0	same_construct
+90	19	23	-0.19703166285095142	no_treatment	0.0	same_construct
+91	19	26	-0.24789010519169702	no_treatment	0.0	same_construct
+92	19	29	0.22847316214799315	no_treatment	0.0	same_construct
+93	19	39	-0.014664806348662776	no_treatment	0.0	same_construct
+94	19	49	-0.25727032823836055	no_treatment	0.0	same_construct
+95	19	59	-0.060467870553544724	no_treatment	0.0	same_construct
+96	20	23	0.27122041541753705	no_treatment	0.0	same_construct
+97	20	26	0.24594656792452235	no_treatment	0.0	same_construct
+98	20	29	0.02325452918113931	no_treatment	0.0	same_construct
+99	20	39	0.09727720841305329	no_treatment	0.0	same_construct
+100	20	49	0.33707714388520466	no_treatment	0.0	same_construct
+101	20	59	0.28735793860817943	no_treatment	0.0	same_construct
+102	21	24	-0.12389056451947855	NF1 Target 2	0.05	same_construct
+103	21	27	0.024247242907199172	NF1 Target 2	0.05	same_construct
+104	22	25	-0.12495363381235952	NF1 Target 2	0.005	same_construct
+105	22	28	0.02812238310910383	NF1 Target 2	0.005	same_construct
+106	23	26	0.24221492199963796	no_treatment	0.0	same_construct
+107	23	29	-0.08678060088412577	no_treatment	0.0	same_construct
+108	23	39	-0.06438441053162806	no_treatment	0.0	same_construct
+109	23	49	0.17799662158480706	no_treatment	0.0	same_construct
+110	23	59	0.15325227125377688	no_treatment	0.0	same_construct
+111	24	27	-0.21093562269613328	NF1 Target 2	0.05	same_construct
+112	25	28	0.0574358693101493	NF1 Target 2	0.005	same_construct
+113	26	29	-0.11821422331141042	no_treatment	0.0	same_construct
+114	26	39	-0.022208416870279683	no_treatment	0.0	same_construct
+115	26	49	0.3799270190908766	no_treatment	0.0	same_construct
+116	26	59	0.1548280575755411	no_treatment	0.0	same_construct
+117	29	39	-0.031946738729653465	no_treatment	0.0	same_construct
+118	29	49	-0.15701910367851984	no_treatment	0.0	same_construct
+119	29	59	-0.08139421026355315	no_treatment	0.0	same_construct
+120	30	33	0.0570085024735279	Scramble	0.1	same_construct
+121	30	36	0.027155034442356944	Scramble	0.1	same_construct
+122	31	34	0.12922094097127815	Scramble	0.01	same_construct
+123	31	37	0.2656442368194854	Scramble	0.01	same_construct
+124	32	35	0.013892369871608608	Scramble	0.001	same_construct
+125	32	38	-0.17040324519368577	Scramble	0.001	same_construct
+126	33	36	0.08058817146438324	Scramble	0.1	same_construct
+127	34	37	0.28996970249093795	Scramble	0.01	same_construct
+128	35	38	0.028203023400641822	Scramble	0.001	same_construct
+129	39	49	0.1368562511390332	no_treatment	0.0	same_construct
+130	39	59	-0.10811251837479853	no_treatment	0.0	same_construct
+131	40	43	0.21524090734830087	NF1 Target 1	0.1	same_construct
+132	40	46	0.256278724164352	NF1 Target 1	0.1	same_construct
+133	41	44	0.05225198871272996	NF1 Target 1	0.01	same_construct
+134	41	47	-0.03218362205877565	NF1 Target 1	0.01	same_construct
+135	42	45	0.06474785127798037	NF1 Target 1	0.001	same_construct
+136	42	48	0.08176433886809523	NF1 Target 1	0.001	same_construct
+137	43	46	0.2604637948830728	NF1 Target 1	0.1	same_construct
+138	44	47	0.09742136465071818	NF1 Target 1	0.01	same_construct
+139	45	48	-0.029617793994627568	NF1 Target 1	0.001	same_construct
+140	49	59	0.4200903305403509	no_treatment	0.0	same_construct
+141	50	53	0.1564817707385611	NF1 Target 2	0.1	same_construct
+142	50	56	-0.025071133272370302	NF1 Target 2	0.1	same_construct
+143	51	54	-0.005489949693456173	NF1 Target 2	0.01	same_construct
+144	51	57	0.3362340756385338	NF1 Target 2	0.01	same_construct
+145	52	55	0.1556283857136385	NF1 Target 2	0.001	same_construct
+146	52	58	0.269834104318865	NF1 Target 2	0.001	same_construct
+147	53	56	0.10217090937089614	NF1 Target 2	0.1	same_construct
+148	54	57	0.13732335150338523	NF1 Target 2	0.01	same_construct
+149	55	58	-0.0363412620715432	NF1 Target 2	0.001	same_construct
+0	1	11	-0.027753892610791333	Scramble	0.05	different_construct
+1	1	14	-0.18937962121168628	Scramble	0.05	different_construct
+2	1	17	-0.11807373625548816	Scramble	0.05	different_construct
+3	1	21	0.06062227294766205	Scramble	0.05	different_construct
+4	1	24	0.07495817989770522	Scramble	0.05	different_construct
+5	1	27	0.028294165495617314	Scramble	0.05	different_construct
+6	2	12	0.09671352784558682	Scramble	0.005	different_construct
+7	2	15	0.23839164258994494	Scramble	0.005	different_construct
+8	2	18	0.16373928160472767	Scramble	0.005	different_construct
+9	2	22	0.10510890192200985	Scramble	0.005	different_construct
+10	2	25	0.006419130208384729	Scramble	0.005	different_construct
+11	2	28	0.11919950829730555	Scramble	0.005	different_construct
+12	4	12	0.015094217307542904	Scramble	0.005	different_construct
+13	4	15	0.2804128880103717	Scramble	0.005	different_construct
+14	4	18	0.28258294697732184	Scramble	0.005	different_construct
+15	4	22	-0.024064174998759923	Scramble	0.005	different_construct
+16	4	25	0.0633572349927893	Scramble	0.005	different_construct
+17	4	28	0.05565308024266426	Scramble	0.005	different_construct
+18	5	11	-0.029451709290682485	Scramble	0.05	different_construct
+19	5	14	0.09079591723374499	Scramble	0.05	different_construct
+20	5	17	-0.00967303282976342	Scramble	0.05	different_construct
+21	5	21	-0.12855022447651693	Scramble	0.05	different_construct
+22	5	24	0.038780424321799005	Scramble	0.05	different_construct
+23	5	27	-0.12897400123490466	Scramble	0.05	different_construct
+24	7	11	-0.039041512864341196	Scramble	0.05	different_construct
+25	7	14	-0.006197779557860517	Scramble	0.05	different_construct
+26	7	17	0.09850905786459274	Scramble	0.05	different_construct
+27	7	21	-0.02643127895681215	Scramble	0.05	different_construct
+28	7	24	-0.026176104535431365	Scramble	0.05	different_construct
+29	7	27	-0.15513247781283757	Scramble	0.05	different_construct
+30	8	12	-0.16018913948911073	Scramble	0.005	different_construct
+31	8	15	0.10666902514180134	Scramble	0.005	different_construct
+32	8	18	0.007030518206195323	Scramble	0.005	different_construct
+33	8	22	-0.18450532913012066	Scramble	0.005	different_construct
+34	8	25	-0.002926448974859909	Scramble	0.005	different_construct
+35	8	28	0.07883593776679529	Scramble	0.005	different_construct
+36	11	1	-0.027753892610791333	NF1 Target 1	0.05	different_construct
+37	11	5	-0.029451709290682485	NF1 Target 1	0.05	different_construct
+38	11	7	-0.039041512864341196	NF1 Target 1	0.05	different_construct
+39	11	21	0.002262064581258362	NF1 Target 1	0.05	different_construct
+40	11	24	0.1765005417760543	NF1 Target 1	0.05	different_construct
+41	11	27	-0.11973356126903768	NF1 Target 1	0.05	different_construct
+42	12	2	0.09671352784558682	NF1 Target 1	0.005	different_construct
+43	12	4	0.015094217307542904	NF1 Target 1	0.005	different_construct
+44	12	8	-0.16018913948911073	NF1 Target 1	0.005	different_construct
+45	12	22	0.16397921552170536	NF1 Target 1	0.005	different_construct
+46	12	25	0.03154304800409054	NF1 Target 1	0.005	different_construct
+47	12	28	-0.08173119935662271	NF1 Target 1	0.005	different_construct
+48	14	1	-0.18937962121168628	NF1 Target 1	0.05	different_construct
+49	14	5	0.09079591723374499	NF1 Target 1	0.05	different_construct
+50	14	7	-0.006197779557860517	NF1 Target 1	0.05	different_construct
+51	14	21	-0.29164801451226696	NF1 Target 1	0.05	different_construct
+52	14	24	0.2644015485193318	NF1 Target 1	0.05	different_construct
+53	14	27	-0.10770995188329491	NF1 Target 1	0.05	different_construct
+54	15	2	0.23839164258994494	NF1 Target 1	0.005	different_construct
+55	15	4	0.2804128880103717	NF1 Target 1	0.005	different_construct
+56	15	8	0.10666902514180134	NF1 Target 1	0.005	different_construct
+57	15	22	-0.002824883394640145	NF1 Target 1	0.005	different_construct
+58	15	25	0.17000661478519147	NF1 Target 1	0.005	different_construct
+59	15	28	0.13590295148914047	NF1 Target 1	0.005	different_construct
+60	17	1	-0.11807373625548816	NF1 Target 1	0.05	different_construct
+61	17	5	-0.00967303282976342	NF1 Target 1	0.05	different_construct
+62	17	7	0.09850905786459274	NF1 Target 1	0.05	different_construct
+63	17	21	0.017354009131603034	NF1 Target 1	0.05	different_construct
+64	17	24	0.11299949652941887	NF1 Target 1	0.05	different_construct
+65	17	27	-0.09440440335005043	NF1 Target 1	0.05	different_construct
+66	18	2	0.16373928160472767	NF1 Target 1	0.005	different_construct
+67	18	4	0.28258294697732184	NF1 Target 1	0.005	different_construct
+68	18	8	0.007030518206195323	NF1 Target 1	0.005	different_construct
+69	18	22	0.16116582880483354	NF1 Target 1	0.005	different_construct
+70	18	25	0.04931053303779777	NF1 Target 1	0.005	different_construct
+71	18	28	0.23180275324419092	NF1 Target 1	0.005	different_construct
+72	21	1	0.06062227294766205	NF1 Target 2	0.05	different_construct
+73	21	5	-0.12855022447651693	NF1 Target 2	0.05	different_construct
+74	21	7	-0.02643127895681215	NF1 Target 2	0.05	different_construct
+75	21	11	0.002262064581258362	NF1 Target 2	0.05	different_construct
+76	21	14	-0.29164801451226696	NF1 Target 2	0.05	different_construct
+77	21	17	0.017354009131603034	NF1 Target 2	0.05	different_construct
+78	22	2	0.10510890192200985	NF1 Target 2	0.005	different_construct
+79	22	4	-0.024064174998759923	NF1 Target 2	0.005	different_construct
+80	22	8	-0.18450532913012066	NF1 Target 2	0.005	different_construct
+81	22	12	0.16397921552170536	NF1 Target 2	0.005	different_construct
+82	22	15	-0.002824883394640145	NF1 Target 2	0.005	different_construct
+83	22	18	0.16116582880483354	NF1 Target 2	0.005	different_construct
+84	24	1	0.07495817989770522	NF1 Target 2	0.05	different_construct
+85	24	5	0.038780424321799005	NF1 Target 2	0.05	different_construct
+86	24	7	-0.026176104535431365	NF1 Target 2	0.05	different_construct
+87	24	11	0.1765005417760543	NF1 Target 2	0.05	different_construct
+88	24	14	0.2644015485193318	NF1 Target 2	0.05	different_construct
+89	24	17	0.11299949652941887	NF1 Target 2	0.05	different_construct
+90	25	2	0.006419130208384729	NF1 Target 2	0.005	different_construct
+91	25	4	0.0633572349927893	NF1 Target 2	0.005	different_construct
+92	25	8	-0.002926448974859909	NF1 Target 2	0.005	different_construct
+93	25	12	0.03154304800409054	NF1 Target 2	0.005	different_construct
+94	25	15	0.17000661478519147	NF1 Target 2	0.005	different_construct
+95	25	18	0.04931053303779777	NF1 Target 2	0.005	different_construct
+96	27	1	0.028294165495617314	NF1 Target 2	0.05	different_construct
+97	27	5	-0.12897400123490466	NF1 Target 2	0.05	different_construct
+98	27	7	-0.15513247781283757	NF1 Target 2	0.05	different_construct
+99	27	11	-0.11973356126903768	NF1 Target 2	0.05	different_construct
+100	27	14	-0.10770995188329491	NF1 Target 2	0.05	different_construct
+101	27	17	-0.09440440335005043	NF1 Target 2	0.05	different_construct
+102	28	2	0.11919950829730555	NF1 Target 2	0.005	different_construct
+103	28	4	0.05565308024266426	NF1 Target 2	0.005	different_construct
+104	28	8	0.07883593776679529	NF1 Target 2	0.005	different_construct
+105	28	12	-0.08173119935662271	NF1 Target 2	0.005	different_construct
+106	28	15	0.13590295148914047	NF1 Target 2	0.005	different_construct
+107	28	18	0.23180275324419092	NF1 Target 2	0.005	different_construct
+108	30	40	-0.10194751055245495	Scramble	0.1	different_construct
+109	30	43	-0.1709920282154809	Scramble	0.1	different_construct
+110	30	46	-0.06721967815777105	Scramble	0.1	different_construct
+111	30	50	0.09010138684617622	Scramble	0.1	different_construct
+112	30	53	0.05412372253114214	Scramble	0.1	different_construct
+113	30	56	0.011239528538331477	Scramble	0.1	different_construct
+114	31	41	0.07967192896040853	Scramble	0.01	different_construct
+115	31	44	-0.129329851724505	Scramble	0.01	different_construct
+116	31	47	-0.24546178353125406	Scramble	0.01	different_construct
+117	31	51	-0.2473307712257128	Scramble	0.01	different_construct
+118	31	54	0.018421121742361848	Scramble	0.01	different_construct
+119	31	57	-0.2671520495116183	Scramble	0.01	different_construct
+120	32	42	0.014850818398231384	Scramble	0.001	different_construct
+121	32	45	0.03289657933665793	Scramble	0.001	different_construct
+122	32	48	0.08396505825380715	Scramble	0.001	different_construct
+123	32	52	-0.04531566220339278	Scramble	0.001	different_construct
+124	32	55	0.04106346784281398	Scramble	0.001	different_construct
+125	32	58	-0.11195980053094963	Scramble	0.001	different_construct
+126	33	40	0.025614932479317936	Scramble	0.1	different_construct
+127	33	43	-0.2504773676749223	Scramble	0.1	different_construct
+128	33	46	-0.07346461319155648	Scramble	0.1	different_construct
+129	33	50	-0.14146543723611044	Scramble	0.1	different_construct
+130	33	53	0.07620249448902425	Scramble	0.1	different_construct
+131	33	56	-0.1893326544064847	Scramble	0.1	different_construct
+132	34	41	0.07221726953778547	Scramble	0.01	different_construct
+133	34	44	-0.10711524260069312	Scramble	0.01	different_construct
+134	34	47	-0.13969123869167047	Scramble	0.01	different_construct
+135	34	51	-0.20827797927706254	Scramble	0.01	different_construct
+136	34	54	-0.10547190271841379	Scramble	0.01	different_construct
+137	34	57	-0.2521957970850572	Scramble	0.01	different_construct
+138	35	42	0.04019668859439873	Scramble	0.001	different_construct
+139	35	45	0.015046115781556376	Scramble	0.001	different_construct
+140	35	48	-0.008632542216447674	Scramble	0.001	different_construct
+141	35	52	-0.03537480548524754	Scramble	0.001	different_construct
+142	35	55	-0.01675011830252011	Scramble	0.001	different_construct
+143	35	58	-0.1295233665366685	Scramble	0.001	different_construct
+144	36	40	-0.13398562256165808	Scramble	0.1	different_construct
+145	36	43	-0.08395833027636881	Scramble	0.1	different_construct
+146	36	46	0.059071854219170994	Scramble	0.1	different_construct
+147	36	50	-0.006405004656016779	Scramble	0.1	different_construct
+148	36	53	-0.12421877622598744	Scramble	0.1	different_construct
+149	36	56	-0.20503240574419096	Scramble	0.1	different_construct
+150	37	41	-0.014345823557067665	Scramble	0.01	different_construct
+151	37	44	-0.05253312637503907	Scramble	0.01	different_construct
+152	37	47	-0.21097176011328542	Scramble	0.01	different_construct
+153	37	51	-0.24169418770621695	Scramble	0.01	different_construct
+154	37	54	-0.0063893878285770185	Scramble	0.01	different_construct
+155	37	57	-0.4199214845555869	Scramble	0.01	different_construct
+156	38	42	-0.04240618330387706	Scramble	0.001	different_construct
+157	38	45	0.1600858381080555	Scramble	0.001	different_construct
+158	38	48	-0.2912702632109372	Scramble	0.001	different_construct
+159	38	52	-0.08336769115104127	Scramble	0.001	different_construct
+160	38	55	-0.12577810520689153	Scramble	0.001	different_construct
+161	38	58	-0.0412073671895992	Scramble	0.001	different_construct
+162	40	30	-0.10194751055245495	NF1 Target 1	0.1	different_construct
+163	40	33	0.025614932479317936	NF1 Target 1	0.1	different_construct
+164	40	36	-0.13398562256165808	NF1 Target 1	0.1	different_construct
+165	40	50	-0.02953776089366779	NF1 Target 1	0.1	different_construct
+166	40	53	0.002488914053851227	NF1 Target 1	0.1	different_construct
+167	40	56	-0.00011918498989255568	NF1 Target 1	0.1	different_construct
+168	41	31	0.07967192896040853	NF1 Target 1	0.01	different_construct
+169	41	34	0.07221726953778547	NF1 Target 1	0.01	different_construct
+170	41	37	-0.014345823557067665	NF1 Target 1	0.01	different_construct
+171	41	51	-0.017433911042677108	NF1 Target 1	0.01	different_construct
+172	41	54	0.002312813806286982	NF1 Target 1	0.01	different_construct
+173	41	57	-0.13427127205928993	NF1 Target 1	0.01	different_construct
+174	42	32	0.014850818398231384	NF1 Target 1	0.001	different_construct
+175	42	35	0.04019668859439873	NF1 Target 1	0.001	different_construct
+176	42	38	-0.04240618330387706	NF1 Target 1	0.001	different_construct
+177	42	52	0.004143594352105455	NF1 Target 1	0.001	different_construct
+178	42	55	-0.08580942932057543	NF1 Target 1	0.001	different_construct
+179	42	58	0.025899045987594245	NF1 Target 1	0.001	different_construct
+180	43	30	-0.1709920282154809	NF1 Target 1	0.1	different_construct
+181	43	33	-0.2504773676749223	NF1 Target 1	0.1	different_construct
+182	43	36	-0.08395833027636881	NF1 Target 1	0.1	different_construct
+183	43	50	-0.03327119713718579	NF1 Target 1	0.1	different_construct
+184	43	53	-0.18300411792041998	NF1 Target 1	0.1	different_construct
+185	43	56	0.06031508581043965	NF1 Target 1	0.1	different_construct
+186	44	31	-0.129329851724505	NF1 Target 1	0.01	different_construct
+187	44	34	-0.10711524260069312	NF1 Target 1	0.01	different_construct
+188	44	37	-0.05253312637503907	NF1 Target 1	0.01	different_construct
+189	44	51	0.11061383697509168	NF1 Target 1	0.01	different_construct
+190	44	54	0.10716486749903022	NF1 Target 1	0.01	different_construct
+191	44	57	0.10826945398402676	NF1 Target 1	0.01	different_construct
+192	45	32	0.03289657933665793	NF1 Target 1	0.001	different_construct
+193	45	35	0.015046115781556376	NF1 Target 1	0.001	different_construct
+194	45	38	0.1600858381080555	NF1 Target 1	0.001	different_construct
+195	45	52	0.0032314038147403636	NF1 Target 1	0.001	different_construct
+196	45	55	0.03320830146386278	NF1 Target 1	0.001	different_construct
+197	45	58	-0.0014997601425604983	NF1 Target 1	0.001	different_construct
+198	46	30	-0.06721967815777105	NF1 Target 1	0.1	different_construct
+199	46	33	-0.07346461319155648	NF1 Target 1	0.1	different_construct
+200	46	36	0.059071854219170994	NF1 Target 1	0.1	different_construct
+201	46	50	0.17180304776638938	NF1 Target 1	0.1	different_construct
+202	46	53	-0.01581352545465965	NF1 Target 1	0.1	different_construct
+203	46	56	-0.03999618649940095	NF1 Target 1	0.1	different_construct
+204	47	31	-0.24546178353125406	NF1 Target 1	0.01	different_construct
+205	47	34	-0.13969123869167047	NF1 Target 1	0.01	different_construct
+206	47	37	-0.21097176011328542	NF1 Target 1	0.01	different_construct
+207	47	51	0.2584588304432612	NF1 Target 1	0.01	different_construct
+208	47	54	-0.11712639928838876	NF1 Target 1	0.01	different_construct
+209	47	57	0.41612134945246765	NF1 Target 1	0.01	different_construct
+210	48	32	0.08396505825380715	NF1 Target 1	0.001	different_construct
+211	48	35	-0.008632542216447674	NF1 Target 1	0.001	different_construct
+212	48	38	-0.2912702632109372	NF1 Target 1	0.001	different_construct
+213	48	52	0.1603897917575833	NF1 Target 1	0.001	different_construct
+214	48	55	0.1234414208189871	NF1 Target 1	0.001	different_construct
+215	48	58	0.1474056472182258	NF1 Target 1	0.001	different_construct
+216	50	30	0.09010138684617622	NF1 Target 2	0.1	different_construct
+217	50	33	-0.14146543723611044	NF1 Target 2	0.1	different_construct
+218	50	36	-0.006405004656016779	NF1 Target 2	0.1	different_construct
+219	50	40	-0.02953776089366779	NF1 Target 2	0.1	different_construct
+220	50	43	-0.03327119713718579	NF1 Target 2	0.1	different_construct
+221	50	46	0.17180304776638938	NF1 Target 2	0.1	different_construct
+222	51	31	-0.2473307712257128	NF1 Target 2	0.01	different_construct
+223	51	34	-0.20827797927706254	NF1 Target 2	0.01	different_construct
+224	51	37	-0.24169418770621695	NF1 Target 2	0.01	different_construct
+225	51	41	-0.017433911042677108	NF1 Target 2	0.01	different_construct
+226	51	44	0.11061383697509168	NF1 Target 2	0.01	different_construct
+227	51	47	0.2584588304432612	NF1 Target 2	0.01	different_construct
+228	52	32	-0.04531566220339278	NF1 Target 2	0.001	different_construct
+229	52	35	-0.03537480548524754	NF1 Target 2	0.001	different_construct
+230	52	38	-0.08336769115104127	NF1 Target 2	0.001	different_construct
+231	52	42	0.004143594352105455	NF1 Target 2	0.001	different_construct
+232	52	45	0.0032314038147403636	NF1 Target 2	0.001	different_construct
+233	52	48	0.1603897917575833	NF1 Target 2	0.001	different_construct
+234	53	30	0.05412372253114214	NF1 Target 2	0.1	different_construct
+235	53	33	0.07620249448902425	NF1 Target 2	0.1	different_construct
+236	53	36	-0.12421877622598744	NF1 Target 2	0.1	different_construct
+237	53	40	0.002488914053851227	NF1 Target 2	0.1	different_construct
+238	53	43	-0.18300411792041998	NF1 Target 2	0.1	different_construct
+239	53	46	-0.01581352545465965	NF1 Target 2	0.1	different_construct
+240	54	31	0.018421121742361848	NF1 Target 2	0.01	different_construct
+241	54	34	-0.10547190271841379	NF1 Target 2	0.01	different_construct
+242	54	37	-0.0063893878285770185	NF1 Target 2	0.01	different_construct
+243	54	41	0.002312813806286982	NF1 Target 2	0.01	different_construct
+244	54	44	0.10716486749903022	NF1 Target 2	0.01	different_construct
+245	54	47	-0.11712639928838876	NF1 Target 2	0.01	different_construct
+246	55	32	0.04106346784281398	NF1 Target 2	0.001	different_construct
+247	55	35	-0.01675011830252011	NF1 Target 2	0.001	different_construct
+248	55	38	-0.12577810520689153	NF1 Target 2	0.001	different_construct
+249	55	42	-0.08580942932057543	NF1 Target 2	0.001	different_construct
+250	55	45	0.03320830146386278	NF1 Target 2	0.001	different_construct
+251	55	48	0.1234414208189871	NF1 Target 2	0.001	different_construct
+252	56	30	0.011239528538331477	NF1 Target 2	0.1	different_construct
+253	56	33	-0.1893326544064847	NF1 Target 2	0.1	different_construct
+254	56	36	-0.20503240574419096	NF1 Target 2	0.1	different_construct
+255	56	40	-0.00011918498989255568	NF1 Target 2	0.1	different_construct
+256	56	43	0.06031508581043965	NF1 Target 2	0.1	different_construct
+257	56	46	-0.03999618649940095	NF1 Target 2	0.1	different_construct
+258	57	31	-0.2671520495116183	NF1 Target 2	0.01	different_construct
+259	57	34	-0.2521957970850572	NF1 Target 2	0.01	different_construct
+260	57	37	-0.4199214845555869	NF1 Target 2	0.01	different_construct
+261	57	41	-0.13427127205928993	NF1 Target 2	0.01	different_construct
+262	57	44	0.10826945398402676	NF1 Target 2	0.01	different_construct
+263	57	47	0.41612134945246765	NF1 Target 2	0.01	different_construct
+264	58	32	-0.11195980053094963	NF1 Target 2	0.001	different_construct
+265	58	35	-0.1295233665366685	NF1 Target 2	0.001	different_construct
+266	58	38	-0.0412073671895992	NF1 Target 2	0.001	different_construct
+267	58	42	0.025899045987594245	NF1 Target 2	0.001	different_construct
+268	58	45	-0.0014997601425604983	NF1 Target 2	0.001	different_construct
+269	58	48	0.1474056472182258	NF1 Target 2	0.001	different_construct
