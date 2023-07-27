@@ -1,9 +1,8 @@
 from collections import defaultdict
+from itertools import combinations
 
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from scipy.stats import gaussian_kde
 
 
 class CreateCorrelations:
@@ -32,6 +31,8 @@ class CreateCorrelations:
             col for col in platedf.columns if self.meta_prefix not in col
         ]
 
+        self.final_construct = []
+
         self.platedf = platedf
 
         self.preprocess_data()
@@ -43,19 +44,24 @@ class CreateCorrelations:
     def merge_constructs(self):
         """
         Merges the correlation data and metadata across comparisons
-
-        Returns
-        -------
-        final_construct: pandas Dataframe
-        The final construct from all comparisons including correlation data and metadata
         """
 
-        same_construct = self.aggregate_correlations(same_construct=True)
-        diff_construct = self.aggregate_correlations(same_construct=False)
+        conc_comp = list(combinations(self.platedf[self.construct_col].unique(), 2))
 
-        self.final_construct = pd.concat([same_construct, diff_construct], axis=0)
+        for comp in conc_comp:
+            comp = list(comp)
 
-        return self.final_construct
+            df = self.platedf.loc[self.platedf[self.construct_col].isin(list(comp))]
+
+            same_construct = self.aggregate_correlations(same_construct=True, constdf=df)
+
+            if "no_treatment" not in comp:
+                diff_construct = self.aggregate_correlations(same_construct=False, constdf=df)
+                self.final_construct.append(diff_construct)
+
+            self.final_construct.append(same_construct)
+
+        self.final_construct = pd.concat(self.final_construct, axis = 0)
 
     def preprocess_data(self):
         """
@@ -71,6 +77,9 @@ class CreateCorrelations:
             axis=1,
         )
 
+        # Set the well to the index of the dataframe
+        self.platedf.set_index("Metadata_Well", inplace=True, drop=False)
+
     def compute_correlations(self):
         """
         Compute the correlations for all of the plate feature data
@@ -82,7 +91,7 @@ class CreateCorrelations:
         # Set all of the correlation coeffients between the same cells as nans
         self.allcorr.values[np.diag_indices_from(self.allcorr)] = np.nan
 
-    def aggregate_correlations(self, same_construct):
+    def aggregate_correlations(self, same_construct, constdf):
         """
         Calculates the cross correlations between cells across wells using the same siRNA concentrations for either the same constructs or different constructs.
 
@@ -91,10 +100,13 @@ class CreateCorrelations:
         same_construct: Boolean
             Whether to consider different construct or the same constructs when calculating cross correlations between cells
 
+        constdf: pandas Dataframe
+            The processed data containing all constructs
+
         Returns
         -------
         Pandas Dataframe
-        Contains the cell correlations and other correlation and plate metadata
+            Contains the cell correlations and other correlation and plate metadata
         """
 
         # Specify the comparison type for tidy long format reconstruction
@@ -104,16 +116,19 @@ class CreateCorrelations:
         else:
             comp = "different_construct"
 
+            # If the constructs are different sort them for the results
+            constructs = np.sort(constdf[self.construct_col].unique())
+
         # Groups that have already been considered
         tried_wells = []
 
         # Dictionary for reconstructing the correlation data
         corr_data = defaultdict(list)
 
-        for group in self.platedf["Metadata_group"].unique():
+        for group in constdf["Metadata_group"].unique():
 
             # Find all cells that correspond to the specific (well, siRNA concentration, siRNA construct) group
-            welldf = self.platedf.loc[(self.platedf["Metadata_group"] == group)]
+            welldf = constdf.loc[(constdf["Metadata_group"] == group)]
 
             dfrow = welldf.iloc[0]
 
@@ -126,28 +141,32 @@ class CreateCorrelations:
             # The construct of the siRNA construct for this group
             construct = dfrow[self.construct_col]
 
+
             if same_construct:
                 # Cells that are used to perform cross correlation. Only cells that have not been cross correlated with the same siRNA construct, the same siRNA concentration from different wells are considered.
-                other_welldf = self.platedf.loc[
-                    (self.platedf[self.conc_col] == conc)
-                    & (self.platedf[self.construct_col] == construct)
-                    & (self.platedf["Metadata_Well"] != well)
-                    & ~(self.platedf["Metadata_Well"].isin(tried_wells))
+                other_welldf = constdf.loc[
+                    (constdf[self.conc_col] == conc)
+                    & (constdf[self.construct_col] == construct)
+                    & (constdf["Metadata_Well"] != well)
+                    & ~(constdf["Metadata_Well"].isin(tried_wells)) # Remove duplicate correlation comparisons (eg. if wells A1 and B1 have been compared, don't compare B1 and A1)
                 ]
+
+                # Use the same construct in the results
+                constructs = [construct] * 2
 
             else:
                 # Cells that are used to perform cross correlation. Cells with different siRNA constructs, and the same siRNA concentration from different wells are considered. Cells that have already been correlated are not tracked, since groups are compared independently
-                other_welldf = self.platedf.loc[
-                    (self.platedf[self.conc_col] == conc)
-                    & (self.platedf[self.construct_col] != construct)
-                    & (self.platedf["Metadata_Well"] != well)
+                other_welldf = constdf.loc[
+                    (constdf[self.conc_col] == conc)
+                    & (constdf[self.construct_col] != construct)
+                    & (constdf["Metadata_Well"] != well)
                 ]
 
-            num_cellsa = len(welldf)
-            num_cellsb = len(other_welldf)
+            num_wellsa = len(welldf)
+            num_wellsb = len(other_welldf)
 
-            # If there are no cells from either of these groups to cross correlate, the next group is considered
-            if (num_cellsa == 0) or (num_cellsb == 0) :
+            # If there are no wells from either of these groups to cross correlate, the next group is considered
+            if (num_wellsa == 0) or (num_wellsb == 0):
                 continue
 
             # Get the indices corresponding to each cell for the two dataframes to compare, where the indices are also used to reference the columns
@@ -164,10 +183,11 @@ class CreateCorrelations:
             num_corr = corr_vec.shape[0]
 
             # Record the correlation data
-            corr_data["first_well"].extend(welldf_idx.repeat(num_cellsb).tolist())
-            corr_data["second_well"].extend(other_welldf_idx.tolist() * num_cellsa)
+            corr_data["first_well"].extend(welldf_idx.repeat(num_wellsb).tolist())
+            corr_data["second_well"].extend(other_welldf_idx.tolist() * num_wellsa)
             corr_data["pearsons_coef"].append(corr_vec)
-            corr_data["construct"] += [construct] * num_corr
+            corr_data["first_construct"] += [constructs[0]] * num_corr
+            corr_data["second_construct"] += [constructs[1]] * num_corr
             corr_data["concentration"] += [conc] * num_corr
 
             # Keep track of the wells used for the correlation
@@ -178,54 +198,3 @@ class CreateCorrelations:
         corr_data["pearsons_coef"] = np.concatenate(corr_data["pearsons_coef"])
 
         return pd.DataFrame(corr_data)
-
-    def plot_correlations(self, output_path):
-
-        # Get unique siRNA concentrations and construct pairs
-        sirna_pairs = set(zip(self.final_construct['concentration'], self.final_construct['construct']))
-
-        # Define the domain for plotting
-        xs = np.linspace(-1, 1, 500)
-
-        # Define the label and the comparison to plot
-        corr_map = {
-            "same_construct": "Same Construct Across Wells",
-            "different_construct": "Different Construct Across Wells"
-        }
-
-        # Iterate through concentrations and constructs
-        for group, const in sirna_pairs:
-            fig, ax = plt.subplots(figsize=(15, 11))
-
-            # Define each combination to reference correlation distributions
-            panel = (self.final_construct["construct"] == const) & (
-                    self.final_construct["concentration"] == group
-                    )
-
-            df = self.final_construct.loc[panel]
-
-            # Get the unique distribution for each panel
-            corr_dists = df["comparison"].unique()
-
-            # Plot each distribution for a given panel
-            for comp in corr_dists:
-
-                dlabel = corr_map[comp]
-
-                # Get the kde distribtion for the correlation data
-                w_x = df.loc[df["comparison"] == comp]["pearsons_coef"].values
-                w_density = gaussian_kde(w_x)
-                w_y = w_density(xs)
-
-                ax.plot(xs, w_y, label=dlabel)
-
-            ax.set_xlabel("Pairwise Correlation")
-            ax.set_ylabel("Probability Density")
-            ax.legend()
-            ax.set_title(
-                    f"KDE of Pairwise Correlations: ({const} Construct at {group}nM)"
-                    )
-            fig.savefig(f"{output_path}/pdf_{const}_{group}.png")
-
-        # Show the plot
-        plt.show()
