@@ -46,15 +46,20 @@ class CreateCorrelations:
         Merges the correlation data and metadata across comparisons
         """
 
+        # Get all unique pairs of contruct type comparisons
         conc_comp = list(combinations(self.platedf[self.construct_col].unique(), 2))
 
+        # Iterate through each unique contruct pair
         for comp in conc_comp:
             comp = list(comp)
 
+            # Filter the plate dataframe with only data from the pair of constructs
             df = self.platedf.loc[self.platedf[self.construct_col].isin(list(comp))]
 
+            # calculate the correlation data for the same construct
             same_construct = self.aggregate_correlations(same_construct=True, constdf=df)
 
+            # Prevents the no_treatment construct type from being compared with other constructs at different concentrations
             if "no_treatment" not in comp:
                 diff_construct = self.aggregate_correlations(same_construct=False, constdf=df)
                 self.final_construct.append(diff_construct)
@@ -85,20 +90,21 @@ class CreateCorrelations:
         Compute the correlations for all of the plate feature data
         """
 
-        # Remove metadata columns and Compute all correlations for all cells
+        # Remove metadata columns and Compute all correlations for all wells
         self.allcorr = self.platedf[self.not_meta_cols].T.corr()
 
-        # Set all of the correlation coeffients between the same cells as nans
+        # Set all of the correlation coeffients between the same wells as nans
         self.allcorr.values[np.diag_indices_from(self.allcorr)] = np.nan
 
     def aggregate_correlations(self, same_construct, constdf):
         """
-        Calculates the cross correlations between cells across wells using the same siRNA concentrations for either the same constructs or different constructs.
+        Calculates the cross correlations between wells using the same siRNA concentrations for either the same constructs or different constructs.
+        In this class, only two constructs, or one pair, is compared by filtering constdf prior to calling this function
 
         Parameters
         ----------
         same_construct: Boolean
-            Whether to consider different construct or the same constructs when calculating cross correlations between cells
+            Whether to consider different construct or the same constructs when calculating cross correlations between wells
 
         constdf: pandas Dataframe
             The processed data containing all constructs
@@ -106,7 +112,7 @@ class CreateCorrelations:
         Returns
         -------
         Pandas Dataframe
-            Contains the cell correlations and other correlation and plate metadata
+            Contains the well correlations and other correlation and plate metadata
         """
 
         # Specify the comparison type for tidy long format reconstruction
@@ -127,7 +133,7 @@ class CreateCorrelations:
 
         for group in constdf["Metadata_group"].unique():
 
-            # Find all cells that correspond to the specific (well, siRNA concentration, siRNA construct) group
+            # Find all wells that correspond to the specific (well, siRNA concentration, siRNA construct) group
             welldf = constdf.loc[(constdf["Metadata_group"] == group)]
 
             dfrow = welldf.iloc[0]
@@ -141,9 +147,8 @@ class CreateCorrelations:
             # The construct of the siRNA construct for this group
             construct = dfrow[self.construct_col]
 
-
             if same_construct:
-                # Cells that are used to perform cross correlation. Only cells that have not been cross correlated with the same siRNA construct, the same siRNA concentration from different wells are considered.
+                # Cells that are used to perform cross correlation. Only wells that have not been cross correlated with the same siRNA construct, the same siRNA concentration from different wells are considered.
                 other_welldf = constdf.loc[
                     (constdf[self.conc_col] == conc)
                     & (constdf[self.construct_col] == construct)
@@ -169,7 +174,7 @@ class CreateCorrelations:
             if (num_wellsa == 0) or (num_wellsb == 0):
                 continue
 
-            # Get the indices corresponding to each cell for the two dataframes to compare, where the indices are also used to reference the columns
+            # Get the indices corresponding to each well for the two dataframes to compare, where the indices are also used to reference the columns
             welldf_idx = welldf.index
             other_welldf_idx = other_welldf.index
 
@@ -190,7 +195,7 @@ class CreateCorrelations:
             corr_data["second_construct"] += [constructs[1]] * num_corr
             corr_data["concentration"] += [conc] * num_corr
 
-            # Keep track of the wells used for the correlation
+            # Keep track of the wells used for the correlation if the same construct features are being compared
             tried_wells.append(well)
 
         # Combine the correlation data
