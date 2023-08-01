@@ -6,15 +6,15 @@ import pandas as pd
 
 
 class CreateCorrelations:
-    def __init__(self, platedf):
+    def __init__(self, platedf, aggregated):
         """
         Parameters
         ----------
         platedf: pandas Dataframe
         Contains all of the siRNA plate data to be analyzed
 
-        aggregate: Boolean
-        Whether or not to aggregate the data using the median
+        aggregated: Boolean
+        Whether or not the data is aggregated
         """
 
         # The Column that corresponds to the concentration
@@ -25,6 +25,18 @@ class CreateCorrelations:
 
         # The prefix to use for identifying Metadata columns
         self.meta_prefix = "Metadata"
+
+        # Specify if the data is aggregated or not
+        self.aggregated = aggregated
+
+        # Specify the name of the columns depending on if the data is aggregated or not
+        if aggregated:
+            self.first_entry_name = "first_well"
+            self.second_entry_name = "second_well"
+
+        else:
+            self.first_entry_name = "first_cell"
+            self.second_entry_name = "second_cell"
 
         # Columns that do not contain Metadata
         self.not_meta_cols = [
@@ -46,23 +58,27 @@ class CreateCorrelations:
         Merges the correlation data and metadata across comparisons
         """
 
-        # Get all unique pairs of contruct type comparisons
-        conc_comp = list(combinations(self.platedf[self.construct_col].unique(), 2))
+        pos_const = self.platedf[self.construct_col].unique()
 
-        # Iterate through each unique contruct pair
-        for comp in conc_comp:
-            comp = list(comp)
+        # Get all unique pairs of contruct type comparisons
+        conc_comp = list(combinations(pos_const, 2))
+
+        # Iterate through each unique contruct pair to compute across well construct correlations
+        for consts in conc_comp:
+            consts = list(consts)
 
             # Filter the plate dataframe with only data from the pair of constructs
-            df = self.platedf.loc[self.platedf[self.construct_col].isin(list(comp))]
+            df = self.platedf.loc[self.platedf[self.construct_col].isin(list(consts))]
+
+            diff_construct = self.aggregate_correlations(same_construct=False, constdf=df)
+            self.final_construct.append(diff_construct)
+
+        # Iterate through each unique contruct to compute within construct correlations
+        for consts in pos_const:
+            df = self.platedf.loc[self.platedf[self.construct_col] == consts]
 
             # calculate the correlation data for the same construct
             same_construct = self.aggregate_correlations(same_construct=True, constdf=df)
-
-            # Prevents the no_treatment construct type from being compared with other constructs at different concentrations
-            if "no_treatment" not in comp:
-                diff_construct = self.aggregate_correlations(same_construct=False, constdf=df)
-                self.final_construct.append(diff_construct)
 
             self.final_construct.append(same_construct)
 
@@ -70,11 +86,35 @@ class CreateCorrelations:
 
     def preprocess_data(self):
         """
-        Preprocess the data so that the constructs are compared for each type of comparison
+        Preprocess the data so that each of the constructs are compared for each group
         """
 
         # Fill None values with no_treatment
         self.platedf[self.construct_col].fillna(value="no_treatment", inplace=True)
+
+        # Find the possible concentrations
+        pos_conc = self.platedf[self.conc_col].unique()
+
+        # Remove zero from the possible concentrations
+        pos_conc = pos_conc[np.nonzero(pos_conc)]
+
+        # Dataframe with only no_treatment constructs
+        no_treatdf = self.platedf.loc[self.platedf[self.construct_col] == "no_treatment"]
+
+        # Store the dataframes to be concatenated so that no_treatement type compared for each concentration
+        duplicates = [self.platedf]
+
+        for conc in pos_conc:
+            # Create duplicate values for the no_treatment type and set the values to the concentrations to compare
+            no_treat_concdf = no_treatdf.copy()
+            no_treat_concdf[self.conc_col] = conc
+            duplicates.append(no_treat_concdf)
+
+        # Concatenate the duplicate dataframes
+        self.platedf = pd.concat(duplicates)
+
+        # Remove entries that correspond to a zero concentration
+        self.platedf = self.platedf.loc[self.platedf[self.conc_col] > 0]
 
         # Column for filtering correlation data
         self.platedf["Metadata_group"] = self.platedf.apply(
@@ -82,18 +122,22 @@ class CreateCorrelations:
             axis=1,
         )
 
-        # Set the well to the index of the dataframe
-        self.platedf.set_index("Metadata_Well", inplace=True, drop=False)
+        if self.aggregated:
+            # Set the well to the index of the dataframe if aggregated data is used
+            self.platedf.set_index("Metadata_Well", inplace=True, drop=False)
 
     def compute_correlations(self):
         """
         Compute the correlations for all of the plate feature data
         """
 
-        # Remove metadata columns and Compute all correlations for all wells
-        self.allcorr = self.platedf[self.not_meta_cols].T.corr()
+        # Remove redundant samples
+        self.allcorr = self.platedf[~self.platedf.index.duplicated(keep='first')]
 
-        # Set all of the correlation coeffients between the same wells as nans
+        # Remove metadata columns and Compute all correlations for all samples
+        self.allcorr = self.allcorr[self.not_meta_cols].T.corr()
+
+        # Set all of the correlation coeffients between the same samples as nans
         self.allcorr.values[np.diag_indices_from(self.allcorr)] = np.nan
 
     def aggregate_correlations(self, same_construct, constdf):
@@ -104,7 +148,7 @@ class CreateCorrelations:
         Parameters
         ----------
         same_construct: Boolean
-            Whether to consider different construct or the same constructs when calculating cross correlations between wells
+            Whether to consider different construct or the same constructs when calculating cross correlations between samples
 
         constdf: pandas Dataframe
             The processed data containing all constructs
@@ -112,7 +156,7 @@ class CreateCorrelations:
         Returns
         -------
         Pandas Dataframe
-            Contains the well correlations and other correlation and plate metadata
+            Contains the sample correlations and other correlation and plate metadata
         """
 
         # Specify the comparison type for tidy long format reconstruction
@@ -148,7 +192,7 @@ class CreateCorrelations:
             construct = dfrow[self.construct_col]
 
             if same_construct:
-                # Cells that are used to perform cross correlation. Only wells that have not been cross correlated with the same siRNA construct, the same siRNA concentration from different wells are considered.
+                # Samples that are used to perform cross correlation. Only wells that have not been cross correlated with the same siRNA construct, the same siRNA concentration from different wells are considered.
                 other_welldf = constdf.loc[
                     (constdf[self.conc_col] == conc)
                     & (constdf[self.construct_col] == construct)
@@ -160,18 +204,18 @@ class CreateCorrelations:
                 constructs = [construct] * 2
 
             else:
-                # Cells that are used to perform cross correlation. Cells with different siRNA constructs, and the same siRNA concentration from different wells are considered. Cells that have already been correlated are not tracked, since groups are compared independently
+                # Samples that are used to perform cross correlation. Samples with different siRNA constructs, and the same siRNA concentration from different wells are considered. Samples that have already been correlated are not tracked, since groups are compared independently
                 other_welldf = constdf.loc[
                     (constdf[self.conc_col] == conc)
                     & (constdf[self.construct_col] != construct)
                     & (constdf["Metadata_Well"] != well)
                 ]
 
-            num_wellsa = len(welldf)
-            num_wellsb = len(other_welldf)
+            num_samplea = len(welldf)
+            num_sampleb = len(other_welldf)
 
-            # If there are no wells from either of these groups to cross correlate, the next group is considered
-            if (num_wellsa == 0) or (num_wellsb == 0):
+            # If there are no samples from either of these groups to cross correlate, the next group is considered
+            if (num_samplea == 0) or (num_sampleb == 0):
                 continue
 
             # Get the indices corresponding to each well for the two dataframes to compare, where the indices are also used to reference the columns
@@ -188,8 +232,8 @@ class CreateCorrelations:
             num_corr = corr_vec.shape[0]
 
             # Record the correlation data
-            corr_data["first_well"].extend(welldf_idx.repeat(num_wellsb).tolist())
-            corr_data["second_well"].extend(other_welldf_idx.tolist() * num_wellsa)
+            corr_data[self.first_entry_name].extend(welldf_idx.repeat(num_sampleb).tolist())
+            corr_data[self.second_entry_name].extend(other_welldf_idx.tolist() * num_samplea)
             corr_data["pearsons_coef"].append(corr_vec)
             corr_data["first_construct"] += [constructs[0]] * num_corr
             corr_data["second_construct"] += [constructs[1]] * num_corr
@@ -199,7 +243,7 @@ class CreateCorrelations:
             tried_wells.append(well)
 
         # Combine the correlation data
-        corr_data["comparison"] = [comp] * len(corr_data["first_well"])
+        corr_data["comparison"] = [comp] * len(corr_data[self.first_entry_name])
         corr_data["pearsons_coef"] = np.concatenate(corr_data["pearsons_coef"])
 
         return pd.DataFrame(corr_data)
