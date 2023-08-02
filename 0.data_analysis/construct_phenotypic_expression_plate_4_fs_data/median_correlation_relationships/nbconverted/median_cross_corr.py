@@ -85,7 +85,7 @@ platedf = pd.read_parquet(path)
 # In[6]:
 
 
-corr_obj = cc.CreateCorrelations(platedf=platedf)
+corr_obj = cc.CreateCorrelations(platedf=platedf, aggregated=True)
 
 
 # ## Save the correlation data
@@ -97,22 +97,19 @@ final_construct = corr_obj.final_construct
 final_construct.to_csv(output_path_data / "correlation_data.tsv", sep="\t", index=False)
 
 
-# ## Exclude the no_treatment wells
+# ## Create x labels for constructs
 
 # In[8]:
 
 
-filt = (final_construct["first_construct"] != "no_treatment") & (final_construct["second_construct"] != "no_treatment")
-filtdf = final_construct[filt]
+name_map = {"NF1 Target 1": "(Construct 1)", "NF1 Target 2": "(Construct 2)", "Scramble": "(Scramble)", "no_treatment": "(No Treatment)"}
+final_construct["construct_groups"] =  final_construct['first_construct'].map(name_map) + " and " + final_construct['second_construct'].map(name_map)
 
-
-# ## Create x labels for constructs
 
 # In[9]:
 
 
-name_map = {"NF1 Target 1": "(Construct 1)", "NF1 Target 2": "(Construct 2)", "Scramble": "(Scramble)"}
-filtdf["construct_groups"] =  filtdf['first_construct'].map(name_map) + " and " + filtdf['second_construct'].map(name_map)
+final_construct["second_construct"].unique()
 
 
 # ## Create boxplots for each concentration
@@ -122,12 +119,12 @@ filtdf["construct_groups"] =  filtdf['first_construct'].map(name_map) + " and " 
 
 sns.set(style="whitegrid")
 
-for conc in filtdf["concentration"].unique():
+for conc in final_construct["concentration"].unique():
     fig, ax = plt.subplots(figsize=(15, 11))
 
     # Create a boxplot for each concentration
-    conc_filt = (filtdf["concentration"] == conc)
-    df = filtdf.loc[conc_filt]
+    conc_filt = (final_construct["concentration"] == conc)
+    df = final_construct.loc[conc_filt]
 
     ax = sns.boxplot(x="construct_groups", y="pearsons_coef", data=df)
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right', fontsize=10)
@@ -136,4 +133,10 @@ for conc in filtdf["concentration"].unique():
 
     plt.savefig(f"figures/construct_correlation_comparisons_{conc}nM.png")
     plt.show()
+
+
+# In[11]:
+
+
+corr_obj.platedf["Metadata_siRNA"].unique()
 

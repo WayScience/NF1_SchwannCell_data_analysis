@@ -1,364 +1,4 @@
 first_well	second_well	pearsons_coef	first_construct	second_construct	concentration	comparison
-B2	B5	0.020185628102701685	no_treatment	no_treatment	0.0	same_construct
-B2	B8	0.044378560803891465	no_treatment	no_treatment	0.0	same_construct
-B2	B11	-0.034815383116547464	no_treatment	no_treatment	0.0	same_construct
-B2	C2	-0.2907783583915557	no_treatment	no_treatment	0.0	same_construct
-B2	C5	-0.23768956594686402	no_treatment	no_treatment	0.0	same_construct
-B2	C8	-0.2834473372441358	no_treatment	no_treatment	0.0	same_construct
-B2	C11	-0.06579241149544601	no_treatment	no_treatment	0.0	same_construct
-B2	D2	-0.2290537226428069	no_treatment	no_treatment	0.0	same_construct
-B2	D5	-0.21736401251781987	no_treatment	no_treatment	0.0	same_construct
-B2	D8	-0.2515447288755443	no_treatment	no_treatment	0.0	same_construct
-B2	D11	-0.11649385609252706	no_treatment	no_treatment	0.0	same_construct
-B2	E11	0.01477816628663002	no_treatment	no_treatment	0.0	same_construct
-B2	F11	-0.3138771463274125	no_treatment	no_treatment	0.0	same_construct
-B2	G11	-0.39727453629656306	no_treatment	no_treatment	0.0	same_construct
-B3	B7	-0.035322827356051786	Scramble	Scramble	0.05	same_construct
-B3	B9	-0.00618295657572514	Scramble	Scramble	0.05	same_construct
-B4	B6	0.03257583473813502	Scramble	Scramble	0.005	same_construct
-B4	B10	0.14469381728110398	Scramble	Scramble	0.005	same_construct
-B5	B8	-0.0530623633798992	no_treatment	no_treatment	0.0	same_construct
-B5	B11	0.09718058686682456	no_treatment	no_treatment	0.0	same_construct
-B5	C2	0.09390927026185647	no_treatment	no_treatment	0.0	same_construct
-B5	C5	0.09830701459540979	no_treatment	no_treatment	0.0	same_construct
-B5	C8	0.11757168073783007	no_treatment	no_treatment	0.0	same_construct
-B5	C11	0.08623026126442523	no_treatment	no_treatment	0.0	same_construct
-B5	D2	-0.007314731271551316	no_treatment	no_treatment	0.0	same_construct
-B5	D5	0.05793882065896047	no_treatment	no_treatment	0.0	same_construct
-B5	D8	-0.06276568233185688	no_treatment	no_treatment	0.0	same_construct
-B5	D11	0.06608889110628025	no_treatment	no_treatment	0.0	same_construct
-B5	E11	0.07358249633089245	no_treatment	no_treatment	0.0	same_construct
-B5	F11	0.02683835164342534	no_treatment	no_treatment	0.0	same_construct
-B5	G11	-0.0032942638174596997	no_treatment	no_treatment	0.0	same_construct
-B6	B10	-0.04480057260735781	Scramble	Scramble	0.005	same_construct
-B7	B9	0.1352884401398237	Scramble	Scramble	0.05	same_construct
-B8	B11	-0.10434355687279834	no_treatment	no_treatment	0.0	same_construct
-B8	C2	0.01095547725127999	no_treatment	no_treatment	0.0	same_construct
-B8	C5	-0.06822697919187008	no_treatment	no_treatment	0.0	same_construct
-B8	C8	0.09831198203364348	no_treatment	no_treatment	0.0	same_construct
-B8	C11	-0.024523628256304875	no_treatment	no_treatment	0.0	same_construct
-B8	D2	-0.01354467363681642	no_treatment	no_treatment	0.0	same_construct
-B8	D5	-0.004517096130275334	no_treatment	no_treatment	0.0	same_construct
-B8	D8	0.02169777894769872	no_treatment	no_treatment	0.0	same_construct
-B8	D11	-0.041733322694644276	no_treatment	no_treatment	0.0	same_construct
-B8	E11	-0.00011412882442293948	no_treatment	no_treatment	0.0	same_construct
-B8	F11	0.04403169506021844	no_treatment	no_treatment	0.0	same_construct
-B8	G11	0.028146128123438936	no_treatment	no_treatment	0.0	same_construct
-B11	C2	-0.019734147171266113	no_treatment	no_treatment	0.0	same_construct
-B11	C5	-0.07303390167346821	no_treatment	no_treatment	0.0	same_construct
-B11	C8	-0.07530626607129638	no_treatment	no_treatment	0.0	same_construct
-B11	C11	0.07077938437464545	no_treatment	no_treatment	0.0	same_construct
-B11	D2	-0.082828472125889	no_treatment	no_treatment	0.0	same_construct
-B11	D5	0.0001721952536024272	no_treatment	no_treatment	0.0	same_construct
-B11	D8	-0.03650961889570596	no_treatment	no_treatment	0.0	same_construct
-B11	D11	0.08122637011854016	no_treatment	no_treatment	0.0	same_construct
-B11	E11	-0.21012124164739432	no_treatment	no_treatment	0.0	same_construct
-B11	F11	-0.06877955366394169	no_treatment	no_treatment	0.0	same_construct
-B11	G11	0.05643486503350701	no_treatment	no_treatment	0.0	same_construct
-C2	C5	0.1666378142273543	no_treatment	no_treatment	0.0	same_construct
-C2	C8	0.4325399222467585	no_treatment	no_treatment	0.0	same_construct
-C2	C11	-0.18178270219362594	no_treatment	no_treatment	0.0	same_construct
-C2	D2	0.3512238027499292	no_treatment	no_treatment	0.0	same_construct
-C2	D5	0.28834757157977003	no_treatment	no_treatment	0.0	same_construct
-C2	D8	0.28691156276800944	no_treatment	no_treatment	0.0	same_construct
-C2	D11	-0.12377332320203667	no_treatment	no_treatment	0.0	same_construct
-C2	E11	0.15371236665787436	no_treatment	no_treatment	0.0	same_construct
-C2	F11	0.47274692555626197	no_treatment	no_treatment	0.0	same_construct
-C2	G11	0.3188055894289191	no_treatment	no_treatment	0.0	same_construct
-C5	C8	0.27571753771960517	no_treatment	no_treatment	0.0	same_construct
-C5	C11	-0.00919126998289516	no_treatment	no_treatment	0.0	same_construct
-C5	D2	0.3300963177585821	no_treatment	no_treatment	0.0	same_construct
-C5	D5	0.15338411929284673	no_treatment	no_treatment	0.0	same_construct
-C5	D8	0.12370729194295618	no_treatment	no_treatment	0.0	same_construct
-C5	D11	0.1080929214188765	no_treatment	no_treatment	0.0	same_construct
-C5	E11	0.08576161329732776	no_treatment	no_treatment	0.0	same_construct
-C5	F11	0.14655773283690715	no_treatment	no_treatment	0.0	same_construct
-C5	G11	0.10821341853926916	no_treatment	no_treatment	0.0	same_construct
-C8	C11	-0.07140013116289415	no_treatment	no_treatment	0.0	same_construct
-C8	D2	0.33554978272541314	no_treatment	no_treatment	0.0	same_construct
-C8	D5	0.32698031823762663	no_treatment	no_treatment	0.0	same_construct
-C8	D8	0.23963347953858494	no_treatment	no_treatment	0.0	same_construct
-C8	D11	-0.054988896182747424	no_treatment	no_treatment	0.0	same_construct
-C8	E11	0.11120743345519073	no_treatment	no_treatment	0.0	same_construct
-C8	F11	0.31722820194545015	no_treatment	no_treatment	0.0	same_construct
-C8	G11	0.18872520790903613	no_treatment	no_treatment	0.0	same_construct
-C11	D2	-0.04792854927158944	no_treatment	no_treatment	0.0	same_construct
-C11	D5	-0.19703166285095142	no_treatment	no_treatment	0.0	same_construct
-C11	D8	-0.24789010519169702	no_treatment	no_treatment	0.0	same_construct
-C11	D11	0.22847316214799315	no_treatment	no_treatment	0.0	same_construct
-C11	E11	-0.014664806348662776	no_treatment	no_treatment	0.0	same_construct
-C11	F11	-0.25727032823836055	no_treatment	no_treatment	0.0	same_construct
-C11	G11	-0.060467870553544724	no_treatment	no_treatment	0.0	same_construct
-D2	D5	0.27122041541753705	no_treatment	no_treatment	0.0	same_construct
-D2	D8	0.24594656792452235	no_treatment	no_treatment	0.0	same_construct
-D2	D11	0.02325452918113931	no_treatment	no_treatment	0.0	same_construct
-D2	E11	0.09727720841305329	no_treatment	no_treatment	0.0	same_construct
-D2	F11	0.33707714388520466	no_treatment	no_treatment	0.0	same_construct
-D2	G11	0.28735793860817943	no_treatment	no_treatment	0.0	same_construct
-D5	D8	0.24221492199963796	no_treatment	no_treatment	0.0	same_construct
-D5	D11	-0.08678060088412577	no_treatment	no_treatment	0.0	same_construct
-D5	E11	-0.06438441053162806	no_treatment	no_treatment	0.0	same_construct
-D5	F11	0.17799662158480706	no_treatment	no_treatment	0.0	same_construct
-D5	G11	0.15325227125377688	no_treatment	no_treatment	0.0	same_construct
-D8	D11	-0.11821422331141042	no_treatment	no_treatment	0.0	same_construct
-D8	E11	-0.022208416870279683	no_treatment	no_treatment	0.0	same_construct
-D8	F11	0.3799270190908766	no_treatment	no_treatment	0.0	same_construct
-D8	G11	0.1548280575755411	no_treatment	no_treatment	0.0	same_construct
-D11	E11	-0.031946738729653465	no_treatment	no_treatment	0.0	same_construct
-D11	F11	-0.15701910367851984	no_treatment	no_treatment	0.0	same_construct
-D11	G11	-0.08139421026355315	no_treatment	no_treatment	0.0	same_construct
-E2	E5	0.0570085024735279	Scramble	Scramble	0.1	same_construct
-E2	E8	0.027155034442356944	Scramble	Scramble	0.1	same_construct
-E3	E6	0.12922094097127815	Scramble	Scramble	0.01	same_construct
-E3	E9	0.2656442368194854	Scramble	Scramble	0.01	same_construct
-E4	E7	0.013892369871608608	Scramble	Scramble	0.001	same_construct
-E4	E10	-0.17040324519368577	Scramble	Scramble	0.001	same_construct
-E5	E8	0.08058817146438324	Scramble	Scramble	0.1	same_construct
-E6	E9	0.28996970249093795	Scramble	Scramble	0.01	same_construct
-E7	E10	0.028203023400641822	Scramble	Scramble	0.001	same_construct
-E11	F11	0.1368562511390332	no_treatment	no_treatment	0.0	same_construct
-E11	G11	-0.10811251837479853	no_treatment	no_treatment	0.0	same_construct
-F11	G11	0.4200903305403509	no_treatment	no_treatment	0.0	same_construct
-B2	B5	0.020185628102701685	no_treatment	no_treatment	0.0	same_construct
-B2	B8	0.044378560803891465	no_treatment	no_treatment	0.0	same_construct
-B2	B11	-0.034815383116547464	no_treatment	no_treatment	0.0	same_construct
-B2	C2	-0.2907783583915557	no_treatment	no_treatment	0.0	same_construct
-B2	C5	-0.23768956594686402	no_treatment	no_treatment	0.0	same_construct
-B2	C8	-0.2834473372441358	no_treatment	no_treatment	0.0	same_construct
-B2	C11	-0.06579241149544601	no_treatment	no_treatment	0.0	same_construct
-B2	D2	-0.2290537226428069	no_treatment	no_treatment	0.0	same_construct
-B2	D5	-0.21736401251781987	no_treatment	no_treatment	0.0	same_construct
-B2	D8	-0.2515447288755443	no_treatment	no_treatment	0.0	same_construct
-B2	D11	-0.11649385609252706	no_treatment	no_treatment	0.0	same_construct
-B2	E11	0.01477816628663002	no_treatment	no_treatment	0.0	same_construct
-B2	F11	-0.3138771463274125	no_treatment	no_treatment	0.0	same_construct
-B2	G11	-0.39727453629656306	no_treatment	no_treatment	0.0	same_construct
-B5	B8	-0.0530623633798992	no_treatment	no_treatment	0.0	same_construct
-B5	B11	0.09718058686682456	no_treatment	no_treatment	0.0	same_construct
-B5	C2	0.09390927026185647	no_treatment	no_treatment	0.0	same_construct
-B5	C5	0.09830701459540979	no_treatment	no_treatment	0.0	same_construct
-B5	C8	0.11757168073783007	no_treatment	no_treatment	0.0	same_construct
-B5	C11	0.08623026126442523	no_treatment	no_treatment	0.0	same_construct
-B5	D2	-0.007314731271551316	no_treatment	no_treatment	0.0	same_construct
-B5	D5	0.05793882065896047	no_treatment	no_treatment	0.0	same_construct
-B5	D8	-0.06276568233185688	no_treatment	no_treatment	0.0	same_construct
-B5	D11	0.06608889110628025	no_treatment	no_treatment	0.0	same_construct
-B5	E11	0.07358249633089245	no_treatment	no_treatment	0.0	same_construct
-B5	F11	0.02683835164342534	no_treatment	no_treatment	0.0	same_construct
-B5	G11	-0.0032942638174596997	no_treatment	no_treatment	0.0	same_construct
-B8	B11	-0.10434355687279834	no_treatment	no_treatment	0.0	same_construct
-B8	C2	0.01095547725127999	no_treatment	no_treatment	0.0	same_construct
-B8	C5	-0.06822697919187008	no_treatment	no_treatment	0.0	same_construct
-B8	C8	0.09831198203364348	no_treatment	no_treatment	0.0	same_construct
-B8	C11	-0.024523628256304875	no_treatment	no_treatment	0.0	same_construct
-B8	D2	-0.01354467363681642	no_treatment	no_treatment	0.0	same_construct
-B8	D5	-0.004517096130275334	no_treatment	no_treatment	0.0	same_construct
-B8	D8	0.02169777894769872	no_treatment	no_treatment	0.0	same_construct
-B8	D11	-0.041733322694644276	no_treatment	no_treatment	0.0	same_construct
-B8	E11	-0.00011412882442293948	no_treatment	no_treatment	0.0	same_construct
-B8	F11	0.04403169506021844	no_treatment	no_treatment	0.0	same_construct
-B8	G11	0.028146128123438936	no_treatment	no_treatment	0.0	same_construct
-B11	C2	-0.019734147171266113	no_treatment	no_treatment	0.0	same_construct
-B11	C5	-0.07303390167346821	no_treatment	no_treatment	0.0	same_construct
-B11	C8	-0.07530626607129638	no_treatment	no_treatment	0.0	same_construct
-B11	C11	0.07077938437464545	no_treatment	no_treatment	0.0	same_construct
-B11	D2	-0.082828472125889	no_treatment	no_treatment	0.0	same_construct
-B11	D5	0.0001721952536024272	no_treatment	no_treatment	0.0	same_construct
-B11	D8	-0.03650961889570596	no_treatment	no_treatment	0.0	same_construct
-B11	D11	0.08122637011854016	no_treatment	no_treatment	0.0	same_construct
-B11	E11	-0.21012124164739432	no_treatment	no_treatment	0.0	same_construct
-B11	F11	-0.06877955366394169	no_treatment	no_treatment	0.0	same_construct
-B11	G11	0.05643486503350701	no_treatment	no_treatment	0.0	same_construct
-C2	C5	0.1666378142273543	no_treatment	no_treatment	0.0	same_construct
-C2	C8	0.4325399222467585	no_treatment	no_treatment	0.0	same_construct
-C2	C11	-0.18178270219362594	no_treatment	no_treatment	0.0	same_construct
-C2	D2	0.3512238027499292	no_treatment	no_treatment	0.0	same_construct
-C2	D5	0.28834757157977003	no_treatment	no_treatment	0.0	same_construct
-C2	D8	0.28691156276800944	no_treatment	no_treatment	0.0	same_construct
-C2	D11	-0.12377332320203667	no_treatment	no_treatment	0.0	same_construct
-C2	E11	0.15371236665787436	no_treatment	no_treatment	0.0	same_construct
-C2	F11	0.47274692555626197	no_treatment	no_treatment	0.0	same_construct
-C2	G11	0.3188055894289191	no_treatment	no_treatment	0.0	same_construct
-C3	C6	0.14031961364395054	NF1 Target 1	NF1 Target 1	0.05	same_construct
-C3	C9	0.29068440223708647	NF1 Target 1	NF1 Target 1	0.05	same_construct
-C4	C7	0.13661571641803824	NF1 Target 1	NF1 Target 1	0.005	same_construct
-C4	C10	0.1112327750751599	NF1 Target 1	NF1 Target 1	0.005	same_construct
-C5	C8	0.27571753771960517	no_treatment	no_treatment	0.0	same_construct
-C5	C11	-0.00919126998289516	no_treatment	no_treatment	0.0	same_construct
-C5	D2	0.3300963177585821	no_treatment	no_treatment	0.0	same_construct
-C5	D5	0.15338411929284673	no_treatment	no_treatment	0.0	same_construct
-C5	D8	0.12370729194295618	no_treatment	no_treatment	0.0	same_construct
-C5	D11	0.1080929214188765	no_treatment	no_treatment	0.0	same_construct
-C5	E11	0.08576161329732776	no_treatment	no_treatment	0.0	same_construct
-C5	F11	0.14655773283690715	no_treatment	no_treatment	0.0	same_construct
-C5	G11	0.10821341853926916	no_treatment	no_treatment	0.0	same_construct
-C6	C9	0.2749845381018974	NF1 Target 1	NF1 Target 1	0.05	same_construct
-C7	C10	0.16522966114484244	NF1 Target 1	NF1 Target 1	0.005	same_construct
-C8	C11	-0.07140013116289415	no_treatment	no_treatment	0.0	same_construct
-C8	D2	0.33554978272541314	no_treatment	no_treatment	0.0	same_construct
-C8	D5	0.32698031823762663	no_treatment	no_treatment	0.0	same_construct
-C8	D8	0.23963347953858494	no_treatment	no_treatment	0.0	same_construct
-C8	D11	-0.054988896182747424	no_treatment	no_treatment	0.0	same_construct
-C8	E11	0.11120743345519073	no_treatment	no_treatment	0.0	same_construct
-C8	F11	0.31722820194545015	no_treatment	no_treatment	0.0	same_construct
-C8	G11	0.18872520790903613	no_treatment	no_treatment	0.0	same_construct
-C11	D2	-0.04792854927158944	no_treatment	no_treatment	0.0	same_construct
-C11	D5	-0.19703166285095142	no_treatment	no_treatment	0.0	same_construct
-C11	D8	-0.24789010519169702	no_treatment	no_treatment	0.0	same_construct
-C11	D11	0.22847316214799315	no_treatment	no_treatment	0.0	same_construct
-C11	E11	-0.014664806348662776	no_treatment	no_treatment	0.0	same_construct
-C11	F11	-0.25727032823836055	no_treatment	no_treatment	0.0	same_construct
-C11	G11	-0.060467870553544724	no_treatment	no_treatment	0.0	same_construct
-D2	D5	0.27122041541753705	no_treatment	no_treatment	0.0	same_construct
-D2	D8	0.24594656792452235	no_treatment	no_treatment	0.0	same_construct
-D2	D11	0.02325452918113931	no_treatment	no_treatment	0.0	same_construct
-D2	E11	0.09727720841305329	no_treatment	no_treatment	0.0	same_construct
-D2	F11	0.33707714388520466	no_treatment	no_treatment	0.0	same_construct
-D2	G11	0.28735793860817943	no_treatment	no_treatment	0.0	same_construct
-D5	D8	0.24221492199963796	no_treatment	no_treatment	0.0	same_construct
-D5	D11	-0.08678060088412577	no_treatment	no_treatment	0.0	same_construct
-D5	E11	-0.06438441053162806	no_treatment	no_treatment	0.0	same_construct
-D5	F11	0.17799662158480706	no_treatment	no_treatment	0.0	same_construct
-D5	G11	0.15325227125377688	no_treatment	no_treatment	0.0	same_construct
-D8	D11	-0.11821422331141042	no_treatment	no_treatment	0.0	same_construct
-D8	E11	-0.022208416870279683	no_treatment	no_treatment	0.0	same_construct
-D8	F11	0.3799270190908766	no_treatment	no_treatment	0.0	same_construct
-D8	G11	0.1548280575755411	no_treatment	no_treatment	0.0	same_construct
-D11	E11	-0.031946738729653465	no_treatment	no_treatment	0.0	same_construct
-D11	F11	-0.15701910367851984	no_treatment	no_treatment	0.0	same_construct
-D11	G11	-0.08139421026355315	no_treatment	no_treatment	0.0	same_construct
-E11	F11	0.1368562511390332	no_treatment	no_treatment	0.0	same_construct
-E11	G11	-0.10811251837479853	no_treatment	no_treatment	0.0	same_construct
-F2	F5	0.21524090734830087	NF1 Target 1	NF1 Target 1	0.1	same_construct
-F2	F8	0.256278724164352	NF1 Target 1	NF1 Target 1	0.1	same_construct
-F3	F6	0.05225198871272996	NF1 Target 1	NF1 Target 1	0.01	same_construct
-F3	F9	-0.03218362205877565	NF1 Target 1	NF1 Target 1	0.01	same_construct
-F4	F7	0.06474785127798037	NF1 Target 1	NF1 Target 1	0.001	same_construct
-F4	F10	0.08176433886809523	NF1 Target 1	NF1 Target 1	0.001	same_construct
-F5	F8	0.2604637948830728	NF1 Target 1	NF1 Target 1	0.1	same_construct
-F6	F9	0.09742136465071818	NF1 Target 1	NF1 Target 1	0.01	same_construct
-F7	F10	-0.029617793994627568	NF1 Target 1	NF1 Target 1	0.001	same_construct
-F11	G11	0.4200903305403509	no_treatment	no_treatment	0.0	same_construct
-B2	B5	0.020185628102701685	no_treatment	no_treatment	0.0	same_construct
-B2	B8	0.044378560803891465	no_treatment	no_treatment	0.0	same_construct
-B2	B11	-0.034815383116547464	no_treatment	no_treatment	0.0	same_construct
-B2	C2	-0.2907783583915557	no_treatment	no_treatment	0.0	same_construct
-B2	C5	-0.23768956594686402	no_treatment	no_treatment	0.0	same_construct
-B2	C8	-0.2834473372441358	no_treatment	no_treatment	0.0	same_construct
-B2	C11	-0.06579241149544601	no_treatment	no_treatment	0.0	same_construct
-B2	D2	-0.2290537226428069	no_treatment	no_treatment	0.0	same_construct
-B2	D5	-0.21736401251781987	no_treatment	no_treatment	0.0	same_construct
-B2	D8	-0.2515447288755443	no_treatment	no_treatment	0.0	same_construct
-B2	D11	-0.11649385609252706	no_treatment	no_treatment	0.0	same_construct
-B2	E11	0.01477816628663002	no_treatment	no_treatment	0.0	same_construct
-B2	F11	-0.3138771463274125	no_treatment	no_treatment	0.0	same_construct
-B2	G11	-0.39727453629656306	no_treatment	no_treatment	0.0	same_construct
-B5	B8	-0.0530623633798992	no_treatment	no_treatment	0.0	same_construct
-B5	B11	0.09718058686682456	no_treatment	no_treatment	0.0	same_construct
-B5	C2	0.09390927026185647	no_treatment	no_treatment	0.0	same_construct
-B5	C5	0.09830701459540979	no_treatment	no_treatment	0.0	same_construct
-B5	C8	0.11757168073783007	no_treatment	no_treatment	0.0	same_construct
-B5	C11	0.08623026126442523	no_treatment	no_treatment	0.0	same_construct
-B5	D2	-0.007314731271551316	no_treatment	no_treatment	0.0	same_construct
-B5	D5	0.05793882065896047	no_treatment	no_treatment	0.0	same_construct
-B5	D8	-0.06276568233185688	no_treatment	no_treatment	0.0	same_construct
-B5	D11	0.06608889110628025	no_treatment	no_treatment	0.0	same_construct
-B5	E11	0.07358249633089245	no_treatment	no_treatment	0.0	same_construct
-B5	F11	0.02683835164342534	no_treatment	no_treatment	0.0	same_construct
-B5	G11	-0.0032942638174596997	no_treatment	no_treatment	0.0	same_construct
-B8	B11	-0.10434355687279834	no_treatment	no_treatment	0.0	same_construct
-B8	C2	0.01095547725127999	no_treatment	no_treatment	0.0	same_construct
-B8	C5	-0.06822697919187008	no_treatment	no_treatment	0.0	same_construct
-B8	C8	0.09831198203364348	no_treatment	no_treatment	0.0	same_construct
-B8	C11	-0.024523628256304875	no_treatment	no_treatment	0.0	same_construct
-B8	D2	-0.01354467363681642	no_treatment	no_treatment	0.0	same_construct
-B8	D5	-0.004517096130275334	no_treatment	no_treatment	0.0	same_construct
-B8	D8	0.02169777894769872	no_treatment	no_treatment	0.0	same_construct
-B8	D11	-0.041733322694644276	no_treatment	no_treatment	0.0	same_construct
-B8	E11	-0.00011412882442293948	no_treatment	no_treatment	0.0	same_construct
-B8	F11	0.04403169506021844	no_treatment	no_treatment	0.0	same_construct
-B8	G11	0.028146128123438936	no_treatment	no_treatment	0.0	same_construct
-B11	C2	-0.019734147171266113	no_treatment	no_treatment	0.0	same_construct
-B11	C5	-0.07303390167346821	no_treatment	no_treatment	0.0	same_construct
-B11	C8	-0.07530626607129638	no_treatment	no_treatment	0.0	same_construct
-B11	C11	0.07077938437464545	no_treatment	no_treatment	0.0	same_construct
-B11	D2	-0.082828472125889	no_treatment	no_treatment	0.0	same_construct
-B11	D5	0.0001721952536024272	no_treatment	no_treatment	0.0	same_construct
-B11	D8	-0.03650961889570596	no_treatment	no_treatment	0.0	same_construct
-B11	D11	0.08122637011854016	no_treatment	no_treatment	0.0	same_construct
-B11	E11	-0.21012124164739432	no_treatment	no_treatment	0.0	same_construct
-B11	F11	-0.06877955366394169	no_treatment	no_treatment	0.0	same_construct
-B11	G11	0.05643486503350701	no_treatment	no_treatment	0.0	same_construct
-C2	C5	0.1666378142273543	no_treatment	no_treatment	0.0	same_construct
-C2	C8	0.4325399222467585	no_treatment	no_treatment	0.0	same_construct
-C2	C11	-0.18178270219362594	no_treatment	no_treatment	0.0	same_construct
-C2	D2	0.3512238027499292	no_treatment	no_treatment	0.0	same_construct
-C2	D5	0.28834757157977003	no_treatment	no_treatment	0.0	same_construct
-C2	D8	0.28691156276800944	no_treatment	no_treatment	0.0	same_construct
-C2	D11	-0.12377332320203667	no_treatment	no_treatment	0.0	same_construct
-C2	E11	0.15371236665787436	no_treatment	no_treatment	0.0	same_construct
-C2	F11	0.47274692555626197	no_treatment	no_treatment	0.0	same_construct
-C2	G11	0.3188055894289191	no_treatment	no_treatment	0.0	same_construct
-C5	C8	0.27571753771960517	no_treatment	no_treatment	0.0	same_construct
-C5	C11	-0.00919126998289516	no_treatment	no_treatment	0.0	same_construct
-C5	D2	0.3300963177585821	no_treatment	no_treatment	0.0	same_construct
-C5	D5	0.15338411929284673	no_treatment	no_treatment	0.0	same_construct
-C5	D8	0.12370729194295618	no_treatment	no_treatment	0.0	same_construct
-C5	D11	0.1080929214188765	no_treatment	no_treatment	0.0	same_construct
-C5	E11	0.08576161329732776	no_treatment	no_treatment	0.0	same_construct
-C5	F11	0.14655773283690715	no_treatment	no_treatment	0.0	same_construct
-C5	G11	0.10821341853926916	no_treatment	no_treatment	0.0	same_construct
-C8	C11	-0.07140013116289415	no_treatment	no_treatment	0.0	same_construct
-C8	D2	0.33554978272541314	no_treatment	no_treatment	0.0	same_construct
-C8	D5	0.32698031823762663	no_treatment	no_treatment	0.0	same_construct
-C8	D8	0.23963347953858494	no_treatment	no_treatment	0.0	same_construct
-C8	D11	-0.054988896182747424	no_treatment	no_treatment	0.0	same_construct
-C8	E11	0.11120743345519073	no_treatment	no_treatment	0.0	same_construct
-C8	F11	0.31722820194545015	no_treatment	no_treatment	0.0	same_construct
-C8	G11	0.18872520790903613	no_treatment	no_treatment	0.0	same_construct
-C11	D2	-0.04792854927158944	no_treatment	no_treatment	0.0	same_construct
-C11	D5	-0.19703166285095142	no_treatment	no_treatment	0.0	same_construct
-C11	D8	-0.24789010519169702	no_treatment	no_treatment	0.0	same_construct
-C11	D11	0.22847316214799315	no_treatment	no_treatment	0.0	same_construct
-C11	E11	-0.014664806348662776	no_treatment	no_treatment	0.0	same_construct
-C11	F11	-0.25727032823836055	no_treatment	no_treatment	0.0	same_construct
-C11	G11	-0.060467870553544724	no_treatment	no_treatment	0.0	same_construct
-D2	D5	0.27122041541753705	no_treatment	no_treatment	0.0	same_construct
-D2	D8	0.24594656792452235	no_treatment	no_treatment	0.0	same_construct
-D2	D11	0.02325452918113931	no_treatment	no_treatment	0.0	same_construct
-D2	E11	0.09727720841305329	no_treatment	no_treatment	0.0	same_construct
-D2	F11	0.33707714388520466	no_treatment	no_treatment	0.0	same_construct
-D2	G11	0.28735793860817943	no_treatment	no_treatment	0.0	same_construct
-D3	D6	-0.12389056451947855	NF1 Target 2	NF1 Target 2	0.05	same_construct
-D3	D9	0.024247242907199172	NF1 Target 2	NF1 Target 2	0.05	same_construct
-D4	D7	-0.12495363381235952	NF1 Target 2	NF1 Target 2	0.005	same_construct
-D4	D10	0.02812238310910383	NF1 Target 2	NF1 Target 2	0.005	same_construct
-D5	D8	0.24221492199963796	no_treatment	no_treatment	0.0	same_construct
-D5	D11	-0.08678060088412577	no_treatment	no_treatment	0.0	same_construct
-D5	E11	-0.06438441053162806	no_treatment	no_treatment	0.0	same_construct
-D5	F11	0.17799662158480706	no_treatment	no_treatment	0.0	same_construct
-D5	G11	0.15325227125377688	no_treatment	no_treatment	0.0	same_construct
-D6	D9	-0.21093562269613328	NF1 Target 2	NF1 Target 2	0.05	same_construct
-D7	D10	0.0574358693101493	NF1 Target 2	NF1 Target 2	0.005	same_construct
-D8	D11	-0.11821422331141042	no_treatment	no_treatment	0.0	same_construct
-D8	E11	-0.022208416870279683	no_treatment	no_treatment	0.0	same_construct
-D8	F11	0.3799270190908766	no_treatment	no_treatment	0.0	same_construct
-D8	G11	0.1548280575755411	no_treatment	no_treatment	0.0	same_construct
-D11	E11	-0.031946738729653465	no_treatment	no_treatment	0.0	same_construct
-D11	F11	-0.15701910367851984	no_treatment	no_treatment	0.0	same_construct
-D11	G11	-0.08139421026355315	no_treatment	no_treatment	0.0	same_construct
-E11	F11	0.1368562511390332	no_treatment	no_treatment	0.0	same_construct
-E11	G11	-0.10811251837479853	no_treatment	no_treatment	0.0	same_construct
-F11	G11	0.4200903305403509	no_treatment	no_treatment	0.0	same_construct
-G2	G5	0.1564817707385611	NF1 Target 2	NF1 Target 2	0.1	same_construct
-G2	G8	-0.025071133272370302	NF1 Target 2	NF1 Target 2	0.1	same_construct
-G3	G6	-0.005489949693456173	NF1 Target 2	NF1 Target 2	0.01	same_construct
-G3	G9	0.3362340756385338	NF1 Target 2	NF1 Target 2	0.01	same_construct
-G4	G7	0.1556283857136385	NF1 Target 2	NF1 Target 2	0.001	same_construct
-G4	G10	0.269834104318865	NF1 Target 2	NF1 Target 2	0.001	same_construct
-G5	G8	0.10217090937089614	NF1 Target 2	NF1 Target 2	0.1	same_construct
-G6	G9	0.13732335150338523	NF1 Target 2	NF1 Target 2	0.01	same_construct
-G7	G10	-0.0363412620715432	NF1 Target 2	NF1 Target 2	0.001	same_construct
 B3	C3	-0.027753892610791333	NF1 Target 1	Scramble	0.05	different_construct
 B3	C6	-0.18937962121168628	NF1 Target 1	Scramble	0.05	different_construct
 B3	C9	-0.11807373625548816	NF1 Target 1	Scramble	0.05	different_construct
@@ -449,36 +89,6 @@ F9	E9	-0.21097176011328542	NF1 Target 1	Scramble	0.01	different_construct
 F10	E4	0.08396505825380715	NF1 Target 1	Scramble	0.001	different_construct
 F10	E7	-0.008632542216447674	NF1 Target 1	Scramble	0.001	different_construct
 F10	E10	-0.2912702632109372	NF1 Target 1	Scramble	0.001	different_construct
-B3	B7	-0.035322827356051786	Scramble	Scramble	0.05	same_construct
-B3	B9	-0.00618295657572514	Scramble	Scramble	0.05	same_construct
-B4	B6	0.03257583473813502	Scramble	Scramble	0.005	same_construct
-B4	B10	0.14469381728110398	Scramble	Scramble	0.005	same_construct
-B6	B10	-0.04480057260735781	Scramble	Scramble	0.005	same_construct
-B7	B9	0.1352884401398237	Scramble	Scramble	0.05	same_construct
-C3	C6	0.14031961364395054	NF1 Target 1	NF1 Target 1	0.05	same_construct
-C3	C9	0.29068440223708647	NF1 Target 1	NF1 Target 1	0.05	same_construct
-C4	C7	0.13661571641803824	NF1 Target 1	NF1 Target 1	0.005	same_construct
-C4	C10	0.1112327750751599	NF1 Target 1	NF1 Target 1	0.005	same_construct
-C6	C9	0.2749845381018974	NF1 Target 1	NF1 Target 1	0.05	same_construct
-C7	C10	0.16522966114484244	NF1 Target 1	NF1 Target 1	0.005	same_construct
-E2	E5	0.0570085024735279	Scramble	Scramble	0.1	same_construct
-E2	E8	0.027155034442356944	Scramble	Scramble	0.1	same_construct
-E3	E6	0.12922094097127815	Scramble	Scramble	0.01	same_construct
-E3	E9	0.2656442368194854	Scramble	Scramble	0.01	same_construct
-E4	E7	0.013892369871608608	Scramble	Scramble	0.001	same_construct
-E4	E10	-0.17040324519368577	Scramble	Scramble	0.001	same_construct
-E5	E8	0.08058817146438324	Scramble	Scramble	0.1	same_construct
-E6	E9	0.28996970249093795	Scramble	Scramble	0.01	same_construct
-E7	E10	0.028203023400641822	Scramble	Scramble	0.001	same_construct
-F2	F5	0.21524090734830087	NF1 Target 1	NF1 Target 1	0.1	same_construct
-F2	F8	0.256278724164352	NF1 Target 1	NF1 Target 1	0.1	same_construct
-F3	F6	0.05225198871272996	NF1 Target 1	NF1 Target 1	0.01	same_construct
-F3	F9	-0.03218362205877565	NF1 Target 1	NF1 Target 1	0.01	same_construct
-F4	F7	0.06474785127798037	NF1 Target 1	NF1 Target 1	0.001	same_construct
-F4	F10	0.08176433886809523	NF1 Target 1	NF1 Target 1	0.001	same_construct
-F5	F8	0.2604637948830728	NF1 Target 1	NF1 Target 1	0.1	same_construct
-F6	F9	0.09742136465071818	NF1 Target 1	NF1 Target 1	0.01	same_construct
-F7	F10	-0.029617793994627568	NF1 Target 1	NF1 Target 1	0.001	same_construct
 B3	D3	0.06062227294766205	NF1 Target 2	Scramble	0.05	different_construct
 B3	D6	0.07495817989770522	NF1 Target 2	Scramble	0.05	different_construct
 B3	D9	0.028294165495617314	NF1 Target 2	Scramble	0.05	different_construct
@@ -569,36 +179,456 @@ G9	E9	-0.4199214845555869	NF1 Target 2	Scramble	0.01	different_construct
 G10	E4	-0.11195980053094963	NF1 Target 2	Scramble	0.001	different_construct
 G10	E7	-0.1295233665366685	NF1 Target 2	Scramble	0.001	different_construct
 G10	E10	-0.0412073671895992	NF1 Target 2	Scramble	0.001	different_construct
-B3	B7	-0.035322827356051786	Scramble	Scramble	0.05	same_construct
-B3	B9	-0.00618295657572514	Scramble	Scramble	0.05	same_construct
-B4	B6	0.03257583473813502	Scramble	Scramble	0.005	same_construct
-B4	B10	0.14469381728110398	Scramble	Scramble	0.005	same_construct
-B6	B10	-0.04480057260735781	Scramble	Scramble	0.005	same_construct
-B7	B9	0.1352884401398237	Scramble	Scramble	0.05	same_construct
-D3	D6	-0.12389056451947855	NF1 Target 2	NF1 Target 2	0.05	same_construct
-D3	D9	0.024247242907199172	NF1 Target 2	NF1 Target 2	0.05	same_construct
-D4	D7	-0.12495363381235952	NF1 Target 2	NF1 Target 2	0.005	same_construct
-D4	D10	0.02812238310910383	NF1 Target 2	NF1 Target 2	0.005	same_construct
-D6	D9	-0.21093562269613328	NF1 Target 2	NF1 Target 2	0.05	same_construct
-D7	D10	0.0574358693101493	NF1 Target 2	NF1 Target 2	0.005	same_construct
-E2	E5	0.0570085024735279	Scramble	Scramble	0.1	same_construct
-E2	E8	0.027155034442356944	Scramble	Scramble	0.1	same_construct
-E3	E6	0.12922094097127815	Scramble	Scramble	0.01	same_construct
-E3	E9	0.2656442368194854	Scramble	Scramble	0.01	same_construct
-E4	E7	0.013892369871608608	Scramble	Scramble	0.001	same_construct
-E4	E10	-0.17040324519368577	Scramble	Scramble	0.001	same_construct
-E5	E8	0.08058817146438324	Scramble	Scramble	0.1	same_construct
-E6	E9	0.28996970249093795	Scramble	Scramble	0.01	same_construct
-E7	E10	0.028203023400641822	Scramble	Scramble	0.001	same_construct
-G2	G5	0.1564817707385611	NF1 Target 2	NF1 Target 2	0.1	same_construct
-G2	G8	-0.025071133272370302	NF1 Target 2	NF1 Target 2	0.1	same_construct
-G3	G6	-0.005489949693456173	NF1 Target 2	NF1 Target 2	0.01	same_construct
-G3	G9	0.3362340756385338	NF1 Target 2	NF1 Target 2	0.01	same_construct
-G4	G7	0.1556283857136385	NF1 Target 2	NF1 Target 2	0.001	same_construct
-G4	G10	0.269834104318865	NF1 Target 2	NF1 Target 2	0.001	same_construct
-G5	G8	0.10217090937089614	NF1 Target 2	NF1 Target 2	0.1	same_construct
-G6	G9	0.13732335150338523	NF1 Target 2	NF1 Target 2	0.01	same_construct
-G7	G10	-0.0363412620715432	NF1 Target 2	NF1 Target 2	0.001	same_construct
+B3	B2	0.06976261709649587	Scramble	no_treatment	0.05	different_construct
+B3	B5	-0.043659723654344854	Scramble	no_treatment	0.05	different_construct
+B3	B8	0.08281398463004709	Scramble	no_treatment	0.05	different_construct
+B3	B11	0.10328442618053021	Scramble	no_treatment	0.05	different_construct
+B3	C2	-0.013769656758278095	Scramble	no_treatment	0.05	different_construct
+B3	C5	-0.1568136613056301	Scramble	no_treatment	0.05	different_construct
+B3	C8	-0.07951296220329508	Scramble	no_treatment	0.05	different_construct
+B3	C11	0.14224674079774183	Scramble	no_treatment	0.05	different_construct
+B3	D2	-0.05035962241847604	Scramble	no_treatment	0.05	different_construct
+B3	D5	-0.20256719200805093	Scramble	no_treatment	0.05	different_construct
+B3	D8	-0.16909160845108745	Scramble	no_treatment	0.05	different_construct
+B3	D11	0.11358708810448508	Scramble	no_treatment	0.05	different_construct
+B3	E11	-0.010725910712109002	Scramble	no_treatment	0.05	different_construct
+B3	F11	-0.1124168022407376	Scramble	no_treatment	0.05	different_construct
+B3	G11	-0.0994376886110998	Scramble	no_treatment	0.05	different_construct
+B4	B2	0.15061671765377377	Scramble	no_treatment	0.005	different_construct
+B4	B5	0.055769037868724204	Scramble	no_treatment	0.005	different_construct
+B4	B8	0.04330332342648697	Scramble	no_treatment	0.005	different_construct
+B4	B11	0.02078360392770765	Scramble	no_treatment	0.005	different_construct
+B4	C2	0.0020243964948578976	Scramble	no_treatment	0.005	different_construct
+B4	C5	-0.1757889411055419	Scramble	no_treatment	0.005	different_construct
+B4	C8	-0.011017780718494016	Scramble	no_treatment	0.005	different_construct
+B4	C11	-0.1136612021339621	Scramble	no_treatment	0.005	different_construct
+B4	D2	-0.06331417340544153	Scramble	no_treatment	0.005	different_construct
+B4	D5	-0.008559765953059508	Scramble	no_treatment	0.005	different_construct
+B4	D8	0.1099533419591514	Scramble	no_treatment	0.005	different_construct
+B4	D11	-0.2312378777815204	Scramble	no_treatment	0.005	different_construct
+B4	E11	-0.090842899730308	Scramble	no_treatment	0.005	different_construct
+B4	F11	-0.014440824924283046	Scramble	no_treatment	0.005	different_construct
+B4	G11	-0.0755005986610036	Scramble	no_treatment	0.005	different_construct
+B6	B2	0.2227047124028356	Scramble	no_treatment	0.005	different_construct
+B6	B5	0.0063180857884672995	Scramble	no_treatment	0.005	different_construct
+B6	B8	-0.12897770987018306	Scramble	no_treatment	0.005	different_construct
+B6	B11	0.014435469708273863	Scramble	no_treatment	0.005	different_construct
+B6	C2	-0.4052009522580151	Scramble	no_treatment	0.005	different_construct
+B6	C5	-0.014351374650561943	Scramble	no_treatment	0.005	different_construct
+B6	C8	-0.14330916780287276	Scramble	no_treatment	0.005	different_construct
+B6	C11	0.021133872585049774	Scramble	no_treatment	0.005	different_construct
+B6	D2	-0.08398493718456004	Scramble	no_treatment	0.005	different_construct
+B6	D5	-0.02713977886961723	Scramble	no_treatment	0.005	different_construct
+B6	D8	-0.08808246831859289	Scramble	no_treatment	0.005	different_construct
+B6	D11	0.027353207111854714	Scramble	no_treatment	0.005	different_construct
+B6	E11	-0.1059737229565291	Scramble	no_treatment	0.005	different_construct
+B6	F11	-0.31199056333500325	Scramble	no_treatment	0.005	different_construct
+B6	G11	-0.296671146650321	Scramble	no_treatment	0.005	different_construct
+B7	B2	0.05220201477096426	Scramble	no_treatment	0.05	different_construct
+B7	B5	-0.0370560948735154	Scramble	no_treatment	0.05	different_construct
+B7	B8	0.1640186632859863	Scramble	no_treatment	0.05	different_construct
+B7	B11	0.031193267173236682	Scramble	no_treatment	0.05	different_construct
+B7	C2	-0.05707375691357403	Scramble	no_treatment	0.05	different_construct
+B7	C5	-0.07147187665843457	Scramble	no_treatment	0.05	different_construct
+B7	C8	0.03661337293588811	Scramble	no_treatment	0.05	different_construct
+B7	C11	-0.13320348209958066	Scramble	no_treatment	0.05	different_construct
+B7	D2	-0.04791540870738184	Scramble	no_treatment	0.05	different_construct
+B7	D5	0.07390759116407553	Scramble	no_treatment	0.05	different_construct
+B7	D8	-0.03791992757982483	Scramble	no_treatment	0.05	different_construct
+B7	D11	-0.05047755100638771	Scramble	no_treatment	0.05	different_construct
+B7	E11	-0.1580004297094226	Scramble	no_treatment	0.05	different_construct
+B7	F11	0.020618413260841455	Scramble	no_treatment	0.05	different_construct
+B7	G11	-0.02978549709169931	Scramble	no_treatment	0.05	different_construct
+B9	B2	0.13536258901526532	Scramble	no_treatment	0.05	different_construct
+B9	B5	0.08121162572269011	Scramble	no_treatment	0.05	different_construct
+B9	B8	0.002795637466933142	Scramble	no_treatment	0.05	different_construct
+B9	B11	0.1488829050129729	Scramble	no_treatment	0.05	different_construct
+B9	C2	0.06929499232816717	Scramble	no_treatment	0.05	different_construct
+B9	C5	-0.04759409042950895	Scramble	no_treatment	0.05	different_construct
+B9	C8	-0.018755250316684582	Scramble	no_treatment	0.05	different_construct
+B9	C11	-0.17005274528331732	Scramble	no_treatment	0.05	different_construct
+B9	D2	-0.07796566203278461	Scramble	no_treatment	0.05	different_construct
+B9	D5	-0.043291458779396885	Scramble	no_treatment	0.05	different_construct
+B9	D8	0.012981829848630723	Scramble	no_treatment	0.05	different_construct
+B9	D11	-0.0961971694811117	Scramble	no_treatment	0.05	different_construct
+B9	E11	-0.22314388695973564	Scramble	no_treatment	0.05	different_construct
+B9	F11	0.03591207026653591	Scramble	no_treatment	0.05	different_construct
+B9	G11	0.034119600010940415	Scramble	no_treatment	0.05	different_construct
+B10	B2	-0.15535066735930833	Scramble	no_treatment	0.005	different_construct
+B10	B5	-0.05750257443051096	Scramble	no_treatment	0.005	different_construct
+B10	B8	0.058143819389894304	Scramble	no_treatment	0.005	different_construct
+B10	B11	-0.07198731321487183	Scramble	no_treatment	0.005	different_construct
+B10	C2	-0.027794616009886183	Scramble	no_treatment	0.005	different_construct
+B10	C5	0.01532732109497969	Scramble	no_treatment	0.005	different_construct
+B10	C8	0.1050743251864714	Scramble	no_treatment	0.005	different_construct
+B10	C11	0.11953633330196213	Scramble	no_treatment	0.005	different_construct
+B10	D2	0.17242176851723257	Scramble	no_treatment	0.005	different_construct
+B10	D5	0.08831990954517502	Scramble	no_treatment	0.005	different_construct
+B10	D8	-0.02270169228158619	Scramble	no_treatment	0.005	different_construct
+B10	D11	-0.03615591529069904	Scramble	no_treatment	0.005	different_construct
+B10	E11	-0.08318567033425152	Scramble	no_treatment	0.005	different_construct
+B10	F11	0.00041048498949358545	Scramble	no_treatment	0.005	different_construct
+B10	G11	0.07672746189945157	Scramble	no_treatment	0.005	different_construct
+E2	B2	0.05399025088761823	Scramble	no_treatment	0.1	different_construct
+E2	B5	-0.04868591241250988	Scramble	no_treatment	0.1	different_construct
+E2	B8	-0.0715647984226309	Scramble	no_treatment	0.1	different_construct
+E2	B11	-0.09331443869211722	Scramble	no_treatment	0.1	different_construct
+E2	C2	-0.18421330692955679	Scramble	no_treatment	0.1	different_construct
+E2	C5	-0.037328529980513704	Scramble	no_treatment	0.1	different_construct
+E2	C8	-0.09638887199816207	Scramble	no_treatment	0.1	different_construct
+E2	C11	0.15808131303677117	Scramble	no_treatment	0.1	different_construct
+E2	D2	-0.0737432946349565	Scramble	no_treatment	0.1	different_construct
+E2	D5	-0.09321855947230843	Scramble	no_treatment	0.1	different_construct
+E2	D8	-0.24588462356028867	Scramble	no_treatment	0.1	different_construct
+E2	D11	0.06104601304541674	Scramble	no_treatment	0.1	different_construct
+E2	E11	-0.03468973915841328	Scramble	no_treatment	0.1	different_construct
+E2	F11	-0.21468575340946314	Scramble	no_treatment	0.1	different_construct
+E2	G11	-0.05873866422383581	Scramble	no_treatment	0.1	different_construct
+E3	B2	0.05498503805599647	Scramble	no_treatment	0.01	different_construct
+E3	B5	0.005299160967031791	Scramble	no_treatment	0.01	different_construct
+E3	B8	0.03810655497327437	Scramble	no_treatment	0.01	different_construct
+E3	B11	-0.04326991107835599	Scramble	no_treatment	0.01	different_construct
+E3	C2	-0.04291444950036564	Scramble	no_treatment	0.01	different_construct
+E3	C5	-0.19545386342399232	Scramble	no_treatment	0.01	different_construct
+E3	C8	-0.046569879217750826	Scramble	no_treatment	0.01	different_construct
+E3	C11	-0.042760635259664226	Scramble	no_treatment	0.01	different_construct
+E3	D2	-0.24524772997465194	Scramble	no_treatment	0.01	different_construct
+E3	D5	-0.04030142978905791	Scramble	no_treatment	0.01	different_construct
+E3	D8	-0.052906812285990285	Scramble	no_treatment	0.01	different_construct
+E3	D11	0.09250893975177082	Scramble	no_treatment	0.01	different_construct
+E3	E11	0.0708319419795463	Scramble	no_treatment	0.01	different_construct
+E3	F11	-0.13088232442764988	Scramble	no_treatment	0.01	different_construct
+E3	G11	-0.26403055660225894	Scramble	no_treatment	0.01	different_construct
+E4	B2	0.1637068597481602	Scramble	no_treatment	0.001	different_construct
+E4	B5	0.024188335680978428	Scramble	no_treatment	0.001	different_construct
+E4	B8	-0.0244732645428101	Scramble	no_treatment	0.001	different_construct
+E4	B11	-0.048203911516322084	Scramble	no_treatment	0.001	different_construct
+E4	C2	0.05605486291947492	Scramble	no_treatment	0.001	different_construct
+E4	C5	-0.009518984191078727	Scramble	no_treatment	0.001	different_construct
+E4	C8	-0.0038154082012507675	Scramble	no_treatment	0.001	different_construct
+E4	C11	-0.04414326561452338	Scramble	no_treatment	0.001	different_construct
+E4	D2	-0.13724698385765796	Scramble	no_treatment	0.001	different_construct
+E4	D5	-0.14177468419269132	Scramble	no_treatment	0.001	different_construct
+E4	D8	-0.11851332094683154	Scramble	no_treatment	0.001	different_construct
+E4	D11	-0.0013600020958339802	Scramble	no_treatment	0.001	different_construct
+E4	E11	0.02041912618638518	Scramble	no_treatment	0.001	different_construct
+E4	F11	-0.10652071692374185	Scramble	no_treatment	0.001	different_construct
+E4	G11	-0.13595802216199612	Scramble	no_treatment	0.001	different_construct
+E5	B2	-0.21556768709224308	Scramble	no_treatment	0.1	different_construct
+E5	B5	0.08826336046440583	Scramble	no_treatment	0.1	different_construct
+E5	B8	-0.1324747005866169	Scramble	no_treatment	0.1	different_construct
+E5	B11	-0.060722717703942865	Scramble	no_treatment	0.1	different_construct
+E5	C2	0.034265540087429894	Scramble	no_treatment	0.1	different_construct
+E5	C5	0.28626164611407945	Scramble	no_treatment	0.1	different_construct
+E5	C8	0.2658114802949226	Scramble	no_treatment	0.1	different_construct
+E5	C11	0.19736884456800746	Scramble	no_treatment	0.1	different_construct
+E5	D2	0.11856981907724276	Scramble	no_treatment	0.1	different_construct
+E5	D5	-0.01788051202654802	Scramble	no_treatment	0.1	different_construct
+E5	D8	-0.05225253556799708	Scramble	no_treatment	0.1	different_construct
+E5	D11	0.1420259168881419	Scramble	no_treatment	0.1	different_construct
+E5	E11	0.13838205621492386	Scramble	no_treatment	0.1	different_construct
+E5	F11	0.09735242991247163	Scramble	no_treatment	0.1	different_construct
+E5	G11	-0.12199864060831746	Scramble	no_treatment	0.1	different_construct
+E6	B2	0.07522080543764992	Scramble	no_treatment	0.01	different_construct
+E6	B5	0.06696877223259988	Scramble	no_treatment	0.01	different_construct
+E6	B8	0.0443180552042338	Scramble	no_treatment	0.01	different_construct
+E6	B11	-0.11317038230160822	Scramble	no_treatment	0.01	different_construct
+E6	C2	-0.10884060676355803	Scramble	no_treatment	0.01	different_construct
+E6	C5	-0.038971323174216	Scramble	no_treatment	0.01	different_construct
+E6	C8	0.07085256920328394	Scramble	no_treatment	0.01	different_construct
+E6	C11	0.013721014186558444	Scramble	no_treatment	0.01	different_construct
+E6	D2	-0.1778393191450515	Scramble	no_treatment	0.01	different_construct
+E6	D5	-0.04740521101277294	Scramble	no_treatment	0.01	different_construct
+E6	D8	-0.07180890141457992	Scramble	no_treatment	0.01	different_construct
+E6	D11	-0.08493507782203237	Scramble	no_treatment	0.01	different_construct
+E6	E11	0.09657630663494758	Scramble	no_treatment	0.01	different_construct
+E6	F11	-0.13199946525265033	Scramble	no_treatment	0.01	different_construct
+E6	G11	-0.23973646122405545	Scramble	no_treatment	0.01	different_construct
+E7	B2	-0.07296190127383644	Scramble	no_treatment	0.001	different_construct
+E7	B5	0.10187433881568907	Scramble	no_treatment	0.001	different_construct
+E7	B8	-0.01157046288759029	Scramble	no_treatment	0.001	different_construct
+E7	B11	0.14390720974215507	Scramble	no_treatment	0.001	different_construct
+E7	C2	-0.12129293086147923	Scramble	no_treatment	0.001	different_construct
+E7	C5	-0.03621750021851872	Scramble	no_treatment	0.001	different_construct
+E7	C8	-0.07375870961538655	Scramble	no_treatment	0.001	different_construct
+E7	C11	0.17155381327385685	Scramble	no_treatment	0.001	different_construct
+E7	D2	-0.24298758183580432	Scramble	no_treatment	0.001	different_construct
+E7	D5	-0.07911485164530004	Scramble	no_treatment	0.001	different_construct
+E7	D8	-0.1205750903292839	Scramble	no_treatment	0.001	different_construct
+E7	D11	0.13195540612691964	Scramble	no_treatment	0.001	different_construct
+E7	E11	-0.06619140552433962	Scramble	no_treatment	0.001	different_construct
+E7	F11	-0.21752618780412233	Scramble	no_treatment	0.001	different_construct
+E7	G11	-0.14368644999642452	Scramble	no_treatment	0.001	different_construct
+E8	B2	0.2234089741299602	Scramble	no_treatment	0.1	different_construct
+E8	B5	-0.12914135631669435	Scramble	no_treatment	0.1	different_construct
+E8	B8	-0.012672322346337295	Scramble	no_treatment	0.1	different_construct
+E8	B11	-0.04681864651581504	Scramble	no_treatment	0.1	different_construct
+E8	C2	-0.2050078943960939	Scramble	no_treatment	0.1	different_construct
+E8	C5	-0.012484363279687457	Scramble	no_treatment	0.1	different_construct
+E8	C8	-0.14207793707830257	Scramble	no_treatment	0.1	different_construct
+E8	C11	0.021117057251330514	Scramble	no_treatment	0.1	different_construct
+E8	D2	-0.13230686979922987	Scramble	no_treatment	0.1	different_construct
+E8	D5	-0.17341507368347536	Scramble	no_treatment	0.1	different_construct
+E8	D8	-0.0972305556072324	Scramble	no_treatment	0.1	different_construct
+E8	D11	0.058350855075779674	Scramble	no_treatment	0.1	different_construct
+E8	E11	0.05169463523306272	Scramble	no_treatment	0.1	different_construct
+E8	F11	-0.21198931161557374	Scramble	no_treatment	0.1	different_construct
+E8	G11	-0.39006038710352986	Scramble	no_treatment	0.1	different_construct
+E9	B2	0.15024433945684385	Scramble	no_treatment	0.01	different_construct
+E9	B5	-0.12739073939526876	Scramble	no_treatment	0.01	different_construct
+E9	B8	0.006154045839972623	Scramble	no_treatment	0.01	different_construct
+E9	B11	-0.12916979383995375	Scramble	no_treatment	0.01	different_construct
+E9	C2	-0.15514249906246577	Scramble	no_treatment	0.01	different_construct
+E9	C5	-0.18186662287103747	Scramble	no_treatment	0.01	different_construct
+E9	C8	-0.038121757702501965	Scramble	no_treatment	0.01	different_construct
+E9	C11	-0.08279398701642052	Scramble	no_treatment	0.01	different_construct
+E9	D2	-0.23924311719819535	Scramble	no_treatment	0.01	different_construct
+E9	D5	-0.04465709838856168	Scramble	no_treatment	0.01	different_construct
+E9	D8	-0.06811478503781723	Scramble	no_treatment	0.01	different_construct
+E9	D11	-0.06706780968930463	Scramble	no_treatment	0.01	different_construct
+E9	E11	0.016195707925902407	Scramble	no_treatment	0.01	different_construct
+E9	F11	-0.15827401102987115	Scramble	no_treatment	0.01	different_construct
+E9	G11	-0.25659238833188763	Scramble	no_treatment	0.01	different_construct
+E10	B2	0.00546947981361787	Scramble	no_treatment	0.001	different_construct
+E10	B5	-0.25863485623182436	Scramble	no_treatment	0.001	different_construct
+E10	B8	-0.1082409503194495	Scramble	no_treatment	0.001	different_construct
+E10	B11	-0.07074529455168965	Scramble	no_treatment	0.001	different_construct
+E10	C2	-0.24912581750087937	Scramble	no_treatment	0.001	different_construct
+E10	C5	-0.05966179346072986	Scramble	no_treatment	0.001	different_construct
+E10	C8	-0.09355409501991827	Scramble	no_treatment	0.001	different_construct
+E10	C11	0.06198182422711014	Scramble	no_treatment	0.001	different_construct
+E10	D2	-0.11949925088165544	Scramble	no_treatment	0.001	different_construct
+E10	D5	-0.01935275345999303	Scramble	no_treatment	0.001	different_construct
+E10	D8	-0.1388160730204492	Scramble	no_treatment	0.001	different_construct
+E10	D11	-0.0298902313148058	Scramble	no_treatment	0.001	different_construct
+E10	E11	-0.15583877144198222	Scramble	no_treatment	0.001	different_construct
+E10	F11	-0.3012180242364343	Scramble	no_treatment	0.001	different_construct
+E10	G11	-0.16802159685792487	Scramble	no_treatment	0.001	different_construct
+B2	B3	0.06976261709649587	Scramble	no_treatment	0.05	different_construct
+B2	B7	0.05220201477096426	Scramble	no_treatment	0.05	different_construct
+B2	B9	0.13536258901526532	Scramble	no_treatment	0.05	different_construct
+B5	B3	-0.043659723654344854	Scramble	no_treatment	0.05	different_construct
+B5	B7	-0.0370560948735154	Scramble	no_treatment	0.05	different_construct
+B5	B9	0.08121162572269011	Scramble	no_treatment	0.05	different_construct
+B8	B3	0.08281398463004709	Scramble	no_treatment	0.05	different_construct
+B8	B7	0.1640186632859863	Scramble	no_treatment	0.05	different_construct
+B8	B9	0.002795637466933142	Scramble	no_treatment	0.05	different_construct
+B11	B3	0.10328442618053021	Scramble	no_treatment	0.05	different_construct
+B11	B7	0.031193267173236682	Scramble	no_treatment	0.05	different_construct
+B11	B9	0.1488829050129729	Scramble	no_treatment	0.05	different_construct
+C2	B3	-0.013769656758278095	Scramble	no_treatment	0.05	different_construct
+C2	B7	-0.05707375691357403	Scramble	no_treatment	0.05	different_construct
+C2	B9	0.06929499232816717	Scramble	no_treatment	0.05	different_construct
+C5	B3	-0.1568136613056301	Scramble	no_treatment	0.05	different_construct
+C5	B7	-0.07147187665843457	Scramble	no_treatment	0.05	different_construct
+C5	B9	-0.04759409042950895	Scramble	no_treatment	0.05	different_construct
+C8	B3	-0.07951296220329508	Scramble	no_treatment	0.05	different_construct
+C8	B7	0.03661337293588811	Scramble	no_treatment	0.05	different_construct
+C8	B9	-0.018755250316684582	Scramble	no_treatment	0.05	different_construct
+C11	B3	0.14224674079774183	Scramble	no_treatment	0.05	different_construct
+C11	B7	-0.13320348209958066	Scramble	no_treatment	0.05	different_construct
+C11	B9	-0.17005274528331732	Scramble	no_treatment	0.05	different_construct
+D2	B3	-0.05035962241847604	Scramble	no_treatment	0.05	different_construct
+D2	B7	-0.04791540870738184	Scramble	no_treatment	0.05	different_construct
+D2	B9	-0.07796566203278461	Scramble	no_treatment	0.05	different_construct
+D5	B3	-0.20256719200805093	Scramble	no_treatment	0.05	different_construct
+D5	B7	0.07390759116407553	Scramble	no_treatment	0.05	different_construct
+D5	B9	-0.043291458779396885	Scramble	no_treatment	0.05	different_construct
+D8	B3	-0.16909160845108745	Scramble	no_treatment	0.05	different_construct
+D8	B7	-0.03791992757982483	Scramble	no_treatment	0.05	different_construct
+D8	B9	0.012981829848630723	Scramble	no_treatment	0.05	different_construct
+D11	B3	0.11358708810448508	Scramble	no_treatment	0.05	different_construct
+D11	B7	-0.05047755100638771	Scramble	no_treatment	0.05	different_construct
+D11	B9	-0.0961971694811117	Scramble	no_treatment	0.05	different_construct
+E11	B3	-0.010725910712109002	Scramble	no_treatment	0.05	different_construct
+E11	B7	-0.1580004297094226	Scramble	no_treatment	0.05	different_construct
+E11	B9	-0.22314388695973564	Scramble	no_treatment	0.05	different_construct
+F11	B3	-0.1124168022407376	Scramble	no_treatment	0.05	different_construct
+F11	B7	0.020618413260841455	Scramble	no_treatment	0.05	different_construct
+F11	B9	0.03591207026653591	Scramble	no_treatment	0.05	different_construct
+G11	B3	-0.0994376886110998	Scramble	no_treatment	0.05	different_construct
+G11	B7	-0.02978549709169931	Scramble	no_treatment	0.05	different_construct
+G11	B9	0.034119600010940415	Scramble	no_treatment	0.05	different_construct
+B2	B4	0.15061671765377377	Scramble	no_treatment	0.005	different_construct
+B2	B6	0.2227047124028356	Scramble	no_treatment	0.005	different_construct
+B2	B10	-0.15535066735930833	Scramble	no_treatment	0.005	different_construct
+B5	B4	0.055769037868724204	Scramble	no_treatment	0.005	different_construct
+B5	B6	0.0063180857884672995	Scramble	no_treatment	0.005	different_construct
+B5	B10	-0.05750257443051096	Scramble	no_treatment	0.005	different_construct
+B8	B4	0.04330332342648697	Scramble	no_treatment	0.005	different_construct
+B8	B6	-0.12897770987018306	Scramble	no_treatment	0.005	different_construct
+B8	B10	0.058143819389894304	Scramble	no_treatment	0.005	different_construct
+B11	B4	0.02078360392770765	Scramble	no_treatment	0.005	different_construct
+B11	B6	0.014435469708273863	Scramble	no_treatment	0.005	different_construct
+B11	B10	-0.07198731321487183	Scramble	no_treatment	0.005	different_construct
+C2	B4	0.0020243964948578976	Scramble	no_treatment	0.005	different_construct
+C2	B6	-0.4052009522580151	Scramble	no_treatment	0.005	different_construct
+C2	B10	-0.027794616009886183	Scramble	no_treatment	0.005	different_construct
+C5	B4	-0.1757889411055419	Scramble	no_treatment	0.005	different_construct
+C5	B6	-0.014351374650561943	Scramble	no_treatment	0.005	different_construct
+C5	B10	0.01532732109497969	Scramble	no_treatment	0.005	different_construct
+C8	B4	-0.011017780718494016	Scramble	no_treatment	0.005	different_construct
+C8	B6	-0.14330916780287276	Scramble	no_treatment	0.005	different_construct
+C8	B10	0.1050743251864714	Scramble	no_treatment	0.005	different_construct
+C11	B4	-0.1136612021339621	Scramble	no_treatment	0.005	different_construct
+C11	B6	0.021133872585049774	Scramble	no_treatment	0.005	different_construct
+C11	B10	0.11953633330196213	Scramble	no_treatment	0.005	different_construct
+D2	B4	-0.06331417340544153	Scramble	no_treatment	0.005	different_construct
+D2	B6	-0.08398493718456004	Scramble	no_treatment	0.005	different_construct
+D2	B10	0.17242176851723257	Scramble	no_treatment	0.005	different_construct
+D5	B4	-0.008559765953059508	Scramble	no_treatment	0.005	different_construct
+D5	B6	-0.02713977886961723	Scramble	no_treatment	0.005	different_construct
+D5	B10	0.08831990954517502	Scramble	no_treatment	0.005	different_construct
+D8	B4	0.1099533419591514	Scramble	no_treatment	0.005	different_construct
+D8	B6	-0.08808246831859289	Scramble	no_treatment	0.005	different_construct
+D8	B10	-0.02270169228158619	Scramble	no_treatment	0.005	different_construct
+D11	B4	-0.2312378777815204	Scramble	no_treatment	0.005	different_construct
+D11	B6	0.027353207111854714	Scramble	no_treatment	0.005	different_construct
+D11	B10	-0.03615591529069904	Scramble	no_treatment	0.005	different_construct
+E11	B4	-0.090842899730308	Scramble	no_treatment	0.005	different_construct
+E11	B6	-0.1059737229565291	Scramble	no_treatment	0.005	different_construct
+E11	B10	-0.08318567033425152	Scramble	no_treatment	0.005	different_construct
+F11	B4	-0.014440824924283046	Scramble	no_treatment	0.005	different_construct
+F11	B6	-0.31199056333500325	Scramble	no_treatment	0.005	different_construct
+F11	B10	0.00041048498949358545	Scramble	no_treatment	0.005	different_construct
+G11	B4	-0.0755005986610036	Scramble	no_treatment	0.005	different_construct
+G11	B6	-0.296671146650321	Scramble	no_treatment	0.005	different_construct
+G11	B10	0.07672746189945157	Scramble	no_treatment	0.005	different_construct
+B2	E2	0.05399025088761823	Scramble	no_treatment	0.1	different_construct
+B2	E5	-0.21556768709224308	Scramble	no_treatment	0.1	different_construct
+B2	E8	0.2234089741299602	Scramble	no_treatment	0.1	different_construct
+B5	E2	-0.04868591241250988	Scramble	no_treatment	0.1	different_construct
+B5	E5	0.08826336046440583	Scramble	no_treatment	0.1	different_construct
+B5	E8	-0.12914135631669435	Scramble	no_treatment	0.1	different_construct
+B8	E2	-0.0715647984226309	Scramble	no_treatment	0.1	different_construct
+B8	E5	-0.1324747005866169	Scramble	no_treatment	0.1	different_construct
+B8	E8	-0.012672322346337295	Scramble	no_treatment	0.1	different_construct
+B11	E2	-0.09331443869211722	Scramble	no_treatment	0.1	different_construct
+B11	E5	-0.060722717703942865	Scramble	no_treatment	0.1	different_construct
+B11	E8	-0.04681864651581504	Scramble	no_treatment	0.1	different_construct
+C2	E2	-0.18421330692955679	Scramble	no_treatment	0.1	different_construct
+C2	E5	0.034265540087429894	Scramble	no_treatment	0.1	different_construct
+C2	E8	-0.2050078943960939	Scramble	no_treatment	0.1	different_construct
+C5	E2	-0.037328529980513704	Scramble	no_treatment	0.1	different_construct
+C5	E5	0.28626164611407945	Scramble	no_treatment	0.1	different_construct
+C5	E8	-0.012484363279687457	Scramble	no_treatment	0.1	different_construct
+C8	E2	-0.09638887199816207	Scramble	no_treatment	0.1	different_construct
+C8	E5	0.2658114802949226	Scramble	no_treatment	0.1	different_construct
+C8	E8	-0.14207793707830257	Scramble	no_treatment	0.1	different_construct
+C11	E2	0.15808131303677117	Scramble	no_treatment	0.1	different_construct
+C11	E5	0.19736884456800746	Scramble	no_treatment	0.1	different_construct
+C11	E8	0.021117057251330514	Scramble	no_treatment	0.1	different_construct
+D2	E2	-0.0737432946349565	Scramble	no_treatment	0.1	different_construct
+D2	E5	0.11856981907724276	Scramble	no_treatment	0.1	different_construct
+D2	E8	-0.13230686979922987	Scramble	no_treatment	0.1	different_construct
+D5	E2	-0.09321855947230843	Scramble	no_treatment	0.1	different_construct
+D5	E5	-0.01788051202654802	Scramble	no_treatment	0.1	different_construct
+D5	E8	-0.17341507368347536	Scramble	no_treatment	0.1	different_construct
+D8	E2	-0.24588462356028867	Scramble	no_treatment	0.1	different_construct
+D8	E5	-0.05225253556799708	Scramble	no_treatment	0.1	different_construct
+D8	E8	-0.0972305556072324	Scramble	no_treatment	0.1	different_construct
+D11	E2	0.06104601304541674	Scramble	no_treatment	0.1	different_construct
+D11	E5	0.1420259168881419	Scramble	no_treatment	0.1	different_construct
+D11	E8	0.058350855075779674	Scramble	no_treatment	0.1	different_construct
+E11	E2	-0.03468973915841328	Scramble	no_treatment	0.1	different_construct
+E11	E5	0.13838205621492386	Scramble	no_treatment	0.1	different_construct
+E11	E8	0.05169463523306272	Scramble	no_treatment	0.1	different_construct
+F11	E2	-0.21468575340946314	Scramble	no_treatment	0.1	different_construct
+F11	E5	0.09735242991247163	Scramble	no_treatment	0.1	different_construct
+F11	E8	-0.21198931161557374	Scramble	no_treatment	0.1	different_construct
+G11	E2	-0.05873866422383581	Scramble	no_treatment	0.1	different_construct
+G11	E5	-0.12199864060831746	Scramble	no_treatment	0.1	different_construct
+G11	E8	-0.39006038710352986	Scramble	no_treatment	0.1	different_construct
+B2	E3	0.05498503805599647	Scramble	no_treatment	0.01	different_construct
+B2	E6	0.07522080543764992	Scramble	no_treatment	0.01	different_construct
+B2	E9	0.15024433945684385	Scramble	no_treatment	0.01	different_construct
+B5	E3	0.005299160967031791	Scramble	no_treatment	0.01	different_construct
+B5	E6	0.06696877223259988	Scramble	no_treatment	0.01	different_construct
+B5	E9	-0.12739073939526876	Scramble	no_treatment	0.01	different_construct
+B8	E3	0.03810655497327437	Scramble	no_treatment	0.01	different_construct
+B8	E6	0.0443180552042338	Scramble	no_treatment	0.01	different_construct
+B8	E9	0.006154045839972623	Scramble	no_treatment	0.01	different_construct
+B11	E3	-0.04326991107835599	Scramble	no_treatment	0.01	different_construct
+B11	E6	-0.11317038230160822	Scramble	no_treatment	0.01	different_construct
+B11	E9	-0.12916979383995375	Scramble	no_treatment	0.01	different_construct
+C2	E3	-0.04291444950036564	Scramble	no_treatment	0.01	different_construct
+C2	E6	-0.10884060676355803	Scramble	no_treatment	0.01	different_construct
+C2	E9	-0.15514249906246577	Scramble	no_treatment	0.01	different_construct
+C5	E3	-0.19545386342399232	Scramble	no_treatment	0.01	different_construct
+C5	E6	-0.038971323174216	Scramble	no_treatment	0.01	different_construct
+C5	E9	-0.18186662287103747	Scramble	no_treatment	0.01	different_construct
+C8	E3	-0.046569879217750826	Scramble	no_treatment	0.01	different_construct
+C8	E6	0.07085256920328394	Scramble	no_treatment	0.01	different_construct
+C8	E9	-0.038121757702501965	Scramble	no_treatment	0.01	different_construct
+C11	E3	-0.042760635259664226	Scramble	no_treatment	0.01	different_construct
+C11	E6	0.013721014186558444	Scramble	no_treatment	0.01	different_construct
+C11	E9	-0.08279398701642052	Scramble	no_treatment	0.01	different_construct
+D2	E3	-0.24524772997465194	Scramble	no_treatment	0.01	different_construct
+D2	E6	-0.1778393191450515	Scramble	no_treatment	0.01	different_construct
+D2	E9	-0.23924311719819535	Scramble	no_treatment	0.01	different_construct
+D5	E3	-0.04030142978905791	Scramble	no_treatment	0.01	different_construct
+D5	E6	-0.04740521101277294	Scramble	no_treatment	0.01	different_construct
+D5	E9	-0.04465709838856168	Scramble	no_treatment	0.01	different_construct
+D8	E3	-0.052906812285990285	Scramble	no_treatment	0.01	different_construct
+D8	E6	-0.07180890141457992	Scramble	no_treatment	0.01	different_construct
+D8	E9	-0.06811478503781723	Scramble	no_treatment	0.01	different_construct
+D11	E3	0.09250893975177082	Scramble	no_treatment	0.01	different_construct
+D11	E6	-0.08493507782203237	Scramble	no_treatment	0.01	different_construct
+D11	E9	-0.06706780968930463	Scramble	no_treatment	0.01	different_construct
+E11	E3	0.0708319419795463	Scramble	no_treatment	0.01	different_construct
+E11	E6	0.09657630663494758	Scramble	no_treatment	0.01	different_construct
+E11	E9	0.016195707925902407	Scramble	no_treatment	0.01	different_construct
+F11	E3	-0.13088232442764988	Scramble	no_treatment	0.01	different_construct
+F11	E6	-0.13199946525265033	Scramble	no_treatment	0.01	different_construct
+F11	E9	-0.15827401102987115	Scramble	no_treatment	0.01	different_construct
+G11	E3	-0.26403055660225894	Scramble	no_treatment	0.01	different_construct
+G11	E6	-0.23973646122405545	Scramble	no_treatment	0.01	different_construct
+G11	E9	-0.25659238833188763	Scramble	no_treatment	0.01	different_construct
+B2	E4	0.1637068597481602	Scramble	no_treatment	0.001	different_construct
+B2	E7	-0.07296190127383644	Scramble	no_treatment	0.001	different_construct
+B2	E10	0.00546947981361787	Scramble	no_treatment	0.001	different_construct
+B5	E4	0.024188335680978428	Scramble	no_treatment	0.001	different_construct
+B5	E7	0.10187433881568907	Scramble	no_treatment	0.001	different_construct
+B5	E10	-0.25863485623182436	Scramble	no_treatment	0.001	different_construct
+B8	E4	-0.0244732645428101	Scramble	no_treatment	0.001	different_construct
+B8	E7	-0.01157046288759029	Scramble	no_treatment	0.001	different_construct
+B8	E10	-0.1082409503194495	Scramble	no_treatment	0.001	different_construct
+B11	E4	-0.048203911516322084	Scramble	no_treatment	0.001	different_construct
+B11	E7	0.14390720974215507	Scramble	no_treatment	0.001	different_construct
+B11	E10	-0.07074529455168965	Scramble	no_treatment	0.001	different_construct
+C2	E4	0.05605486291947492	Scramble	no_treatment	0.001	different_construct
+C2	E7	-0.12129293086147923	Scramble	no_treatment	0.001	different_construct
+C2	E10	-0.24912581750087937	Scramble	no_treatment	0.001	different_construct
+C5	E4	-0.009518984191078727	Scramble	no_treatment	0.001	different_construct
+C5	E7	-0.03621750021851872	Scramble	no_treatment	0.001	different_construct
+C5	E10	-0.05966179346072986	Scramble	no_treatment	0.001	different_construct
+C8	E4	-0.0038154082012507675	Scramble	no_treatment	0.001	different_construct
+C8	E7	-0.07375870961538655	Scramble	no_treatment	0.001	different_construct
+C8	E10	-0.09355409501991827	Scramble	no_treatment	0.001	different_construct
+C11	E4	-0.04414326561452338	Scramble	no_treatment	0.001	different_construct
+C11	E7	0.17155381327385685	Scramble	no_treatment	0.001	different_construct
+C11	E10	0.06198182422711014	Scramble	no_treatment	0.001	different_construct
+D2	E4	-0.13724698385765796	Scramble	no_treatment	0.001	different_construct
+D2	E7	-0.24298758183580432	Scramble	no_treatment	0.001	different_construct
+D2	E10	-0.11949925088165544	Scramble	no_treatment	0.001	different_construct
+D5	E4	-0.14177468419269132	Scramble	no_treatment	0.001	different_construct
+D5	E7	-0.07911485164530004	Scramble	no_treatment	0.001	different_construct
+D5	E10	-0.01935275345999303	Scramble	no_treatment	0.001	different_construct
+D8	E4	-0.11851332094683154	Scramble	no_treatment	0.001	different_construct
+D8	E7	-0.1205750903292839	Scramble	no_treatment	0.001	different_construct
+D8	E10	-0.1388160730204492	Scramble	no_treatment	0.001	different_construct
+D11	E4	-0.0013600020958339802	Scramble	no_treatment	0.001	different_construct
+D11	E7	0.13195540612691964	Scramble	no_treatment	0.001	different_construct
+D11	E10	-0.0298902313148058	Scramble	no_treatment	0.001	different_construct
+E11	E4	0.02041912618638518	Scramble	no_treatment	0.001	different_construct
+E11	E7	-0.06619140552433962	Scramble	no_treatment	0.001	different_construct
+E11	E10	-0.15583877144198222	Scramble	no_treatment	0.001	different_construct
+F11	E4	-0.10652071692374185	Scramble	no_treatment	0.001	different_construct
+F11	E7	-0.21752618780412233	Scramble	no_treatment	0.001	different_construct
+F11	E10	-0.3012180242364343	Scramble	no_treatment	0.001	different_construct
+G11	E4	-0.13595802216199612	Scramble	no_treatment	0.001	different_construct
+G11	E7	-0.14368644999642452	Scramble	no_treatment	0.001	different_construct
+G11	E10	-0.16802159685792487	Scramble	no_treatment	0.001	different_construct
 C3	D3	0.002262064581258362	NF1 Target 1	NF1 Target 2	0.05	different_construct
 C3	D6	0.1765005417760543	NF1 Target 1	NF1 Target 2	0.05	different_construct
 C3	D9	-0.11973356126903768	NF1 Target 1	NF1 Target 2	0.05	different_construct
@@ -689,18 +719,927 @@ G9	F9	0.41612134945246765	NF1 Target 1	NF1 Target 2	0.01	different_construct
 G10	F4	0.025899045987594245	NF1 Target 1	NF1 Target 2	0.001	different_construct
 G10	F7	-0.0014997601425604983	NF1 Target 1	NF1 Target 2	0.001	different_construct
 G10	F10	0.1474056472182258	NF1 Target 1	NF1 Target 2	0.001	different_construct
+C3	B2	0.2479871795339213	NF1 Target 1	no_treatment	0.05	different_construct
+C3	B5	-0.014458631124899667	NF1 Target 1	no_treatment	0.05	different_construct
+C3	B8	0.0956073784367998	NF1 Target 1	no_treatment	0.05	different_construct
+C3	B11	-0.08019691408284166	NF1 Target 1	no_treatment	0.05	different_construct
+C3	C2	-0.08991528720691906	NF1 Target 1	no_treatment	0.05	different_construct
+C3	C5	0.013501827166383326	NF1 Target 1	no_treatment	0.05	different_construct
+C3	C8	0.03874619042112836	NF1 Target 1	no_treatment	0.05	different_construct
+C3	C11	-0.09567337833416649	NF1 Target 1	no_treatment	0.05	different_construct
+C3	D2	-0.06771199946277616	NF1 Target 1	no_treatment	0.05	different_construct
+C3	D5	-0.026295285819999854	NF1 Target 1	no_treatment	0.05	different_construct
+C3	D8	-0.06561562762750284	NF1 Target 1	no_treatment	0.05	different_construct
+C3	D11	-0.00807142043698277	NF1 Target 1	no_treatment	0.05	different_construct
+C3	E11	-0.0645820590598919	NF1 Target 1	no_treatment	0.05	different_construct
+C3	F11	-0.1597169123015892	NF1 Target 1	no_treatment	0.05	different_construct
+C3	G11	-0.1807831410181401	NF1 Target 1	no_treatment	0.05	different_construct
+C4	B2	0.17502126385502575	NF1 Target 1	no_treatment	0.005	different_construct
+C4	B5	0.09246756359918701	NF1 Target 1	no_treatment	0.005	different_construct
+C4	B8	0.07512182658976917	NF1 Target 1	no_treatment	0.005	different_construct
+C4	B11	-0.021082885455127008	NF1 Target 1	no_treatment	0.005	different_construct
+C4	C2	0.039290424770143155	NF1 Target 1	no_treatment	0.005	different_construct
+C4	C5	-0.07440492870387762	NF1 Target 1	no_treatment	0.005	different_construct
+C4	C8	-0.019636269808709243	NF1 Target 1	no_treatment	0.005	different_construct
+C4	C11	-0.07165152666473226	NF1 Target 1	no_treatment	0.005	different_construct
+C4	D2	-0.09468737294108985	NF1 Target 1	no_treatment	0.005	different_construct
+C4	D5	-0.07266731872076049	NF1 Target 1	no_treatment	0.005	different_construct
+C4	D8	0.004439375585565957	NF1 Target 1	no_treatment	0.005	different_construct
+C4	D11	0.019587440813260176	NF1 Target 1	no_treatment	0.005	different_construct
+C4	E11	-0.02197890895647214	NF1 Target 1	no_treatment	0.005	different_construct
+C4	F11	-0.14289424390100927	NF1 Target 1	no_treatment	0.005	different_construct
+C4	G11	-0.1972539042102023	NF1 Target 1	no_treatment	0.005	different_construct
+C6	B2	0.12030350277687907	NF1 Target 1	no_treatment	0.05	different_construct
+C6	B5	-0.09103000060952399	NF1 Target 1	no_treatment	0.05	different_construct
+C6	B8	-0.13609815297648434	NF1 Target 1	no_treatment	0.05	different_construct
+C6	B11	-0.1077501796848516	NF1 Target 1	no_treatment	0.05	different_construct
+C6	C2	-0.24945590722825578	NF1 Target 1	no_treatment	0.05	different_construct
+C6	C5	-0.10724608992285921	NF1 Target 1	no_treatment	0.05	different_construct
+C6	C8	-0.10682547201705364	NF1 Target 1	no_treatment	0.05	different_construct
+C6	C11	-0.1527251613460984	NF1 Target 1	no_treatment	0.05	different_construct
+C6	D2	-0.2323962994077256	NF1 Target 1	no_treatment	0.05	different_construct
+C6	D5	0.043776772192698356	NF1 Target 1	no_treatment	0.05	different_construct
+C6	D8	-0.04568940598425395	NF1 Target 1	no_treatment	0.05	different_construct
+C6	D11	-0.18194769608513642	NF1 Target 1	no_treatment	0.05	different_construct
+C6	E11	-0.10045280632500288	NF1 Target 1	no_treatment	0.05	different_construct
+C6	F11	-0.20347632625015594	NF1 Target 1	no_treatment	0.05	different_construct
+C6	G11	-0.19491113942668362	NF1 Target 1	no_treatment	0.05	different_construct
+C7	B2	0.14528864700563895	NF1 Target 1	no_treatment	0.005	different_construct
+C7	B5	0.04689611597824714	NF1 Target 1	no_treatment	0.005	different_construct
+C7	B8	-0.014692618316676643	NF1 Target 1	no_treatment	0.005	different_construct
+C7	B11	0.03965340042126019	NF1 Target 1	no_treatment	0.005	different_construct
+C7	C2	-0.26593600273460244	NF1 Target 1	no_treatment	0.005	different_construct
+C7	C5	-0.02180440676451459	NF1 Target 1	no_treatment	0.005	different_construct
+C7	C8	-0.02076954778878207	NF1 Target 1	no_treatment	0.005	different_construct
+C7	C11	0.011116095064078976	NF1 Target 1	no_treatment	0.005	different_construct
+C7	D2	-0.2662380488790293	NF1 Target 1	no_treatment	0.005	different_construct
+C7	D5	0.05340881943814435	NF1 Target 1	no_treatment	0.005	different_construct
+C7	D8	-0.08405122022240945	NF1 Target 1	no_treatment	0.005	different_construct
+C7	D11	-0.050789284325360784	NF1 Target 1	no_treatment	0.005	different_construct
+C7	E11	-0.2606362090529641	NF1 Target 1	no_treatment	0.005	different_construct
+C7	F11	-0.3109414161080761	NF1 Target 1	no_treatment	0.005	different_construct
+C7	G11	-0.2313925936879822	NF1 Target 1	no_treatment	0.005	different_construct
+C9	B2	0.23343282509968372	NF1 Target 1	no_treatment	0.05	different_construct
+C9	B5	-0.16463372220864853	NF1 Target 1	no_treatment	0.05	different_construct
+C9	B8	0.05712170917501582	NF1 Target 1	no_treatment	0.05	different_construct
+C9	B11	-0.092448531187207	NF1 Target 1	no_treatment	0.05	different_construct
+C9	C2	-0.16786308635198552	NF1 Target 1	no_treatment	0.05	different_construct
+C9	C5	0.01306220220456233	NF1 Target 1	no_treatment	0.05	different_construct
+C9	C8	-0.0483884044664269	NF1 Target 1	no_treatment	0.05	different_construct
+C9	C11	-0.11172515422184877	NF1 Target 1	no_treatment	0.05	different_construct
+C9	D2	-0.08426284251235705	NF1 Target 1	no_treatment	0.05	different_construct
+C9	D5	-0.07699604946603322	NF1 Target 1	no_treatment	0.05	different_construct
+C9	D8	-0.0964831416009541	NF1 Target 1	no_treatment	0.05	different_construct
+C9	D11	0.028723451635350557	NF1 Target 1	no_treatment	0.05	different_construct
+C9	E11	-0.08971141085586627	NF1 Target 1	no_treatment	0.05	different_construct
+C9	F11	-0.2429189128499422	NF1 Target 1	no_treatment	0.05	different_construct
+C9	G11	-0.2558973737507997	NF1 Target 1	no_treatment	0.05	different_construct
+C10	B2	0.1444398119196098	NF1 Target 1	no_treatment	0.005	different_construct
+C10	B5	-0.026485396182677808	NF1 Target 1	no_treatment	0.005	different_construct
+C10	B8	-0.11339256147718081	NF1 Target 1	no_treatment	0.005	different_construct
+C10	B11	-0.015947393414970132	NF1 Target 1	no_treatment	0.005	different_construct
+C10	C2	-0.2758504889029784	NF1 Target 1	no_treatment	0.005	different_construct
+C10	C5	-0.22865011158144322	NF1 Target 1	no_treatment	0.005	different_construct
+C10	C8	-0.24777598918057003	NF1 Target 1	no_treatment	0.005	different_construct
+C10	C11	0.042296099028003686	NF1 Target 1	no_treatment	0.005	different_construct
+C10	D2	-0.2683900751599428	NF1 Target 1	no_treatment	0.005	different_construct
+C10	D5	-0.07684325105409297	NF1 Target 1	no_treatment	0.005	different_construct
+C10	D8	-0.17170458472670508	NF1 Target 1	no_treatment	0.005	different_construct
+C10	D11	-0.1083065518799668	NF1 Target 1	no_treatment	0.005	different_construct
+C10	E11	-0.11658803078186533	NF1 Target 1	no_treatment	0.005	different_construct
+C10	F11	-0.3120609687001394	NF1 Target 1	no_treatment	0.005	different_construct
+C10	G11	-0.21371799901998773	NF1 Target 1	no_treatment	0.005	different_construct
+F2	B2	-0.11888636506994063	NF1 Target 1	no_treatment	0.1	different_construct
+F2	B5	-0.18133665239228197	NF1 Target 1	no_treatment	0.1	different_construct
+F2	B8	0.0021343333160895187	NF1 Target 1	no_treatment	0.1	different_construct
+F2	B11	-0.09289963570769628	NF1 Target 1	no_treatment	0.1	different_construct
+F2	C2	0.08520217781205856	NF1 Target 1	no_treatment	0.1	different_construct
+F2	C5	0.06141945154419442	NF1 Target 1	no_treatment	0.1	different_construct
+F2	C8	-0.010816998368842149	NF1 Target 1	no_treatment	0.1	different_construct
+F2	C11	-0.09402331124154036	NF1 Target 1	no_treatment	0.1	different_construct
+F2	D2	0.11379230143620628	NF1 Target 1	no_treatment	0.1	different_construct
+F2	D5	-0.0577827013990375	NF1 Target 1	no_treatment	0.1	different_construct
+F2	D8	0.11897919653687022	NF1 Target 1	no_treatment	0.1	different_construct
+F2	D11	-0.003892372888624584	NF1 Target 1	no_treatment	0.1	different_construct
+F2	E11	-0.033224394889171754	NF1 Target 1	no_treatment	0.1	different_construct
+F2	F11	0.11314741252420119	NF1 Target 1	no_treatment	0.1	different_construct
+F2	G11	0.050437173527761406	NF1 Target 1	no_treatment	0.1	different_construct
+F3	B2	0.1849469751798335	NF1 Target 1	no_treatment	0.01	different_construct
+F3	B5	-0.03867976303527238	NF1 Target 1	no_treatment	0.01	different_construct
+F3	B8	-0.12536420218120836	NF1 Target 1	no_treatment	0.01	different_construct
+F3	B11	0.027202574830794083	NF1 Target 1	no_treatment	0.01	different_construct
+F3	C2	-0.21927557520770904	NF1 Target 1	no_treatment	0.01	different_construct
+F3	C5	-0.07966107476922628	NF1 Target 1	no_treatment	0.01	different_construct
+F3	C8	-0.22971649808707464	NF1 Target 1	no_treatment	0.01	different_construct
+F3	C11	0.012131960920770223	NF1 Target 1	no_treatment	0.01	different_construct
+F3	D2	-0.1400341012373706	NF1 Target 1	no_treatment	0.01	different_construct
+F3	D5	-0.07096849859061413	NF1 Target 1	no_treatment	0.01	different_construct
+F3	D8	-0.157834678645588	NF1 Target 1	no_treatment	0.01	different_construct
+F3	D11	0.08227883428306623	NF1 Target 1	no_treatment	0.01	different_construct
+F3	E11	0.07370607940343893	NF1 Target 1	no_treatment	0.01	different_construct
+F3	F11	-0.22963644845218065	NF1 Target 1	no_treatment	0.01	different_construct
+F3	G11	-0.29959776015810385	NF1 Target 1	no_treatment	0.01	different_construct
+F4	B2	-0.043244674405466484	NF1 Target 1	no_treatment	0.001	different_construct
+F4	B5	-0.19370621965823676	NF1 Target 1	no_treatment	0.001	different_construct
+F4	B8	0.054101180729781956	NF1 Target 1	no_treatment	0.001	different_construct
+F4	B11	-0.15529206889073482	NF1 Target 1	no_treatment	0.001	different_construct
+F4	C2	-0.09976363772744802	NF1 Target 1	no_treatment	0.001	different_construct
+F4	C5	0.0039010536379105922	NF1 Target 1	no_treatment	0.001	different_construct
+F4	C8	-0.06225479472797061	NF1 Target 1	no_treatment	0.001	different_construct
+F4	C11	0.012569192442399107	NF1 Target 1	no_treatment	0.001	different_construct
+F4	D2	-0.009908556714147518	NF1 Target 1	no_treatment	0.001	different_construct
+F4	D5	-0.14329523611576023	NF1 Target 1	no_treatment	0.001	different_construct
+F4	D8	0.017749016195522924	NF1 Target 1	no_treatment	0.001	different_construct
+F4	D11	0.04450644279521299	NF1 Target 1	no_treatment	0.001	different_construct
+F4	E11	0.10981096532163767	NF1 Target 1	no_treatment	0.001	different_construct
+F4	F11	-0.02659860409423418	NF1 Target 1	no_treatment	0.001	different_construct
+F4	G11	-0.05191005232475517	NF1 Target 1	no_treatment	0.001	different_construct
+F5	B2	-0.03134362816442693	NF1 Target 1	no_treatment	0.1	different_construct
+F5	B5	-0.09846194921485174	NF1 Target 1	no_treatment	0.1	different_construct
+F5	B8	0.015835938899422218	NF1 Target 1	no_treatment	0.1	different_construct
+F5	B11	-0.015457780918062998	NF1 Target 1	no_treatment	0.1	different_construct
+F5	C2	0.07533342991443108	NF1 Target 1	no_treatment	0.1	different_construct
+F5	C5	-0.01400375443874253	NF1 Target 1	no_treatment	0.1	different_construct
+F5	C8	-0.1071751644489873	NF1 Target 1	no_treatment	0.1	different_construct
+F5	C11	-0.259491413300892	NF1 Target 1	no_treatment	0.1	different_construct
+F5	D2	-0.01962849564115155	NF1 Target 1	no_treatment	0.1	different_construct
+F5	D5	0.12723341006406214	NF1 Target 1	no_treatment	0.1	different_construct
+F5	D8	0.0987643067237743	NF1 Target 1	no_treatment	0.1	different_construct
+F5	D11	-0.12373291464500538	NF1 Target 1	no_treatment	0.1	different_construct
+F5	E11	0.048517232502291625	NF1 Target 1	no_treatment	0.1	different_construct
+F5	F11	0.10750396497141501	NF1 Target 1	no_treatment	0.1	different_construct
+F5	G11	-0.06940321239753708	NF1 Target 1	no_treatment	0.1	different_construct
+F6	B2	-0.03305745111462807	NF1 Target 1	no_treatment	0.01	different_construct
+F6	B5	-0.07769466398612447	NF1 Target 1	no_treatment	0.01	different_construct
+F6	B8	-0.16127976570745176	NF1 Target 1	no_treatment	0.01	different_construct
+F6	B11	0.11858906135296286	NF1 Target 1	no_treatment	0.01	different_construct
+F6	C2	-0.12505406744144604	NF1 Target 1	no_treatment	0.01	different_construct
+F6	C5	-0.07893335957371615	NF1 Target 1	no_treatment	0.01	different_construct
+F6	C8	-0.19287122630138265	NF1 Target 1	no_treatment	0.01	different_construct
+F6	C11	-0.09805217975758568	NF1 Target 1	no_treatment	0.01	different_construct
+F6	D2	-0.06236846731769458	NF1 Target 1	no_treatment	0.01	different_construct
+F6	D5	-0.016832696428459127	NF1 Target 1	no_treatment	0.01	different_construct
+F6	D8	0.055103690998627976	NF1 Target 1	no_treatment	0.01	different_construct
+F6	D11	-0.021788511446708982	NF1 Target 1	no_treatment	0.01	different_construct
+F6	E11	-0.07823597803059007	NF1 Target 1	no_treatment	0.01	different_construct
+F6	F11	0.05553599320189777	NF1 Target 1	no_treatment	0.01	different_construct
+F6	G11	0.011210736969826688	NF1 Target 1	no_treatment	0.01	different_construct
+F7	B2	-0.005114198144159278	NF1 Target 1	no_treatment	0.001	different_construct
+F7	B5	-0.24059179441957515	NF1 Target 1	no_treatment	0.001	different_construct
+F7	B8	-0.12831684517053932	NF1 Target 1	no_treatment	0.001	different_construct
+F7	B11	-0.009939789219874371	NF1 Target 1	no_treatment	0.001	different_construct
+F7	C2	-0.23654032317448712	NF1 Target 1	no_treatment	0.001	different_construct
+F7	C5	0.01340783606817591	NF1 Target 1	no_treatment	0.001	different_construct
+F7	C8	-0.26845617366034163	NF1 Target 1	no_treatment	0.001	different_construct
+F7	C11	-0.014032245929932352	NF1 Target 1	no_treatment	0.001	different_construct
+F7	D2	-0.11175572568756392	NF1 Target 1	no_treatment	0.001	different_construct
+F7	D5	-0.06998066619264942	NF1 Target 1	no_treatment	0.001	different_construct
+F7	D8	-0.05740895835580073	NF1 Target 1	no_treatment	0.001	different_construct
+F7	D11	0.046190499303365856	NF1 Target 1	no_treatment	0.001	different_construct
+F7	E11	-0.16975015032991247	NF1 Target 1	no_treatment	0.001	different_construct
+F7	F11	-0.2415540609189771	NF1 Target 1	no_treatment	0.001	different_construct
+F7	G11	-0.06627180330989094	NF1 Target 1	no_treatment	0.001	different_construct
+F8	B2	0.10968706630335631	NF1 Target 1	no_treatment	0.1	different_construct
+F8	B5	-0.15684244680641768	NF1 Target 1	no_treatment	0.1	different_construct
+F8	B8	-0.02236901487332837	NF1 Target 1	no_treatment	0.1	different_construct
+F8	B11	-0.013021975175757088	NF1 Target 1	no_treatment	0.1	different_construct
+F8	C2	0.053243822401511605	NF1 Target 1	no_treatment	0.1	different_construct
+F8	C5	-0.010532433307532077	NF1 Target 1	no_treatment	0.1	different_construct
+F8	C8	-0.020746943390045125	NF1 Target 1	no_treatment	0.1	different_construct
+F8	C11	-0.1814946249077475	NF1 Target 1	no_treatment	0.1	different_construct
+F8	D2	-0.0026564434158868927	NF1 Target 1	no_treatment	0.1	different_construct
+F8	D5	-0.005803277275217655	NF1 Target 1	no_treatment	0.1	different_construct
+F8	D8	-0.028281992930801518	NF1 Target 1	no_treatment	0.1	different_construct
+F8	D11	-0.051481574513090815	NF1 Target 1	no_treatment	0.1	different_construct
+F8	E11	0.040057049550391834	NF1 Target 1	no_treatment	0.1	different_construct
+F8	F11	0.035594368447619366	NF1 Target 1	no_treatment	0.1	different_construct
+F8	G11	-0.12044681819449499	NF1 Target 1	no_treatment	0.1	different_construct
+F9	B2	-0.1997568801619628	NF1 Target 1	no_treatment	0.01	different_construct
+F9	B5	0.14593625429968446	NF1 Target 1	no_treatment	0.01	different_construct
+F9	B8	-0.015477400087022399	NF1 Target 1	no_treatment	0.01	different_construct
+F9	B11	0.015446472025598833	NF1 Target 1	no_treatment	0.01	different_construct
+F9	C2	-0.025677474164628036	NF1 Target 1	no_treatment	0.01	different_construct
+F9	C5	0.05539251546961348	NF1 Target 1	no_treatment	0.01	different_construct
+F9	C8	0.021411751873646797	NF1 Target 1	no_treatment	0.01	different_construct
+F9	C11	0.1734109916760908	NF1 Target 1	no_treatment	0.01	different_construct
+F9	D2	0.14061135800427807	NF1 Target 1	no_treatment	0.01	different_construct
+F9	D5	0.005543628045731043	NF1 Target 1	no_treatment	0.01	different_construct
+F9	D8	0.0029287181524192568	NF1 Target 1	no_treatment	0.01	different_construct
+F9	D11	0.10570065658160532	NF1 Target 1	no_treatment	0.01	different_construct
+F9	E11	-0.011805007208187234	NF1 Target 1	no_treatment	0.01	different_construct
+F9	F11	0.08651193255309213	NF1 Target 1	no_treatment	0.01	different_construct
+F9	G11	0.21980412873205402	NF1 Target 1	no_treatment	0.01	different_construct
+F10	B2	-0.12861675811595039	NF1 Target 1	no_treatment	0.001	different_construct
+F10	B5	0.09636051100967989	NF1 Target 1	no_treatment	0.001	different_construct
+F10	B8	-0.09164058623980888	NF1 Target 1	no_treatment	0.001	different_construct
+F10	B11	0.015577946949534982	NF1 Target 1	no_treatment	0.001	different_construct
+F10	C2	0.005242871255585277	NF1 Target 1	no_treatment	0.001	different_construct
+F10	C5	0.1017280965917792	NF1 Target 1	no_treatment	0.001	different_construct
+F10	C8	-0.08652097141028421	NF1 Target 1	no_treatment	0.001	different_construct
+F10	C11	0.16303259184243313	NF1 Target 1	no_treatment	0.001	different_construct
+F10	D2	0.1285661777602643	NF1 Target 1	no_treatment	0.001	different_construct
+F10	D5	-0.15922740910098412	NF1 Target 1	no_treatment	0.001	different_construct
+F10	D8	-0.032899749814299786	NF1 Target 1	no_treatment	0.001	different_construct
+F10	D11	0.11486362802372037	NF1 Target 1	no_treatment	0.001	different_construct
+F10	E11	0.09620595809878822	NF1 Target 1	no_treatment	0.001	different_construct
+F10	F11	0.1650796354328769	NF1 Target 1	no_treatment	0.001	different_construct
+F10	G11	0.21945728616852594	NF1 Target 1	no_treatment	0.001	different_construct
+B2	C3	0.2479871795339213	NF1 Target 1	no_treatment	0.05	different_construct
+B2	C6	0.12030350277687907	NF1 Target 1	no_treatment	0.05	different_construct
+B2	C9	0.23343282509968372	NF1 Target 1	no_treatment	0.05	different_construct
+B5	C3	-0.014458631124899667	NF1 Target 1	no_treatment	0.05	different_construct
+B5	C6	-0.09103000060952399	NF1 Target 1	no_treatment	0.05	different_construct
+B5	C9	-0.16463372220864853	NF1 Target 1	no_treatment	0.05	different_construct
+B8	C3	0.0956073784367998	NF1 Target 1	no_treatment	0.05	different_construct
+B8	C6	-0.13609815297648434	NF1 Target 1	no_treatment	0.05	different_construct
+B8	C9	0.05712170917501582	NF1 Target 1	no_treatment	0.05	different_construct
+B11	C3	-0.08019691408284166	NF1 Target 1	no_treatment	0.05	different_construct
+B11	C6	-0.1077501796848516	NF1 Target 1	no_treatment	0.05	different_construct
+B11	C9	-0.092448531187207	NF1 Target 1	no_treatment	0.05	different_construct
+C2	C3	-0.08991528720691906	NF1 Target 1	no_treatment	0.05	different_construct
+C2	C6	-0.24945590722825578	NF1 Target 1	no_treatment	0.05	different_construct
+C2	C9	-0.16786308635198552	NF1 Target 1	no_treatment	0.05	different_construct
+C5	C3	0.013501827166383326	NF1 Target 1	no_treatment	0.05	different_construct
+C5	C6	-0.10724608992285921	NF1 Target 1	no_treatment	0.05	different_construct
+C5	C9	0.01306220220456233	NF1 Target 1	no_treatment	0.05	different_construct
+C8	C3	0.03874619042112836	NF1 Target 1	no_treatment	0.05	different_construct
+C8	C6	-0.10682547201705364	NF1 Target 1	no_treatment	0.05	different_construct
+C8	C9	-0.0483884044664269	NF1 Target 1	no_treatment	0.05	different_construct
+C11	C3	-0.09567337833416649	NF1 Target 1	no_treatment	0.05	different_construct
+C11	C6	-0.1527251613460984	NF1 Target 1	no_treatment	0.05	different_construct
+C11	C9	-0.11172515422184877	NF1 Target 1	no_treatment	0.05	different_construct
+D2	C3	-0.06771199946277616	NF1 Target 1	no_treatment	0.05	different_construct
+D2	C6	-0.2323962994077256	NF1 Target 1	no_treatment	0.05	different_construct
+D2	C9	-0.08426284251235705	NF1 Target 1	no_treatment	0.05	different_construct
+D5	C3	-0.026295285819999854	NF1 Target 1	no_treatment	0.05	different_construct
+D5	C6	0.043776772192698356	NF1 Target 1	no_treatment	0.05	different_construct
+D5	C9	-0.07699604946603322	NF1 Target 1	no_treatment	0.05	different_construct
+D8	C3	-0.06561562762750284	NF1 Target 1	no_treatment	0.05	different_construct
+D8	C6	-0.04568940598425395	NF1 Target 1	no_treatment	0.05	different_construct
+D8	C9	-0.0964831416009541	NF1 Target 1	no_treatment	0.05	different_construct
+D11	C3	-0.00807142043698277	NF1 Target 1	no_treatment	0.05	different_construct
+D11	C6	-0.18194769608513642	NF1 Target 1	no_treatment	0.05	different_construct
+D11	C9	0.028723451635350557	NF1 Target 1	no_treatment	0.05	different_construct
+E11	C3	-0.0645820590598919	NF1 Target 1	no_treatment	0.05	different_construct
+E11	C6	-0.10045280632500288	NF1 Target 1	no_treatment	0.05	different_construct
+E11	C9	-0.08971141085586627	NF1 Target 1	no_treatment	0.05	different_construct
+F11	C3	-0.1597169123015892	NF1 Target 1	no_treatment	0.05	different_construct
+F11	C6	-0.20347632625015594	NF1 Target 1	no_treatment	0.05	different_construct
+F11	C9	-0.2429189128499422	NF1 Target 1	no_treatment	0.05	different_construct
+G11	C3	-0.1807831410181401	NF1 Target 1	no_treatment	0.05	different_construct
+G11	C6	-0.19491113942668362	NF1 Target 1	no_treatment	0.05	different_construct
+G11	C9	-0.2558973737507997	NF1 Target 1	no_treatment	0.05	different_construct
+B2	C4	0.17502126385502575	NF1 Target 1	no_treatment	0.005	different_construct
+B2	C7	0.14528864700563895	NF1 Target 1	no_treatment	0.005	different_construct
+B2	C10	0.1444398119196098	NF1 Target 1	no_treatment	0.005	different_construct
+B5	C4	0.09246756359918701	NF1 Target 1	no_treatment	0.005	different_construct
+B5	C7	0.04689611597824714	NF1 Target 1	no_treatment	0.005	different_construct
+B5	C10	-0.026485396182677808	NF1 Target 1	no_treatment	0.005	different_construct
+B8	C4	0.07512182658976917	NF1 Target 1	no_treatment	0.005	different_construct
+B8	C7	-0.014692618316676643	NF1 Target 1	no_treatment	0.005	different_construct
+B8	C10	-0.11339256147718081	NF1 Target 1	no_treatment	0.005	different_construct
+B11	C4	-0.021082885455127008	NF1 Target 1	no_treatment	0.005	different_construct
+B11	C7	0.03965340042126019	NF1 Target 1	no_treatment	0.005	different_construct
+B11	C10	-0.015947393414970132	NF1 Target 1	no_treatment	0.005	different_construct
+C2	C4	0.039290424770143155	NF1 Target 1	no_treatment	0.005	different_construct
+C2	C7	-0.26593600273460244	NF1 Target 1	no_treatment	0.005	different_construct
+C2	C10	-0.2758504889029784	NF1 Target 1	no_treatment	0.005	different_construct
+C5	C4	-0.07440492870387762	NF1 Target 1	no_treatment	0.005	different_construct
+C5	C7	-0.02180440676451459	NF1 Target 1	no_treatment	0.005	different_construct
+C5	C10	-0.22865011158144322	NF1 Target 1	no_treatment	0.005	different_construct
+C8	C4	-0.019636269808709243	NF1 Target 1	no_treatment	0.005	different_construct
+C8	C7	-0.02076954778878207	NF1 Target 1	no_treatment	0.005	different_construct
+C8	C10	-0.24777598918057003	NF1 Target 1	no_treatment	0.005	different_construct
+C11	C4	-0.07165152666473226	NF1 Target 1	no_treatment	0.005	different_construct
+C11	C7	0.011116095064078976	NF1 Target 1	no_treatment	0.005	different_construct
+C11	C10	0.042296099028003686	NF1 Target 1	no_treatment	0.005	different_construct
+D2	C4	-0.09468737294108985	NF1 Target 1	no_treatment	0.005	different_construct
+D2	C7	-0.2662380488790293	NF1 Target 1	no_treatment	0.005	different_construct
+D2	C10	-0.2683900751599428	NF1 Target 1	no_treatment	0.005	different_construct
+D5	C4	-0.07266731872076049	NF1 Target 1	no_treatment	0.005	different_construct
+D5	C7	0.05340881943814435	NF1 Target 1	no_treatment	0.005	different_construct
+D5	C10	-0.07684325105409297	NF1 Target 1	no_treatment	0.005	different_construct
+D8	C4	0.004439375585565957	NF1 Target 1	no_treatment	0.005	different_construct
+D8	C7	-0.08405122022240945	NF1 Target 1	no_treatment	0.005	different_construct
+D8	C10	-0.17170458472670508	NF1 Target 1	no_treatment	0.005	different_construct
+D11	C4	0.019587440813260176	NF1 Target 1	no_treatment	0.005	different_construct
+D11	C7	-0.050789284325360784	NF1 Target 1	no_treatment	0.005	different_construct
+D11	C10	-0.1083065518799668	NF1 Target 1	no_treatment	0.005	different_construct
+E11	C4	-0.02197890895647214	NF1 Target 1	no_treatment	0.005	different_construct
+E11	C7	-0.2606362090529641	NF1 Target 1	no_treatment	0.005	different_construct
+E11	C10	-0.11658803078186533	NF1 Target 1	no_treatment	0.005	different_construct
+F11	C4	-0.14289424390100927	NF1 Target 1	no_treatment	0.005	different_construct
+F11	C7	-0.3109414161080761	NF1 Target 1	no_treatment	0.005	different_construct
+F11	C10	-0.3120609687001394	NF1 Target 1	no_treatment	0.005	different_construct
+G11	C4	-0.1972539042102023	NF1 Target 1	no_treatment	0.005	different_construct
+G11	C7	-0.2313925936879822	NF1 Target 1	no_treatment	0.005	different_construct
+G11	C10	-0.21371799901998773	NF1 Target 1	no_treatment	0.005	different_construct
+B2	F2	-0.11888636506994063	NF1 Target 1	no_treatment	0.1	different_construct
+B2	F5	-0.03134362816442693	NF1 Target 1	no_treatment	0.1	different_construct
+B2	F8	0.10968706630335631	NF1 Target 1	no_treatment	0.1	different_construct
+B5	F2	-0.18133665239228197	NF1 Target 1	no_treatment	0.1	different_construct
+B5	F5	-0.09846194921485174	NF1 Target 1	no_treatment	0.1	different_construct
+B5	F8	-0.15684244680641768	NF1 Target 1	no_treatment	0.1	different_construct
+B8	F2	0.0021343333160895187	NF1 Target 1	no_treatment	0.1	different_construct
+B8	F5	0.015835938899422218	NF1 Target 1	no_treatment	0.1	different_construct
+B8	F8	-0.02236901487332837	NF1 Target 1	no_treatment	0.1	different_construct
+B11	F2	-0.09289963570769628	NF1 Target 1	no_treatment	0.1	different_construct
+B11	F5	-0.015457780918062998	NF1 Target 1	no_treatment	0.1	different_construct
+B11	F8	-0.013021975175757088	NF1 Target 1	no_treatment	0.1	different_construct
+C2	F2	0.08520217781205856	NF1 Target 1	no_treatment	0.1	different_construct
+C2	F5	0.07533342991443108	NF1 Target 1	no_treatment	0.1	different_construct
+C2	F8	0.053243822401511605	NF1 Target 1	no_treatment	0.1	different_construct
+C5	F2	0.06141945154419442	NF1 Target 1	no_treatment	0.1	different_construct
+C5	F5	-0.01400375443874253	NF1 Target 1	no_treatment	0.1	different_construct
+C5	F8	-0.010532433307532077	NF1 Target 1	no_treatment	0.1	different_construct
+C8	F2	-0.010816998368842149	NF1 Target 1	no_treatment	0.1	different_construct
+C8	F5	-0.1071751644489873	NF1 Target 1	no_treatment	0.1	different_construct
+C8	F8	-0.020746943390045125	NF1 Target 1	no_treatment	0.1	different_construct
+C11	F2	-0.09402331124154036	NF1 Target 1	no_treatment	0.1	different_construct
+C11	F5	-0.259491413300892	NF1 Target 1	no_treatment	0.1	different_construct
+C11	F8	-0.1814946249077475	NF1 Target 1	no_treatment	0.1	different_construct
+D2	F2	0.11379230143620628	NF1 Target 1	no_treatment	0.1	different_construct
+D2	F5	-0.01962849564115155	NF1 Target 1	no_treatment	0.1	different_construct
+D2	F8	-0.0026564434158868927	NF1 Target 1	no_treatment	0.1	different_construct
+D5	F2	-0.0577827013990375	NF1 Target 1	no_treatment	0.1	different_construct
+D5	F5	0.12723341006406214	NF1 Target 1	no_treatment	0.1	different_construct
+D5	F8	-0.005803277275217655	NF1 Target 1	no_treatment	0.1	different_construct
+D8	F2	0.11897919653687022	NF1 Target 1	no_treatment	0.1	different_construct
+D8	F5	0.0987643067237743	NF1 Target 1	no_treatment	0.1	different_construct
+D8	F8	-0.028281992930801518	NF1 Target 1	no_treatment	0.1	different_construct
+D11	F2	-0.003892372888624584	NF1 Target 1	no_treatment	0.1	different_construct
+D11	F5	-0.12373291464500538	NF1 Target 1	no_treatment	0.1	different_construct
+D11	F8	-0.051481574513090815	NF1 Target 1	no_treatment	0.1	different_construct
+E11	F2	-0.033224394889171754	NF1 Target 1	no_treatment	0.1	different_construct
+E11	F5	0.048517232502291625	NF1 Target 1	no_treatment	0.1	different_construct
+E11	F8	0.040057049550391834	NF1 Target 1	no_treatment	0.1	different_construct
+F11	F2	0.11314741252420119	NF1 Target 1	no_treatment	0.1	different_construct
+F11	F5	0.10750396497141501	NF1 Target 1	no_treatment	0.1	different_construct
+F11	F8	0.035594368447619366	NF1 Target 1	no_treatment	0.1	different_construct
+G11	F2	0.050437173527761406	NF1 Target 1	no_treatment	0.1	different_construct
+G11	F5	-0.06940321239753708	NF1 Target 1	no_treatment	0.1	different_construct
+G11	F8	-0.12044681819449499	NF1 Target 1	no_treatment	0.1	different_construct
+B2	F3	0.1849469751798335	NF1 Target 1	no_treatment	0.01	different_construct
+B2	F6	-0.03305745111462807	NF1 Target 1	no_treatment	0.01	different_construct
+B2	F9	-0.1997568801619628	NF1 Target 1	no_treatment	0.01	different_construct
+B5	F3	-0.03867976303527238	NF1 Target 1	no_treatment	0.01	different_construct
+B5	F6	-0.07769466398612447	NF1 Target 1	no_treatment	0.01	different_construct
+B5	F9	0.14593625429968446	NF1 Target 1	no_treatment	0.01	different_construct
+B8	F3	-0.12536420218120836	NF1 Target 1	no_treatment	0.01	different_construct
+B8	F6	-0.16127976570745176	NF1 Target 1	no_treatment	0.01	different_construct
+B8	F9	-0.015477400087022399	NF1 Target 1	no_treatment	0.01	different_construct
+B11	F3	0.027202574830794083	NF1 Target 1	no_treatment	0.01	different_construct
+B11	F6	0.11858906135296286	NF1 Target 1	no_treatment	0.01	different_construct
+B11	F9	0.015446472025598833	NF1 Target 1	no_treatment	0.01	different_construct
+C2	F3	-0.21927557520770904	NF1 Target 1	no_treatment	0.01	different_construct
+C2	F6	-0.12505406744144604	NF1 Target 1	no_treatment	0.01	different_construct
+C2	F9	-0.025677474164628036	NF1 Target 1	no_treatment	0.01	different_construct
+C5	F3	-0.07966107476922628	NF1 Target 1	no_treatment	0.01	different_construct
+C5	F6	-0.07893335957371615	NF1 Target 1	no_treatment	0.01	different_construct
+C5	F9	0.05539251546961348	NF1 Target 1	no_treatment	0.01	different_construct
+C8	F3	-0.22971649808707464	NF1 Target 1	no_treatment	0.01	different_construct
+C8	F6	-0.19287122630138265	NF1 Target 1	no_treatment	0.01	different_construct
+C8	F9	0.021411751873646797	NF1 Target 1	no_treatment	0.01	different_construct
+C11	F3	0.012131960920770223	NF1 Target 1	no_treatment	0.01	different_construct
+C11	F6	-0.09805217975758568	NF1 Target 1	no_treatment	0.01	different_construct
+C11	F9	0.1734109916760908	NF1 Target 1	no_treatment	0.01	different_construct
+D2	F3	-0.1400341012373706	NF1 Target 1	no_treatment	0.01	different_construct
+D2	F6	-0.06236846731769458	NF1 Target 1	no_treatment	0.01	different_construct
+D2	F9	0.14061135800427807	NF1 Target 1	no_treatment	0.01	different_construct
+D5	F3	-0.07096849859061413	NF1 Target 1	no_treatment	0.01	different_construct
+D5	F6	-0.016832696428459127	NF1 Target 1	no_treatment	0.01	different_construct
+D5	F9	0.005543628045731043	NF1 Target 1	no_treatment	0.01	different_construct
+D8	F3	-0.157834678645588	NF1 Target 1	no_treatment	0.01	different_construct
+D8	F6	0.055103690998627976	NF1 Target 1	no_treatment	0.01	different_construct
+D8	F9	0.0029287181524192568	NF1 Target 1	no_treatment	0.01	different_construct
+D11	F3	0.08227883428306623	NF1 Target 1	no_treatment	0.01	different_construct
+D11	F6	-0.021788511446708982	NF1 Target 1	no_treatment	0.01	different_construct
+D11	F9	0.10570065658160532	NF1 Target 1	no_treatment	0.01	different_construct
+E11	F3	0.07370607940343893	NF1 Target 1	no_treatment	0.01	different_construct
+E11	F6	-0.07823597803059007	NF1 Target 1	no_treatment	0.01	different_construct
+E11	F9	-0.011805007208187234	NF1 Target 1	no_treatment	0.01	different_construct
+F11	F3	-0.22963644845218065	NF1 Target 1	no_treatment	0.01	different_construct
+F11	F6	0.05553599320189777	NF1 Target 1	no_treatment	0.01	different_construct
+F11	F9	0.08651193255309213	NF1 Target 1	no_treatment	0.01	different_construct
+G11	F3	-0.29959776015810385	NF1 Target 1	no_treatment	0.01	different_construct
+G11	F6	0.011210736969826688	NF1 Target 1	no_treatment	0.01	different_construct
+G11	F9	0.21980412873205402	NF1 Target 1	no_treatment	0.01	different_construct
+B2	F4	-0.043244674405466484	NF1 Target 1	no_treatment	0.001	different_construct
+B2	F7	-0.005114198144159278	NF1 Target 1	no_treatment	0.001	different_construct
+B2	F10	-0.12861675811595039	NF1 Target 1	no_treatment	0.001	different_construct
+B5	F4	-0.19370621965823676	NF1 Target 1	no_treatment	0.001	different_construct
+B5	F7	-0.24059179441957515	NF1 Target 1	no_treatment	0.001	different_construct
+B5	F10	0.09636051100967989	NF1 Target 1	no_treatment	0.001	different_construct
+B8	F4	0.054101180729781956	NF1 Target 1	no_treatment	0.001	different_construct
+B8	F7	-0.12831684517053932	NF1 Target 1	no_treatment	0.001	different_construct
+B8	F10	-0.09164058623980888	NF1 Target 1	no_treatment	0.001	different_construct
+B11	F4	-0.15529206889073482	NF1 Target 1	no_treatment	0.001	different_construct
+B11	F7	-0.009939789219874371	NF1 Target 1	no_treatment	0.001	different_construct
+B11	F10	0.015577946949534982	NF1 Target 1	no_treatment	0.001	different_construct
+C2	F4	-0.09976363772744802	NF1 Target 1	no_treatment	0.001	different_construct
+C2	F7	-0.23654032317448712	NF1 Target 1	no_treatment	0.001	different_construct
+C2	F10	0.005242871255585277	NF1 Target 1	no_treatment	0.001	different_construct
+C5	F4	0.0039010536379105922	NF1 Target 1	no_treatment	0.001	different_construct
+C5	F7	0.01340783606817591	NF1 Target 1	no_treatment	0.001	different_construct
+C5	F10	0.1017280965917792	NF1 Target 1	no_treatment	0.001	different_construct
+C8	F4	-0.06225479472797061	NF1 Target 1	no_treatment	0.001	different_construct
+C8	F7	-0.26845617366034163	NF1 Target 1	no_treatment	0.001	different_construct
+C8	F10	-0.08652097141028421	NF1 Target 1	no_treatment	0.001	different_construct
+C11	F4	0.012569192442399107	NF1 Target 1	no_treatment	0.001	different_construct
+C11	F7	-0.014032245929932352	NF1 Target 1	no_treatment	0.001	different_construct
+C11	F10	0.16303259184243313	NF1 Target 1	no_treatment	0.001	different_construct
+D2	F4	-0.009908556714147518	NF1 Target 1	no_treatment	0.001	different_construct
+D2	F7	-0.11175572568756392	NF1 Target 1	no_treatment	0.001	different_construct
+D2	F10	0.1285661777602643	NF1 Target 1	no_treatment	0.001	different_construct
+D5	F4	-0.14329523611576023	NF1 Target 1	no_treatment	0.001	different_construct
+D5	F7	-0.06998066619264942	NF1 Target 1	no_treatment	0.001	different_construct
+D5	F10	-0.15922740910098412	NF1 Target 1	no_treatment	0.001	different_construct
+D8	F4	0.017749016195522924	NF1 Target 1	no_treatment	0.001	different_construct
+D8	F7	-0.05740895835580073	NF1 Target 1	no_treatment	0.001	different_construct
+D8	F10	-0.032899749814299786	NF1 Target 1	no_treatment	0.001	different_construct
+D11	F4	0.04450644279521299	NF1 Target 1	no_treatment	0.001	different_construct
+D11	F7	0.046190499303365856	NF1 Target 1	no_treatment	0.001	different_construct
+D11	F10	0.11486362802372037	NF1 Target 1	no_treatment	0.001	different_construct
+E11	F4	0.10981096532163767	NF1 Target 1	no_treatment	0.001	different_construct
+E11	F7	-0.16975015032991247	NF1 Target 1	no_treatment	0.001	different_construct
+E11	F10	0.09620595809878822	NF1 Target 1	no_treatment	0.001	different_construct
+F11	F4	-0.02659860409423418	NF1 Target 1	no_treatment	0.001	different_construct
+F11	F7	-0.2415540609189771	NF1 Target 1	no_treatment	0.001	different_construct
+F11	F10	0.1650796354328769	NF1 Target 1	no_treatment	0.001	different_construct
+G11	F4	-0.05191005232475517	NF1 Target 1	no_treatment	0.001	different_construct
+G11	F7	-0.06627180330989094	NF1 Target 1	no_treatment	0.001	different_construct
+G11	F10	0.21945728616852594	NF1 Target 1	no_treatment	0.001	different_construct
+D3	B2	0.0911896206934235	NF1 Target 2	no_treatment	0.05	different_construct
+D3	B5	0.06386886063285616	NF1 Target 2	no_treatment	0.05	different_construct
+D3	B8	-0.15737438080392505	NF1 Target 2	no_treatment	0.05	different_construct
+D3	B11	0.060338516623885695	NF1 Target 2	no_treatment	0.05	different_construct
+D3	C2	0.0030535705020005507	NF1 Target 2	no_treatment	0.05	different_construct
+D3	C5	0.08582949585325612	NF1 Target 2	no_treatment	0.05	different_construct
+D3	C8	-0.12788609502502102	NF1 Target 2	no_treatment	0.05	different_construct
+D3	C11	0.1679291526913073	NF1 Target 2	no_treatment	0.05	different_construct
+D3	D2	0.043871432706852204	NF1 Target 2	no_treatment	0.05	different_construct
+D3	D5	-0.1048121384335471	NF1 Target 2	no_treatment	0.05	different_construct
+D3	D8	-0.1493789577963608	NF1 Target 2	no_treatment	0.05	different_construct
+D3	D11	0.20175065608166762	NF1 Target 2	no_treatment	0.05	different_construct
+D3	E11	0.1493071401051172	NF1 Target 2	no_treatment	0.05	different_construct
+D3	F11	-0.11778516805649172	NF1 Target 2	no_treatment	0.05	different_construct
+D3	G11	-0.09584947288696107	NF1 Target 2	no_treatment	0.05	different_construct
+D4	B2	0.3456474799919639	NF1 Target 2	no_treatment	0.005	different_construct
+D4	B5	-0.10513513190693519	NF1 Target 2	no_treatment	0.005	different_construct
+D4	B8	0.08436321225172819	NF1 Target 2	no_treatment	0.005	different_construct
+D4	B11	0.022599405951235482	NF1 Target 2	no_treatment	0.005	different_construct
+D4	C2	-0.06009648708290359	NF1 Target 2	no_treatment	0.005	different_construct
+D4	C5	-0.21878314128825072	NF1 Target 2	no_treatment	0.005	different_construct
+D4	C8	-0.17826997652002477	NF1 Target 2	no_treatment	0.005	different_construct
+D4	C11	-0.09109538018942573	NF1 Target 2	no_treatment	0.005	different_construct
+D4	D2	-0.286618380890809	NF1 Target 2	no_treatment	0.005	different_construct
+D4	D5	-0.22137251963197394	NF1 Target 2	no_treatment	0.005	different_construct
+D4	D8	-0.10567544339083236	NF1 Target 2	no_treatment	0.005	different_construct
+D4	D11	-0.07328531185181733	NF1 Target 2	no_treatment	0.005	different_construct
+D4	E11	0.10894801919151334	NF1 Target 2	no_treatment	0.005	different_construct
+D4	F11	-0.1382736994740503	NF1 Target 2	no_treatment	0.005	different_construct
+D4	G11	-0.3239291867804838	NF1 Target 2	no_treatment	0.005	different_construct
+D6	B2	0.1623147504097035	NF1 Target 2	no_treatment	0.05	different_construct
+D6	B5	0.008425012225829571	NF1 Target 2	no_treatment	0.05	different_construct
+D6	B8	-0.1234834808435622	NF1 Target 2	no_treatment	0.05	different_construct
+D6	B11	-0.12775404058170686	NF1 Target 2	no_treatment	0.05	different_construct
+D6	C2	-0.03203529346052009	NF1 Target 2	no_treatment	0.05	different_construct
+D6	C5	0.029085870600471856	NF1 Target 2	no_treatment	0.05	different_construct
+D6	C8	0.05987954018942378	NF1 Target 2	no_treatment	0.05	different_construct
+D6	C11	-0.15298842646752736	NF1 Target 2	no_treatment	0.05	different_construct
+D6	D2	-0.12664715910622656	NF1 Target 2	no_treatment	0.05	different_construct
+D6	D5	-0.025910066573918925	NF1 Target 2	no_treatment	0.05	different_construct
+D6	D8	-0.032510053767594214	NF1 Target 2	no_treatment	0.05	different_construct
+D6	D11	-0.044776342689272275	NF1 Target 2	no_treatment	0.05	different_construct
+D6	E11	0.10411648343082391	NF1 Target 2	no_treatment	0.05	different_construct
+D6	F11	-0.09232695143745721	NF1 Target 2	no_treatment	0.05	different_construct
+D6	G11	-0.19658940245737522	NF1 Target 2	no_treatment	0.05	different_construct
+D7	B2	-0.186094060651759	NF1 Target 2	no_treatment	0.005	different_construct
+D7	B5	-0.018833643311773084	NF1 Target 2	no_treatment	0.005	different_construct
+D7	B8	-0.14844527437614735	NF1 Target 2	no_treatment	0.005	different_construct
+D7	B11	0.04582545576088662	NF1 Target 2	no_treatment	0.005	different_construct
+D7	C2	-0.06449674536814728	NF1 Target 2	no_treatment	0.005	different_construct
+D7	C5	0.02271626988059033	NF1 Target 2	no_treatment	0.005	different_construct
+D7	C8	-0.04510369925840031	NF1 Target 2	no_treatment	0.005	different_construct
+D7	C11	0.000292136409323933	NF1 Target 2	no_treatment	0.005	different_construct
+D7	D2	-0.10236854727573226	NF1 Target 2	no_treatment	0.005	different_construct
+D7	D5	-0.037417600056984794	NF1 Target 2	no_treatment	0.005	different_construct
+D7	D8	0.06063424897807544	NF1 Target 2	no_treatment	0.005	different_construct
+D7	D11	0.04902350608925548	NF1 Target 2	no_treatment	0.005	different_construct
+D7	E11	-0.22588014910194054	NF1 Target 2	no_treatment	0.005	different_construct
+D7	F11	-0.10056240873183106	NF1 Target 2	no_treatment	0.005	different_construct
+D7	G11	-0.03224637312922592	NF1 Target 2	no_treatment	0.005	different_construct
+D9	B2	-0.23954220321692662	NF1 Target 2	no_treatment	0.05	different_construct
+D9	B5	-0.021052085151415253	NF1 Target 2	no_treatment	0.05	different_construct
+D9	B8	0.027473303894253388	NF1 Target 2	no_treatment	0.05	different_construct
+D9	B11	0.039575414835470786	NF1 Target 2	no_treatment	0.05	different_construct
+D9	C2	-0.015165379869199802	NF1 Target 2	no_treatment	0.05	different_construct
+D9	C5	-0.005645681433936891	NF1 Target 2	no_treatment	0.05	different_construct
+D9	C8	-0.14971207305006629	NF1 Target 2	no_treatment	0.05	different_construct
+D9	C11	0.26973581895581233	NF1 Target 2	no_treatment	0.05	different_construct
+D9	D2	-0.06473435286133909	NF1 Target 2	no_treatment	0.05	different_construct
+D9	D5	-0.12503167252442832	NF1 Target 2	no_treatment	0.05	different_construct
+D9	D8	-0.13063743976664732	NF1 Target 2	no_treatment	0.05	different_construct
+D9	D11	0.13967333033601254	NF1 Target 2	no_treatment	0.05	different_construct
+D9	E11	-0.02214354915909165	NF1 Target 2	no_treatment	0.05	different_construct
+D9	F11	-0.1414748586294079	NF1 Target 2	no_treatment	0.05	different_construct
+D9	G11	0.09945544253450207	NF1 Target 2	no_treatment	0.05	different_construct
+D10	B2	-0.0030856022892317746	NF1 Target 2	no_treatment	0.005	different_construct
+D10	B5	0.036338682975741804	NF1 Target 2	no_treatment	0.005	different_construct
+D10	B8	0.007063240684911272	NF1 Target 2	no_treatment	0.005	different_construct
+D10	B11	0.1725503507227733	NF1 Target 2	no_treatment	0.005	different_construct
+D10	C2	-0.2328122408580943	NF1 Target 2	no_treatment	0.005	different_construct
+D10	C5	-0.20288151955242073	NF1 Target 2	no_treatment	0.005	different_construct
+D10	C8	-0.15267601464494077	NF1 Target 2	no_treatment	0.005	different_construct
+D10	C11	0.15606442552620903	NF1 Target 2	no_treatment	0.005	different_construct
+D10	D2	-0.16976522644494663	NF1 Target 2	no_treatment	0.005	different_construct
+D10	D5	-0.11036551253249947	NF1 Target 2	no_treatment	0.005	different_construct
+D10	D8	-0.13939877618920365	NF1 Target 2	no_treatment	0.005	different_construct
+D10	D11	0.06885482862813974	NF1 Target 2	no_treatment	0.005	different_construct
+D10	E11	-0.2290285178737178	NF1 Target 2	no_treatment	0.005	different_construct
+D10	F11	-0.2052887957965647	NF1 Target 2	no_treatment	0.005	different_construct
+D10	G11	0.047936736969154514	NF1 Target 2	no_treatment	0.005	different_construct
+G2	B2	0.20543982154524865	NF1 Target 2	no_treatment	0.1	different_construct
+G2	B5	-0.10901834969434257	NF1 Target 2	no_treatment	0.1	different_construct
+G2	B8	0.0065716988619514225	NF1 Target 2	no_treatment	0.1	different_construct
+G2	B11	-0.03052002299371527	NF1 Target 2	no_treatment	0.1	different_construct
+G2	C2	-0.15154442797210327	NF1 Target 2	no_treatment	0.1	different_construct
+G2	C5	-0.2557471856904217	NF1 Target 2	no_treatment	0.1	different_construct
+G2	C8	-0.16130139267155685	NF1 Target 2	no_treatment	0.1	different_construct
+G2	C11	-0.06937668003417999	NF1 Target 2	no_treatment	0.1	different_construct
+G2	D2	-0.16254034963943043	NF1 Target 2	no_treatment	0.1	different_construct
+G2	D5	-0.1570804348004695	NF1 Target 2	no_treatment	0.1	different_construct
+G2	D8	-0.13322302489288335	NF1 Target 2	no_treatment	0.1	different_construct
+G2	D11	-0.09816686867495933	NF1 Target 2	no_treatment	0.1	different_construct
+G2	E11	0.024091240440852646	NF1 Target 2	no_treatment	0.1	different_construct
+G2	F11	-0.014727729182022519	NF1 Target 2	no_treatment	0.1	different_construct
+G2	G11	0.012947052726085814	NF1 Target 2	no_treatment	0.1	different_construct
+G3	B2	-0.3036904859376712	NF1 Target 2	no_treatment	0.01	different_construct
+G3	B5	-0.10647967066241092	NF1 Target 2	no_treatment	0.01	different_construct
+G3	B8	-0.05150978325357084	NF1 Target 2	no_treatment	0.01	different_construct
+G3	B11	-0.03074448167549005	NF1 Target 2	no_treatment	0.01	different_construct
+G3	C2	0.08414276002231334	NF1 Target 2	no_treatment	0.01	different_construct
+G3	C5	0.08764567672961629	NF1 Target 2	no_treatment	0.01	different_construct
+G3	C8	-0.07224037070149973	NF1 Target 2	no_treatment	0.01	different_construct
+G3	C11	0.155629386670884	NF1 Target 2	no_treatment	0.01	different_construct
+G3	D2	0.10071171779568454	NF1 Target 2	no_treatment	0.01	different_construct
+G3	D5	-0.06975261290660757	NF1 Target 2	no_treatment	0.01	different_construct
+G3	D8	-0.02465934358796864	NF1 Target 2	no_treatment	0.01	different_construct
+G3	D11	0.11123775306040858	NF1 Target 2	no_treatment	0.01	different_construct
+G3	E11	0.09229699468319982	NF1 Target 2	no_treatment	0.01	different_construct
+G3	F11	0.13979984828587036	NF1 Target 2	no_treatment	0.01	different_construct
+G3	G11	0.19131430905866859	NF1 Target 2	no_treatment	0.01	different_construct
+G4	B2	0.009844825046345372	NF1 Target 2	no_treatment	0.001	different_construct
+G4	B5	0.061101445758401554	NF1 Target 2	no_treatment	0.001	different_construct
+G4	B8	-0.1397178246767736	NF1 Target 2	no_treatment	0.001	different_construct
+G4	B11	0.09746245844452875	NF1 Target 2	no_treatment	0.001	different_construct
+G4	C2	-0.045341655527959365	NF1 Target 2	no_treatment	0.001	different_construct
+G4	C5	-0.119125172410172	NF1 Target 2	no_treatment	0.001	different_construct
+G4	C8	-0.24031306173466832	NF1 Target 2	no_treatment	0.001	different_construct
+G4	C11	-0.08954727427830211	NF1 Target 2	no_treatment	0.001	different_construct
+G4	D2	-0.0928205429569664	NF1 Target 2	no_treatment	0.001	different_construct
+G4	D5	-0.10867786452585569	NF1 Target 2	no_treatment	0.001	different_construct
+G4	D8	-0.025357628317820045	NF1 Target 2	no_treatment	0.001	different_construct
+G4	D11	-0.11377929719283528	NF1 Target 2	no_treatment	0.001	different_construct
+G4	E11	0.03181845545364031	NF1 Target 2	no_treatment	0.001	different_construct
+G4	F11	0.13276116380909855	NF1 Target 2	no_treatment	0.001	different_construct
+G4	G11	0.09250932483197902	NF1 Target 2	no_treatment	0.001	different_construct
+G5	B2	-0.08759792899722638	NF1 Target 2	no_treatment	0.1	different_construct
+G5	B5	0.012624293042035299	NF1 Target 2	no_treatment	0.1	different_construct
+G5	B8	-0.13139212879403328	NF1 Target 2	no_treatment	0.1	different_construct
+G5	B11	-0.019625519107588568	NF1 Target 2	no_treatment	0.1	different_construct
+G5	C2	-0.015038387416940285	NF1 Target 2	no_treatment	0.1	different_construct
+G5	C5	-0.02054192667750945	NF1 Target 2	no_treatment	0.1	different_construct
+G5	C8	-0.2068992621520464	NF1 Target 2	no_treatment	0.1	different_construct
+G5	C11	0.06951557871888439	NF1 Target 2	no_treatment	0.1	different_construct
+G5	D2	-0.0191272764527961	NF1 Target 2	no_treatment	0.1	different_construct
+G5	D5	-0.15346989362390923	NF1 Target 2	no_treatment	0.1	different_construct
+G5	D8	-0.053921403409061285	NF1 Target 2	no_treatment	0.1	different_construct
+G5	D11	0.0217351469465634	NF1 Target 2	no_treatment	0.1	different_construct
+G5	E11	0.06823443483812675	NF1 Target 2	no_treatment	0.1	different_construct
+G5	F11	0.11183713623006336	NF1 Target 2	no_treatment	0.1	different_construct
+G5	G11	0.1595364300508567	NF1 Target 2	no_treatment	0.1	different_construct
+G6	B2	0.030037719787575932	NF1 Target 2	no_treatment	0.01	different_construct
+G6	B5	-0.20818905872674642	NF1 Target 2	no_treatment	0.01	different_construct
+G6	B8	0.07585898401508384	NF1 Target 2	no_treatment	0.01	different_construct
+G6	B11	0.04151015777235674	NF1 Target 2	no_treatment	0.01	different_construct
+G6	C2	-0.08636109942302421	NF1 Target 2	no_treatment	0.01	different_construct
+G6	C5	-0.35302600796369815	NF1 Target 2	no_treatment	0.01	different_construct
+G6	C8	-0.27014776533329093	NF1 Target 2	no_treatment	0.01	different_construct
+G6	C11	-0.1247221809448975	NF1 Target 2	no_treatment	0.01	different_construct
+G6	D2	-0.23544595631793155	NF1 Target 2	no_treatment	0.01	different_construct
+G6	D5	-0.01745834689219604	NF1 Target 2	no_treatment	0.01	different_construct
+G6	D8	-0.003073830821400605	NF1 Target 2	no_treatment	0.01	different_construct
+G6	D11	-0.24469647037131181	NF1 Target 2	no_treatment	0.01	different_construct
+G6	E11	-0.09595369585942044	NF1 Target 2	no_treatment	0.01	different_construct
+G6	F11	-0.033281329680448925	NF1 Target 2	no_treatment	0.01	different_construct
+G6	G11	0.11724127792664216	NF1 Target 2	no_treatment	0.01	different_construct
+G7	B2	-0.17202000544668122	NF1 Target 2	no_treatment	0.001	different_construct
+G7	B5	-0.037466696622498935	NF1 Target 2	no_treatment	0.001	different_construct
+G7	B8	0.08232348749042075	NF1 Target 2	no_treatment	0.001	different_construct
+G7	B11	-0.0048345465748595015	NF1 Target 2	no_treatment	0.001	different_construct
+G7	C2	0.07553720020329202	NF1 Target 2	no_treatment	0.001	different_construct
+G7	C5	-0.16604341227769184	NF1 Target 2	no_treatment	0.001	different_construct
+G7	C8	0.0002913597393252424	NF1 Target 2	no_treatment	0.001	different_construct
+G7	C11	0.003942230436112328	NF1 Target 2	no_treatment	0.001	different_construct
+G7	D2	-0.04435532678609759	NF1 Target 2	no_treatment	0.001	different_construct
+G7	D5	-0.010845616449209828	NF1 Target 2	no_treatment	0.001	different_construct
+G7	D8	0.016832776525547252	NF1 Target 2	no_treatment	0.001	different_construct
+G7	D11	0.031814266712634334	NF1 Target 2	no_treatment	0.001	different_construct
+G7	E11	-0.04716266921348956	NF1 Target 2	no_treatment	0.001	different_construct
+G7	F11	0.1336005701348057	NF1 Target 2	no_treatment	0.001	different_construct
+G7	G11	0.21381978473498225	NF1 Target 2	no_treatment	0.001	different_construct
+G8	B2	-0.1671103538428056	NF1 Target 2	no_treatment	0.1	different_construct
+G8	B5	-0.08706923677015906	NF1 Target 2	no_treatment	0.1	different_construct
+G8	B8	0.13439384391077439	NF1 Target 2	no_treatment	0.1	different_construct
+G8	B11	-0.06471860974102564	NF1 Target 2	no_treatment	0.1	different_construct
+G8	C2	0.14252649253650854	NF1 Target 2	no_treatment	0.1	different_construct
+G8	C5	-0.07665134901507847	NF1 Target 2	no_treatment	0.1	different_construct
+G8	C8	-0.06284715088485845	NF1 Target 2	no_treatment	0.1	different_construct
+G8	C11	-0.01887587105095627	NF1 Target 2	no_treatment	0.1	different_construct
+G8	D2	0.10535868567279794	NF1 Target 2	no_treatment	0.1	different_construct
+G8	D5	0.0197623585419808	NF1 Target 2	no_treatment	0.1	different_construct
+G8	D8	0.051774367507540504	NF1 Target 2	no_treatment	0.1	different_construct
+G8	D11	-0.033522226936532645	NF1 Target 2	no_treatment	0.1	different_construct
+G8	E11	0.01362316683127205	NF1 Target 2	no_treatment	0.1	different_construct
+G8	F11	0.07224587717347361	NF1 Target 2	no_treatment	0.1	different_construct
+G8	G11	0.28497162602114173	NF1 Target 2	no_treatment	0.1	different_construct
+G9	B2	-0.3056298033547658	NF1 Target 2	no_treatment	0.01	different_construct
+G9	B5	0.07168052789363621	NF1 Target 2	no_treatment	0.01	different_construct
+G9	B8	-0.0036026736964404984	NF1 Target 2	no_treatment	0.01	different_construct
+G9	B11	0.05021652787779714	NF1 Target 2	no_treatment	0.01	different_construct
+G9	C2	0.12131821191284117	NF1 Target 2	no_treatment	0.01	different_construct
+G9	C5	0.0071039034271527446	NF1 Target 2	no_treatment	0.01	different_construct
+G9	C8	0.03359010318147956	NF1 Target 2	no_treatment	0.01	different_construct
+G9	C11	0.10342440391315431	NF1 Target 2	no_treatment	0.01	different_construct
+G9	D2	0.20019733626997407	NF1 Target 2	no_treatment	0.01	different_construct
+G9	D5	-0.01710630462645498	NF1 Target 2	no_treatment	0.01	different_construct
+G9	D8	0.10522809529970924	NF1 Target 2	no_treatment	0.01	different_construct
+G9	D11	-0.007091244117104161	NF1 Target 2	no_treatment	0.01	different_construct
+G9	E11	0.0378315143116009	NF1 Target 2	no_treatment	0.01	different_construct
+G9	F11	0.2769832717824377	NF1 Target 2	no_treatment	0.01	different_construct
+G9	G11	0.39173895155366995	NF1 Target 2	no_treatment	0.01	different_construct
+G10	B2	0.22652830568977836	NF1 Target 2	no_treatment	0.001	different_construct
+G10	B5	-0.013122118581533273	NF1 Target 2	no_treatment	0.001	different_construct
+G10	B8	0.023313227963046707	NF1 Target 2	no_treatment	0.001	different_construct
+G10	B11	0.0005819060600724342	NF1 Target 2	no_treatment	0.001	different_construct
+G10	C2	-0.12112323934810681	NF1 Target 2	no_treatment	0.001	different_construct
+G10	C5	-0.16487869532692673	NF1 Target 2	no_treatment	0.001	different_construct
+G10	C8	-0.29968572956515266	NF1 Target 2	no_treatment	0.001	different_construct
+G10	C11	-0.026749364904659775	NF1 Target 2	no_treatment	0.001	different_construct
+G10	D2	-0.15218688191021723	NF1 Target 2	no_treatment	0.001	different_construct
+G10	D5	-0.23846062163671644	NF1 Target 2	no_treatment	0.001	different_construct
+G10	D8	-0.10970279371129249	NF1 Target 2	no_treatment	0.001	different_construct
+G10	D11	-0.11507523160245609	NF1 Target 2	no_treatment	0.001	different_construct
+G10	E11	0.0212984144545481	NF1 Target 2	no_treatment	0.001	different_construct
+G10	F11	0.04695239287247468	NF1 Target 2	no_treatment	0.001	different_construct
+G10	G11	0.1265296494001614	NF1 Target 2	no_treatment	0.001	different_construct
+B2	D3	0.0911896206934235	NF1 Target 2	no_treatment	0.05	different_construct
+B2	D6	0.1623147504097035	NF1 Target 2	no_treatment	0.05	different_construct
+B2	D9	-0.23954220321692662	NF1 Target 2	no_treatment	0.05	different_construct
+B5	D3	0.06386886063285616	NF1 Target 2	no_treatment	0.05	different_construct
+B5	D6	0.008425012225829571	NF1 Target 2	no_treatment	0.05	different_construct
+B5	D9	-0.021052085151415253	NF1 Target 2	no_treatment	0.05	different_construct
+B8	D3	-0.15737438080392505	NF1 Target 2	no_treatment	0.05	different_construct
+B8	D6	-0.1234834808435622	NF1 Target 2	no_treatment	0.05	different_construct
+B8	D9	0.027473303894253388	NF1 Target 2	no_treatment	0.05	different_construct
+B11	D3	0.060338516623885695	NF1 Target 2	no_treatment	0.05	different_construct
+B11	D6	-0.12775404058170686	NF1 Target 2	no_treatment	0.05	different_construct
+B11	D9	0.039575414835470786	NF1 Target 2	no_treatment	0.05	different_construct
+C2	D3	0.0030535705020005507	NF1 Target 2	no_treatment	0.05	different_construct
+C2	D6	-0.03203529346052009	NF1 Target 2	no_treatment	0.05	different_construct
+C2	D9	-0.015165379869199802	NF1 Target 2	no_treatment	0.05	different_construct
+C5	D3	0.08582949585325612	NF1 Target 2	no_treatment	0.05	different_construct
+C5	D6	0.029085870600471856	NF1 Target 2	no_treatment	0.05	different_construct
+C5	D9	-0.005645681433936891	NF1 Target 2	no_treatment	0.05	different_construct
+C8	D3	-0.12788609502502102	NF1 Target 2	no_treatment	0.05	different_construct
+C8	D6	0.05987954018942378	NF1 Target 2	no_treatment	0.05	different_construct
+C8	D9	-0.14971207305006629	NF1 Target 2	no_treatment	0.05	different_construct
+C11	D3	0.1679291526913073	NF1 Target 2	no_treatment	0.05	different_construct
+C11	D6	-0.15298842646752736	NF1 Target 2	no_treatment	0.05	different_construct
+C11	D9	0.26973581895581233	NF1 Target 2	no_treatment	0.05	different_construct
+D2	D3	0.043871432706852204	NF1 Target 2	no_treatment	0.05	different_construct
+D2	D6	-0.12664715910622656	NF1 Target 2	no_treatment	0.05	different_construct
+D2	D9	-0.06473435286133909	NF1 Target 2	no_treatment	0.05	different_construct
+D5	D3	-0.1048121384335471	NF1 Target 2	no_treatment	0.05	different_construct
+D5	D6	-0.025910066573918925	NF1 Target 2	no_treatment	0.05	different_construct
+D5	D9	-0.12503167252442832	NF1 Target 2	no_treatment	0.05	different_construct
+D8	D3	-0.1493789577963608	NF1 Target 2	no_treatment	0.05	different_construct
+D8	D6	-0.032510053767594214	NF1 Target 2	no_treatment	0.05	different_construct
+D8	D9	-0.13063743976664732	NF1 Target 2	no_treatment	0.05	different_construct
+D11	D3	0.20175065608166762	NF1 Target 2	no_treatment	0.05	different_construct
+D11	D6	-0.044776342689272275	NF1 Target 2	no_treatment	0.05	different_construct
+D11	D9	0.13967333033601254	NF1 Target 2	no_treatment	0.05	different_construct
+E11	D3	0.1493071401051172	NF1 Target 2	no_treatment	0.05	different_construct
+E11	D6	0.10411648343082391	NF1 Target 2	no_treatment	0.05	different_construct
+E11	D9	-0.02214354915909165	NF1 Target 2	no_treatment	0.05	different_construct
+F11	D3	-0.11778516805649172	NF1 Target 2	no_treatment	0.05	different_construct
+F11	D6	-0.09232695143745721	NF1 Target 2	no_treatment	0.05	different_construct
+F11	D9	-0.1414748586294079	NF1 Target 2	no_treatment	0.05	different_construct
+G11	D3	-0.09584947288696107	NF1 Target 2	no_treatment	0.05	different_construct
+G11	D6	-0.19658940245737522	NF1 Target 2	no_treatment	0.05	different_construct
+G11	D9	0.09945544253450207	NF1 Target 2	no_treatment	0.05	different_construct
+B2	D4	0.3456474799919639	NF1 Target 2	no_treatment	0.005	different_construct
+B2	D7	-0.186094060651759	NF1 Target 2	no_treatment	0.005	different_construct
+B2	D10	-0.0030856022892317746	NF1 Target 2	no_treatment	0.005	different_construct
+B5	D4	-0.10513513190693519	NF1 Target 2	no_treatment	0.005	different_construct
+B5	D7	-0.018833643311773084	NF1 Target 2	no_treatment	0.005	different_construct
+B5	D10	0.036338682975741804	NF1 Target 2	no_treatment	0.005	different_construct
+B8	D4	0.08436321225172819	NF1 Target 2	no_treatment	0.005	different_construct
+B8	D7	-0.14844527437614735	NF1 Target 2	no_treatment	0.005	different_construct
+B8	D10	0.007063240684911272	NF1 Target 2	no_treatment	0.005	different_construct
+B11	D4	0.022599405951235482	NF1 Target 2	no_treatment	0.005	different_construct
+B11	D7	0.04582545576088662	NF1 Target 2	no_treatment	0.005	different_construct
+B11	D10	0.1725503507227733	NF1 Target 2	no_treatment	0.005	different_construct
+C2	D4	-0.06009648708290359	NF1 Target 2	no_treatment	0.005	different_construct
+C2	D7	-0.06449674536814728	NF1 Target 2	no_treatment	0.005	different_construct
+C2	D10	-0.2328122408580943	NF1 Target 2	no_treatment	0.005	different_construct
+C5	D4	-0.21878314128825072	NF1 Target 2	no_treatment	0.005	different_construct
+C5	D7	0.02271626988059033	NF1 Target 2	no_treatment	0.005	different_construct
+C5	D10	-0.20288151955242073	NF1 Target 2	no_treatment	0.005	different_construct
+C8	D4	-0.17826997652002477	NF1 Target 2	no_treatment	0.005	different_construct
+C8	D7	-0.04510369925840031	NF1 Target 2	no_treatment	0.005	different_construct
+C8	D10	-0.15267601464494077	NF1 Target 2	no_treatment	0.005	different_construct
+C11	D4	-0.09109538018942573	NF1 Target 2	no_treatment	0.005	different_construct
+C11	D7	0.000292136409323933	NF1 Target 2	no_treatment	0.005	different_construct
+C11	D10	0.15606442552620903	NF1 Target 2	no_treatment	0.005	different_construct
+D2	D4	-0.286618380890809	NF1 Target 2	no_treatment	0.005	different_construct
+D2	D7	-0.10236854727573226	NF1 Target 2	no_treatment	0.005	different_construct
+D2	D10	-0.16976522644494663	NF1 Target 2	no_treatment	0.005	different_construct
+D5	D4	-0.22137251963197394	NF1 Target 2	no_treatment	0.005	different_construct
+D5	D7	-0.037417600056984794	NF1 Target 2	no_treatment	0.005	different_construct
+D5	D10	-0.11036551253249947	NF1 Target 2	no_treatment	0.005	different_construct
+D8	D4	-0.10567544339083236	NF1 Target 2	no_treatment	0.005	different_construct
+D8	D7	0.06063424897807544	NF1 Target 2	no_treatment	0.005	different_construct
+D8	D10	-0.13939877618920365	NF1 Target 2	no_treatment	0.005	different_construct
+D11	D4	-0.07328531185181733	NF1 Target 2	no_treatment	0.005	different_construct
+D11	D7	0.04902350608925548	NF1 Target 2	no_treatment	0.005	different_construct
+D11	D10	0.06885482862813974	NF1 Target 2	no_treatment	0.005	different_construct
+E11	D4	0.10894801919151334	NF1 Target 2	no_treatment	0.005	different_construct
+E11	D7	-0.22588014910194054	NF1 Target 2	no_treatment	0.005	different_construct
+E11	D10	-0.2290285178737178	NF1 Target 2	no_treatment	0.005	different_construct
+F11	D4	-0.1382736994740503	NF1 Target 2	no_treatment	0.005	different_construct
+F11	D7	-0.10056240873183106	NF1 Target 2	no_treatment	0.005	different_construct
+F11	D10	-0.2052887957965647	NF1 Target 2	no_treatment	0.005	different_construct
+G11	D4	-0.3239291867804838	NF1 Target 2	no_treatment	0.005	different_construct
+G11	D7	-0.03224637312922592	NF1 Target 2	no_treatment	0.005	different_construct
+G11	D10	0.047936736969154514	NF1 Target 2	no_treatment	0.005	different_construct
+B2	G2	0.20543982154524865	NF1 Target 2	no_treatment	0.1	different_construct
+B2	G5	-0.08759792899722638	NF1 Target 2	no_treatment	0.1	different_construct
+B2	G8	-0.1671103538428056	NF1 Target 2	no_treatment	0.1	different_construct
+B5	G2	-0.10901834969434257	NF1 Target 2	no_treatment	0.1	different_construct
+B5	G5	0.012624293042035299	NF1 Target 2	no_treatment	0.1	different_construct
+B5	G8	-0.08706923677015906	NF1 Target 2	no_treatment	0.1	different_construct
+B8	G2	0.0065716988619514225	NF1 Target 2	no_treatment	0.1	different_construct
+B8	G5	-0.13139212879403328	NF1 Target 2	no_treatment	0.1	different_construct
+B8	G8	0.13439384391077439	NF1 Target 2	no_treatment	0.1	different_construct
+B11	G2	-0.03052002299371527	NF1 Target 2	no_treatment	0.1	different_construct
+B11	G5	-0.019625519107588568	NF1 Target 2	no_treatment	0.1	different_construct
+B11	G8	-0.06471860974102564	NF1 Target 2	no_treatment	0.1	different_construct
+C2	G2	-0.15154442797210327	NF1 Target 2	no_treatment	0.1	different_construct
+C2	G5	-0.015038387416940285	NF1 Target 2	no_treatment	0.1	different_construct
+C2	G8	0.14252649253650854	NF1 Target 2	no_treatment	0.1	different_construct
+C5	G2	-0.2557471856904217	NF1 Target 2	no_treatment	0.1	different_construct
+C5	G5	-0.02054192667750945	NF1 Target 2	no_treatment	0.1	different_construct
+C5	G8	-0.07665134901507847	NF1 Target 2	no_treatment	0.1	different_construct
+C8	G2	-0.16130139267155685	NF1 Target 2	no_treatment	0.1	different_construct
+C8	G5	-0.2068992621520464	NF1 Target 2	no_treatment	0.1	different_construct
+C8	G8	-0.06284715088485845	NF1 Target 2	no_treatment	0.1	different_construct
+C11	G2	-0.06937668003417999	NF1 Target 2	no_treatment	0.1	different_construct
+C11	G5	0.06951557871888439	NF1 Target 2	no_treatment	0.1	different_construct
+C11	G8	-0.01887587105095627	NF1 Target 2	no_treatment	0.1	different_construct
+D2	G2	-0.16254034963943043	NF1 Target 2	no_treatment	0.1	different_construct
+D2	G5	-0.0191272764527961	NF1 Target 2	no_treatment	0.1	different_construct
+D2	G8	0.10535868567279794	NF1 Target 2	no_treatment	0.1	different_construct
+D5	G2	-0.1570804348004695	NF1 Target 2	no_treatment	0.1	different_construct
+D5	G5	-0.15346989362390923	NF1 Target 2	no_treatment	0.1	different_construct
+D5	G8	0.0197623585419808	NF1 Target 2	no_treatment	0.1	different_construct
+D8	G2	-0.13322302489288335	NF1 Target 2	no_treatment	0.1	different_construct
+D8	G5	-0.053921403409061285	NF1 Target 2	no_treatment	0.1	different_construct
+D8	G8	0.051774367507540504	NF1 Target 2	no_treatment	0.1	different_construct
+D11	G2	-0.09816686867495933	NF1 Target 2	no_treatment	0.1	different_construct
+D11	G5	0.0217351469465634	NF1 Target 2	no_treatment	0.1	different_construct
+D11	G8	-0.033522226936532645	NF1 Target 2	no_treatment	0.1	different_construct
+E11	G2	0.024091240440852646	NF1 Target 2	no_treatment	0.1	different_construct
+E11	G5	0.06823443483812675	NF1 Target 2	no_treatment	0.1	different_construct
+E11	G8	0.01362316683127205	NF1 Target 2	no_treatment	0.1	different_construct
+F11	G2	-0.014727729182022519	NF1 Target 2	no_treatment	0.1	different_construct
+F11	G5	0.11183713623006336	NF1 Target 2	no_treatment	0.1	different_construct
+F11	G8	0.07224587717347361	NF1 Target 2	no_treatment	0.1	different_construct
+G11	G2	0.012947052726085814	NF1 Target 2	no_treatment	0.1	different_construct
+G11	G5	0.1595364300508567	NF1 Target 2	no_treatment	0.1	different_construct
+G11	G8	0.28497162602114173	NF1 Target 2	no_treatment	0.1	different_construct
+B2	G3	-0.3036904859376712	NF1 Target 2	no_treatment	0.01	different_construct
+B2	G6	0.030037719787575932	NF1 Target 2	no_treatment	0.01	different_construct
+B2	G9	-0.3056298033547658	NF1 Target 2	no_treatment	0.01	different_construct
+B5	G3	-0.10647967066241092	NF1 Target 2	no_treatment	0.01	different_construct
+B5	G6	-0.20818905872674642	NF1 Target 2	no_treatment	0.01	different_construct
+B5	G9	0.07168052789363621	NF1 Target 2	no_treatment	0.01	different_construct
+B8	G3	-0.05150978325357084	NF1 Target 2	no_treatment	0.01	different_construct
+B8	G6	0.07585898401508384	NF1 Target 2	no_treatment	0.01	different_construct
+B8	G9	-0.0036026736964404984	NF1 Target 2	no_treatment	0.01	different_construct
+B11	G3	-0.03074448167549005	NF1 Target 2	no_treatment	0.01	different_construct
+B11	G6	0.04151015777235674	NF1 Target 2	no_treatment	0.01	different_construct
+B11	G9	0.05021652787779714	NF1 Target 2	no_treatment	0.01	different_construct
+C2	G3	0.08414276002231334	NF1 Target 2	no_treatment	0.01	different_construct
+C2	G6	-0.08636109942302421	NF1 Target 2	no_treatment	0.01	different_construct
+C2	G9	0.12131821191284117	NF1 Target 2	no_treatment	0.01	different_construct
+C5	G3	0.08764567672961629	NF1 Target 2	no_treatment	0.01	different_construct
+C5	G6	-0.35302600796369815	NF1 Target 2	no_treatment	0.01	different_construct
+C5	G9	0.0071039034271527446	NF1 Target 2	no_treatment	0.01	different_construct
+C8	G3	-0.07224037070149973	NF1 Target 2	no_treatment	0.01	different_construct
+C8	G6	-0.27014776533329093	NF1 Target 2	no_treatment	0.01	different_construct
+C8	G9	0.03359010318147956	NF1 Target 2	no_treatment	0.01	different_construct
+C11	G3	0.155629386670884	NF1 Target 2	no_treatment	0.01	different_construct
+C11	G6	-0.1247221809448975	NF1 Target 2	no_treatment	0.01	different_construct
+C11	G9	0.10342440391315431	NF1 Target 2	no_treatment	0.01	different_construct
+D2	G3	0.10071171779568454	NF1 Target 2	no_treatment	0.01	different_construct
+D2	G6	-0.23544595631793155	NF1 Target 2	no_treatment	0.01	different_construct
+D2	G9	0.20019733626997407	NF1 Target 2	no_treatment	0.01	different_construct
+D5	G3	-0.06975261290660757	NF1 Target 2	no_treatment	0.01	different_construct
+D5	G6	-0.01745834689219604	NF1 Target 2	no_treatment	0.01	different_construct
+D5	G9	-0.01710630462645498	NF1 Target 2	no_treatment	0.01	different_construct
+D8	G3	-0.02465934358796864	NF1 Target 2	no_treatment	0.01	different_construct
+D8	G6	-0.003073830821400605	NF1 Target 2	no_treatment	0.01	different_construct
+D8	G9	0.10522809529970924	NF1 Target 2	no_treatment	0.01	different_construct
+D11	G3	0.11123775306040858	NF1 Target 2	no_treatment	0.01	different_construct
+D11	G6	-0.24469647037131181	NF1 Target 2	no_treatment	0.01	different_construct
+D11	G9	-0.007091244117104161	NF1 Target 2	no_treatment	0.01	different_construct
+E11	G3	0.09229699468319982	NF1 Target 2	no_treatment	0.01	different_construct
+E11	G6	-0.09595369585942044	NF1 Target 2	no_treatment	0.01	different_construct
+E11	G9	0.0378315143116009	NF1 Target 2	no_treatment	0.01	different_construct
+F11	G3	0.13979984828587036	NF1 Target 2	no_treatment	0.01	different_construct
+F11	G6	-0.033281329680448925	NF1 Target 2	no_treatment	0.01	different_construct
+F11	G9	0.2769832717824377	NF1 Target 2	no_treatment	0.01	different_construct
+G11	G3	0.19131430905866859	NF1 Target 2	no_treatment	0.01	different_construct
+G11	G6	0.11724127792664216	NF1 Target 2	no_treatment	0.01	different_construct
+G11	G9	0.39173895155366995	NF1 Target 2	no_treatment	0.01	different_construct
+B2	G4	0.009844825046345372	NF1 Target 2	no_treatment	0.001	different_construct
+B2	G7	-0.17202000544668122	NF1 Target 2	no_treatment	0.001	different_construct
+B2	G10	0.22652830568977836	NF1 Target 2	no_treatment	0.001	different_construct
+B5	G4	0.061101445758401554	NF1 Target 2	no_treatment	0.001	different_construct
+B5	G7	-0.037466696622498935	NF1 Target 2	no_treatment	0.001	different_construct
+B5	G10	-0.013122118581533273	NF1 Target 2	no_treatment	0.001	different_construct
+B8	G4	-0.1397178246767736	NF1 Target 2	no_treatment	0.001	different_construct
+B8	G7	0.08232348749042075	NF1 Target 2	no_treatment	0.001	different_construct
+B8	G10	0.023313227963046707	NF1 Target 2	no_treatment	0.001	different_construct
+B11	G4	0.09746245844452875	NF1 Target 2	no_treatment	0.001	different_construct
+B11	G7	-0.0048345465748595015	NF1 Target 2	no_treatment	0.001	different_construct
+B11	G10	0.0005819060600724342	NF1 Target 2	no_treatment	0.001	different_construct
+C2	G4	-0.045341655527959365	NF1 Target 2	no_treatment	0.001	different_construct
+C2	G7	0.07553720020329202	NF1 Target 2	no_treatment	0.001	different_construct
+C2	G10	-0.12112323934810681	NF1 Target 2	no_treatment	0.001	different_construct
+C5	G4	-0.119125172410172	NF1 Target 2	no_treatment	0.001	different_construct
+C5	G7	-0.16604341227769184	NF1 Target 2	no_treatment	0.001	different_construct
+C5	G10	-0.16487869532692673	NF1 Target 2	no_treatment	0.001	different_construct
+C8	G4	-0.24031306173466832	NF1 Target 2	no_treatment	0.001	different_construct
+C8	G7	0.0002913597393252424	NF1 Target 2	no_treatment	0.001	different_construct
+C8	G10	-0.29968572956515266	NF1 Target 2	no_treatment	0.001	different_construct
+C11	G4	-0.08954727427830211	NF1 Target 2	no_treatment	0.001	different_construct
+C11	G7	0.003942230436112328	NF1 Target 2	no_treatment	0.001	different_construct
+C11	G10	-0.026749364904659775	NF1 Target 2	no_treatment	0.001	different_construct
+D2	G4	-0.0928205429569664	NF1 Target 2	no_treatment	0.001	different_construct
+D2	G7	-0.04435532678609759	NF1 Target 2	no_treatment	0.001	different_construct
+D2	G10	-0.15218688191021723	NF1 Target 2	no_treatment	0.001	different_construct
+D5	G4	-0.10867786452585569	NF1 Target 2	no_treatment	0.001	different_construct
+D5	G7	-0.010845616449209828	NF1 Target 2	no_treatment	0.001	different_construct
+D5	G10	-0.23846062163671644	NF1 Target 2	no_treatment	0.001	different_construct
+D8	G4	-0.025357628317820045	NF1 Target 2	no_treatment	0.001	different_construct
+D8	G7	0.016832776525547252	NF1 Target 2	no_treatment	0.001	different_construct
+D8	G10	-0.10970279371129249	NF1 Target 2	no_treatment	0.001	different_construct
+D11	G4	-0.11377929719283528	NF1 Target 2	no_treatment	0.001	different_construct
+D11	G7	0.031814266712634334	NF1 Target 2	no_treatment	0.001	different_construct
+D11	G10	-0.11507523160245609	NF1 Target 2	no_treatment	0.001	different_construct
+E11	G4	0.03181845545364031	NF1 Target 2	no_treatment	0.001	different_construct
+E11	G7	-0.04716266921348956	NF1 Target 2	no_treatment	0.001	different_construct
+E11	G10	0.0212984144545481	NF1 Target 2	no_treatment	0.001	different_construct
+F11	G4	0.13276116380909855	NF1 Target 2	no_treatment	0.001	different_construct
+F11	G7	0.1336005701348057	NF1 Target 2	no_treatment	0.001	different_construct
+F11	G10	0.04695239287247468	NF1 Target 2	no_treatment	0.001	different_construct
+G11	G4	0.09250932483197902	NF1 Target 2	no_treatment	0.001	different_construct
+G11	G7	0.21381978473498225	NF1 Target 2	no_treatment	0.001	different_construct
+G11	G10	0.1265296494001614	NF1 Target 2	no_treatment	0.001	different_construct
+B3	B7	-0.035322827356051786	Scramble	Scramble	0.05	same_construct
+B3	B9	-0.00618295657572514	Scramble	Scramble	0.05	same_construct
+B4	B6	0.03257583473813502	Scramble	Scramble	0.005	same_construct
+B4	B10	0.14469381728110398	Scramble	Scramble	0.005	same_construct
+B6	B10	-0.04480057260735781	Scramble	Scramble	0.005	same_construct
+B7	B9	0.1352884401398237	Scramble	Scramble	0.05	same_construct
+E2	E5	0.0570085024735279	Scramble	Scramble	0.1	same_construct
+E2	E8	0.027155034442356944	Scramble	Scramble	0.1	same_construct
+E3	E6	0.12922094097127815	Scramble	Scramble	0.01	same_construct
+E3	E9	0.2656442368194854	Scramble	Scramble	0.01	same_construct
+E4	E7	0.013892369871608608	Scramble	Scramble	0.001	same_construct
+E4	E10	-0.17040324519368577	Scramble	Scramble	0.001	same_construct
+E5	E8	0.08058817146438324	Scramble	Scramble	0.1	same_construct
+E6	E9	0.28996970249093795	Scramble	Scramble	0.01	same_construct
+E7	E10	0.028203023400641822	Scramble	Scramble	0.001	same_construct
 C3	C6	0.14031961364395054	NF1 Target 1	NF1 Target 1	0.05	same_construct
 C3	C9	0.29068440223708647	NF1 Target 1	NF1 Target 1	0.05	same_construct
 C4	C7	0.13661571641803824	NF1 Target 1	NF1 Target 1	0.005	same_construct
 C4	C10	0.1112327750751599	NF1 Target 1	NF1 Target 1	0.005	same_construct
 C6	C9	0.2749845381018974	NF1 Target 1	NF1 Target 1	0.05	same_construct
 C7	C10	0.16522966114484244	NF1 Target 1	NF1 Target 1	0.005	same_construct
-D3	D6	-0.12389056451947855	NF1 Target 2	NF1 Target 2	0.05	same_construct
-D3	D9	0.024247242907199172	NF1 Target 2	NF1 Target 2	0.05	same_construct
-D4	D7	-0.12495363381235952	NF1 Target 2	NF1 Target 2	0.005	same_construct
-D4	D10	0.02812238310910383	NF1 Target 2	NF1 Target 2	0.005	same_construct
-D6	D9	-0.21093562269613328	NF1 Target 2	NF1 Target 2	0.05	same_construct
-D7	D10	0.0574358693101493	NF1 Target 2	NF1 Target 2	0.005	same_construct
 F2	F5	0.21524090734830087	NF1 Target 1	NF1 Target 1	0.1	same_construct
 F2	F8	0.256278724164352	NF1 Target 1	NF1 Target 1	0.1	same_construct
 F3	F6	0.05225198871272996	NF1 Target 1	NF1 Target 1	0.01	same_construct
@@ -710,6 +1649,12 @@ F4	F10	0.08176433886809523	NF1 Target 1	NF1 Target 1	0.001	same_construct
 F5	F8	0.2604637948830728	NF1 Target 1	NF1 Target 1	0.1	same_construct
 F6	F9	0.09742136465071818	NF1 Target 1	NF1 Target 1	0.01	same_construct
 F7	F10	-0.029617793994627568	NF1 Target 1	NF1 Target 1	0.001	same_construct
+D3	D6	-0.12389056451947855	NF1 Target 2	NF1 Target 2	0.05	same_construct
+D3	D9	0.024247242907199172	NF1 Target 2	NF1 Target 2	0.05	same_construct
+D4	D7	-0.12495363381235952	NF1 Target 2	NF1 Target 2	0.005	same_construct
+D4	D10	0.02812238310910383	NF1 Target 2	NF1 Target 2	0.005	same_construct
+D6	D9	-0.21093562269613328	NF1 Target 2	NF1 Target 2	0.05	same_construct
+D7	D10	0.0574358693101493	NF1 Target 2	NF1 Target 2	0.005	same_construct
 G2	G5	0.1564817707385611	NF1 Target 2	NF1 Target 2	0.1	same_construct
 G2	G8	-0.025071133272370302	NF1 Target 2	NF1 Target 2	0.1	same_construct
 G3	G6	-0.005489949693456173	NF1 Target 2	NF1 Target 2	0.01	same_construct
@@ -719,3 +1664,164 @@ G4	G10	0.269834104318865	NF1 Target 2	NF1 Target 2	0.001	same_construct
 G5	G8	0.10217090937089614	NF1 Target 2	NF1 Target 2	0.1	same_construct
 G6	G9	0.13732335150338523	NF1 Target 2	NF1 Target 2	0.01	same_construct
 G7	G10	-0.0363412620715432	NF1 Target 2	NF1 Target 2	0.001	same_construct
+B2	B5	0.020185628102701685	no_treatment	no_treatment	0.05	same_construct
+B2	B8	0.044378560803891465	no_treatment	no_treatment	0.05	same_construct
+B2	B11	-0.034815383116547464	no_treatment	no_treatment	0.05	same_construct
+B2	C2	-0.2907783583915557	no_treatment	no_treatment	0.05	same_construct
+B2	C5	-0.23768956594686402	no_treatment	no_treatment	0.05	same_construct
+B2	C8	-0.2834473372441358	no_treatment	no_treatment	0.05	same_construct
+B2	C11	-0.06579241149544601	no_treatment	no_treatment	0.05	same_construct
+B2	D2	-0.2290537226428069	no_treatment	no_treatment	0.05	same_construct
+B2	D5	-0.21736401251781987	no_treatment	no_treatment	0.05	same_construct
+B2	D8	-0.2515447288755443	no_treatment	no_treatment	0.05	same_construct
+B2	D11	-0.11649385609252706	no_treatment	no_treatment	0.05	same_construct
+B2	E11	0.01477816628663002	no_treatment	no_treatment	0.05	same_construct
+B2	F11	-0.3138771463274125	no_treatment	no_treatment	0.05	same_construct
+B2	G11	-0.39727453629656306	no_treatment	no_treatment	0.05	same_construct
+B5	B8	-0.0530623633798992	no_treatment	no_treatment	0.05	same_construct
+B5	B11	0.09718058686682456	no_treatment	no_treatment	0.05	same_construct
+B5	C2	0.09390927026185647	no_treatment	no_treatment	0.05	same_construct
+B5	C5	0.09830701459540979	no_treatment	no_treatment	0.05	same_construct
+B5	C8	0.11757168073783007	no_treatment	no_treatment	0.05	same_construct
+B5	C11	0.08623026126442523	no_treatment	no_treatment	0.05	same_construct
+B5	D2	-0.007314731271551316	no_treatment	no_treatment	0.05	same_construct
+B5	D5	0.05793882065896047	no_treatment	no_treatment	0.05	same_construct
+B5	D8	-0.06276568233185688	no_treatment	no_treatment	0.05	same_construct
+B5	D11	0.06608889110628025	no_treatment	no_treatment	0.05	same_construct
+B5	E11	0.07358249633089245	no_treatment	no_treatment	0.05	same_construct
+B5	F11	0.02683835164342534	no_treatment	no_treatment	0.05	same_construct
+B5	G11	-0.0032942638174596997	no_treatment	no_treatment	0.05	same_construct
+B8	B11	-0.10434355687279834	no_treatment	no_treatment	0.05	same_construct
+B8	C2	0.01095547725127999	no_treatment	no_treatment	0.05	same_construct
+B8	C5	-0.06822697919187008	no_treatment	no_treatment	0.05	same_construct
+B8	C8	0.09831198203364348	no_treatment	no_treatment	0.05	same_construct
+B8	C11	-0.024523628256304875	no_treatment	no_treatment	0.05	same_construct
+B8	D2	-0.01354467363681642	no_treatment	no_treatment	0.05	same_construct
+B8	D5	-0.004517096130275334	no_treatment	no_treatment	0.05	same_construct
+B8	D8	0.02169777894769872	no_treatment	no_treatment	0.05	same_construct
+B8	D11	-0.041733322694644276	no_treatment	no_treatment	0.05	same_construct
+B8	E11	-0.00011412882442293948	no_treatment	no_treatment	0.05	same_construct
+B8	F11	0.04403169506021844	no_treatment	no_treatment	0.05	same_construct
+B8	G11	0.028146128123438936	no_treatment	no_treatment	0.05	same_construct
+B11	C2	-0.019734147171266113	no_treatment	no_treatment	0.05	same_construct
+B11	C5	-0.07303390167346821	no_treatment	no_treatment	0.05	same_construct
+B11	C8	-0.07530626607129638	no_treatment	no_treatment	0.05	same_construct
+B11	C11	0.07077938437464545	no_treatment	no_treatment	0.05	same_construct
+B11	D2	-0.082828472125889	no_treatment	no_treatment	0.05	same_construct
+B11	D5	0.0001721952536024272	no_treatment	no_treatment	0.05	same_construct
+B11	D8	-0.03650961889570596	no_treatment	no_treatment	0.05	same_construct
+B11	D11	0.08122637011854016	no_treatment	no_treatment	0.05	same_construct
+B11	E11	-0.21012124164739432	no_treatment	no_treatment	0.05	same_construct
+B11	F11	-0.06877955366394169	no_treatment	no_treatment	0.05	same_construct
+B11	G11	0.05643486503350701	no_treatment	no_treatment	0.05	same_construct
+C2	C5	0.1666378142273543	no_treatment	no_treatment	0.05	same_construct
+C2	C8	0.4325399222467585	no_treatment	no_treatment	0.05	same_construct
+C2	C11	-0.18178270219362594	no_treatment	no_treatment	0.05	same_construct
+C2	D2	0.3512238027499292	no_treatment	no_treatment	0.05	same_construct
+C2	D5	0.28834757157977003	no_treatment	no_treatment	0.05	same_construct
+C2	D8	0.28691156276800944	no_treatment	no_treatment	0.05	same_construct
+C2	D11	-0.12377332320203667	no_treatment	no_treatment	0.05	same_construct
+C2	E11	0.15371236665787436	no_treatment	no_treatment	0.05	same_construct
+C2	F11	0.47274692555626197	no_treatment	no_treatment	0.05	same_construct
+C2	G11	0.3188055894289191	no_treatment	no_treatment	0.05	same_construct
+C5	C8	0.27571753771960517	no_treatment	no_treatment	0.05	same_construct
+C5	C11	-0.00919126998289516	no_treatment	no_treatment	0.05	same_construct
+C5	D2	0.3300963177585821	no_treatment	no_treatment	0.05	same_construct
+C5	D5	0.15338411929284673	no_treatment	no_treatment	0.05	same_construct
+C5	D8	0.12370729194295618	no_treatment	no_treatment	0.05	same_construct
+C5	D11	0.1080929214188765	no_treatment	no_treatment	0.05	same_construct
+C5	E11	0.08576161329732776	no_treatment	no_treatment	0.05	same_construct
+C5	F11	0.14655773283690715	no_treatment	no_treatment	0.05	same_construct
+C5	G11	0.10821341853926916	no_treatment	no_treatment	0.05	same_construct
+C8	C11	-0.07140013116289415	no_treatment	no_treatment	0.05	same_construct
+C8	D2	0.33554978272541314	no_treatment	no_treatment	0.05	same_construct
+C8	D5	0.32698031823762663	no_treatment	no_treatment	0.05	same_construct
+C8	D8	0.23963347953858494	no_treatment	no_treatment	0.05	same_construct
+C8	D11	-0.054988896182747424	no_treatment	no_treatment	0.05	same_construct
+C8	E11	0.11120743345519073	no_treatment	no_treatment	0.05	same_construct
+C8	F11	0.31722820194545015	no_treatment	no_treatment	0.05	same_construct
+C8	G11	0.18872520790903613	no_treatment	no_treatment	0.05	same_construct
+C11	D2	-0.04792854927158944	no_treatment	no_treatment	0.05	same_construct
+C11	D5	-0.19703166285095142	no_treatment	no_treatment	0.05	same_construct
+C11	D8	-0.24789010519169702	no_treatment	no_treatment	0.05	same_construct
+C11	D11	0.22847316214799315	no_treatment	no_treatment	0.05	same_construct
+C11	E11	-0.014664806348662776	no_treatment	no_treatment	0.05	same_construct
+C11	F11	-0.25727032823836055	no_treatment	no_treatment	0.05	same_construct
+C11	G11	-0.060467870553544724	no_treatment	no_treatment	0.05	same_construct
+D2	D5	0.27122041541753705	no_treatment	no_treatment	0.05	same_construct
+D2	D8	0.24594656792452235	no_treatment	no_treatment	0.05	same_construct
+D2	D11	0.02325452918113931	no_treatment	no_treatment	0.05	same_construct
+D2	E11	0.09727720841305329	no_treatment	no_treatment	0.05	same_construct
+D2	F11	0.33707714388520466	no_treatment	no_treatment	0.05	same_construct
+D2	G11	0.28735793860817943	no_treatment	no_treatment	0.05	same_construct
+D5	D8	0.24221492199963796	no_treatment	no_treatment	0.05	same_construct
+D5	D11	-0.08678060088412577	no_treatment	no_treatment	0.05	same_construct
+D5	E11	-0.06438441053162806	no_treatment	no_treatment	0.05	same_construct
+D5	F11	0.17799662158480706	no_treatment	no_treatment	0.05	same_construct
+D5	G11	0.15325227125377688	no_treatment	no_treatment	0.05	same_construct
+D8	D11	-0.11821422331141042	no_treatment	no_treatment	0.05	same_construct
+D8	E11	-0.022208416870279683	no_treatment	no_treatment	0.05	same_construct
+D8	F11	0.3799270190908766	no_treatment	no_treatment	0.05	same_construct
+D8	G11	0.1548280575755411	no_treatment	no_treatment	0.05	same_construct
+D11	E11	-0.031946738729653465	no_treatment	no_treatment	0.05	same_construct
+D11	F11	-0.15701910367851984	no_treatment	no_treatment	0.05	same_construct
+D11	G11	-0.08139421026355315	no_treatment	no_treatment	0.05	same_construct
+E11	F11	0.1368562511390332	no_treatment	no_treatment	0.05	same_construct
+E11	G11	-0.10811251837479853	no_treatment	no_treatment	0.05	same_construct
+F11	G11	0.4200903305403509	no_treatment	no_treatment	0.05	same_construct
+B2	G11	-0.39727453629656306	no_treatment	no_treatment	0.005	same_construct
+B5	G11	-0.0032942638174596997	no_treatment	no_treatment	0.005	same_construct
+B8	G11	0.028146128123438936	no_treatment	no_treatment	0.005	same_construct
+B11	G11	0.05643486503350701	no_treatment	no_treatment	0.005	same_construct
+C2	G11	0.3188055894289191	no_treatment	no_treatment	0.005	same_construct
+C5	G11	0.10821341853926916	no_treatment	no_treatment	0.005	same_construct
+C8	G11	0.18872520790903613	no_treatment	no_treatment	0.005	same_construct
+C11	G11	-0.060467870553544724	no_treatment	no_treatment	0.005	same_construct
+D2	G11	0.28735793860817943	no_treatment	no_treatment	0.005	same_construct
+D5	G11	0.15325227125377688	no_treatment	no_treatment	0.005	same_construct
+D8	G11	0.1548280575755411	no_treatment	no_treatment	0.005	same_construct
+D11	G11	-0.08139421026355315	no_treatment	no_treatment	0.005	same_construct
+E11	G11	-0.10811251837479853	no_treatment	no_treatment	0.005	same_construct
+F11	G11	0.4200903305403509	no_treatment	no_treatment	0.005	same_construct
+B2	G11	-0.39727453629656306	no_treatment	no_treatment	0.1	same_construct
+B5	G11	-0.0032942638174596997	no_treatment	no_treatment	0.1	same_construct
+B8	G11	0.028146128123438936	no_treatment	no_treatment	0.1	same_construct
+B11	G11	0.05643486503350701	no_treatment	no_treatment	0.1	same_construct
+C2	G11	0.3188055894289191	no_treatment	no_treatment	0.1	same_construct
+C5	G11	0.10821341853926916	no_treatment	no_treatment	0.1	same_construct
+C8	G11	0.18872520790903613	no_treatment	no_treatment	0.1	same_construct
+C11	G11	-0.060467870553544724	no_treatment	no_treatment	0.1	same_construct
+D2	G11	0.28735793860817943	no_treatment	no_treatment	0.1	same_construct
+D5	G11	0.15325227125377688	no_treatment	no_treatment	0.1	same_construct
+D8	G11	0.1548280575755411	no_treatment	no_treatment	0.1	same_construct
+D11	G11	-0.08139421026355315	no_treatment	no_treatment	0.1	same_construct
+E11	G11	-0.10811251837479853	no_treatment	no_treatment	0.1	same_construct
+F11	G11	0.4200903305403509	no_treatment	no_treatment	0.1	same_construct
+B2	G11	-0.39727453629656306	no_treatment	no_treatment	0.01	same_construct
+B5	G11	-0.0032942638174596997	no_treatment	no_treatment	0.01	same_construct
+B8	G11	0.028146128123438936	no_treatment	no_treatment	0.01	same_construct
+B11	G11	0.05643486503350701	no_treatment	no_treatment	0.01	same_construct
+C2	G11	0.3188055894289191	no_treatment	no_treatment	0.01	same_construct
+C5	G11	0.10821341853926916	no_treatment	no_treatment	0.01	same_construct
+C8	G11	0.18872520790903613	no_treatment	no_treatment	0.01	same_construct
+C11	G11	-0.060467870553544724	no_treatment	no_treatment	0.01	same_construct
+D2	G11	0.28735793860817943	no_treatment	no_treatment	0.01	same_construct
+D5	G11	0.15325227125377688	no_treatment	no_treatment	0.01	same_construct
+D8	G11	0.1548280575755411	no_treatment	no_treatment	0.01	same_construct
+D11	G11	-0.08139421026355315	no_treatment	no_treatment	0.01	same_construct
+E11	G11	-0.10811251837479853	no_treatment	no_treatment	0.01	same_construct
+F11	G11	0.4200903305403509	no_treatment	no_treatment	0.01	same_construct
+B2	G11	-0.39727453629656306	no_treatment	no_treatment	0.001	same_construct
+B5	G11	-0.0032942638174596997	no_treatment	no_treatment	0.001	same_construct
+B8	G11	0.028146128123438936	no_treatment	no_treatment	0.001	same_construct
+B11	G11	0.05643486503350701	no_treatment	no_treatment	0.001	same_construct
+C2	G11	0.3188055894289191	no_treatment	no_treatment	0.001	same_construct
+C5	G11	0.10821341853926916	no_treatment	no_treatment	0.001	same_construct
+C8	G11	0.18872520790903613	no_treatment	no_treatment	0.001	same_construct
+C11	G11	-0.060467870553544724	no_treatment	no_treatment	0.001	same_construct
+D2	G11	0.28735793860817943	no_treatment	no_treatment	0.001	same_construct
+D5	G11	0.15325227125377688	no_treatment	no_treatment	0.001	same_construct
+D8	G11	0.1548280575755411	no_treatment	no_treatment	0.001	same_construct
+D11	G11	-0.08139421026355315	no_treatment	no_treatment	0.001	same_construct
+E11	G11	-0.10811251837479853	no_treatment	no_treatment	0.001	same_construct
+F11	G11	0.4200903305403509	no_treatment	no_treatment	0.001	same_construct
