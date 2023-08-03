@@ -1,11 +1,22 @@
-# Correlation Analysis
-In this analysis, the features values were compared for all cells.
+# Median Correlation Analysis
+In this analysis the aggreated features were compared across groups:
 ### Correlation Comparisons
-Pairwise correlations were calculated for the following groups:
-- Across Well within each construct concentration
-    - For the same siRNA constructs
-    - For different siRNA constructs
+Aggregated pairwise correlations were calculated across well between:
+- The same siRNA constructs within each construct concentration
+- Different siRNA constructs within each construct concentration
 
-- Within Well for each siRNA construct and construct concentration
+The `no_treatment` wells were only compared with other `no_treatment` wells for this analysis.
 
-Correlations were then plotted and compared by estimating the pdfs using kde for each construct concentration for the above groups.
+### Visualzing Comparisons
+Correlations were then plotted as boxplots for each concentration in the following groups:
+
+- (Construct 1) and (Construct 2)
+- (Construct 1) and (Constrcut 1)
+- (Construct 2) and (Construct 2)
+- (Construct 1) and (Scramble)
+- (Construct 2) and (Scramble)
+- (Scramble) and (Scramble)
+- (Construct 1) and (No Treatment)
+- (Construct 2) and (No Treatment)
+- (Scramble) and (No Treatment)
+- (No Treatment) and (No Treatment)
