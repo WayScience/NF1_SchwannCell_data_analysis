@@ -1,11 +1,24 @@
-# Correlation Analysis
-In this analysis, the features values were compared for all cells.
+# Median Correlation Analysis
+In this analysis, the effect of different treatments on cell expression are compared, these treatments can be summarized as follows:
+- siRNA constructs 1 and 2 target the mRNA of the NF1 gene.
+- Scramble is a random siRNA sequence.
+- No Treatment is the state without any perturbation
+
 ### Correlation Comparisons
-Pairwise correlations were calculated for the following groups:
-- Across Well within each construct concentration
-    - For the same siRNA constructs
-    - For different siRNA constructs
+Pairwise correlations between cells were calculated across wells between:
+- The same siRNA constructs within each construct concentration
+- Different siRNA constructs within each construct concentration
 
-- Within Well for each siRNA construct and construct concentration
+### Visualzing Comparisons
+Correlations were then plotted as boxplots for each concentration in the following groups:
 
-Correlations were then plotted and compared by estimating the pdfs using kde for each construct concentration for the above groups.
+- (Construct 1) and (Construct 2)
+- (Construct 1) and (Constrcut 1)
+- (Construct 2) and (Construct 2)
+- (Construct 1) and (Scramble)
+- (Construct 2) and (Scramble)
+- (Scramble) and (Scramble)
+- (Construct 1) and (No Treatment)
+- (Construct 2) and (No Treatment)
+- (Scramble) and (No Treatment)
+- (No Treatment) and (No Treatment)
