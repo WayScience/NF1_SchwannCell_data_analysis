@@ -1,4 +1,4 @@
-# Median Correlation Analysis
+# Single Cell Correlation Analysis
 In this analysis, the effect of different treatments on cell expression are compared, these treatments can be summarized as follows:
 - siRNA constructs 1 and 2 target the mRNA of the NF1 gene.
 - Scramble is a random siRNA sequence.
