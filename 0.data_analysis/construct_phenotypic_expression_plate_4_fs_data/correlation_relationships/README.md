@@ -1,15 +1,21 @@
 # Single Cell Correlation Analysis
-In this analysis, the effect of different treatments on cell expression are compared, these treatments can be summarized as follows:
+
+In this analysis, the effect of different treatments on cell expression are compared.
+We summarize these treatments as follows:
+
 - siRNA constructs 1 and 2 target the mRNA of the NF1 gene.
 - Scramble is a random siRNA sequence.
 - No Treatment is the state without any perturbation
 
 ### Correlation Comparisons
-Pairwise correlations between cells were calculated across wells between:
+
+We calculate pairwise correlations between cells in the following comparisons:
+
 - The same siRNA constructs within each construct concentration
 - Different siRNA constructs within each construct concentration
 
-### Visualzing Comparisons
+### Visualizing Comparisons
+
 Correlations were then plotted as boxplots for each concentration in the following groups:
 
 - (Construct 1) and (Construct 2)
