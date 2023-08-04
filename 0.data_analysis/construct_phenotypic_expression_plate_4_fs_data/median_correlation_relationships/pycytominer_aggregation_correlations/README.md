@@ -1,6 +1,6 @@
-# Single Cell Correlation Analysis
+# Aggregate Correlation Analysis
 
-In this analysis, the effect of different treatments on cell expression are compared.
+In this analysis, we compare the effect of different treatments on aggregated cell morphology profiles using correlation.
 We summarize these treatments as follows:
 
 - siRNA constructs 1 and 2 target the mRNA of the NF1 gene.
@@ -9,7 +9,7 @@ We summarize these treatments as follows:
 
 ### Correlation Comparisons
 
-We calculate pairwise correlations between cells in the following comparisons:
+We aggregated single cells post normalization and feature selection to calculate pairwise correlations across wells between:
 
 - The same siRNA constructs within each construct concentration
 - Different siRNA constructs within each construct concentration
