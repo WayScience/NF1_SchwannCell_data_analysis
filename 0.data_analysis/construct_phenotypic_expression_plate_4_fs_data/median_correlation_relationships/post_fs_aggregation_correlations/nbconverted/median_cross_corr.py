@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Determine expression relationships between constructs
-# Correlations between single cells are compared
+# Correlations between aggregate groups are compared
 
 # ## Imports
 
@@ -80,17 +80,47 @@ output_path_data.mkdir(parents=True, exist_ok=True)
 platedf = pd.read_parquet(path)
 
 
-# ## Create correlations object
+# # Aggregating
 
 # In[6]:
 
 
-corr_obj = cc.CreateCorrelations(platedf=platedf, aggregated=False)
+meta_prefix = "Metadata"
+
+# Columns that do not contain Metadata
+not_meta_cols = [col for col in platedf.columns if meta_prefix not in col]
+
+
+# In[7]:
+
+
+median_cols = {col_name: "median" for col_name in not_meta_cols}
+
+# Set metadata columns to lambda functions set to the first row
+meta_cols = {
+    col_name: lambda x: x.iloc[0]
+    for col_name in platedf.columns
+    if meta_prefix in col_name
+}
+
+# Combine the dictionaries
+median_cols.update(meta_cols)
+
+# Aggregate the plate data
+platedf = platedf.groupby("Metadata_Well").agg(median_cols)
+
+
+# ## Create correlations object
+
+# In[8]:
+
+
+corr_obj = cc.CreateCorrelations(platedf=platedf, aggregated=True)
 
 
 # ## Save the correlation data
 
-# In[7]:
+# In[9]:
 
 
 final_construct = corr_obj.final_construct
@@ -99,16 +129,22 @@ final_construct.to_csv(output_path_data / "correlation_data.tsv", sep="\t", inde
 
 # ## Create x labels for constructs
 
-# In[8]:
+# In[10]:
 
 
 name_map = {"NF1 Target 1": "(Construct 1)", "NF1 Target 2": "(Construct 2)", "Scramble": "(Scramble)", "no_treatment": "(No Treatment)"}
 final_construct["construct_groups"] =  final_construct['first_construct'].map(name_map) + " and " + final_construct['second_construct'].map(name_map)
 
 
+# In[11]:
+
+
+final_construct["second_construct"].unique()
+
+
 # ## Create boxplots for each concentration
 
-# In[9]:
+# In[12]:
 
 
 sns.set(style="whitegrid")
