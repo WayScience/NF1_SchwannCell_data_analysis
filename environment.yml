@@ -14,9 +14,7 @@ dependencies:
   - requests
   - seaborn
   - pip
+  - ipython
+  - notebook
   # R packages:
-  - r-base=4.2.2
-  - r-tidyr
-  - r-dplyr
-  - r-readr
-  - r-ggplot2
+  - r-essentials
