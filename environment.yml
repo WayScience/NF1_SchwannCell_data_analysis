@@ -5,7 +5,7 @@ dependencies:
   - conda-forge::python=3.9
   - umap-learn
   - scikit-posthocs
-  - pandas
+  - pandas<2.0
   - numpy
   - matplotlib
   - scipy
