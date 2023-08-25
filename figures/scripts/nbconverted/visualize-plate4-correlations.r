@@ -16,6 +16,16 @@ correlation_dir <- file.path(
 
 correlation_file <- file.path(correlation_dir, "correlation_data.tsv")
 
+platemap_dir <- file.path(
+    "..",
+    "..",
+    "nf1_cellpainting_data",
+    "0.download_data",
+    "metadata"
+)
+
+platemap_file <- file.path(platemap_dir, "platemap_NF1_plate4.csv")
+
 output_boxplot_file <- file.path("figures", "plate4_bulk_correlation_boxplot.png")
 output_grant_file <- file.path("figures", "plate4_grant_boxplot.png")
 
@@ -145,10 +155,19 @@ correlation_df$construct_colors <- factor(
     )
 )
 
+# Remove all wells that contain Null genotype cells
+platemap_df <- readr::read_csv(platemap_file, show_col_types = FALSE)
+
+null_wells <- platemap_df %>%
+    dplyr::filter(genotype == "Null") %>%
+    dplyr::pull(well_position)
+
+correlation_df <- correlation_df %>%
+    dplyr::filter(!(first_well %in% !!null_wells)) %>%
+    dplyr::filter(!(second_well %in% !!null_wells))
+
 print(dim(correlation_df))
 head(correlation_df, 3)
-
-table(correlation_df$construct_y_group)
 
 nf1_construct_gg <- (
     ggplot(correlation_df,
@@ -207,6 +226,14 @@ grant_figure_df <- correlation_df %>%
         construct_facet = first_construct,
         color_group = construct_comparison
     )
+
+no_treatment_comparison_df <- correlation_df %>%
+    dplyr::filter(construct_comparison == "No treatment comparison")
+
+grant_figure_df <- dplyr::bind_rows(
+    grant_figure_df,
+    no_treatment_comparison_df
+)
 
 grant_figure_df$color_group <- paste(grant_figure_df$color_group)
 
