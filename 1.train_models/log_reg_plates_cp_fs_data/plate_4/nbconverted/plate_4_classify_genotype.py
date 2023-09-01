@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Train a logistic regression to classify genotypes for plate 4
+# # Train logistic regressions to classify genotypes for plate 4
 
 # In[1]:
 
@@ -15,11 +15,7 @@ from joblib import dump
 from scipy.stats import uniform
 from sklearn.exceptions import ConvergenceWarning
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import (
-    RandomizedSearchCV,
-    StratifiedKFold,
-    train_test_split,
-)
+from sklearn.model_selection import RandomizedSearchCV, train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import parallel_backend
 
@@ -128,7 +124,7 @@ platedf[gene_column] = le.transform(platedf[gene_column])
 test_frac = 0.2
 val_frac = 0.15
 
-X_train, X_test, y_train, y_test = train_test_split(featdf, platedf[gene_column], test_size = test_frac, random_state=0, shuffle=True)
+X_train, X_test, y_train, y_test = train_test_split(featdf, platedf[gene_column], test_size = test_frac, random_state=0, shuffle=True, stratify=platedf[gene_column])
 
 
 # ## Shuffle the training data for the shuffled model
@@ -157,9 +153,6 @@ param_dist = {
     "l1_ratio": uniform(loc=0, scale=1),
 }
 
-# Define stratification method
-strat_obj = StratifiedKFold(n_splits=5, shuffle=True, random_state=0)
-
 # Create a Logistic Regression model
 logreg_params = {
     "max_iter": 1000,
@@ -173,7 +166,7 @@ random_search_params = {
     "param_distributions": param_dist,
     "scoring": "precision",
     "n_iter": 100,
-    "cv": strat_obj,
+    "cv": 5,
     "random_state": 0,
     "n_jobs": -1,
 }
