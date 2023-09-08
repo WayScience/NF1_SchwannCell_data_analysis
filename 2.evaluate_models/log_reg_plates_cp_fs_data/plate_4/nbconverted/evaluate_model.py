@@ -153,15 +153,15 @@ data_splitdf = pd.DataFrame(data_split)
 # In[8]:
 
 
-plt.figure(figsize=(20, 14))
+plt.figure(figsize=(12, 10))
 sns.set_style("whitegrid")
 
 data_splitdf["plot_group"] = data_splitdf["model_type"] + " (" + data_splitdf["split_type"] + ")"
 
 sns.lineplot(data=data_splitdf, x="recall", y="precision", hue="plot_group", ci=None, linewidth=2)
 
-plt.legend(loc="upper right", title="Model (data split)")
-plt.ylim(bottom=0.4, top=1.13)
+plt.legend(loc="lower right", title="Model (data split)")
+plt.ylim(bottom=0.19, top=1.02)
 plt.xlabel("Recall")
 plt.ylabel("Precision")
 plt.title("Precision vs. Recall Plate 4 Genotype Classification")
