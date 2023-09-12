@@ -107,7 +107,7 @@ gene_column = "Metadata_genotype"
 plate3df["Metadata_plate"] = "3"
 plate3pdf["Metadata_plate"] = "3p"
 
-common_columns = list(plate3df.columns.intersection(plate3pdf.columns))
+common_columns = plate3df.columns.intersection(plate3pdf.columns).to_list()
 plate3df = plate3df.loc[:, common_columns]
 plate3pdf = plate3pdf.loc[:, common_columns]
 
