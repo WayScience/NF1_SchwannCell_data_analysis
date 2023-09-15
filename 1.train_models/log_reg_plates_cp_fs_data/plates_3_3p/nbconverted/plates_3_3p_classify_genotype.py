@@ -211,11 +211,14 @@ with parallel_backend("multiprocessing"):
 data_suffix = "log_reg_cp_fs_data_plate_3_3p"
 
 # Save the models
-dump(logreg, f"{models_path}/{data_suffix}.joblib")
-dump(shuf_logreg, f"{models_path}/log_reg_shuf_cp_fs_data_plate_3_3P.joblib")
+dump(random_search.best_estimator_, f"{models_path}/{data_suffix}.joblib")
+dump(shuf_random_search.best_estimator_, f"{models_path}/log_reg_shuf_cp_fs_data_plate_3_3P.joblib")
 
 # Save label encoder
 dump(le, f"{data_path}/label_encoder_{data_suffix}.joblib")
+
+# Save the feature names
+dump(random_search.feature_names_in_, f"{data_path}/feature_names_{data_suffix}.joblib")
 
 
 # ## Save data indices
