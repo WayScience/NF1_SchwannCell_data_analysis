@@ -3,6 +3,9 @@ from CorrelateAggWells import CorrelateAggWells
 
 
 class CorrelatePlate:
+    """
+    Compute correlations for plate data features
+    """
 
     def __init__(self):
         pass

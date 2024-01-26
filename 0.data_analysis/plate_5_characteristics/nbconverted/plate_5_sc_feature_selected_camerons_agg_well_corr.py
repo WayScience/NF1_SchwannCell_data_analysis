@@ -44,11 +44,12 @@ sys.path.append(
     f"{root_dir}/0.data_analysis/plate_5_characteristics/utils"
 )
 
+# Class for calculating correlations
+from CorrelatePlate import CorrelatePlate
+
 platedf_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_5_sc_feature_selected.parquet").resolve(strict=True)
 platedf = pd.read_parquet(platedf_path)
 
-# Class for calculating correlations
-from CorrelatePlate import CorrelatePlate
 
 # ### Output paths
 
@@ -96,11 +97,13 @@ welldf = platedf.groupby("Metadata_Well").agg(median_cols)
 
 
 cp = CorrelatePlate()
+
+# Correlates aggregated wells both between and across groups
 correlationsdf = cp.correlate_agg_wells(welldf, "Metadata_Well", feat_cols, "Metadata_genotype")
 
 
 # In[8]:
 
 
-correlationsdf
+correlationsdf.head()
 

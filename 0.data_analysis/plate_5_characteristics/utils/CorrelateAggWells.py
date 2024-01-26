@@ -5,6 +5,9 @@ import pandas as pd
 
 
 class CorrelateAggWells:
+    """
+    Compute correlations between aggregated cell features per well
+    """
 
     def __init__(self):
         pass
