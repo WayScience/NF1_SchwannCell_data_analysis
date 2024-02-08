@@ -7,35 +7,6 @@ class GreedySubsetSum:
     def __init__(self):
         pass
 
-    def test_well_count(self, _welldf, _cell_count_col, _ascending=False):
-        """
-        Parameters
-        ----------
-        _welldf: Pandas Dataframe
-            Well data with unique wells represented as rows.
-
-        _cell_count_col: String
-            The cell count column name.
-
-        _ascending: Boolean
-            Order to sort cell counts from wells.
-
-        Yields
-        ------
-        well: Pandas Series
-            Data for one well.
-
-        test_cell_count: Integer
-            The number of cells added to the test well set.
-        """
-
-        test_cell_count = 0
-        welldf = _welldf.sort_values(by=_cell_count_col, ascending=_ascending)
-        for _, well in welldf.iterrows():
-            test_cell_count += well[_cell_count_col]
-            yield well, test_cell_count
-
-
     def update_test_wells(self, _welldf, _category_col, _well_col, _cell_count_col, _test_well_count):
         """
         Parameters
@@ -103,21 +74,43 @@ class GreedySubsetSum:
 
                 continue
 
+            # Sort the grouped data by well cell count
+            groupdf = groupdf.sort_values(by=_cell_count_col, ascending=False)
+
+            # Create a cumulative sum of the sorted well cell counts
+            cell_count_cum_sum = f"{_cell_count_col}_cumsum"
+            groupdf[cell_count_cum_sum] = groupdf[_cell_count_col].cumsum()
+
             # Total cell count for all wells in group
-            tot_cell_count = groupdf[_cell_count_col].sum()
+            tot_cell_count = groupdf[cell_count_cum_sum].iloc[-1]
 
-            # Initial number of test wells before adding groups test wells
-            num_test_wells0 = len(test_wells)
+            # Number of train-val cells after adding sorted wells to test set
+            groupdf["group_trainval_count"] = tot_cell_count - groupdf[cell_count_cum_sum]
 
+            # Wells if they have a higher train-val cell count
+            groupdf = groupdf.loc[min_cat[_cell_count_col] <= groupdf["group_trainval_count"]]
+
+            # Number of cells added to test set
+            cat_num_test_wells = groupdf.shape[0]
+
+            # Check that the number of test wells for the group isn't zero
+            if cat_num_test_wells == 0:
+                raise ValueError(f"The test well count of group {cat} is zero")
+
+            # Add wells to test set
+            test_wells.extend(groupdf[_well_col].tolist())
+
+            """
             # Determine which wells should be test wells
-            for well, test_cell_count in self.test_well_count(_welldf, _cell_count_col):
+            for well, test_cell_count in self.test_well_count(groupdf, _cell_count_col):
                 if min_cat[_cell_count_col] <= (tot_cell_count - test_cell_count):
                     test_wells.append(well[_well_col])
 
                 # If too many test wells are added to change the minority train-val group, then stop adding test wells
                 else:
                     break
+            """
 
-            print(f"{len(test_wells) - num_test_wells0} wells of {cat_num_wells} wells are test wells for group {cat}")
+            print(f"{groupdf.shape[0]} wells of {cat_num_wells} wells are test wells for group {cat}")
 
         return test_wells
