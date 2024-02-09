@@ -3,6 +3,9 @@ from PlateTrainingSplits import PlateTrainingSplits
 
 
 class GreedySubsetSum:
+    """
+    Select wells for the test dataset by maximizing the number of cells in the train-validation set for a given number of wells.
+    """
 
     def __init__(self):
         pass
@@ -44,7 +47,7 @@ class GreedySubsetSum:
 
         catdf = _welldf.groupby(_category_col)
 
-        # Determine the smalles reference category for sampling test wells
+        # Determine the smallest category (reference category) for sampling test wells
         min_cat = plate_split.sum_train_val_category_cell_counts(
             catdf,
             _category_col,
@@ -99,17 +102,6 @@ class GreedySubsetSum:
 
             # Add wells to test set
             test_wells.extend(groupdf[_well_col].tolist())
-
-            """
-            # Determine which wells should be test wells
-            for well, test_cell_count in self.test_well_count(groupdf, _cell_count_col):
-                if min_cat[_cell_count_col] <= (tot_cell_count - test_cell_count):
-                    test_wells.append(well[_well_col])
-
-                # If too many test wells are added to change the minority train-val group, then stop adding test wells
-                else:
-                    break
-            """
 
             print(f"{groupdf.shape[0]} wells of {cat_num_wells} wells are test wells for group {cat}")
 

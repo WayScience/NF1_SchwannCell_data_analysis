@@ -1,4 +1,7 @@
 class PlateTrainingSplits:
+    """
+    A useful class to aid splitting plate.
+    """
 
     def __init__(self):
         pass
