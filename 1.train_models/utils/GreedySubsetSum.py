@@ -69,11 +69,15 @@ class GreedySubsetSum:
 
             # Determine the wells for the reference category
             if all((groupdf[cat] == min_cat[cat]).all() for cat in category_col):
+
                 base_cat_wells = (
                     groupdf.nsmallest(_test_well_count, _cell_count_col)
                     [_well_col].tolist()
                 )
+
                 print(f"{len(base_cat_wells)} wells of {cat_num_wells} wells are test wells for reference group {cat}")
+
+                test_wells.extend(base_cat_wells)
 
                 continue
 
