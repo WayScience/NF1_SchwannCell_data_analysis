@@ -6,3 +6,4 @@ install_pgks.sh
 .virtual_documents/
 __pycache__/
 !/**/utils/*.py
+.DS_Store
