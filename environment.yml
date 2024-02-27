@@ -3,18 +3,19 @@ channels:
   - conda-forge
 dependencies:
   - conda-forge::python=3.9
-  - umap-learn
-  - scikit-posthocs
-  - pandas<2.0
-  - numpy
-  - matplotlib
-  - scipy
-  - pathlib2
-  - scikit-learn
-  - requests
-  - seaborn
-  - pip
-  - ipython
-  - notebook
+  - conda-forge::umap-learn
+  - conda-forge::scikit-posthocs
+  - conda-forge::pandas<2.0
+  - conda-forge::numpy
+  - conda-forge::matplotlib
+  - conda-forge::scipy
+  - conda-forge::pathlib2
+  - conda-forge::scikit-learn
+  - conda-forge::requests
+  - conda-forge::seaborn
+  - conda-forge::pip
+  - conda-forge::ipython
+  - conda-forge::notebook
+  - conda-forge::py-xgboost-gpu
   # R packages:
-  - r-essentials
+  - conda-forge::r-essentials
