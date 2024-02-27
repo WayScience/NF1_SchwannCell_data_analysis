@@ -13,7 +13,6 @@ plate_4_df <- read.csv(url)
 dim(plate_4_df)
 head(plate_4_df)
 
-# Platemap for dose
 platemap_dose <- platetools::raw_map(
     data = as.character(plate_4_df$Concentration),
     well = plate_4_df$well_position,
@@ -23,11 +22,14 @@ platemap_dose <- platetools::raw_map(
 ggtitle(paste("siRNA treatment and dose platemap")) +
 theme(plot.title = element_text(size = 12, face = "bold")) +
 ggplot2::geom_point(aes(shape = plate_4_df$siRNA)) +
-ggplot2::scale_shape_discrete(name = "siRNA Treatments", limits = c("None", "Scramble", "NF1 Target 1", "NF1 Target 2")) +
+ggplot2::scale_shape_discrete(
+    name = "siRNA Treatments",
+    limits = c("None", "Scramble", "NF1 Target 1", "NF1 Target 2"),
+    guide = guide_legend(override.aes = list(size = 3))  # Adjust size here
+) +
 ggplot2::scale_fill_manual(
     name = "Concentrations (nM)",
-    values = c("#ffffff", "#d9f0d9", "#a3e8a3", "#6ed46e", "#3ab93a", "#007a00"),
-    guide = guide_legend(override.aes = list(size = 5)),
+    values = c("#ffffff", "#d9f0d9", "#a3e8a3", "#6ed46e", "#3ab93a", "#007a00")
 ) +
 theme(
     legend.text = element_text(size = 10),
@@ -35,11 +37,13 @@ theme(
     legend.position = "right",
     # move legend around so it fits better on the screen
     legend.margin = margin(-15, 0, 10, 0),
-    legend.box = "vertical"
-) +
-guides(shape = guide_legend(order = 1), fill = guide_legend(order = 2))
+    legend.box = "vertical",
+    axis.text.x = element_text(size = 10),  # Adjust x-axis tick size
+    axis.text.y = element_text(size = 10)   # Adjust y-axis tick size
+)
 
 platemap_dose
+
 
 # Platemap for genotype
 platemap_genotype <- platetools::raw_map(
@@ -57,7 +61,9 @@ theme(
     legend.position = "right",
     # move legend around so it fits better on the screen
     legend.margin = margin(-10, 0, 10, 0),
-    legend.box = "horizontal"
+    legend.box = "horizontal",
+    axis.text.x = element_text(size = 10),  # Adjust x-axis tick size
+    axis.text.y = element_text(size = 10)   # Adjust y-axis tick size
 )
 
 platemap_genotype
