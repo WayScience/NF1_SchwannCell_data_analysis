@@ -109,8 +109,8 @@ class WellSubsetSum:
 
                     # The largest number of wells at the current cell capacity (w) is
                     # either at the previous largest number of cells,
-                    # or when adding the next wells. However, w
-                    # can not be less than the number of cells added from the well.
+                    # or when adding the next well. However, w
+                    # cannot be less than the number of cells added from the well.
                     test_well_count[df_idx][w] = test_well_count[df_idx - 1][w]
                     well_val = well[_cell_count_col]
                     if well_val <= w:
@@ -143,11 +143,6 @@ class WellSubsetSum:
             # Check that the number of test wells for the group isn't zero
             if len(test_wells) == 0:
                 raise ValueError(f"The test well count of group {cat} is zero")
-
-            """
-            # Add wells to test set
-            test_wells.extend(groupdf[_well_col].tolist())
-            """
 
             print(f"{len(test_wells)} wells of {cat_num_wells} wells are test wells for group {cat}")
 
