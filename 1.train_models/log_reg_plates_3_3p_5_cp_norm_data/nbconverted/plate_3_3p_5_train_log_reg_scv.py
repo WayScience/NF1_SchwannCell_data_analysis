@@ -232,7 +232,7 @@ param_ranges = {
 }
 
 # Number of iteration to optimize hyperparameters
-rand_iter = 1000
+rand_iter = 500
 
 # Best accuracy
 best_acc = 0
@@ -265,6 +265,7 @@ for idx, rparams in random_params.items():
     # Combine parameters in current search with logistic regresssion parameters
     comb_params = logreg_params | rparams
 
+    hparam_data = 0
     hparam_data = defaultdict(dict)
 
     # Loop through the folds
@@ -298,6 +299,8 @@ for idx, rparams in random_params.items():
         best_hparam = hparam_data.copy()
         best_acc = acc
         best_hp = rparams
+
+print(f"Best average validation accuracy = {best_acc}")
 
 
 # ## Retrain model
@@ -349,8 +352,13 @@ for fold, data in hparam_data.items():
     valdf = restdf.iloc[data["val_idx"]][kept_meta_cols]
 
     traindf["Metadata_fold"], valdf["Metadata_fold"] = fold, fold
+    traindf["Metadata_datasplit"], valdf["Metadata_datasplit"] = "train", "val"
     datasplitsdf.append(pd.concat([traindf, valdf], axis=0))
 
+testdf = testdf[kept_meta_cols]
+testdf["Metadata_datasplit"] = "test_well"
+
+datasplitsdf.append(testdf)
 datasplitsdf = pd.concat(datasplitsdf, axis=0)
 
 datasplitsdf.to_parquet(f"{data_path}/scv_folds_{data_suf}.joblib")
