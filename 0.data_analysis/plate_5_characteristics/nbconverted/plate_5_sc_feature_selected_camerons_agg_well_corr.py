@@ -99,25 +99,39 @@ welldf = platedf.groupby("Metadata_Well").agg(median_cols)
 
 
 cd = CorrelateData()
+correlationsdf = []
 
-# Correlates aggregated wells both between and across groups
-correlationsdf = cd.inter_correlations(
+# Correlates aggregated wells across genotype
+correlationsdf.append(cd.inter_correlations(
     welldf.reset_index(drop=True),
     ["Metadata_Well"],
     feat_cols,
     ["Metadata_genotype"]
-)
+))
 
-
-# ## Store Correlation Data
 
 # In[8]:
 
 
+# Correlates aggregated wells within genotype
+correlationsdf.append(cd.intra_correlations(
+    welldf.reset_index(drop=True),
+    ["Metadata_Well"],
+    feat_cols,
+    ["Metadata_genotype"]
+))
+
+
+# ## Store Correlation Data
+
+# In[9]:
+
+
+correlationsdf = pd.concat(correlationsdf, axis=0)
 correlationsdf.to_parquet(f"{data_path}/plate_5_sc_feature_selected_camerons_agg_well_corr.parquet")
 
 
-# In[9]:
+# In[10]:
 
 
 correlationsdf.head()
