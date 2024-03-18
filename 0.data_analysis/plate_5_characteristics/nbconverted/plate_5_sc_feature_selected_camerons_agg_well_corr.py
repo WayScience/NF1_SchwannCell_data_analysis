@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Correlate Cell Profiler Aggregated Wells in Plate 5
+
 # In[1]:
 
 
@@ -41,11 +43,11 @@ if root_dir is None:
 
 # Path to correlation class
 sys.path.append(
-    f"{root_dir}/0.data_analysis/plate_5_characteristics/utils"
+    f"{root_dir}/0.data_analysis/utils"
 )
 
 # Class for calculating correlations
-from CorrelatePlate import CorrelatePlate
+from CorrelateData import CorrelateData
 
 platedf_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_5_sc_feature_selected.parquet").resolve(strict=True)
 platedf = pd.read_parquet(platedf_path)
@@ -56,8 +58,8 @@ platedf = pd.read_parquet(platedf_path)
 # In[4]:
 
 
-fig_path = pathlib.Path("plate_5_sc_feature_selected_figures")
-fig_path.mkdir(parents=True, exist_ok=True)
+data_path = pathlib.Path("plate_5_sc_feature_selected_camerons_agg_well_corr_data")
+data_path.mkdir(parents=True, exist_ok=True)
 
 
 # ## Drop missing columns
@@ -96,13 +98,26 @@ welldf = platedf.groupby("Metadata_Well").agg(median_cols)
 # In[7]:
 
 
-cp = CorrelatePlate()
+cd = CorrelateData()
 
 # Correlates aggregated wells both between and across groups
-correlationsdf = cp.correlate_agg_wells(welldf, "Metadata_Well", feat_cols, "Metadata_genotype")
+correlationsdf = cd.inter_correlations(
+    welldf.reset_index(drop=True),
+    ["Metadata_Well"],
+    feat_cols,
+    ["Metadata_genotype"]
+)
 
+
+# ## Store Correlation Data
 
 # In[8]:
+
+
+correlationsdf.to_parquet(f"{data_path}/plate_5_sc_feature_selected_camerons_agg_well_corr.parquet")
+
+
+# In[9]:
 
 
 correlationsdf.head()
