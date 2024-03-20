@@ -49,7 +49,7 @@ sys.path.append(
 # Class for calculating correlations
 from CorrelateData import CorrelateData
 
-platedf_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_5_sc_feature_selected.parquet").resolve(strict=True)
+platedf_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_5_bulk_camerons_method.parquet").resolve(strict=True)
 platedf = pd.read_parquet(platedf_path)
 
 
@@ -70,27 +70,11 @@ data_path.mkdir(parents=True, exist_ok=True)
 platedf.dropna(inplace=True)
 
 
-# ## Aggregate cells with cameron's method
-
 # In[6]:
 
 
 meta_cols = platedf.filter(like="Metadata").columns
 feat_cols = platedf.drop(columns=meta_cols).columns
-
-median_cols = {col_name: "median" for col_name in platedf.columns if col_name not in meta_cols}
-
-# Set metadata columns to lambda functions set to the first row
-meta_cols = {
-    col_name: lambda x: x.iloc[0]
-    for col_name in meta_cols
-}
-
-# Combine the dictionaries
-median_cols.update(meta_cols)
-
-# Aggregate the plate data
-welldf = platedf.groupby("Metadata_Well").agg(median_cols)
 
 
 # ## Compute Correlations
@@ -101,25 +85,22 @@ welldf = platedf.groupby("Metadata_Well").agg(median_cols)
 cd = CorrelateData()
 correlationsdf = []
 
+correlation_params = {
+    "_df": platedf.reset_index(drop=True),
+    "_antehoc_group_cols": ["Metadata_genotype"],
+    "_feat_cols": feat_cols,
+    "_posthoc_group_cols": ["Metadata_Well"]
+}
+
 # Correlates aggregated wells across genotype
-correlationsdf.append(cd.inter_correlations(
-    welldf.reset_index(drop=True),
-    ["Metadata_Well"],
-    feat_cols,
-    ["Metadata_genotype"]
-))
+correlationsdf.append(cd.inter_correlations(**correlation_params))
 
 
 # In[8]:
 
 
 # Correlates aggregated wells within genotype
-correlationsdf.append(cd.intra_correlations(
-    welldf.reset_index(drop=True),
-    ["Metadata_Well"],
-    feat_cols,
-    ["Metadata_genotype"]
-))
+correlationsdf.append(cd.intra_correlations(**correlation_params))
 
 
 # ## Store Correlation Data

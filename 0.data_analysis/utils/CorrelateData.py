@@ -48,7 +48,7 @@ class CorrelateData:
 
         return _corrs
 
-    def inter_correlations(self, _df, _posthoc_group_cols, _feat_cols, _antehoc_group_cols, _drop_cols = []):
+    def inter_correlations(self, _df, _antehoc_group_cols, _feat_cols, _posthoc_group_cols, _drop_cols = []):
         """
         Computes correlations between two objects using both post hoc and ante groups.
         This is accomplished by computing correlations between objects in different ante groups (inter correlations) and between all possible post hoc correlation comparisons between those groups.
@@ -58,14 +58,14 @@ class CorrelateData:
         _df: pd.DataFrame
             Contains the features and group columns to use for correlating objects.
 
-        _posthoc_group_cols: List(Objects)
-            Columns to groupby after organizing by _antehoc_group_cols.
+        _antehoc_group_cols: List(Objects)
+            Columns to groupby before organizing by _posthoc_group_cols.
 
         _feat_col: List
             Feature columns.
 
         _posthoc_group_cols: List(Objects)
-            Columns to groupby befor organizing by _posthoc_group_cols.
+            Columns to groupby after organizing by _antehoc_group_cols.
 
         _drop_col: List
             Columns to not save in the final output.
@@ -115,7 +115,7 @@ class CorrelateData:
         return pd.DataFrame(corrs)
 
 
-    def intra_correlations(self, _df, _posthoc_group_cols, _feat_cols, _antehoc_group_cols, _drop_cols = []):
+    def intra_correlations(self, _df, _antehoc_group_cols, _feat_cols, _posthoc_group_cols, _drop_cols = []):
         """
         Computes correlations between two objects using both post hoc and ante groups.
         This is accomplished by computing correlations between objects only in the same ante group (intra correlations), but between different post hoc groups.
@@ -125,14 +125,14 @@ class CorrelateData:
         _df: pd.DataFrame
             Contains the features and group columns to use for correlating objects.
 
-        _posthoc_group_cols: List(Objects)
-            Columns to groupby after organizing by _antehoc_group_cols.
+        _antehoc_group_cols: List(Objects)
+            Columns to groupby before organizing by _posthoc_group_cols.
 
         _feat_col: List
             Feature columns.
 
         _posthoc_group_cols: List(Objects)
-            Columns to groupby befor organizing by _posthoc_group_cols.
+            Columns to groupby after organizing by _antehoc_group_cols.
 
         _drop_col: List
             Columns to not save in the final output.
