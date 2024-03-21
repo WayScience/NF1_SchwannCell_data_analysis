@@ -161,8 +161,8 @@ def process_plates(_df):
 
 # ## Split and process plates
 # We aim to maximize the the number of cells in the train-validation set per plate.
-# We achieve this by select the specific holdout wells that maximize the minority class in the train-validation set.
-# In other words, we choose the combination of wells for train-validation that, together, include the highest number of cells in the genotype category that has the fewest number of cells.
+# We achieve this by selecting specific holdout wells that maximize the minority class in the train-validation set.
+# In other words, we choose the combination of wells for train-validation that, together, include the highest number of cells in the genotype category which has the fewest number of cells.
 # By side-effect, this process also minimizes the number of cells dropped from training in our downsampling procedure to balance datasets for class size prior to model training.
 
 # In[6]:
@@ -257,23 +257,20 @@ random_params = {
 # In[10]:
 
 
+# Store model results for evaluation
+eval_data = defaultdict(list)
+
 # Iterate through hyperparameters
 for idx, rparams in random_params.items():
 
     skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=0)
 
-    # Combine parameters in current search with logistic regresssion parameters
+    # Combine parameters in current search with logistic regression parameters
     comb_params = logreg_params | rparams
-
-    hparam_data = 0
-    hparam_data = defaultdict(dict)
 
     # Loop through the folds
     for fold, (train_index, val_index) in enumerate(skf.split(X, y)):
 
-        # Store split data for folds
-        hparam_data[f"fold{fold}"]["train_idx"] = train_index
-        hparam_data[f"fold{fold}"]["val_idx"] = val_index
 
         X_train, X_val = X.iloc[train_index], X.iloc[val_index]
         y_train, y_val = y[train_index], y[val_index]
@@ -291,12 +288,17 @@ for idx, rparams in random_params.items():
         preds = logreg.predict(X_val)
         acc += accuracy_score(y_val, preds)
 
+        # Store model data for folds
+        eval_data["datasplit"].extend(["val"] * val_index.shape[0])
+        eval_data["predicted_genotype"].extend(preds.tolist())
+        eval_data["true_genotype"].extend(y_val.tolist())
+
     # Average accuracy for the folds
     acc = acc / n_splits
 
     # Store the data with the best performance
     if acc > best_acc:
-        best_hparam = hparam_data.copy()
+        best_hparam = eval_data.copy()
         best_acc = acc
         best_hp = rparams
 
@@ -321,11 +323,21 @@ logreg = LogisticRegression(**comb_params)
 logreg.fit(X, y)
 
 
+# ## Store training data
+
+# In[12]:
+
+
+eval_data["datasplit"].extend(["train"] * X.shape[0])
+eval_data["predicted_genotype"].extend(logreg.predict(X).tolist())
+eval_data["true_genotype"].extend(y.tolist())
+
+
 # # Save models and model data
 
 # ## Save model
 
-# In[12]:
+# In[13]:
 
 
 data_suf = "log_reg_cp_fs_data_plate_5"
@@ -337,29 +349,10 @@ dump(logreg, f"{models_path}/{data_suf}.joblib")
 dump(le, f"{data_path}/label_encoder_{data_suf}.joblib")
 
 
-# ## Save data folds and splits
+# ## Save data folds
 
-# In[13]:
+# In[14]:
 
 
-kept_meta_cols = ["Metadata_Well", "Metadata_Plate", "Metadata_Site", "Metadata_Cells_Number_Object_Number"]
-
-datasplitsdf = []
-
-for fold, data in hparam_data.items():
-
-    traindf = restdf.iloc[data["train_idx"]][kept_meta_cols]
-    valdf = restdf.iloc[data["val_idx"]][kept_meta_cols]
-
-    traindf["Metadata_fold"], valdf["Metadata_fold"] = fold, fold
-    traindf["Metadata_datasplit"], valdf["Metadata_datasplit"] = "train", "val"
-    datasplitsdf.append(pd.concat([traindf, valdf], axis=0))
-
-testdf = testdf[kept_meta_cols]
-testdf["Metadata_datasplit"] = "test_well"
-
-datasplitsdf.append(testdf)
-datasplitsdf = pd.concat(datasplitsdf, axis=0)
-
-datasplitsdf.to_parquet(f"{data_path}/scv_folds_{data_suf}.joblib")
+pd.DataFrame(eval_data).to_parquet(f"{data_path}/model_data_{data_suf}.parquet")
 
