@@ -289,6 +289,7 @@ for idx, rparams in random_params.items():
         acc += accuracy_score(y_val, preds)
 
         # Store model data for folds
+        eval_data["plate"].extend(restdf.iloc[val_index]["Metadata_Plate"].tolist())
         eval_data["datasplit"].extend(["val"] * val_index.shape[0])
         eval_data["predicted_genotype"].extend(preds.tolist())
         eval_data["true_genotype"].extend(y_val.tolist())
@@ -328,6 +329,7 @@ logreg.fit(X, y)
 # In[12]:
 
 
+eval_data["plate"].extend(restdf["Metadata_Plate"].tolist())
 eval_data["datasplit"].extend(["train"] * X.shape[0])
 eval_data["predicted_genotype"].extend(logreg.predict(X).tolist())
 eval_data["true_genotype"].extend(y.tolist())
