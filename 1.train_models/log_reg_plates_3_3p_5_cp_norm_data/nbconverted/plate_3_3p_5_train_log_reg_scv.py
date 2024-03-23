@@ -22,6 +22,7 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import parallel_backend
 
+
 # ## Find the root of the git repo on the host system
 
 # In[2]:
@@ -62,6 +63,7 @@ plate3pdf = pd.read_parquet(plate3pdf_path)
 
 sys.path.append(f"{root_dir}/1.train_models/utils")
 from WellSubsetSum import WellSubsetSum
+
 
 # ### Outputs
 
@@ -214,6 +216,9 @@ X = restdf.drop(columns=meta_cols)
 y_test = le.fit_transform(restdf["Metadata_genotype"])
 X_test = restdf.drop(columns=meta_cols)
 
+# Class for saving probabilities
+probability_class = le.inverse_transform([1])[0]
+
 
 # # Train Models
 
@@ -293,7 +298,7 @@ for idx, rparams in random_params.items():
 
         # Store model data for folds
         eval_data["plate"].extend(restdf.iloc[val_index]["Metadata_Plate"].tolist())
-        eval_data["predicted_probability"].extend(logreg.predict_proba(X_val).tolist())
+        eval_data[f"probability_{probability_class}"].extend(logreg.predict_proba(X_val)[:, 1].tolist())
         eval_data["datasplit"].extend(["val"] * val_index.shape[0])
         eval_data["predicted_genotype"].extend(preds.tolist())
         eval_data["true_genotype"].extend(y_val.tolist())
@@ -334,13 +339,13 @@ logreg.fit(X, y)
 
 
 eval_data["plate"].extend(restdf["Metadata_Plate"].tolist())
-eval_data["predicted_probability"].extend(logreg.predict_proba(X).tolist())
+eval_data[f"probability_{probability_class}"].extend(logreg.predict_proba(X)[:, 1].tolist())
 eval_data["datasplit"].extend(["train"] * X.shape[0])
 eval_data["predicted_genotype"].extend(logreg.predict(X).tolist())
 eval_data["true_genotype"].extend(y.tolist())
 
 eval_data["plate"].extend(restdf["Metadata_Plate"].tolist())
-eval_data["predicted_probability"].extend(logreg.predict_proba(X_test).tolist())
+eval_data[f"probability_{probability_class}"].extend(logreg.predict_proba(X_test)[:, 1].tolist())
 eval_data["datasplit"].extend(["test"] * X_test.shape[0])
 eval_data["predicted_genotype"].extend(logreg.predict(X_test).tolist())
 eval_data["true_genotype"].extend(y_test.tolist())
