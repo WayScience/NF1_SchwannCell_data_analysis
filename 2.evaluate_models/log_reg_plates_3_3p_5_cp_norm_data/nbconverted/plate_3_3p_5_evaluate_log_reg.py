@@ -57,8 +57,8 @@ le = load(f"{data_path}/label_encoder_log_reg_cp_fs_data_plate_5.joblib")
 # In[4]:
 
 
-models_path = pathlib.Path("model_eval_data")
-models_path.mkdir(parents=True, exist_ok=True)
+eval_path = pathlib.Path("model_eval_data")
+eval_path.mkdir(parents=True, exist_ok=True)
 
 
 # In[5]:
@@ -175,5 +175,5 @@ for split in evaldf["datasplit"].unique():
 
 
 for met, met_data in eval_mets.items():
-    pd.DataFrame(eval_mets[met]).to_parquet(f"{data_path}/plate_{met}.parquet")
+    pd.DataFrame(eval_mets[met]).to_parquet(f"{eval_path}/plate_{met}.parquet")
 
