@@ -13,6 +13,7 @@ import sys
 import warnings
 from collections import defaultdict
 
+import numpy as np
 import pandas as pd
 from joblib import dump
 from sklearn.exceptions import ConvergenceWarning
@@ -21,7 +22,6 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import parallel_backend
-
 
 # ## Find the root of the git repo on the host system
 
@@ -63,6 +63,8 @@ plate3pdf = pd.read_parquet(plate3pdf_path)
 
 sys.path.append(f"{root_dir}/1.train_models/utils")
 from WellSubsetSum import WellSubsetSum
+
+rng = np.random.default_rng(0)
 
 
 # ### Outputs
@@ -213,8 +215,8 @@ le = LabelEncoder()
 y = le.fit_transform(restdf["Metadata_genotype"])
 X = restdf.drop(columns=meta_cols)
 
-y_test = le.fit_transform(restdf["Metadata_genotype"])
-X_test = restdf.drop(columns=meta_cols)
+y_test = le.fit_transform(testdf["Metadata_genotype"])
+X_test = testdf.drop(columns=meta_cols)
 
 # Class for saving probabilities
 probability_class = le.inverse_transform([1])[0]
@@ -279,9 +281,13 @@ for idx, rparams in random_params.items():
     # Loop through the folds
     for fold, (train_index, val_index) in enumerate(skf.split(X, y)):
 
-
         X_train, X_val = X.iloc[train_index], X.iloc[val_index]
         y_train, y_val = y[train_index], y[val_index]
+
+        # Assess model performance on shuffled validation data
+        X_val_shuf = X_val.copy()
+        for column in X_val_shuf.columns:
+            X_val_shuf[column] = rng.permutation(X_val_shuf[column])
 
         # Prevent the convergence warning in sklearn
         with parallel_backend("multiprocessing"):
@@ -294,14 +300,22 @@ for idx, rparams in random_params.items():
 
         # Cumulative accuracy for all folds
         preds = logreg.predict(X_val)
+        preds_shuf = logreg.predict(X_val_shuf)
         acc += accuracy_score(y_val, preds)
 
-        # Store model data for folds
-        eval_data["plate"].extend(restdf.iloc[val_index]["Metadata_Plate"].tolist())
+        # Store model data for validation folds
         eval_data[f"probability_{probability_class}"].extend(logreg.predict_proba(X_val)[:, 1].tolist())
         eval_data["datasplit"].extend(["val"] * val_index.shape[0])
         eval_data["predicted_genotype"].extend(preds.tolist())
-        eval_data["true_genotype"].extend(y_val.tolist())
+
+        # Store and unshuffled validation model data
+        eval_data["true_genotype"].extend(y_val.tolist() * 2)
+        eval_data["plate"].extend(restdf.iloc[val_index]["Metadata_Plate"].tolist() * 2)
+
+        # Store model data for shuffled validation folds
+        eval_data[f"probability_{probability_class}"].extend(logreg.predict_proba(X_val_shuf)[:, 1].tolist())
+        eval_data["datasplit"].extend(["shuffled_val"] * val_index.shape[0])
+        eval_data["predicted_genotype"].extend(preds_shuf.tolist())
 
     # Average accuracy for the folds
     acc = acc / n_splits
@@ -333,29 +347,61 @@ logreg = LogisticRegression(**comb_params)
 logreg.fit(X, y)
 
 
-# ## Store training and testing data
+# ## Shuffle train and validation data
 
 # In[12]:
 
 
-eval_data["plate"].extend(restdf["Metadata_Plate"].tolist())
+X_shuf = X.copy()
+for column in X_shuf.columns:
+    X_shuf[column] = rng.permutation(X_shuf[column])
+
+X_test_shuf = X_test.copy()
+for column in X_test_shuf.columns:
+    X_test_shuf[column] = rng.permutation(X_test_shuf[column])
+
+
+# ## Store shuffled and unshuffled training model data
+
+# In[13]:
+
+
 eval_data[f"probability_{probability_class}"].extend(logreg.predict_proba(X)[:, 1].tolist())
 eval_data["datasplit"].extend(["train"] * X.shape[0])
 eval_data["predicted_genotype"].extend(logreg.predict(X).tolist())
-eval_data["true_genotype"].extend(y.tolist())
 
-eval_data["plate"].extend(restdf["Metadata_Plate"].tolist())
+# Store model data for shuffled and unshuffled training set
+eval_data["plate"].extend(restdf["Metadata_Plate"].tolist() * 2)
+eval_data["true_genotype"].extend(y.tolist() * 2)
+
+eval_data[f"probability_{probability_class}"].extend(logreg.predict_proba(X_shuf)[:, 1].tolist())
+eval_data["datasplit"].extend(["shuffled_train"] * X_shuf.shape[0])
+eval_data["predicted_genotype"].extend(logreg.predict(X_shuf).tolist())
+
+
+# ## Store shuffled and unshuffled testing model data
+
+# In[14]:
+
+
 eval_data[f"probability_{probability_class}"].extend(logreg.predict_proba(X_test)[:, 1].tolist())
 eval_data["datasplit"].extend(["test"] * X_test.shape[0])
 eval_data["predicted_genotype"].extend(logreg.predict(X_test).tolist())
-eval_data["true_genotype"].extend(y_test.tolist())
+
+# Store model data for shuffled and unshuffled training set
+eval_data["plate"].extend(testdf["Metadata_Plate"].tolist() * 2)
+eval_data["true_genotype"].extend(y_test.tolist() * 2)
+
+eval_data[f"probability_{probability_class}"].extend(logreg.predict_proba(X_test_shuf)[:, 1].tolist())
+eval_data["datasplit"].extend(["shuffled_test"] * X_test_shuf.shape[0])
+eval_data["predicted_genotype"].extend(logreg.predict(X_test_shuf).tolist())
 
 
 # # Save models and model data
 
 # ## Save model
 
-# In[13]:
+# In[15]:
 
 
 data_suf = "log_reg_cp_fs_data_plate_5"
@@ -369,7 +415,7 @@ dump(le, f"{data_path}/label_encoder_{data_suf}.joblib")
 
 # ## Save data folds
 
-# In[14]:
+# In[16]:
 
 
 pd.DataFrame(eval_data).to_parquet(f"{data_path}/model_data_{data_suf}.parquet")
