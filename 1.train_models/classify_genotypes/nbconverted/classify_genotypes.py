@@ -54,9 +54,9 @@ if root_dir is None:
 # In[3]:
 
 
-plate5df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_5_sc_normalized.parquet").resolve(strict=True)
-plate3df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_3_sc_normalized.parquet").resolve(strict=True)
-plate3pdf_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_3_prime_sc_normalized.parquet").resolve(strict=True)
+plate5df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_5_sc_feature_selected.parquet").resolve(strict=True)
+plate3df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_3_sc_feature_selected.parquet").resolve(strict=True)
+plate3pdf_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_3_prime_sc_feature_selected.parquet").resolve(strict=True)
 plate4df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_4_sc_feature_selected.parquet").resolve(strict=True)
 
 plate5df = pd.read_parquet(plate5df_path)
@@ -64,6 +64,7 @@ plate4df = pd.read_parquet(plate4df_path)
 plate3df = pd.read_parquet(plate3df_path)
 plate3pdf = pd.read_parquet(plate3pdf_path)
 
+# Set the seed
 rng = np.random.default_rng(0)
 
 
@@ -86,6 +87,9 @@ gene_column = "Metadata_genotype"
 
 def down_sample_by_genotype(_df):
     """
+    Return an equal number of cells from each genotype.
+    The number of cells in a genotype is the minimum number of cells from all genotypes.
+
     Parameters
     ----------
     _df: Pandas Dataframe
@@ -103,10 +107,12 @@ def down_sample_by_genotype(_df):
 
 def process_plates(_df):
     """
+    Drop rows with nans from the single cell data and remove HET cells.
+
     Parameters
     ----------
     _df: Pandas Dataframe
-        Uncleaned plate data with nans and HET cells to be removed.
+        Uncleaned plate data with nans and HET cells to be removed. Contains the column "Metadata_genotype".
 
     Returns
     -------
@@ -196,23 +202,23 @@ p3_wells = ["C11", "E11", "C3", "F3"]
 rest3df, test3df = create_splits(p3_wells, plate3df)
 rest3df, test3df = down_sample_by_genotype(rest3df), down_sample_by_genotype(test3df)
 
-plate3pdf["Metadata_Plate"] = "Plate_3p"
 plate3pdf = process_plates(plate3pdf)
 p3p_wells = ["F11", "G11", "C3", "F3"]
 rest3pdf, test3pdf = create_splits(p3p_wells, plate3pdf)
 rest3pdf, test3pdf = down_sample_by_genotype(rest3pdf), down_sample_by_genotype(test3pdf)
 
+# Removed siRNA-treated cells to retain only Null and WT cells
 plate4df["Metadata_siRNA"].fillna("No Construct", inplace=True)
 plate4df.dropna(inplace=True)
 plate4df = plate4df.loc[plate4df["Metadata_siRNA"] == "No Construct"]
-plate4df["Metadata_Plate"] = "Plate_4"
+
 plate4df = process_plates(plate4df)
 p4_wells = ["D5", "C11"]
 rest4df, test4df = create_splits(p4_wells, plate4df)
 rest4df, test4df = down_sample_by_genotype(rest4df), down_sample_by_genotype(test4df)
 
 
-# ## Harmonize data across plates to each data split
+# ## Combine plate columns across each data split
 
 # In[8]:
 
