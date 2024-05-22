@@ -89,7 +89,7 @@ probabilitydf = pd.DataFrame(
     }
 )
 
-pd.concat([probabilitydf, plate4df[meta_cols]], axis=1).to_parquet(
-    f"{probability_path}/plate_4_sirna_single_cell_probabilities.parquet"
+pd.concat([probabilitydf, plate4df[meta_cols].reset_index(drop=True)], axis=1).to_parquet(
+    f"{probability_path}/plate_4_sirna_single_cell_probabilities"
 )
 
