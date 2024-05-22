@@ -55,6 +55,7 @@ if root_dir is None:
 data_path = pathlib.Path(f"{root_dir}/1.train_models/classify_genotypes/data")
 
 evaldf = pd.read_parquet(f"{data_path}/nf1_model_pre_evaluation_results.parquet")
+model = load(f"{data_path}/trained_nf1_model.joblib")
 le = load(f"{data_path}/trained_nf1_model_label_encoder.joblib")
 
 
@@ -95,7 +96,8 @@ def down_sample_by_genotype(_df):
 # In[6]:
 
 
-# Define evaluation metrics
+# Define evaluation metric data
+# The "metrics" include precision, recall, accuracy, and f1 scores
 eval_mets = {
     met: defaultdict(list) for met in
     ("metrics", "precision_recall", "confusion_matrix")
@@ -134,7 +136,7 @@ def compute_metrics(_df, _plate, _split):
     y_pred = _df["predicted_genotype"]
     y_proba = _df["probability_WT"]
 
-    # Store f1 scores
+    # Store metrics
     eval_mets["metrics"]["f1_score"].append(f1_score(y_true, y_pred))
     eval_mets["metrics"]["precision"].append(precision_score(y_true, y_pred))
     eval_mets["metrics"]["recall"].append(recall_score(y_true, y_pred))
@@ -178,11 +180,18 @@ for split in evaldf["datasplit"].unique():
         compute_metrics(df_temp, plate, split)
 
 
-# ### Save evaluation metrics for plotting
+# ### Save evaluation metrics and model coefficients for plotting
 
 # In[8]:
 
 
 for met, met_data in eval_mets.items():
     pd.DataFrame(eval_mets[met]).to_parquet(f"{eval_path}/{met}.parquet")
+
+pd.DataFrame(
+    {
+        "feature_names": model.feature_names_in_,
+        "feature_importances": model.coef_.reshape(-1)
+    }
+).to_parquet(f"{eval_path}/feature_importances.parquet")
 
