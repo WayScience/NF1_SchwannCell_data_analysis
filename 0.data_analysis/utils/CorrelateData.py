@@ -44,7 +44,7 @@ class CorrelateData:
             if col in _drop_cols:
                 continue
             _corrs[f"{col}__group0"].append(_groups[0][idx])
-            _corrs[f"{col}__group1"].append(_groups[0][idx])
+            _corrs[f"{col}__group1"].append(_groups[1][idx])
 
         return _corrs
 
