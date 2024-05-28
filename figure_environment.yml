@@ -5,25 +5,22 @@ channels:
 dependencies:
   - conda-forge::jupyter
   - conda-forge::jupyterlab
-  - conda-forge::ipykernel
-  - conda-forge::python
   - conda-forge::r-irkernel
   - conda-forge::nb_conda_kernels
   - conda-forge::widgetsnbextension
   - conda-forge::jupyter_contrib_nbextensions
-  - conda-forge::r-base=4.2.2
-  - conda-forge::r-dplyr=1.0.10
-  - conda-forge::r-tidyr
+  - conda-forge::r-dplyr>=0.8.3
+  - conda-forge::r-tidyr>=0.8.3
   - conda-forge::r-readr
   - conda-forge::r-stringr
-  - conda-forge::r-ggplot2
-  - conda-forge::r-ggrepel
+  - conda-forge::r-readxl
+  - conda-forge::r-ggplot2>=3.2.1
+  - conda-forge::r-cowplot>=1.0.0
+  - conda-forge::r-patchwork
+  - conda-forge::r-ggrepel>=0.8.1
   - conda-forge::r-gridextra
+  - conda-forge::r-cowplot>=1.0.0
   - conda-forge::r-devtools
   - conda-forge::r-reshape2
-  - conda-forge::r-cowplot
-  - conda-forge::r-patchwork
-  - conda-forge::r-magick
-  - conda-forge::r-platetools
   - conda-forge::r-arrow
   - bioconda::bioconductor-complexheatmap
