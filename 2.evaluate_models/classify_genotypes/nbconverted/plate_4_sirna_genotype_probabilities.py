@@ -80,7 +80,7 @@ meta_cols = [col for col in plate4df.columns if "Metadata" in col]
 
 probabilitydf = pd.DataFrame(
     {
-        f"probability {le.inverse_transform([1])[0]}":
+        f"probability_{le.inverse_transform([1])[0]}":
         model.predict_proba(plate4df[model.feature_names_in_])[:, 1]
     }
 )
