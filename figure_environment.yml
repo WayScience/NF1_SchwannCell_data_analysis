@@ -18,5 +18,9 @@ dependencies:
   - conda-forge::r-cowplot>=1.0.0
   - conda-forge::r-patchwork
   - conda-forge::r-ggrepel>=0.8.1
+  - conda-forge::r-gridextra
+  - conda-forge::r-cowplot>=1.0.0
+  - conda-forge::r-devtools
+  - conda-forge::r-reshape2
   - conda-forge::r-arrow
   - bioconda::bioconductor-complexheatmap
