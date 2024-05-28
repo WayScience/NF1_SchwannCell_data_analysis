@@ -10,7 +10,6 @@
 
 import pathlib
 
-import numpy as np
 import pandas as pd
 from joblib import load
 
@@ -50,9 +49,6 @@ plate4df = pd.read_parquet(plate4df_path)
 data_path = pathlib.Path(root_dir / "1.train_models/classify_genotypes/data").resolve(strict=True)
 le = load(f"{data_path}/trained_nf1_model_label_encoder.joblib")
 model = load(f"{data_path}/trained_nf1_model.joblib")
-
-# Set the seed
-rng = np.random.default_rng(0)
 
 
 # ### Outputs
