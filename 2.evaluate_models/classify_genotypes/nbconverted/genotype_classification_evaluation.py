@@ -22,6 +22,7 @@ from sklearn.metrics import (
     recall_score,
 )
 
+
 # ## Find the root of the git repo on the host system
 
 # In[2]:
@@ -54,21 +55,27 @@ if root_dir is None:
 
 data_path = pathlib.Path(f"{root_dir}/1.train_models/classify_genotypes/data")
 
-evaldf = pd.read_parquet(f"{data_path}/nf1_model_pre_evaluation_results.parquet")
+evaldf = pd.read_parquet(f"{data_path}/nf1_eval_data.parquet")
 model = load(f"{data_path}/trained_nf1_model.joblib")
 le = load(f"{data_path}/trained_nf1_model_label_encoder.joblib")
 
 
+# In[4]:
+
+
+evaldf
+
+
 # ### Outputs
 
-# In[4]:
+# In[5]:
 
 
 eval_path = pathlib.Path("model_evaluation_data")
 eval_path.mkdir(parents=True, exist_ok=True)
 
 
-# In[5]:
+# In[6]:
 
 
 gene_column = "true_genotype"
@@ -93,7 +100,7 @@ def down_sample_by_genotype(_df):
 
 # ## Calculate evaluation metrics
 
-# In[6]:
+# In[7]:
 
 
 # Define evaluation metric data
@@ -163,7 +170,7 @@ def compute_metrics(_df, _plate, _split):
     eval_mets["confusion_matrix"]["datasplit"].extend([_split] * cm_size)
 
 
-# In[7]:
+# In[8]:
 
 
 # Iterate through each data split
@@ -182,7 +189,7 @@ for split in evaldf["datasplit"].unique():
 
 # ### Save evaluation metrics and model coefficients for plotting
 
-# In[8]:
+# In[9]:
 
 
 for met, met_data in eval_mets.items():
