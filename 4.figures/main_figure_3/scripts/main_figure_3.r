@@ -81,6 +81,7 @@ pr_all_plates_plot <- (
     ggplot(filtered_all_plates_pr_df, aes(x = recall, y = precision, color = datasplit, linetype = shuffled_type))
     + geom_line(aes(linetype = shuffled_type), linewidth = 1)
     + theme_bw()
+    + coord_fixed()
     + labs(color = "ML model\ndata split", linetype = "Features\nshuffled", x = "Recall", y = "Precision")
     # change the colors
     + scale_color_manual(values = c(
@@ -336,7 +337,7 @@ custom_labeller <- as_labeller(c(
 confusion_matrix_all_plates_plot <- (
     ggplot(filtered_CM_df, aes(x = factor(true_genotype, levels = rev(levels(factor(true_genotype)))), y = predicted_genotype)) +
     facet_grid(shuffled_type ~ datasplit, labeller = custom_labeller) +
-    geom_point(aes(color = ratio), size = 40, shape = 15) +
+    geom_point(aes(color = ratio), size = 28, shape = 15) +
     geom_text(aes(label = confusion_values), size = 6) +
     scale_color_gradient("Ratio", low = "white", high = "red", limits = c(0, 1)) +
     theme_bw() +
@@ -344,7 +345,7 @@ confusion_matrix_all_plates_plot <- (
     xlab("True genotype") +
     # change the text size
     theme(
-        strip.text = element_text(size = 22),
+        strip.text = element_text(size = 16),
         # x and y axis text size
         axis.text.x = element_text(size = 20),
         axis.text.y = element_text(size = 20),
@@ -360,16 +361,11 @@ confusion_matrix_all_plates_plot <- (
 confusion_matrix_all_plates_plot
 
 
-top_plot <- (
-    accuracy_score_all_plates_plot |
-    pr_all_plates_plot
-) + plot_layout(widths = c(2.25, 3))
-
-top_plot
-
 align_plot <- (
-    top_plot / free(confusion_matrix_all_plates_plot)
-) + plot_layout(heights = c(2,3))
+    free(pr_all_plates_plot) |
+    confusion_matrix_all_plates_plot |
+    accuracy_score_all_plates_plot
+) + plot_layout(widths = c(4,2,2))
 
 align_plot
 
@@ -378,6 +374,6 @@ fig_3_gg <- (
 ) + plot_annotation(tag_levels = "A") & theme(plot.tag = element_text(size = 25))
 
 # Save or display the plot
-ggsave(output_main_figure_3, plot = fig_3_gg, dpi = 500, height = 14, width = 12.5)
+ggsave(output_main_figure_3, plot = fig_3_gg, dpi = 500, height = 6, width = 22)
 
 fig_3_gg
