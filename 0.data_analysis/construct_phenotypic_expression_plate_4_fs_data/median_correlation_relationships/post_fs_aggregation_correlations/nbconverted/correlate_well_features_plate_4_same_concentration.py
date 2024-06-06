@@ -14,6 +14,7 @@ import sys
 
 import pandas as pd
 
+
 # ## Find the root of the git repo on the host system
 
 # In[2]:
@@ -52,8 +53,11 @@ sys.path.append(
 # Class for calculating correlations
 from CorrelateData import CorrelateData
 
-platedf_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_4_bulk_camerons_method.parquet").resolve(strict=True)
+platedf_path = pathlib.Path(root_dir / "../nf1_cellpainting_data/3.processing_features/data/single_cell_profiles/Plate_4_bulk_camerons_method.parquet").resolve(strict=True)
 platedf = pd.read_parquet(platedf_path)
+
+print(platedf.shape)
+platedf.head()
 
 
 # ### Output paths
@@ -139,11 +143,12 @@ for conc, concdf in platedf.groupby("Metadata_Concentration"):
 
 
 corrdfs = pd.concat(corrdfs, axis=0)
-corrdfs.to_parquet(f"{data_path}/plate_4_sc_feature_selected_camerons_agg_well_correlations.parquet")
+corrdfs.to_parquet(f"{data_path}/plate_4_sc_feature_selected_camerons_agg_well_correlations.parquet", index=False)
 
 
 # In[9]:
 
 
+print(corrdfs.shape)
 corrdfs.head()
 
