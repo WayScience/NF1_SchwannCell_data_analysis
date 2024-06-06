@@ -6,8 +6,8 @@ suppressPackageStartupMessages(library(RColorBrewer))
 suppressPackageStartupMessages(library(ggridges))
 
 figure_dir <- "../figures"
-output_main_figure_4 <- file.path(
-    figure_dir, "main_figure_4_plate4_siRNA_eval.png"
+output_main_figure_5 <- file.path(
+    figure_dir, "main_figure_5_plate4_siRNA_eval.png"
 )
 
 figure_theme <- theme(
@@ -356,11 +356,11 @@ align_plot <- (
 
 align_plot
 
-fig_4_gg <- (
+fig_5_gg <- (
   align_plot
 ) + plot_annotation(tag_levels = "A") & theme(plot.tag = element_text(size = 25))
 
 # Save or display the plot
-ggsave(output_main_figure_4, plot = fig_4_gg, dpi = 500, height = 10, width = 14)
+ggsave(output_main_figure_5, plot = fig_5_gg, dpi = 500, height = 10, width = 14)
 
-fig_4_gg
+fig_5_gg
