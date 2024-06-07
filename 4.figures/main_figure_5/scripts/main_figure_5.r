@@ -32,7 +32,7 @@ nf1_titration_df <- read.csv(titration_path)
 
 nf1_titration_df <- nf1_titration_df %>%
   mutate(
-    Group = ifelse(grepl("^Scramble", Construct), "Scramble", "NF1 construct 1"),
+    Group = ifelse(grepl("^Scramble", Construct), "Scramble", "NF1"),
     LineType = ifelse(grepl("Average", Construct), "Average", "Replicate")
   )
 
@@ -44,23 +44,24 @@ head(nf1_titration_df)
 
 # Create the plot
 titration_plot <- ggplot(nf1_titration_df, aes(x = siRNA_Concentration, y = Percent_NF1_vs_Scramble, color = Group)) +
-  geom_line(aes(size = LineType, alpha = LineType), show.legend = FALSE) +
-  geom_point(size = 2.5) +
+  geom_line(aes(group = Construct, alpha = LineType), size = 1, show.legend = FALSE) +
+  geom_point(aes(group = Construct), size = 2.5) +
   scale_x_log10(
     breaks = scales::trans_breaks("log10", function(x) 10^x),
     labels = scales::trans_format("log10", scales::math_format(10^.x))
   ) +
   theme_bw() +
-  scale_size_manual(values = c("Average" = 1.5, "Replicate" = 0.5)) +
   scale_alpha_manual(values = c("Average" = 0.8, "Replicate" = 0.4)) +
   labs(
-    x = "nM siRNA Concentration (log10 scale)",
-    y = "% NF1 (norm to scramble)",
-    color = "Construct",
+    x = "siRNA concentration (log10 nM)",
+    y = "%NF1\n(normalized to scramble)",
+    color = "Target"
   ) +
-  figure_theme
+  figure_theme +
+  annotate("text", x = c(0.001, 0.005, 0.01, 0.05, 0.1), y = -Inf, label = "*", vjust = -0.5, color = "red", size = 8) # Add asterisks
 
 titration_plot
+
 
 # Set seed to maintain random point jittering (geom_jitter)
 set.seed(1234)
@@ -92,7 +93,7 @@ plate_4_correlations_path <- file.path(
     "median_correlation_relationships",
     "post_fs_aggregation_correlations",
     "construct_correlation_data",
-    "plate_4_sc_feature_selected_camerons_agg_well_correlations.parquet"
+    "plate_4_well_correlations.parquet"
 )
 
 
@@ -109,12 +110,16 @@ platemap_file <- file.path(platemap_dir, "platemap_NF1_plate4.csv")
 
 correlation_df <- read_parquet(plate_4_correlations_path)
 
+# Fill NA values in Metadata_Concentration column with 0
+correlation_df <- correlation_df %>%
+  mutate(Metadata_Concentration = ifelse(is.na(Metadata_Concentration), 0, Metadata_Concentration))
+
 dim(correlation_df)
 head(correlation_df)
 
-# Filter out "NF1 Target 2" from the specified columns
-correlation_df <- correlation_df %>%
-  filter(Metadata_siRNA__group0 != "NF1 Target 2" & Metadata_siRNA__group1 != "NF1 Target 2" & Metadata_Concentration != 0)
+# # Remove 0 concentration for now until figure out how to add it nicely to figure
+# correlation_df <- correlation_df %>%
+#   filter(Metadata_Concentration != 0)
 
 # Perform additional mutations
 correlation_df <- correlation_df %>%
@@ -124,6 +129,7 @@ correlation_df <- correlation_df %>%
     construct_colors = construct_comparison
   )
 
+# Include 0 dose in the levels of Metadata_Concentration
 correlation_df$Metadata_Concentration <- factor(
     correlation_df$Metadata_Concentration,
     levels = c("0.001", "0.005", "0.01", "0.05", "0.1")
@@ -163,7 +169,6 @@ correlation_df$construct_colors <- factor(
     )
 )
 
-
 # Remove all wells that contain Null genotype cells
 platemap_df <- readr::read_csv(platemap_file, show_col_types = FALSE)
 
@@ -186,8 +191,8 @@ nf1_dose_construct_gg <- (
                fill = construct_colors
            )
           )
-    + geom_hline(yintercept = 0, linetype = "dashed")
     + geom_boxplot()
+    + geom_hline(yintercept = 0, linetype = "dashed")
     + geom_jitter(
         aes(color = construct_colors),
         position = position_jitterdodge(
@@ -238,9 +243,9 @@ one_dose_df <- dplyr::bind_rows(
 
 one_dose_df$color_group <- paste(one_dose_df$color_group)
 
-one_dose_df[one_dose_df$construct_comparison == "NF1 Construct 1", "construct_facet"] = "NF1\nconstruct 1"
-one_dose_df[one_dose_df$construct_comparison == "NF1 Construct 1 Scramble", "construct_facet"] = "NF1\nconstruct 1"
-one_dose_df[one_dose_df$construct_comparison == "NF1 Construct 1 No treatment", "construct_facet"] = "NF1\nconstruct 1"
+one_dose_df[one_dose_df$construct_comparison == "NF1 Construct 1", "construct_facet"] = "NF1"
+one_dose_df[one_dose_df$construct_comparison == "NF1 Construct 1 Scramble", "construct_facet"] = "NF1"
+one_dose_df[one_dose_df$construct_comparison == "NF1 Construct 1 No treatment", "construct_facet"] = "NF1"
 one_dose_df[one_dose_df$construct_comparison == "Scramble comparison", "construct_facet"] = "Other control"
 one_dose_df[one_dose_df$construct_comparison == "No treatment comparison", "construct_facet"] = "Other control"
 one_dose_df[one_dose_df$construct_comparison == "Scramble No treatment", "construct_facet"] = "Other control"
@@ -275,8 +280,8 @@ one_dose_construct_fig_gg <- (
                fill = color_group
            )
           )
-    + geom_hline(yintercept = 0, linetype = "dashed")
     + geom_boxplot(outlier.shape = NA)
+    + geom_hline(yintercept = 0, linetype = "dashed")
     + geom_jitter(
         aes(color = color_group),
         position = position_jitterdodge(
@@ -293,12 +298,12 @@ one_dose_construct_fig_gg <- (
         y = "Pearson's correlation"
     )
     + scale_color_manual(
-        name = "Comparison",
+        name = "Pairwise\ncomparison",
         labels = construct_labels,
         values = construct_colors
     )
     + scale_fill_manual(
-        name = "Comparison",
+        name = "Pairwise\ncomparison",
         labels = construct_labels,
         values = construct_colors
     )
@@ -331,12 +336,25 @@ add_nM <- function(variable) {
 }
 
 # Create the boxplot with facets and custom facet labels
-box_plot <- ggplot(siRNA_prob_df, aes(x = factor(Metadata_Well), y = probability_WT)) +
-  geom_boxplot(outlier.shape = NA) +
+box_per_well_plot <- ggplot(siRNA_prob_df, aes(x = factor(Metadata_Well), y = probability_WT)) +
+  geom_violin() +
+  geom_point(position = position_jitter(width = 0.2), size = 1.5, alpha = 0.25) +
   geom_hline(yintercept = 0.5, linetype = "dotted", color = "black", show.legend = FALSE) +  
   labs(x = "Well", y = "WT genotype probability") + 
   theme_bw() +
   facet_wrap(~ Metadata_Concentration, scales = "free_x", nrow=1, labeller = labeller(Metadata_Concentration = add_nM)) + 
+  figure_theme +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+box_per_well_plot
+
+# Create the boxplot without facets and with concentration on the x-axis
+box_plot <- ggplot(siRNA_prob_df, aes(x = factor(Metadata_Concentration), y = probability_WT)) +
+  geom_violin(draw_quantiles = c(0.5)) +
+  geom_point(position = position_jitter(width = 0.2), size = 1.5, alpha = 0.25) +
+  geom_hline(yintercept = 0.5, linetype = "dotted", color = "black", show.legend = FALSE) +  
+  labs(x = "siRNA concentration (nM)", y = "WT genotype probability") + 
+  theme_bw() +
   figure_theme +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
