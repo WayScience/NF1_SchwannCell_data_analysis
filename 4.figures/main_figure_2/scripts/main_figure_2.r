@@ -57,34 +57,37 @@ umap_fig_gg <- (
 
 umap_fig_gg
 
+# Replace missing values in Metadata_genotype with "Null"
+UMAP_results_df$Metadata_genotype <- na_if(UMAP_results_df$Metadata_genotype, "")
+
+# Group by Metadata_genotype and summarize the count of rows per group across all plates
+total_counts_per_genotype <- UMAP_results_df %>%
+    group_by(Metadata_genotype) %>%
+    summarize(count = n(), .groups = 'drop') %>%
+    mutate(Metadata_Plate = "All_plates")
+
 # Group by Metadata_genotype and Metadata_Plate, then summarize the count of rows per group
 counts_df <- UMAP_results_df %>%
     group_by(Metadata_genotype, Metadata_Plate) %>%
     summarize(count = n(), .groups = 'drop')
 
-# Group by Metadata_Plate to get total counts per plate
-total_counts_df <- UMAP_results_df %>%
-    group_by(Metadata_Plate) %>%
-    summarize(count = n(), .groups = 'drop') %>%
-    mutate(Metadata_genotype = "Total")
+# Combine the counts per genotype across all plates with the counts per genotype and plate
+combined_counts_df <- bind_rows(counts_df, total_counts_per_genotype)
 
-# Combine the total counts with the original counts dataframe
-combined_counts_df <- bind_rows(counts_df, total_counts_df)
+# Confirm any NA values are "Null" strings in Metadata_genotype column
+combined_counts_df$Metadata_genotype[is.na(combined_counts_df$Metadata_genotype)] <- "Null"
 
 # View the resulting counts dataframe
 dim(combined_counts_df)
 combined_counts_df
 
-# Define fill color to be consistent
-fill_colors <- c("Total" = "#C77CFF", "Null" = "#F8766D", "WT" = "#00BFC4")
 
-# Create the histogram plot with default fill colors and factor levels for Metadata_genotype
-histogram_plot <- ggplot(combined_counts_df, aes(x = Metadata_Plate, y = count, fill = factor(Metadata_genotype, levels = c("Total", "Null", "WT")))) +
-    geom_bar(stat = "identity", position = "dodge") +
-    geom_text(aes(label = count), position = position_dodge(width = 0.9), vjust = -0.5, size = 5) +  # Add count values on top of bars
-    scale_fill_manual(values = fill_colors) +  # Set fill colors manually
+# Create the histogram plot with adjusted dodge width
+histogram_plot <- ggplot(combined_counts_df, aes(x = Metadata_Plate, y = count, fill = Metadata_genotype)) +
+    geom_bar(stat = "identity", position = position_dodge(width = 1.0)) +  # Adjust dodge width
+    geom_text(aes(label = count), position = position_dodge(width = 1.0), vjust = -0.5, size = 5) +  # Adjust dodge width
     labs(x = "Plate", y = "Count", fill = "NF1\ngenotype") +
-    ylim(0,12000) +
+    ylim(0, 15000) +  # Adjust y-axis limit if needed
     theme_bw() +
     theme(
         # x and y axis text size
@@ -99,7 +102,6 @@ histogram_plot <- ggplot(combined_counts_df, aes(x = Metadata_Plate, y = count, 
     )
 
 histogram_plot
-
 
 # Path to correlation per plate results
 corr_results_dir <- file.path(
@@ -142,7 +144,7 @@ genotype_corr_gg <- (
     + geom_density(aes(fill = same_genotype), alpha = 0.5)
     + facet_grid("~same_plate", labeller = as_labeller(facet_labels))
     + scale_fill_manual(
-        "Is the\npairwise\ncomparison\nfrom the\nsame genotype",
+        "Is the\npairwise\ncomparison\nfrom the\nsame genotype?",
         values = focus_corr_colors,
         label = focus_corr_labels
     )
