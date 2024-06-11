@@ -93,21 +93,9 @@ print(plate4df.shape)
 plate4df.head()
 
 
-# In[5]:
-
-
-# Identify feature columns
-feat_cols = [col for col in plate4df.columns if not col.startswith('Metadata')]
-
-plate4_corr = generate_correlations(df=plate4df, feat_cols=feat_cols)
-
-print(plate4_corr.shape)
-plate4_corr.head()
-
-
 # ### Plate 3
 
-# In[6]:
+# In[5]:
 
 
 # Load in plate 3 dataframe
@@ -118,21 +106,9 @@ print(plate3df.shape)
 plate3df.head()
 
 
-# In[7]:
-
-
-# Identify feature columns
-feat_cols = [col for col in plate3df.columns if not col.startswith('Metadata')]
-
-plate3_corr = generate_correlations(df=plate3df, feat_cols=feat_cols)
-
-print(plate3_corr.shape)
-plate3_corr.head()
-
-
 # ### Plate 3 prime
 
-# In[8]:
+# In[6]:
 
 
 # Load in plate 3 prime dataframe
@@ -146,21 +122,9 @@ print(plate3pdf.shape)
 plate3pdf.head()
 
 
-# In[9]:
-
-
-# Identify feature columns
-feat_cols = [col for col in plate3pdf.columns if not col.startswith('Metadata')]
-
-plate3p_corr = generate_correlations(df=plate3pdf, feat_cols=feat_cols)
-
-print(plate3p_corr.shape)
-plate3p_corr.head()
-
-
 # ### Plate 5
 
-# In[10]:
+# In[7]:
 
 
 # Load in plate 3 rpime dataframe
@@ -171,27 +135,49 @@ print(plate5df.shape)
 plate5df.head()
 
 
-# In[11]:
+# ## Concat data and generate correlations
+
+# In[8]:
+
+
+# List of dataframes
+dfs = [plate3df, plate4df, plate3pdf, plate5df]
+
+# Specified metadata columns to keep
+metadata_columns = ['Metadata_Plate', 'Metadata_Well', 'Metadata_genotype', 'Metadata_seed_density']
+
+# Find the common feature columns (not starting with 'Metadata')
+common_feature_columns = set(dfs[0].columns) - set(metadata_columns)
+for df in dfs[1:]:
+    common_feature_columns.intersection_update(set(df.columns) - set(metadata_columns))
+
+# Convert to sorted list for consistent ordering
+common_feature_columns = sorted(common_feature_columns)
+
+# Create a list of all necessary columns, metadata first
+all_columns = metadata_columns + sorted(common_feature_columns)
+
+# Reindex each dataframe to have all necessary columns, filling missing values with NaN
+dfs_reindexed = [df.reindex(columns=all_columns, fill_value=pd.NA) for df in dfs]
+
+# Concatenate the dataframes
+result = pd.concat(dfs_reindexed, ignore_index=True)
+
+print(result.shape)
+result.head()
+
+
+# In[9]:
 
 
 # Identify feature columns
-feat_cols = [col for col in plate5df.columns if not col.startswith('Metadata')]
+feat_cols = [col for col in result.columns if not col.startswith('Metadata')]
 
-plate5_corr = generate_correlations(df=plate5df, feat_cols=feat_cols)
-
-print(plate5_corr.shape)
-plate5_corr.head()
-
-
-# In[12]:
-
-
-# Concatenate the DataFrames vertically
-concatenated_df = pd.concat([plate4_corr, plate5_corr, plate3_corr, plate3p_corr], ignore_index=True)
+result_corr = generate_correlations(df=result, feat_cols=feat_cols)
 
 # Save the concatenated DataFrame as a Parquet file
-concatenated_df.to_parquet('./construct_correlation_data/concatenated_all_plates_correlations.parquet', index=False)
+result_corr.to_parquet('./construct_correlation_data/concatenated_all_plates_correlations.parquet', index=False)
 
-print(concatenated_df.shape)
-concatenated_df.head()
+print(result_corr.shape)
+result_corr.head()
 
