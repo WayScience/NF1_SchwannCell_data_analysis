@@ -57,19 +57,34 @@ umap_fig_gg <- (
 
 umap_fig_gg
 
-# Using the single-cell UMAP results, get the counts of the number of cells per genotype per well
+# Group by Metadata_genotype and Metadata_Plate, then summarize the count of rows per group
 counts_df <- UMAP_results_df %>%
     group_by(Metadata_genotype, Metadata_Plate) %>%
     summarize(count = n(), .groups = 'drop')
 
-# View the resulting counts dataframe
-dim(counts_df)
-counts_df
+# Group by Metadata_Plate to get total counts per plate
+total_counts_df <- UMAP_results_df %>%
+    group_by(Metadata_Plate) %>%
+    summarize(count = n(), .groups = 'drop') %>%
+    mutate(Metadata_genotype = "Total")
 
-# Create the histogram plot
-histogram_plot <- ggplot(counts_df, aes(x = Metadata_Plate, y = count, fill = Metadata_genotype)) +
+# Combine the total counts with the original counts dataframe
+combined_counts_df <- bind_rows(counts_df, total_counts_df)
+
+# View the resulting counts dataframe
+dim(combined_counts_df)
+combined_counts_df
+
+# Define fill color to be consistent
+fill_colors <- c("Total" = "#C77CFF", "Null" = "#F8766D", "WT" = "#00BFC4")
+
+# Create the histogram plot with default fill colors and factor levels for Metadata_genotype
+histogram_plot <- ggplot(combined_counts_df, aes(x = Metadata_Plate, y = count, fill = factor(Metadata_genotype, levels = c("Total", "Null", "WT")))) +
     geom_bar(stat = "identity", position = "dodge") +
-    labs(x = "Plate", y = "Single-cell count", fill = "NF1\ngenotype") +
+    geom_text(aes(label = count), position = position_dodge(width = 0.9), vjust = -0.5, size = 5) +  # Add count values on top of bars
+    scale_fill_manual(values = fill_colors) +  # Set fill colors manually
+    labs(x = "Plate", y = "Count", fill = "NF1\ngenotype") +
+    ylim(0,12000) +
     theme_bw() +
     theme(
         # x and y axis text size
@@ -84,6 +99,7 @@ histogram_plot <- ggplot(counts_df, aes(x = Metadata_Plate, y = count, fill = Me
     )
 
 histogram_plot
+
 
 # Path to correlation per plate results
 corr_results_dir <- file.path(
@@ -101,20 +117,20 @@ corr_results_df$same_genotype <- corr_results_df$Metadata_genotype__group0 == co
 # Add a new column `same_plate` to check if the correlation row is comparing between the same plate
 corr_results_df$same_plate <- corr_results_df$Metadata_plate__group0 == corr_results_df$Metadata_plate__group1
 
-# Create the `combination` column based on the conditions of `same_plate` and `same_genotype`
-corr_results_df$combination <- with(corr_results_df, ifelse(same_plate & same_genotype, "Same genotype\nsame plate",
-                                                           ifelse(same_plate & !same_genotype, "Different genotype\nsame plate",
-                                                                  ifelse(!same_plate & same_genotype, "Same genotype\ndifferent plate",
-                                                                         "Different genotype\ndifferent plate"))))
-
 dim(corr_results_df)
 head(corr_results_df)
 
 focus_corr_colors = c(
-    "Same genotype\nsame plate" = "blue",
-    "Different genotype\nsame plate" = "orange",
-    "Same genotype\ndifferent plate" = "green",
-    "Different genotype\ndifferent plate" = "purple"
+    "TRUE" = "blue",
+    "FALSE" = "orange"
+)
+focus_corr_labels  = c(
+    "TRUE" = "Yes",
+    "FALSE" = "No"
+)
+facet_labels  = c(
+    "TRUE" = "Same plate",
+    "FALSE" = "Different plate"
 )
 
 width <- 8
@@ -123,10 +139,12 @@ options(repr.plot.width = width, repr.plot.height = height)
 
 genotype_corr_gg <- (
     ggplot(corr_results_df, aes(x = correlation))
-    + geom_density(aes(fill = combination), alpha = 0.5)
+    + geom_density(aes(fill = same_genotype), alpha = 0.5)
+    + facet_grid("~same_plate", labeller = as_labeller(facet_labels))
     + scale_fill_manual(
-        "Combination",
+        "Is the\npairwise\ncomparison\nfrom the\nsame genotype",
         values = focus_corr_colors,
+        label = focus_corr_labels
     )
     + guides(
         color = guide_legend(
@@ -139,6 +157,7 @@ genotype_corr_gg <- (
     + theme_bw()
     # change the text size
     + theme(
+        strip.text = element_text(size = 16),
         # x and y axis text size
         axis.text.x = element_text(size = 18),
         axis.text.y = element_text(size = 18),
@@ -156,7 +175,7 @@ genotype_corr_gg
 bottom_plot <- (
     free(umap_fig_gg) |
     genotype_corr_gg
-) + plot_layout(widths = c(2.75,2))
+) + plot_layout(widths = c(2.5,2))
 
 bottom_plot
 
