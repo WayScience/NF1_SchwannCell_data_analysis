@@ -86,7 +86,7 @@ combined_counts_df
 histogram_plot <- ggplot(combined_counts_df, aes(x = Metadata_Plate, y = count, fill = Metadata_genotype)) +
     geom_bar(stat = "identity", position = position_dodge(width = 1.0)) +  # Adjust dodge width
     geom_text(aes(label = count), position = position_dodge(width = 1.0), vjust = -0.5, size = 5) +  # Adjust dodge width
-    labs(x = "Plate", y = "Count", fill = "NF1\ngenotype") +
+    labs(x = "Plate", y = "Single-cell count", fill = "NF1\ngenotype") +
     ylim(0, 15000) +  # Adjust y-axis limit if needed
     theme_bw() +
     theme(
