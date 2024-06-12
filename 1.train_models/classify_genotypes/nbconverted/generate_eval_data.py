@@ -145,7 +145,7 @@ shuffled_probabilitydf.head()
 
 # Concatenate the DataFrames vertically and save to a Parquet file
 combined_df = pd.concat([shuffled_probabilitydf, probabilitydf], axis=0).reset_index(drop=True)
-combined_df.to_parquet(f"./data/nf1_eval_data.parquet")
+combined_df.to_parquet(f"./data/nf1_final_model_eval_data.parquet")
 
 combined_df
 

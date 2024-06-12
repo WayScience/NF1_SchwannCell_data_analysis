@@ -1,5 +1,4 @@
 install_pgks.sh
-*.py
 !/**/nbconverted/*.py
 **/.jukit/
 .ipynb_checkpoints/
@@ -7,3 +6,6 @@ install_pgks.sh
 __pycache__/
 !/**/utils/*.py
 .DS_Store
+
+# ignore single-cell crop images for main figure 4 (too many files)
+4.figures/main_figure_4/sc_crops/
