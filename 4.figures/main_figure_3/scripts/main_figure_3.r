@@ -13,7 +13,7 @@ results_dir <- file.path(
 )
 
 # Load data
-PR_results_file <- file.path(results_dir, "precision_recall.parquet")
+PR_results_file <- file.path(results_dir, "precision_recall_hyperparameters.parquet")
 
 PR_results_df <- arrow::read_parquet(PR_results_file)
 
@@ -30,45 +30,46 @@ PR_results_df <- PR_results_df %>%
 
 # Rename "data splits for interpretation
 PR_results_df <- PR_results_df %>%
-  mutate(datasplit = recode(datasplit, "test" = "Test", "rest" = "Train"))
+  mutate(datasplit = recode(datasplit, "test" = "Test", "train" = "Train", "val" = "Val"))
   
 dim(PR_results_df)
 head(PR_results_df)
 
-width <- 17
-height <- 12
-options(repr.plot.width = width, repr.plot.height = height)
+# width <- 17
+# height <- 12
+# options(repr.plot.width = width, repr.plot.height = height)
 
-pr_by_plate_plot <- (
-    ggplot(PR_results_df, aes(x = recall, y = precision, color = datasplit, linetype = shuffled_type))
-    + geom_line(aes(linetype = shuffled_type), linewidth = 1)
-    + facet_wrap(~plate)
-    + theme_bw()
-    + labs(color = "ML model\ndata split", linetype = "Features shuffled", x = "Recall", y = "Precision")
-    # change the colors
-    + scale_color_manual(values = c(
-        "Test" = brewer.pal(8, "Dark2")[6],
-        "Train" = brewer.pal(8, "Dark2")[3]
-    ))
-    + coord_fixed()
-    # change the line thickness of the lines in the legend
-    + guides(linetype = guide_legend(override.aes = list(size = 1)))  
-    # change the text size
-    + theme(
-        strip.text = element_text(size = 18),
-        # x and y axis text size
-        axis.text.x = element_text(size = 18),
-        axis.text.y = element_text(size = 18),
-        # x and y axis title size
-        axis.title.x = element_text(size = 18),
-        axis.title.y = element_text(size = 18),
-        # legend text size
-        legend.text = element_text(size = 18),
-        legend.title = element_text(size = 18),
-    )
-)
+# pr_by_plate_plot <- (
+#     ggplot(PR_results_df, aes(x = recall, y = precision, color = datasplit, linetype = shuffled_type))
+#     + geom_line(aes(linetype = shuffled_type), linewidth = 1)
+#     + facet_wrap(~plate)
+#     + theme_bw()
+#     + labs(color = "ML model\ndata split", linetype = "Features shuffled", x = "Recall", y = "Precision")
+#     # change the colors
+#     + scale_color_manual(values = c(
+#         "test" = brewer.pal(8, "Dark2")[6],
+#         "train" = brewer.pal(8, "Dark2")[3],
+#         "val" = brewer.pal(8, "Dark2")[2]
+#     ))
+#     + coord_fixed()
+#     # change the line thickness of the lines in the legend
+#     + guides(linetype = guide_legend(override.aes = list(size = 1)))  
+#     # change the text size
+#     + theme(
+#         strip.text = element_text(size = 18),
+#         # x and y axis text size
+#         axis.text.x = element_text(size = 18),
+#         axis.text.y = element_text(size = 18),
+#         # x and y axis title size
+#         axis.title.x = element_text(size = 18),
+#         axis.title.y = element_text(size = 18),
+#         # legend text size
+#         legend.text = element_text(size = 18),
+#         legend.title = element_text(size = 18),
+#     )
+# )
 
-pr_by_plate_plot
+# pr_by_plate_plot
 
 
 # Filter only rows with 'all_plates' in the 'plate' column
@@ -86,7 +87,8 @@ pr_all_plates_plot <- (
     # change the colors
     + scale_color_manual(values = c(
         "Test" = brewer.pal(8, "Dark2")[6],
-        "Train" = brewer.pal(8, "Dark2")[3]
+        "Train" = brewer.pal(8, "Dark2")[3],
+        "Val" = brewer.pal(8, "Dark2")[2]
     ))
     # change the line thickness of the lines in the legend
     + guides(linetype = guide_legend(override.aes = list(size = 1)))  
@@ -107,7 +109,7 @@ pr_all_plates_plot <- (
 pr_all_plates_plot
 
 # Load data
-metrics_results_file <- file.path(results_dir, "metrics.parquet")
+metrics_results_file <- file.path(results_dir, "metrics_final_model.parquet")
 
 metrics_results_df <- arrow::read_parquet(metrics_results_file)
 
@@ -219,7 +221,7 @@ accuracy_score_all_plates_plot <- (
 accuracy_score_all_plates_plot
 
 # Load data
-CM_results_file <- file.path(results_dir, "confusion_matrix.parquet")
+CM_results_file <- file.path(results_dir, "confusion_matrix_final_model.parquet")
 
 CM_results_df <- arrow::read_parquet(CM_results_file)
 

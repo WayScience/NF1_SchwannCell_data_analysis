@@ -20,52 +20,52 @@ load_image <- function(path){
 sc_crop_dir <- "./sc_crops"
 
 # Path to each composite image (min or max) per top feature
-max_Null_feat1 <- file.path(sc_crop_dir, "max_Null_feature_1", "max_Null_feature_1_composite_cropped.png")
-max_Null_feat2 <- file.path(sc_crop_dir, "max_Null_feature_2", "max_Null_feature_2_composite_cropped.png")
-max_Null_feat3 <- file.path(sc_crop_dir, "max_Null_feature_3", "max_Null_feature_3_composite_cropped.png")
-min_Null_feat1 <- file.path(sc_crop_dir, "min_Null_feature_1", "min_Null_feature_1_composite_cropped.png")
-min_Null_feat2 <- file.path(sc_crop_dir, "min_Null_feature_2", "min_Null_feature_2_composite_cropped.png")
-min_Null_feat3 <- file.path(sc_crop_dir, "min_Null_feature_3", "min_Null_feature_3_composite_cropped.png")
+max_int_feat1 <- file.path(sc_crop_dir, "max_int_feature_1", "max_int_feature_1_composite_cropped.png")
+max_int_feat2 <- file.path(sc_crop_dir, "max_int_feature_2", "max_int_feature_2_composite_cropped.png")
+max_int_feat3 <- file.path(sc_crop_dir, "max_int_feature_3", "max_int_feature_3_composite_cropped.png")
+min_int_feat1 <- file.path(sc_crop_dir, "min_int_feature_1", "min_int_feature_1_composite_cropped.png")
+min_int_feat2 <- file.path(sc_crop_dir, "min_int_feature_2", "min_int_feature_2_composite_cropped.png")
+min_int_feat3 <- file.path(sc_crop_dir, "min_int_feature_3", "min_int_feature_3_composite_cropped.png")
 
-max_WT_feat1 <- file.path(sc_crop_dir, "max_WT_feature_1", "max_WT_feature_1_composite_cropped.png")
-max_WT_feat2 <- file.path(sc_crop_dir, "max_WT_feature_2", "max_WT_feature_2_composite_cropped.png")
-max_WT_feat3 <- file.path(sc_crop_dir, "max_WT_feature_3", "max_WT_feature_3_composite_cropped.png")
-min_WT_feat1 <- file.path(sc_crop_dir, "min_WT_feature_1", "min_WT_feature_1_composite_cropped.png")
-min_WT_feat2 <- file.path(sc_crop_dir, "min_WT_feature_2", "min_WT_feature_2_composite_cropped.png")
-min_WT_feat3 <- file.path(sc_crop_dir, "min_WT_feature_3", "min_WT_feature_3_composite_cropped.png")
+max_radial_feat1 <- file.path(sc_crop_dir, "max_radial_feature_1", "max_radial_feature_1_composite_cropped.png")
+max_radial_feat2 <- file.path(sc_crop_dir, "max_radial_feature_2", "max_radial_feature_2_composite_cropped.png")
+max_radial_feat3 <- file.path(sc_crop_dir, "max_radial_feature_3", "max_radial_feature_3_composite_cropped.png")
+min_radial_feat1 <- file.path(sc_crop_dir, "min_radial_feature_1", "min_radial_feature_1_composite_cropped.png")
+min_radial_feat2 <- file.path(sc_crop_dir, "min_radial_feature_2", "min_radial_feature_2_composite_cropped.png")
+min_radial_feat3 <- file.path(sc_crop_dir, "min_radial_feature_3", "min_radial_feature_3_composite_cropped.png")
 
-# load top Null feat images 
-max_Null_feat1_image <- load_image(max_Null_feat1)
-max_Null_feat2_image <- load_image(max_Null_feat2)
-max_Null_feat3_image <- load_image(max_Null_feat3)
-min_Null_feat1_image <- load_image(min_Null_feat1)
-min_Null_feat2_image <- load_image(min_Null_feat2)
-min_Null_feat3_image <- load_image(min_Null_feat3)
+# load top int feat images 
+max_int_feat1_image <- load_image(max_int_feat1)
+max_int_feat2_image <- load_image(max_int_feat2)
+max_int_feat3_image <- load_image(max_int_feat3)
+min_int_feat1_image <- load_image(min_int_feat1)
+min_int_feat2_image <- load_image(min_int_feat2)
+min_int_feat3_image <- load_image(min_int_feat3)
 
-# load top WT feat images 
-max_WT_feat1_image <- load_image(max_WT_feat1)
-max_WT_feat2_image <- load_image(max_WT_feat2)
-max_WT_feat3_image <- load_image(max_WT_feat3)
-min_WT_feat1_image <- load_image(min_WT_feat1)
-min_WT_feat2_image <- load_image(min_WT_feat2)
-min_WT_feat3_image <- load_image(min_WT_feat3)
+# load top radial feat images 
+max_radial_feat1_image <- load_image(max_radial_feat1)
+max_radial_feat2_image <- load_image(max_radial_feat2)
+max_radial_feat3_image <- load_image(max_radial_feat3)
+min_radial_feat1_image <- load_image(min_radial_feat1)
+min_radial_feat2_image <- load_image(min_radial_feat2)
+min_radial_feat3_image <- load_image(min_radial_feat3)
 
 
 # Create list of images
 list_of_images <- list(
-    max_Null_feat1_image,
-    max_Null_feat2_image,
-    max_Null_feat3_image,
-    min_Null_feat1_image,
-    min_Null_feat3_image,
-    min_Null_feat3_image,
+    max_int_feat1_image,
+    max_int_feat2_image,
+    max_int_feat3_image,
+    min_int_feat1_image,
+    min_int_feat2_image,
+    min_int_feat3_image,
 
-    max_WT_feat1_image,
-    max_WT_feat2_image,
-    max_WT_feat3_image,
-    min_WT_feat1_image,
-    min_WT_feat2_image,
-    min_WT_feat3_image
+    max_radial_feat1_image,
+    max_radial_feat2_image,
+    max_radial_feat3_image,
+    min_radial_feat1_image,
+    min_radial_feat2_image,
+    min_radial_feat3_image
 )
 
 width <- 2.5
@@ -82,20 +82,10 @@ blank <- (
     + theme_void()
 )
 
-# ggplot of just text for labelling min versus max cells
+# ggplot of just text for labelling min versus max cells (Null is always the max and WT is the min)
 WT_min_text <- (
     ggplot()
     + geom_text(aes(x = 0.5, y = 0.5, label = "Minimum values\n(WT cells)"), size = text_size) 
-    + theme_void()
-)
-Null_min_text <- (
-    ggplot()
-    + geom_text(aes(x = 0.5, y = 0.5, label = "Minimum values\n(Null cells)"), size = text_size) 
-    + theme_void()
-)
-WT_max_text <- (
-    ggplot()
-    + geom_text(aes(x = 0.5, y = 0.5, label = "Maximum values\n(WT cells)"), size = text_size) 
     + theme_void()
 )
 Null_max_text <- (
@@ -111,29 +101,29 @@ height <- 8
 options(repr.plot.width = width, repr.plot.height = height)
 
 # stich the images together for each genotype
-top_max_null_feat_images <- (
+max_int_feat_images <- (
     Null_max_text
     + list_of_images[[1]]
     + list_of_images[[2]]
     + list_of_images[[3]]
     + plot_layout(nrow = 1)
 )
-top_min_null_feat_images <- (
+min_int_feat_images <- (
     WT_min_text
     + list_of_images[[4]]
     + list_of_images[[5]]
     + list_of_images[[6]]
     + plot_layout(nrow = 1)
 )
-top_max_WT_feat_images <- (
-    WT_max_text
+max_radial_feat_images <- (
+    Null_max_text
     + list_of_images[[7]]
     + list_of_images[[8]]
     + list_of_images[[9]]
     + plot_layout(nrow = 1)
 )
-top_min_WT_feat_images <- (
-    Null_min_text
+min_radial_feat_images <- (
+    WT_min_text
     + list_of_images[[10]]
     + list_of_images[[11]]
     + list_of_images[[12]]
@@ -149,25 +139,25 @@ text_size <- 10
 options(repr.plot.width = width, repr.plot.height = height)
 
 # ggplot of just text
-top_null_feat_text <- (
+radial_feat_text <- (
     ggplot()
     + geom_text(aes(x = 0.5, y = 0.5, label = "Cytoplasm_RadialDistribution_FracAtD_RFP_4of4"), size = text_size) 
     + theme_void()
 )
-top_WT_feat_text <- (
+int_feat_text <- (
     ggplot()
-    + geom_text(aes(x = 0.5, y = 0.5, label = "Cells_Correlation_Correlation_DAPI_GFP"), size = text_size) 
+    + geom_text(aes(x = 0.5, y = 0.5, label = "Cytoplasm_Intensity_MeanIntensityEdge_GFP"), size = text_size) 
     + theme_void()
 )
 
 # patch feature texts together
-top_null_patch_text <- (
-    top_null_feat_text
+int_patch_text <- (
+    int_feat_text
     + plot_layout(nrow = 1)
 )
 
-top_WT_patch_text <- (
-    top_WT_feat_text
+radial_patch_text <- (
+    radial_feat_text
     + plot_layout(nrow = 1)
 )
 
@@ -177,7 +167,7 @@ height <- 2.5
 options(repr.plot.width = width, repr.plot.height = height)
 
 
-top_WT_patch_text
+radial_patch_text
 
 # Create montage
 width <- 14.5
@@ -186,23 +176,23 @@ height <- 8
 options(repr.plot.width = width, repr.plot.height = height)
 
 # patch the images together
-top_null_feat_plot <- (
-    wrap_elements(full = top_null_patch_text)
-    + wrap_elements(top_max_null_feat_images)
-    + wrap_elements(top_min_null_feat_images)
+radial_feat_plot <- (
+    wrap_elements(full = radial_patch_text)
+    + wrap_elements(max_radial_feat_images)
+    + wrap_elements(min_radial_feat_images)
     + plot_layout(ncol = 1, heights = c(0.2, 1, 1))
     )
 
-top_null_feat_plot
+radial_feat_plot
 
 # save plot
 ggsave(
     file.path(
         paste0(
-            "./","top_Null_feature_montage.png"
+            "./","radial_feature_montage.png"
         )
     ),
-    top_null_feat_plot, width = width, height = height, dpi = 600
+    radial_feat_plot, width = width, height = height, dpi = 600
 )
 
 # Create montage
@@ -212,21 +202,21 @@ height <- 8
 options(repr.plot.width = width, repr.plot.height = height)
 
 # patch the images together
-top_wt_feat_plot <- (
-    wrap_elements(full = top_WT_patch_text)
-    + wrap_elements(top_max_WT_feat_images)
-    + wrap_elements(top_min_WT_feat_images)
+int_feat_plot <- (
+    wrap_elements(full = int_patch_text)
+    + wrap_elements(max_int_feat_images)
+    + wrap_elements(min_int_feat_images)
     + plot_layout(ncol = 1, heights = c(0.2, 1, 1))
     )
 
-top_wt_feat_plot
+int_feat_plot
 
 # save plot
 ggsave(
     file.path(
         paste0(
-            "./","top_WT_feature_montage.png"
+            "./","intensity_feature_montage.png"
         )
     ),
-    top_wt_feat_plot, width = width, height = height, dpi = 600
+    int_feat_plot, width = width, height = height, dpi = 600
 )

@@ -93,15 +93,25 @@ top_feat_import_df <- top_feat_import_df %>%
 other_feature_group_df <- top_feat_import_df %>%
     dplyr::filter(!feature_group %in% c("AreaShape", "Correlation", "Neighbors"))
 
+# Create a new data frame for the red star in the Cytoplasm facet for Actin and RadialDistribution
+red_star_df1 <- other_feature_group_df %>%
+    dplyr::filter(channel_cleaned == "Actin" & feature_group == "RadialDistribution" & compartment == "Cytoplasm")
+
+# Create a new data frame for the red star in the Cytoplasm facet for ER and Intensity
+red_star_df2 <- other_feature_group_df %>%
+    dplyr::filter(channel_cleaned == "ER" & feature_group == "Intensity" & compartment == "Cytoplasm")
+
 width <- 12
 height <- 6
 options(repr.plot.width = width, repr.plot.height = height)
 
-# Create the plot
+# Create the plot with stars for Actin and RadialDistribution, and ER and Intensity in the Cytoplasm facet
 feature_importance_gg <- (
     ggplot(other_feature_group_df, aes(x = channel_cleaned, y = feature_group))
     + geom_point(aes(fill = feature_importances), pch = 22, size = 26)
     + geom_text(aes(label = rounded_coeff), size = 4)
+    + geom_point(data = red_star_df1, aes(x = channel_cleaned, y = feature_group), color = "red", shape = 8, size = 3, position = position_nudge(y = -0.2)) # Red star for Actin and RadialDistribution
+    + geom_point(data = red_star_df2, aes(x = channel_cleaned, y = feature_group), color = "red", shape = 8, size = 3, position = position_nudge(y = -0.2)) # Red star for ER and Intensity
     + facet_wrap("~compartment", ncol = 3)
     + theme_bw()
     + scale_fill_distiller(
@@ -234,7 +244,7 @@ correlation_importance_gg
 left_plot <- (
     areashape_neighbors_importance_gg /
     correlation_importance_gg
-) + plot_layout(heights = c(1,1))
+) + plot_layout(heights = c(1,1.25))
 
 # ggsave("./coefficient_plot.png", align_plot, height=8, width=16, dpi=500)
 
@@ -249,52 +259,54 @@ ggsave("./coefficient_plot.png", coefficient_plot, width=21.5, height=7, dpi=500
 
 coefficient_plot
 
-top_Null_path = file.path("./top_Null_feature_montage.png")
-top_Null_img = png::readPNG(top_Null_path)
+int_feat_path = file.path("./intensity_feature_montage.png")
+imt_feat_img = png::readPNG(int_feat_path)
 
 # Get the dimensions of the image
-img_height <- nrow(top_Null_img)
-img_width <- ncol(top_Null_img)
+img_height <- nrow(imt_feat_img)
+img_width <- ncol(imt_feat_img)
 
 # Calculate the aspect ratio
 aspect_ratio <- img_height / img_width
 
 # Plot the image montage to a ggplot object
-top_Null_montage <- ggplot() +
+int_montage <- ggplot() +
   annotation_custom(
-    rasterGrob(top_Null_img, interpolate = TRUE),
+    rasterGrob(imt_feat_img, interpolate = TRUE),
     xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf
   ) +
   theme_void() +
   coord_fixed(ratio = aspect_ratio, clip = "off") +
   theme(plot.margin = margin(0, 0, 0, 0, "cm"))  # Adjust margins as needed
 
-top_Null_montage
+int_montage
 
-top_WT_path = file.path("./top_WT_feature_montage.png")
-top_WT_img = png::readPNG(top_WT_path)
+radial_path = file.path("./radial_feature_montage.png")
+radial_img = png::readPNG(radial_path)
 
 # Get the dimensions of the image
-img_height <- nrow(top_WT_img)
-img_width <- ncol(top_WT_img)
+img_height <- nrow(radial_img)
+img_width <- ncol(radial_img)
 
 # Calculate the aspect ratio
 aspect_ratio <- img_height / img_width
 
 # Plot the image montage to a ggplot object
-top_WT_montage <- ggplot() +
+radial_montage <- ggplot() +
   annotation_custom(
-    rasterGrob(top_WT_img, interpolate = TRUE),
+    rasterGrob(radial_img, interpolate = TRUE),
     xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf
   ) +
   theme_void() +
   coord_fixed(ratio = aspect_ratio, clip = "off") +
   theme(plot.margin = margin(0, 0, 0, 0, "cm"))  # Adjust margins as needed
 
-top_WT_montage
+radial_montage
+
 
 bottom_montage <- (
-   free(top_WT_montage) | top_Null_montage
+   free(int_montage) | radial_montage
+
 ) + plot_layout(widths = c(1,1.25))
 
 bottom_montage
@@ -302,13 +314,13 @@ bottom_montage
 align_plot <- (
     coefficient_plot /
     bottom_montage
-) + plot_layout(heights = c(1.15,1))
+) + plot_layout(heights = c(1,1))
 
 align_plot
 
 fig_4_gg <- (
   align_plot
-) + plot_annotation(tag_levels = "A") & theme(plot.tag = element_text(size = 25))
+) + plot_annotation(tag_levels = list(c("A", "", "", "B", "C"))) & theme(plot.tag = element_text(size = 25))
 
 # Save or display the plot
 ggsave(output_main_figure_4, plot = fig_4_gg, dpi = 500, height = 13, width = 21.5)

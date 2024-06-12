@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Generate min/max repesentative single-cell images per top WT and Null feature from the model
+# # Generate min/max repesentative single-cell images per top two Null features from the model
+# 
+# 1. Average edge intensity of GFP in cytoplasm
+# 2. Radial distribution of RFP in cytoplasm
 
 # ## Import libraries
 
@@ -181,7 +184,7 @@ print(plate5_df.shape)
 plate5_df.head()
 
 
-# ## Load in feature importance data and determine the top two differential features (top for WT and top for Null)
+# ## Load in feature importance data and determine the top two differential features for Null
 
 # In[6]:
 
@@ -192,15 +195,15 @@ feat_import_df = pd.read_parquet(
     )
 )
 
-# Find the top positive feature
-Top_WT_feature = feat_import_df.loc[feat_import_df['feature_importances'].idxmax(), 'feature_names']
+# Find the top positive feature (get the second highest feature that is not correlation)
+intensity_feature = feat_import_df.sort_values(by='feature_importances', ascending=True).iloc[1]['feature_names']
 
 # Find the top negative feature
-Top_Null_feature = feat_import_df.loc[feat_import_df['feature_importances'].idxmin(), 'feature_names']
+radial_feature = feat_import_df.loc[feat_import_df['feature_importances'].idxmin(), 'feature_names']
 
 # Print the features
-print(Top_WT_feature)
-print(Top_Null_feature)
+print(intensity_feature)
+print(radial_feature)
 
 
 # ## Filter plate 5 single-cells to only include isolated cells that are not near the edge of the FOV
@@ -221,17 +224,17 @@ print(filtered_plate5_df.shape)
 filtered_plate5_df.head()
 
 
-# ### Max single-cells for Top WT feature (represent WT)
+# ### Max single-cells for Intensity feature (represent Null)
 
 # In[8]:
 
 
 # Get data frame with the top 3 single-cells from the top WT coefficient
-max_WT_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "WT"].nlargest(
-    3, Top_WT_feature
+max_int_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "Null"].nlargest(
+    3, intensity_feature
 )[
     [
-        Top_WT_feature,
+        intensity_feature,
         "Metadata_genotype",
         "Metadata_Well",
         "Metadata_Plate",
@@ -243,24 +246,24 @@ max_WT_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "
 ]
 
 # Append the DataFrame and its name to the lists
-list_of_dfs.append(max_WT_feature)
-list_of_names.append("max_WT_feature")
+list_of_dfs.append(max_int_feature)
+list_of_names.append("max_int_feature")
 
-print(max_WT_feature.shape)
-max_WT_feature
+print(max_int_feature.shape)
+max_int_feature
 
 
-# ### Min single-cells for Top WT feature (represent Null)
+# ### Min single-cells for Intensity feature (represent WT)
 
 # In[9]:
 
 
 # Get data frame with the top 3 single-cells from the top WT coefficient
-min_WT_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "Null"].nsmallest(
-    3, Top_WT_feature
+min_int_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "WT"].nsmallest(
+    3, intensity_feature
 )[
     [
-        Top_WT_feature,
+        intensity_feature,
         "Metadata_genotype",
         "Metadata_Well",
         "Metadata_Plate",
@@ -272,24 +275,24 @@ min_WT_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "
 ]
 
 # Append the DataFrame and its name to the lists
-list_of_dfs.append(min_WT_feature)
-list_of_names.append("min_WT_feature")
+list_of_dfs.append(min_int_feature)
+list_of_names.append("min_int_feature")
 
-print(min_WT_feature.shape)
-min_WT_feature
+print(min_int_feature.shape)
+min_int_feature
 
 
-# ### Max single-cells for Top Null feature (represent Null)
+# ### Max single-cells for Radial Distribution feature (represent Null)
 
 # In[10]:
 
 
 # Get data frame with the top 3 single-cells from the top Null coefficient
-max_Null_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "Null"].nlargest(
-    3, Top_Null_feature
+max_radial_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "Null"].nlargest(
+    3, radial_feature
 )[
     [
-        Top_Null_feature,
+        radial_feature,
         "Metadata_genotype",
         "Metadata_Well",
         "Metadata_Plate",
@@ -301,24 +304,24 @@ max_Null_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] ==
 ]
 
 # Append the DataFrame and its name to the lists
-list_of_dfs.append(max_Null_feature)
-list_of_names.append("max_Null_feature")
+list_of_dfs.append(max_radial_feature)
+list_of_names.append("max_radial_feature")
 
-print(max_Null_feature.shape)
-max_Null_feature
+print(max_radial_feature.shape)
+max_radial_feature
 
 
-# ### Min single-cells for Top Null feature (represent WT)
+# ### Min single-cells for Radial Distribution feature (represent WT)
 
 # In[11]:
 
 
 # Get data frame with the top 3 single-cells from the top Null coefficient
-min_Null_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "WT"].nsmallest(
-    3, Top_Null_feature
+min_radial_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "WT"].nsmallest(
+    3, radial_feature
 )[
     [
-        Top_Null_feature,
+        radial_feature,
         "Metadata_genotype",
         "Metadata_Well",
         "Metadata_Plate",
@@ -330,11 +333,11 @@ min_Null_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] ==
 ]
 
 # Append the DataFrame and its name to the lists
-list_of_dfs.append(min_Null_feature)
-list_of_names.append("min_Null_feature")
+list_of_dfs.append(min_radial_feature)
+list_of_names.append("min_radial_feature")
 
-print(min_Null_feature.shape)
-min_Null_feature
+print(min_radial_feature.shape)
+min_radial_feature
 
 
 # ## Merge feature info into dictionary for processing
