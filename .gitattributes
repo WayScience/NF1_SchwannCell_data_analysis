@@ -1,6 +1,7 @@
 1.train_models/log_reg_plates_3_3p_5_cp_norm_data/data/model_data_log_reg_cp_fs_data_plate_5.parquet filter=lfs diff=lfs merge=lfs -text
 1.train_models/classify_genotypes/data/nf1_model_pre_evaluation_results.parquet filter=lfs diff=lfs merge=lfs -text
 2.evaluate_models/log_reg_plates_3_3p_5_cp_norm_data/model_eval_data/plate_precision_recall.parquet filter=lfs diff=lfs merge=lfs -text
-2.evaluate_models/classify_genotypes/model_evaluation_data/precision_recall.parquet filter=lfs diff=lfs merge=lfs -text
+2.evaluate_models/classify_genotypes/model_evaluation_data/precision_recall_hyperparameters.parquet filter=lfs diff=lfs merge=lfs -text
+2.evaluate_models/classify_genotypes/model_evaluation_data/precision_recall_final_model.parquet filter=lfs diff=lfs merge=lfs -text
 1.train_models/classify_genotypes/model_data.parquet filter=lfs diff=lfs merge=lfs -text
 1.train_models/classify_genotypes/data/nf1_eval_data.parquet filter=lfs diff=lfs merge=lfs -text
