@@ -1,5 +1,4 @@
 install_pgks.sh
-*.py
 !/**/nbconverted/*.py
 **/.jukit/
 .ipynb_checkpoints/
