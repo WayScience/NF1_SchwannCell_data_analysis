@@ -110,8 +110,8 @@ feature_importance_gg <- (
     ggplot(other_feature_group_df, aes(x = channel_cleaned, y = feature_group))
     + geom_point(aes(fill = feature_importances), pch = 22, size = 26)
     + geom_text(aes(label = rounded_coeff), size = 4)
-    + geom_point(data = red_star_df1, aes(x = channel_cleaned, y = feature_group), color = "red", shape = 8, size = 3, position = position_nudge(y = -0.2)) # Red star for Actin and RadialDistribution
-    + geom_point(data = red_star_df2, aes(x = channel_cleaned, y = feature_group), color = "red", shape = 8, size = 3, position = position_nudge(y = -0.2)) # Red star for ER and Intensity
+    + geom_point(data = red_star_df1, aes(x = channel_cleaned, y = feature_group), color = "white", shape = 8, size = 3, position = position_nudge(y = -0.2)) # Red star for Actin and RadialDistribution
+    + geom_point(data = red_star_df2, aes(x = channel_cleaned, y = feature_group), color = "white", shape = 8, size = 3, position = position_nudge(y = -0.2)) # Red star for ER and Intensity
     + facet_wrap("~compartment", ncol = 3)
     + theme_bw()
     + scale_fill_distiller(
