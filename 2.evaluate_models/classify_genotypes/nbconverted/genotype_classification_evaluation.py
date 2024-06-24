@@ -22,7 +22,6 @@ from sklearn.metrics import (
     recall_score,
 )
 
-
 # ## Find the root of the git repo on the host system
 
 # In[2]:
@@ -55,7 +54,7 @@ if root_dir is None:
 
 data_path = pathlib.Path(f"{root_dir}/1.train_models/classify_genotypes/data")
 
-evaldf = pd.read_parquet(f"{data_path}/nf1_eval_data.parquet")
+evaldf = pd.read_parquet(f"{data_path}/nf1_final_model_eval_data.parquet")
 model = load(f"{data_path}/trained_nf1_model.joblib")
 le = load(f"{data_path}/trained_nf1_model_label_encoder.joblib")
 
@@ -193,7 +192,7 @@ for split in evaldf["datasplit"].unique():
 
 
 for met, met_data in eval_mets.items():
-    pd.DataFrame(eval_mets[met]).to_parquet(f"{eval_path}/{met}.parquet")
+    pd.DataFrame(eval_mets[met]).to_parquet(f"{eval_path}/{met}_final_model.parquet")
 
 pd.DataFrame(
     {
