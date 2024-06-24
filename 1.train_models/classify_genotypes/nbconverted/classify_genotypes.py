@@ -24,7 +24,6 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import parallel_backend
 
-
 # ## Find the root of the git repo on the host system
 
 # In[2]:
@@ -55,30 +54,15 @@ if root_dir is None:
 # In[3]:
 
 
-plate5df_path = pathlib.Path(
-    root_dir
-    / "../nf1_cellpainting_data/3.processing_features/data/single_cell_profiles/Plate_5_sc_feature_selected.parquet"
-).resolve(strict=True)
-plate3df_path = pathlib.Path(
-    root_dir
-    / "../nf1_cellpainting_data/3.processing_features/data/single_cell_profiles/Plate_3_sc_feature_selected.parquet"
-).resolve(strict=True)
-plate3pdf_path = pathlib.Path(
-    root_dir
-    / "../nf1_cellpainting_data/3.processing_features/data/single_cell_profiles/Plate_3_prime_sc_feature_selected.parquet"
-).resolve(strict=True)
-plate4df_path = pathlib.Path(
-    root_dir
-    / "../nf1_cellpainting_data/3.processing_features/data/single_cell_profiles/Plate_4_sc_feature_selected.parquet"
-).resolve(strict=True)
+plate5df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_5_sc_feature_selected.parquet").resolve(strict=True)
+plate3df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_3_sc_feature_selected.parquet").resolve(strict=True)
+plate3pdf_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_3_prime_sc_feature_selected.parquet").resolve(strict=True)
+plate4df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_4_sc_feature_selected.parquet").resolve(strict=True)
 
 plate5df = pd.read_parquet(plate5df_path)
 plate4df = pd.read_parquet(plate4df_path)
 plate3df = pd.read_parquet(plate3df_path)
 plate3pdf = pd.read_parquet(plate3pdf_path)
-
-# Correct Plate_3_prime plate column bug
-plate3pdf["Metadata_Plate"] = "Plate_3_prime"
 
 # Set the seed
 rng = np.random.default_rng(0)
@@ -240,44 +224,11 @@ rest4df, test4df = down_sample_by_genotype(rest4df), down_sample_by_genotype(tes
 
 
 # Columns common to all plates
-plate_cols = list(
-    set(plate5df.columns)
-    & set(plate3df.columns)
-    & set(plate3pdf.columns)
-    & set(plate4df.columns)
-)
+plate_cols = list(set(plate5df.columns) & set(plate3df.columns) & set(plate3pdf.columns) & set(plate4df.columns))
 
-restdf = pd.concat(
-    [
-        rest5df[plate_cols],
-        rest3df[plate_cols],
-        rest3pdf[plate_cols],
-        rest4df[plate_cols],
-    ],
-    ignore_index=True,
-).reset_index(drop=True)
+restdf = pd.concat([rest5df[plate_cols], rest3df[plate_cols], rest3pdf[plate_cols], rest4df[plate_cols]], ignore_index=True).reset_index(drop=True)
 
-# Add Metadata_datasplit column to restdf
-restdf = restdf.assign(datasplit='rest')
-
-testdf = pd.concat(
-    [
-        test5df[plate_cols],
-        test3df[plate_cols],
-        test3pdf[plate_cols],
-        test4df[plate_cols],
-    ],
-    ignore_index=True,
-).reset_index(drop=True)
-
-# Add Metadata_datasplit column to testdf
-testdf = testdf.assign(datasplit='test')
-
-# Concatenate restdf and testdf vertically
-model_df = pd.concat([restdf, testdf], ignore_index=True)
-
-# Save model data to apply the model for evaluation
-model_df.to_parquet("./model_data.parquet")
+testdf = pd.concat([test5df[plate_cols], test3df[plate_cols], test3pdf[plate_cols], test4df[plate_cols]], ignore_index=True).reset_index(drop=True)
 
 
 # ## Encode genotypes and extract feature data
