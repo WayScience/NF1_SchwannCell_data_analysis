@@ -54,7 +54,7 @@ if root_dir is None:
 
 data_path = pathlib.Path(f"{root_dir}/1.train_models/classify_genotypes/data")
 
-evaldf = pd.read_parquet(f"{data_path}/nf1_final_model_eval_data.parquet")
+evaldf = pd.read_parquet(f"{data_path}/nf1_model_pre_evaluation_results.parquet")
 model = load(f"{data_path}/trained_nf1_model.joblib")
 le = load(f"{data_path}/trained_nf1_model_label_encoder.joblib")
 
