@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Classify WT and Null Genotypes Logistic Regression
-# Plates 3, 3p, 4, and 5 are used in all splits to classify genotypes either (WT or Null)
+# Plates 3, 3p, and 5 are used in all splits to classify genotypes either (WT or Null)
 # The feature selected data is used in all data splits.
 # Pre-evaluation metrics are stored from all splits and these plates.
 
@@ -54,15 +54,13 @@ if root_dir is None:
 # In[3]:
 
 
-plate5df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_5_sc_feature_selected.parquet").resolve(strict=True)
 plate3df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_3_sc_feature_selected.parquet").resolve(strict=True)
 plate3pdf_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_3_prime_sc_feature_selected.parquet").resolve(strict=True)
-plate4df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_4_sc_feature_selected.parquet").resolve(strict=True)
+plate5df_path = pathlib.Path(root_dir / "nf1_painting_repo/3.processing_features/data/single_cell_profiles/Plate_5_sc_feature_selected.parquet").resolve(strict=True)
 
-plate5df = pd.read_parquet(plate5df_path)
-plate4df = pd.read_parquet(plate4df_path)
 plate3df = pd.read_parquet(plate3df_path)
 plate3pdf = pd.read_parquet(plate3pdf_path)
+plate5df = pd.read_parquet(plate5df_path)
 
 # Set the seed
 rng = np.random.default_rng(0)
@@ -192,11 +190,6 @@ def create_splits(_wells, _plate):
 # In[7]:
 
 
-plate5df = process_plates(plate5df)
-p5_wells = ["C9", "E11", "E3", "G3"]
-rest5df, test5df = create_splits(p5_wells, plate5df)
-rest5df, test5df = down_sample_by_genotype(rest5df), down_sample_by_genotype(test5df)
-
 plate3df = process_plates(plate3df)
 p3_wells = ["C11", "E11", "C3", "F3"]
 rest3df, test3df = create_splits(p3_wells, plate3df)
@@ -207,15 +200,10 @@ p3p_wells = ["F11", "G11", "C3", "F3"]
 rest3pdf, test3pdf = create_splits(p3p_wells, plate3pdf)
 rest3pdf, test3pdf = down_sample_by_genotype(rest3pdf), down_sample_by_genotype(test3pdf)
 
-# Removed siRNA-treated cells to retain only Null and WT cells
-plate4df["Metadata_siRNA"].fillna("No Construct", inplace=True)
-plate4df.dropna(inplace=True)
-plate4df = plate4df.loc[plate4df["Metadata_siRNA"] == "No Construct"]
-
-plate4df = process_plates(plate4df)
-p4_wells = ["D5", "C11"]
-rest4df, test4df = create_splits(p4_wells, plate4df)
-rest4df, test4df = down_sample_by_genotype(rest4df), down_sample_by_genotype(test4df)
+plate5df = process_plates(plate5df)
+p5_wells = ["C9", "E11", "E3", "G3"]
+rest5df, test5df = create_splits(p5_wells, plate5df)
+rest5df, test5df = down_sample_by_genotype(rest5df), down_sample_by_genotype(test5df)
 
 
 # ## Combine plate columns across each data split
@@ -224,11 +212,11 @@ rest4df, test4df = down_sample_by_genotype(rest4df), down_sample_by_genotype(tes
 
 
 # Columns common to all plates
-plate_cols = list(set(plate5df.columns) & set(plate3df.columns) & set(plate3pdf.columns) & set(plate4df.columns))
+plate_cols = list(set(plate5df.columns) & set(plate3df.columns) & set(plate3pdf.columns))
 
-restdf = pd.concat([rest5df[plate_cols], rest3df[plate_cols], rest3pdf[plate_cols], rest4df[plate_cols]], ignore_index=True).reset_index(drop=True)
+restdf = pd.concat([rest3df[plate_cols], rest3pdf[plate_cols], rest5df[plate_cols]], ignore_index=True).reset_index(drop=True)
 
-testdf = pd.concat([test5df[plate_cols], test3df[plate_cols], test3pdf[plate_cols], test4df[plate_cols]], ignore_index=True).reset_index(drop=True)
+testdf = pd.concat([test3df[plate_cols], test3pdf[plate_cols], test5df[plate_cols]], ignore_index=True).reset_index(drop=True)
 
 
 # ## Encode genotypes and extract feature data
