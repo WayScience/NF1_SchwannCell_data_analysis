@@ -1,7 +1,0 @@
-genotype	number_of_significant_columns	proportion_of_significant_columns
-WT1Null1	404	0.34
-WT1WT2	622	0.52
-WT1Null2	666	0.56
-Null1WT2	750	0.63
-Null1Null2	804	0.68
-WT2Null2	794	0.67
