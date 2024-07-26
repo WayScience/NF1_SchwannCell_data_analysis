@@ -1,4 +1,4 @@
-# Developing the NF1 model
+# Develop the NF1 model
 In this module, we extract patterns to discern between cells with WT and Null genotypes using cell morphologies from plates 3, 3 prime, and 5.
 After substantial development we have developed and optimized our final NF1 model with the same architecure as a logistic regression.
 The training and testing sets are choose to create a 90-10 train-test split between wells, while approximately retaining a uniform genotype class distribution of cells within each data split.
