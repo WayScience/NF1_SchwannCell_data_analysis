@@ -1,5 +1,6 @@
 # Evaluating the NF1 model
-After training the NF1 model described in 1.train_models, and saving the results, we evaluate the performance of the NF1 model. We evaluate the NF1 model on each split (train, validation, and test), the entire dataset, and each plate using the following metrics:
+After training the NF1 model described in 1.train_models, and saving the results, we evaluate the performance of the NF1 model.
+We evaluate the NF1 model on each split (train, validation, and test), the entire dataset, and each plate using the following metrics:
 - Precision
 - Recall
 - Accuracy
