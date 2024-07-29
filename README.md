@@ -1,6 +1,9 @@
 # NF1_SchwannCell_data_analysis
+Here we analyze [NF1](https://www.sciencedirect.com/science/article/pii/B9780444529022000539) morphology data from the [NF1 Cell painting Data](https://github.com/WayScience/nf1_cellpainting_data) repository.
+Our analysis consists of finding interesting patterns in the NF1 cell morphology data from the [nf1_cellpainting_data](https://github.com/WayScience/NF1_SchwannCell_data_analysis) repository, and then developing, evaluating and interpretting our NF1 model.
+The NF1 model is a binary classifcation model optimized from NF1 cell morphology data to classify cell genotypes {Null, WT} for the NF1 gene.
 ## Repository Structure
-Here we analyze NF1 morphology data from the [NF1 Cell painting Data](https://github.com/WayScience/nf1_cellpainting_data) repo. Our analysis is categorized as follows:
+This analysis is categorized as follows:
 
 | Module | Purpose | Description |
 | :---- | :----- | :---------- |
