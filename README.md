@@ -10,7 +10,7 @@ This analysis is categorized as follows:
 | [0.data_analysis](./0.data_analysis/) | Analyze NF1 Data | We find interesting patterns in the NF1 cell morphology data. |
 | [1.train_models](./1.train_models/) | Train NF1 Models | Optimize the NF1 model by training multiple models with a random search. |
 | [2.evaluate_models](./2.evaluate_models/) | Evaluate Final NF1 Model | After training the final NF1 model we evaluate model performance and model feature importances. |
-| [3.figures](./3.figures/) | Visualize Analysis Results| We then interpret our results visually. |
+| [3.figures](./3.figures/) | Generate Manuscript Figures | We interpret the results from the model by generating figures to include in the manuscript. |
 
 ## Steps to Reproduce
 ### Step 1. Clone the analysis repo
