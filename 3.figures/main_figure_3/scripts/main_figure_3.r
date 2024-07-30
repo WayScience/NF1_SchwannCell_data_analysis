@@ -9,11 +9,11 @@ output_main_figure_3 <- file.path(
     figure_dir, "main_figure_3_model_eval.png"
 )
 results_dir <- file.path(
-    "../../2.evaluate_models/classify_genotypes/model_evaluation_data"
+    "../../2.evaluate_model/model_evaluation_data/"
 )
 
-# Load data
-PR_results_file <- file.path(results_dir, "precision_recall_hyperparameters.parquet")
+# Load data (includes optimization in this file)
+PR_results_file <- file.path(results_dir, "precision_recall_final_model.parquet")
 
 PR_results_df <- arrow::read_parquet(PR_results_file)
 
@@ -35,43 +35,6 @@ PR_results_df <- PR_results_df %>%
 dim(PR_results_df)
 head(PR_results_df)
 
-# width <- 17
-# height <- 12
-# options(repr.plot.width = width, repr.plot.height = height)
-
-# pr_by_plate_plot <- (
-#     ggplot(PR_results_df, aes(x = recall, y = precision, color = datasplit, linetype = shuffled_type))
-#     + geom_line(aes(linetype = shuffled_type), linewidth = 1)
-#     + facet_wrap(~plate)
-#     + theme_bw()
-#     + labs(color = "ML model\ndata split", linetype = "Features shuffled", x = "Recall", y = "Precision")
-#     # change the colors
-#     + scale_color_manual(values = c(
-#         "test" = brewer.pal(8, "Dark2")[6],
-#         "train" = brewer.pal(8, "Dark2")[3],
-#         "val" = brewer.pal(8, "Dark2")[2]
-#     ))
-#     + coord_fixed()
-#     # change the line thickness of the lines in the legend
-#     + guides(linetype = guide_legend(override.aes = list(size = 1)))  
-#     # change the text size
-#     + theme(
-#         strip.text = element_text(size = 18),
-#         # x and y axis text size
-#         axis.text.x = element_text(size = 18),
-#         axis.text.y = element_text(size = 18),
-#         # x and y axis title size
-#         axis.title.x = element_text(size = 18),
-#         axis.title.y = element_text(size = 18),
-#         # legend text size
-#         legend.text = element_text(size = 18),
-#         legend.title = element_text(size = 18),
-#     )
-# )
-
-# pr_by_plate_plot
-
-
 # Filter only rows with 'all_plates' in the 'plate' column
 filtered_all_plates_pr_df <- PR_results_df[PR_results_df$plate == "all_plates", ]
 
@@ -90,6 +53,7 @@ pr_all_plates_plot <- (
         "Train" = brewer.pal(8, "Dark2")[3],
         "Val" = brewer.pal(8, "Dark2")[2]
     ))
+    + scale_y_continuous(limits = c(0, 1))
     # change the line thickness of the lines in the legend
     + guides(linetype = guide_legend(override.aes = list(size = 1)))  
     # change the text size
@@ -113,6 +77,10 @@ metrics_results_file <- file.path(results_dir, "metrics_final_model.parquet")
 
 metrics_results_df <- arrow::read_parquet(metrics_results_file)
 
+# Filter out rows where datasplit is "val" or "shuffled_val"
+metrics_results_df <- metrics_results_df %>%
+    filter(!(datasplit %in% c("val", "shuffled_val")))
+
 dim(metrics_results_df)
 head(metrics_results_df)
 
@@ -124,56 +92,10 @@ metrics_results_df$datasplit <- sub("^shuffled_", "", metrics_results_df$dataspl
 
 # Rename "data splits for interpretation
 metrics_results_df <- metrics_results_df %>%
-  mutate(datasplit = recode(datasplit, "test" = "Test", "rest" = "Train"))
+  mutate(datasplit = recode(datasplit, "test" = "Test", "train" = "Train"))
 
 dim(metrics_results_df)
 head(metrics_results_df)
-
-# set plot size
-width <- 10
-height <- 8
-options(repr.plot.width = width, repr.plot.height = height)
-# bar plot of the accuracy scores
-accuracy_score_per_plate_plot <- (
-    ggplot(metrics_results_df, aes(x = shuffled_type, y = accuracy, fill = datasplit))
-    + geom_bar(stat = "identity", position = "dodge")
-
-    # Add text labels on top of bars
-    + geom_text(
-        aes(label = sprintf("%.2f", accuracy)), 
-        position = position_dodge(width = 0.9), 
-        vjust = -0.5, 
-        size = 6
-    )
-
-    + ylim(0, 1)
-    + facet_wrap(~plate)
-    + theme_bw()
-    + ylab("Accuracy")
-    + xlab("Features shuffled")
-    # change the legend title
-    + labs(fill = "ML model\ndata split")
-    # change the colours
-    + scale_fill_manual(values = c(
-        "Test" = brewer.pal(8, "Dark2")[6],
-        "Train" = brewer.pal(8, "Dark2")[3]
-    ))
-    # change the text size
-    + theme(
-        strip.text = element_text(size = 16),
-        # x and y axis text size
-        axis.text.x = element_text(size = 16),
-        axis.text.y = element_text(size = 16),
-        # x and y axis title size
-        axis.title.x = element_text(size = 16),
-        axis.title.y = element_text(size = 16),
-        # legend text size
-        legend.text = element_text(size = 16),
-        legend.title = element_text(size = 16),
-    )
-)
-
-accuracy_score_per_plate_plot
 
 filtered_metrics_df <- metrics_results_df[metrics_results_df$plate == "all_plates", ]
 
@@ -225,6 +147,10 @@ CM_results_file <- file.path(results_dir, "confusion_matrix_final_model.parquet"
 
 CM_results_df <- arrow::read_parquet(CM_results_file)
 
+# Filter out rows where datasplit is "val" or "shuffled_val"
+CM_results_df <- CM_results_df %>%
+    filter(!(datasplit %in% c("val", "shuffled_val")))
+
 dim(CM_results_df)
 head(CM_results_df)
 
@@ -236,7 +162,7 @@ CM_results_df$datasplit <- sub("^shuffled_", "", CM_results_df$datasplit)
 
 # Rename "data splits for interpretation
 CM_results_df <- CM_results_df %>%
-  mutate(datasplit = recode(datasplit, "test" = "Test", "rest" = "Train"))
+  mutate(datasplit = recode(datasplit, "test" = "Test", "train" = "Train"))
 
 dim(CM_results_df)
 head(CM_results_df)
@@ -250,74 +176,6 @@ CM_results_df <- CM_results_df %>%
 
 dim(CM_results_df)
 head(CM_results_df)
-
-# Filter out rows with 'val' in the 'datasplit' column and 'shuffled' in the 'data_type' column
-filtered_CM_df <- CM_results_df[!(CM_results_df$shuffled_type == "TRUE"), ]
-
-# plot dimensions
-width <- 14
-height <- 11
-options(repr.plot.width = width, repr.plot.height = height)
-# plot a confusion matrix
-confusion_matrix_per_plate_final_plot <- (
-    ggplot(filtered_CM_df, aes(x = factor(true_genotype, levels = rev(levels(factor(true_genotype)))), y = predicted_genotype)) +
-    facet_grid(plate ~ datasplit) +
-    geom_point(aes(color = ratio), size = 20, shape = 15) +
-    geom_text(aes(label = confusion_values)) +
-    scale_color_gradient("Ratio", low = "white", high = "red", limits = c(0, 1)) +
-    theme_bw() +
-    ylab("Predicted genotype") +
-    xlab("True genotype") +
-    # change the text size
-    theme(
-        strip.text = element_text(size = 16),
-        # x and y axis text size
-        axis.text.x = element_text(size = 16),
-        axis.text.y = element_text(size = 16),
-        # x and y axis title size
-        axis.title.x = element_text(size = 16),
-        axis.title.y = element_text(size = 16),
-        # legend text size
-        legend.text = element_text(size = 16),
-        legend.title = element_text(size = 16),
-    )
-)
-
-confusion_matrix_per_plate_final_plot
-
-# Filter out rows with 'final' in the 'data_type' column
-filtered_CM_df <- CM_results_df[!(CM_results_df$shuffled_type == "FALSE"), ]
-
-# plot dimensions
-width <- 14
-height <- 11
-options(repr.plot.width = width, repr.plot.height = height)
-# plot a confusion matrix
-confusion_matrix_per_plate_shuffled_plot <- (
-    ggplot(filtered_CM_df, aes(x = factor(true_genotype, levels = rev(levels(factor(true_genotype)))), y = predicted_genotype)) +
-    facet_grid(plate ~ datasplit) +
-    geom_point(aes(color = ratio), size = 28, shape = 15) +
-    geom_text(aes(label = confusion_values)) +
-    scale_color_gradient("Ratio", low = "white", high = "red", limits = c(0, 1)) +
-    theme_bw() +
-    ylab("Predicted genotype") +
-    xlab("True genotype") +
-    # change the text size
-    theme(
-        strip.text = element_text(size = 16),
-        # x and y axis text size
-        axis.text.x = element_text(size = 16),
-        axis.text.y = element_text(size = 16),
-        # x and y axis title size
-        axis.title.x = element_text(size = 16),
-        axis.title.y = element_text(size = 16),
-        # legend text size
-        legend.text = element_text(size = 16),
-        legend.title = element_text(size = 16),
-    )
-)
-
-confusion_matrix_per_plate_shuffled_plot
 
 # Filter only rows with plate with "all_plates"
 filtered_CM_df <- CM_results_df[(CM_results_df$plate == "all_plates"), ]
@@ -367,15 +225,11 @@ align_plot <- (
     free(pr_all_plates_plot) |
     confusion_matrix_all_plates_plot |
     accuracy_score_all_plates_plot
-) + plot_layout(widths = c(4,2,2))
-
-align_plot
+) + plot_layout(widths = c(3,2,2))
 
 fig_3_gg <- (
   align_plot
 ) + plot_annotation(tag_levels = "A") & theme(plot.tag = element_text(size = 25))
 
-# Save or display the plot
+# Save the plot
 ggsave(output_main_figure_3, plot = fig_3_gg, dpi = 500, height = 6, width = 22)
-
-fig_3_gg
