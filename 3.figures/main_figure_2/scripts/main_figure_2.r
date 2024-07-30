@@ -64,48 +64,42 @@ UMAP_results_df$Metadata_genotype <- na_if(UMAP_results_df$Metadata_genotype, ""
 total_counts_per_genotype <- UMAP_results_df %>%
     group_by(Metadata_genotype) %>%
     summarize(count = n(), .groups = 'drop') %>%
-    mutate(Metadata_Plate = "All_plates")
-
-# Group by Metadata_genotype and Metadata_Plate, then summarize the count of rows per group
-counts_df <- UMAP_results_df %>%
-    group_by(Metadata_genotype, Metadata_Plate) %>%
-    summarize(count = n(), .groups = 'drop')
-
-# Combine the counts per genotype across all plates with the counts per genotype and plate
-combined_counts_df <- bind_rows(counts_df, total_counts_per_genotype)
+    mutate(Metadata_Plate = "All plates")
 
 # Confirm any NA values are "Null" strings in Metadata_genotype column
-combined_counts_df$Metadata_genotype[is.na(combined_counts_df$Metadata_genotype)] <- "Null"
+total_counts_per_genotype$Metadata_genotype[is.na(total_counts_per_genotype$Metadata_genotype)] <- "Null"
 
 # View the resulting counts dataframe
-dim(combined_counts_df)
-combined_counts_df
+dim(total_counts_per_genotype)
+total_counts_per_genotype
 
 
 # Create the histogram plot with adjusted dodge width
-histogram_plot <- ggplot(combined_counts_df, aes(x = Metadata_Plate, y = count, fill = Metadata_genotype)) +
+histogram_plot <- ggplot(total_counts_per_genotype, aes(x = Metadata_Plate, y = count, fill = Metadata_genotype)) +
     geom_bar(stat = "identity", position = position_dodge(width = 1.0)) +  # Adjust dodge width
     geom_text(aes(label = count), position = position_dodge(width = 1.0), vjust = -0.5, size = 5) +  # Adjust dodge width
-    labs(x = "Plate", y = "Single-cell count", fill = "NF1\ngenotype") +
+    labs(x = "Plate", y = "Single-cell count", fill = "NF1\ngenotype") +  # Removed x-axis label
     ylim(0, 15000) +  # Adjust y-axis limit if needed
     theme_bw() +
     theme(
         # x and y axis text size
         axis.text.x = element_text(size = 18),
         axis.text.y = element_text(size = 18),
-        # x and y axis title size
+        # axis title size
         axis.title.x = element_text(size = 18),
         axis.title.y = element_text(size = 18),
         # legend text size
         legend.text = element_text(size = 18),
         legend.title = element_text(size = 18),
+        # Keep x-axis ticks
+        axis.ticks.x = element_line()
     )
 
 histogram_plot
 
 # Path to correlation per plate results
 corr_results_dir <- file.path(
-    "../../0.data_analysis/construct_phenotypic_expression_plate_4_fs_data/median_correlation_relationships/post_fs_aggregation_correlations/construct_correlation_data"
+    "../../0.data_analysis/all_plates_characteristics/construct_correlation_data"
 )
 
 # Load data
@@ -130,10 +124,6 @@ focus_corr_labels  = c(
     "TRUE" = "Yes",
     "FALSE" = "No"
 )
-facet_labels  = c(
-    "TRUE" = "Same plate",
-    "FALSE" = "Different plate"
-)
 
 width <- 8
 height <- 10
@@ -142,7 +132,6 @@ options(repr.plot.width = width, repr.plot.height = height)
 genotype_corr_gg <- (
     ggplot(corr_results_df, aes(x = correlation))
     + geom_density(aes(fill = same_genotype), alpha = 0.5)
-    + facet_grid("~same_plate", labeller = as_labeller(facet_labels))
     + scale_fill_manual(
         "Is the\npairwise\ncomparison\nfrom the\nsame genotype?",
         values = focus_corr_colors,
@@ -159,7 +148,6 @@ genotype_corr_gg <- (
     + theme_bw()
     # change the text size
     + theme(
-        strip.text = element_text(size = 16),
         # x and y axis text size
         axis.text.x = element_text(size = 18),
         axis.text.y = element_text(size = 18),
@@ -172,19 +160,14 @@ genotype_corr_gg <- (
     )
 )
 
+
 genotype_corr_gg
 
-bottom_plot <- (
-    free(umap_fig_gg) |
-    genotype_corr_gg
-) + plot_layout(widths = c(2.5,2))
-
-bottom_plot
-
 align_plot <- (
-    free(histogram_plot) /
-    bottom_plot
-) + plot_layout(heights = c(2.25,2))
+    histogram_plot |
+    umap_fig_gg |
+    genotype_corr_gg
+) + plot_layout(widths= c(2,2,2))
 
 align_plot
 
@@ -193,6 +176,6 @@ fig_2_gg <- (
 ) + plot_annotation(tag_levels = "A") & theme(plot.tag = element_text(size = 25))
 
 # Save or display the plot
-ggsave(output_main_figure_2, plot = fig_2_gg, dpi = 500, height = 10, width = 14)
+ggsave(output_main_figure_2, plot = fig_2_gg, dpi = 500, height = 6, width = 18)
 
 fig_2_gg
