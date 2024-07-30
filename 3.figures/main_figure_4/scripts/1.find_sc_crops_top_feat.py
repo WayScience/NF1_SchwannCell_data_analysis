@@ -191,7 +191,7 @@ plate5_df.head()
 
 feat_import_df = pd.read_parquet(
     pathlib.Path(
-        "../../2.evaluate_models/classify_genotypes/model_evaluation_data/feature_importances.parquet"
+        "../../2.evaluate_models/model_evaluation_data/feature_importances.parquet"
     )
 )
 

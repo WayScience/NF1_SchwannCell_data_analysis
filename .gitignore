@@ -8,4 +8,4 @@ __pycache__/
 .DS_Store
 
 # ignore single-cell crop images for main figure 4 (too many files)
-4.figures/main_figure_4/sc_crops/
+sc_crops*
