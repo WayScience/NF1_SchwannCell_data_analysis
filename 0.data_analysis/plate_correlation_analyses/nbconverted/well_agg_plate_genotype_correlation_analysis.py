@@ -100,21 +100,9 @@ cd = CorrelateData()
 correlationsdf = []
 
 
-# In[8]:
-
-
-cd.intra_correlations(
-    _df=plate3df.loc[plate3df["Metadata_genotype"] == "WT"].copy(),
-    _antehoc_group_cols=["Metadata_Plate", "Metadata_genotype"],
-    _feat_cols=morph_cols,
-    _posthoc_group_cols=["Metadata_Well"],
-    _drop_cols=["Metadata_Well"]
-)
-
-
 # ## Well Correlations (same genotypes different plates)
 
-# In[9]:
+# In[8]:
 
 
 for genotype in platesdf["Metadata_genotype"].unique():
@@ -135,7 +123,7 @@ for genotype in platesdf["Metadata_genotype"].unique():
 
 # ## Well Correlations (different genotypes and all possible plates)
 
-# In[10]:
+# In[9]:
 
 
 correlationsdf.append(
@@ -151,7 +139,7 @@ correlationsdf.append(
 
 # ## Well Correlations (same genotype and same plate)
 
-# In[11]:
+# In[10]:
 
 
 correlationsdf.append(
@@ -167,7 +155,7 @@ correlationsdf.append(
 
 # # Save Plate Correlations
 
-# In[12]:
+# In[11]:
 
 
 correlationsdf = pd.concat(correlationsdf, axis=0)
@@ -175,7 +163,7 @@ correlationsdf = pd.concat(correlationsdf, axis=0)
 correlationsdf.to_parquet()
 
 
-# In[13]:
+# In[12]:
 
 
 correlationsdf.head()

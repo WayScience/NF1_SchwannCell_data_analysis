@@ -97,17 +97,7 @@ Wells are correlated between plate and genotype.
 cd = CorrelateData()
 correlationsdf = []
 
-#|%%--%%| <YPxjtndLAN|FlFnFIA36R>
-
-cd.intra_correlations(
-    _df=plate3df.loc[plate3df["Metadata_genotype"] == "WT"].copy(),
-    _antehoc_group_cols=["Metadata_Plate", "Metadata_genotype"],
-    _feat_cols=morph_cols,
-    _posthoc_group_cols=["Metadata_Well"],
-    _drop_cols=["Metadata_Well"]
-)
-
-#|%%--%%| <FlFnFIA36R|ddISX0Yw8M>
+#|%%--%%| <YPxjtndLAN|ddISX0Yw8M>
 r"""°°°
 ## Well Correlations (same genotypes different plates)
 °°°"""
