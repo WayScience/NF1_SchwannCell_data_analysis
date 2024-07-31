@@ -1,7 +1,7 @@
 r"""°°°
 # Well-Aggregated Plate and Genotype Correlation Analysis
 Correlations between groups defined by genotype and plate are determined to understand the similarities between group morphologies.
-These correlations are computed between cell morphologies aggregated to the well level.
+These correlations are computed between cell morphologies aggregated to the well level after feature selection.
 °°°"""
 #|%%--%%| <KGGUnjMQyM|CGb0BVUMWf>
 
