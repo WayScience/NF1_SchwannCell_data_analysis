@@ -8,6 +8,6 @@ We evaluate the final NF1 model on each split (train, validation, and test), eac
 - F1 score
 - Confusion matrices
 
-> **NOTE:** The precision and recall data cover the results from all the different parameter settings tested during the hyperparameter search. All other files contain the results from the final model (best hyperparameters).
+> **NOTE:** The precision and recall thresholded data includes results from the stratified cross-validation test dataset, saved while searching for the optimal NF1 model hyper-parameter.  Data without the data split label `val` were not evaluated during hyper-parameter optimization.
 
 In addition to these changes, we save the feature importances of the model to gather insights about key morphology differences.
