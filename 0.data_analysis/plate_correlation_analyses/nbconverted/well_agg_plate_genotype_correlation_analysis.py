@@ -3,6 +3,7 @@
 
 # # Well-Aggregated Plate and Genotype Correlation Analysis
 # Correlations between groups defined by genotype and plate are determined to understand the similarities between group morphologies.
+# There are two genotypes {WT, Null}, and three plates {Plate 3, Plate 3 prime, Plate 5} explored in this correlation analysis.
 # These correlations are computed between cell morphologies aggregated to the well level after feature selection.
 
 # In[1]:
@@ -65,7 +66,7 @@ plate5df = pd.read_parquet(plate5df_path)
 # In[4]:
 
 
-plate_correlation_path = pathlib.Path("construct_correlation_data/well_agg_plate_genotype_correlations.parquet")
+plate_correlation_path = pathlib.Path("construct_correlation_data")
 plate_correlation_path.mkdir(parents=True, exist_ok=True)
 
 
@@ -85,6 +86,12 @@ platesdf = platesdf[plates_cols]
 # In[6]:
 
 
+platesdf.head()
+
+
+# In[7]:
+
+
 # Morphology and metadata columns
 morph_cols = [col for col in platesdf.columns if "Metadata" not in col]
 meta_cols = platesdf.columns.difference(morph_cols)
@@ -93,16 +100,16 @@ meta_cols = platesdf.columns.difference(morph_cols)
 # # Correlate wells
 # Wells are correlated between plate and genotype.
 
-# In[7]:
+# In[8]:
 
 
 cd = CorrelateData()
 correlationsdf = []
 
 
-# ## Well Correlations (same genotypes different plates)
+# ## Well Correlations (same genotypes and different plates)
 
-# In[8]:
+# In[9]:
 
 
 for genotype in platesdf["Metadata_genotype"].unique():
@@ -122,8 +129,9 @@ for genotype in platesdf["Metadata_genotype"].unique():
 
 
 # ## Well Correlations (different genotypes and all possible plates)
+# Well correlations between different genotypes are computed, regardless of the plate
 
-# In[9]:
+# In[10]:
 
 
 correlationsdf.append(
@@ -139,7 +147,7 @@ correlationsdf.append(
 
 # ## Well Correlations (same genotype and same plate)
 
-# In[10]:
+# In[11]:
 
 
 correlationsdf.append(
@@ -155,15 +163,14 @@ correlationsdf.append(
 
 # # Save Plate Correlations
 
-# In[11]:
+# In[12]:
 
 
 correlationsdf = pd.concat(correlationsdf, axis=0)
+correlationsdf.to_parquet(plate_correlation_path / "well_agg_plate_genotype_correlations.parquet")
 
-correlationsdf.to_parquet()
 
-
-# In[12]:
+# In[13]:
 
 
 correlationsdf.head()
