@@ -185,13 +185,15 @@ plate5_df.head()
 
 
 # ## Load in feature importance data and determine the top two differential features for Null
+# 
+# Note: There is a higher weighted feature for WT but we decided these two features were most interesting + we decided correlation features would be not be as easy to interpret.
 
 # In[6]:
 
 
 feat_import_df = pd.read_parquet(
     pathlib.Path(
-        "../../2.evaluate_models/model_evaluation_data/feature_importances.parquet"
+        "../../2.evaluate_model/model_evaluation_data/feature_importances.parquet"
     )
 )
 
