@@ -9,7 +9,7 @@ output_main_figure_4 <- file.path(
     figure_dir, "main_figure_4_feature_importance.png"
 )
 results_dir <- file.path(
-    "../../2.evaluate_models/classify_genotypes/model_evaluation_data"
+    "../../2.evaluate_model/model_evaluation_data"
 )
 
 # Load data
@@ -91,7 +91,7 @@ top_feat_import_df <- top_feat_import_df %>%
 
 # Process data for plotting
 other_feature_group_df <- top_feat_import_df %>%
-    dplyr::filter(!feature_group %in% c("AreaShape", "Correlation", "Neighbors"))
+    dplyr::filter(!feature_group %in% c("AreaShape", "Correlation", "Neighbors", "Location"))
 
 # Create a new data frame for the red star in the Cytoplasm facet for Actin and RadialDistribution
 red_star_df1 <- other_feature_group_df %>%
@@ -108,17 +108,17 @@ options(repr.plot.width = width, repr.plot.height = height)
 # Create the plot with stars for Actin and RadialDistribution, and ER and Intensity in the Cytoplasm facet
 feature_importance_gg <- (
     ggplot(other_feature_group_df, aes(x = channel_cleaned, y = feature_group))
-    + geom_point(aes(fill = feature_importances), pch = 22, size = 26)
+    + geom_point(aes(fill = feature_importances), pch = 22, size = 27)
     + geom_text(aes(label = rounded_coeff), size = 4)
-    + geom_point(data = red_star_df1, aes(x = channel_cleaned, y = feature_group), color = "white", shape = 8, size = 3, position = position_nudge(y = -0.2)) # Red star for Actin and RadialDistribution
-    + geom_point(data = red_star_df2, aes(x = channel_cleaned, y = feature_group), color = "white", shape = 8, size = 3, position = position_nudge(y = -0.2)) # Red star for ER and Intensity
+    + geom_point(data = red_star_df1, aes(x = channel_cleaned, y = feature_group), color = "white", shape = 8, size = 4, position = position_nudge(y = -0.2)) # White star for Actin and RadialDistribution
+    + geom_point(data = red_star_df2, aes(x = channel_cleaned, y = feature_group), color = "white", shape = 8, size = 4, position = position_nudge(y = -0.2)) # White star for ER and Intensity
     + facet_wrap("~compartment", ncol = 3)
     + theme_bw()
     + scale_fill_distiller(
         name = "Top absolute value\nweight from model",
         palette = "YlGn",
         direction = 1,
-        limits = c(0, 2)
+        limits = c(0, 2.5)
     )
     + xlab("Channel")
     + ylab("Feature group")
@@ -134,9 +134,9 @@ feature_importance_gg <- (
         legend.position = "bottom", # Move legend to bottom
         legend.title = element_text(size = 14, margin = margin(b = 15)), # Increase space between title and gradient
         legend.text = element_text(size = 12),
-        legend.key.height = unit(1.75, "cm"), # Increase height of legend key
+        legend.key.height = unit(1.9, "cm"), # Increase height of legend key
         legend.key.width = unit(2, "cm"), # Optionally, increase width of legend key
-        legend.margin = margin(t = 25),
+        legend.margin = margin(t = 20),
     )
 )
 
@@ -144,7 +144,7 @@ feature_importance_gg
 
 # Filter data to include AreaShape and Neighbors feature groups
 area_shape_neighbors_df <- feat_import_df %>%
-    dplyr::filter(feature_group %in% c("AreaShape", "Neighbors")) %>%
+    dplyr::filter(feature_group %in% c("AreaShape", "Neighbors", "Location")) %>%
     dplyr::mutate(area_shape_indicator = paste(measurement, channel, parameter1, sep = "_"))
 
 # Add rounded coefficient values to the data frame
@@ -164,7 +164,7 @@ options(repr.plot.width = width, repr.plot.height = height)
 # Create the plot
 areashape_neighbors_importance_gg <- (
     ggplot(top_area_shape_neighbors_df, aes(x = feature_group, y = measurement))
-    + geom_point(aes(fill = feature_importances), pch = 22, size = 20)
+    + geom_point(aes(fill = feature_importances), pch = 22, size = 16)
     + geom_text(aes(label = rounded_coeff), size = 4)
     + facet_wrap("~compartment", ncol = 3)
     + theme_bw()
@@ -172,13 +172,13 @@ areashape_neighbors_importance_gg <- (
         name = "Top absolute\nvalue weight\nfrom model",
         palette = "YlGn",
         direction = 1,
-        limits = c(0, 2)
+        limits = c(0, 2.5)
     )
     + xlab("Feature group")
     + ylab("Feature measurement")
     + theme(
         axis.text = element_text(size = 12),
-        axis.text.x = element_text(size = 13, vjust = 0.6, hjust = 0.5),
+        axis.text.x = element_text(angle = 45, size = 13, vjust = 0.6, hjust = 0.5),
         axis.title = element_text(size = 14),
         legend.text = element_text(size = 12),
         legend.title = element_text(size = 14),
@@ -212,7 +212,7 @@ options(repr.plot.width = width, repr.plot.height = height)
 # Create the plot
 correlation_importance_gg <- (
     ggplot(top_correlation_df, aes(x = channel_cleaned, y = parameter1_cleaned))
-    + geom_point(aes(fill = feature_importances), pch = 22, size = 18)
+    + geom_point(aes(fill = feature_importances), pch = 22, size = 16)
     + geom_text(aes(label = rounded_coeff), size = 4)
     + facet_wrap("~compartment", ncol = 3)
     + theme_bw()
@@ -220,7 +220,7 @@ correlation_importance_gg <- (
         name = "Top absolute\nvalue weight\nfrom model",
         palette = "YlGn",
         direction = 1,
-        limits = c(0, 2)
+        limits = c(0, 2.5)
     )
     + xlab("Channel (correlation)")
     + ylab("Channel (correlation)")
@@ -244,16 +244,15 @@ correlation_importance_gg
 left_plot <- (
     areashape_neighbors_importance_gg /
     correlation_importance_gg
-) + plot_layout(heights = c(1,1.25))
-
-# ggsave("./coefficient_plot.png", align_plot, height=8, width=16, dpi=500)
+) + plot_layout(heights = c(1,1.1))
 
 left_plot
 
 coefficient_plot <- (
     left_plot |
+    plot_spacer() |
     free(feature_importance_gg)
-) + plot_layout(widths = c(2,3.5))
+) + plot_layout(widths = c(1,0.05,2))
 
 ggsave("./coefficient_plot.png", coefficient_plot, width=21.5, height=7, dpi=500)
 
@@ -305,16 +304,17 @@ radial_montage
 
 
 bottom_montage <- (
-   free(int_montage) | radial_montage
-
-) + plot_layout(widths = c(1,1.25))
+   free(int_montage) | 
+   plot_spacer() |
+   radial_montage
+) + plot_layout(widths = c(1,0.15,1.25))
 
 bottom_montage
 
 align_plot <- (
     coefficient_plot /
     bottom_montage
-) + plot_layout(heights = c(1,1))
+) + plot_layout(heights = c(1,1.15))
 
 align_plot
 
@@ -323,6 +323,6 @@ fig_4_gg <- (
 ) + plot_annotation(tag_levels = list(c("A", "", "", "B", "C"))) & theme(plot.tag = element_text(size = 25))
 
 # Save or display the plot
-ggsave(output_main_figure_4, plot = fig_4_gg, dpi = 500, height = 13, width = 21.5)
+ggsave(output_main_figure_4, plot = fig_4_gg, dpi = 500, height = 15, width = 22.5)
 
 fig_4_gg
