@@ -91,7 +91,7 @@ top_feat_import_df <- top_feat_import_df %>%
 
 # Process data for plotting
 other_feature_group_df <- top_feat_import_df %>%
-    dplyr::filter(!feature_group %in% c("AreaShape", "Correlation", "Neighbors"))
+    dplyr::filter(!feature_group %in% c("AreaShape", "Correlation", "Neighbors", "Location"))
 
 # Create a new data frame for the red star in the Cytoplasm facet for Actin and RadialDistribution
 red_star_df1 <- other_feature_group_df %>%
@@ -108,7 +108,7 @@ options(repr.plot.width = width, repr.plot.height = height)
 # Create the plot with stars for Actin and RadialDistribution, and ER and Intensity in the Cytoplasm facet
 feature_importance_gg <- (
     ggplot(other_feature_group_df, aes(x = channel_cleaned, y = feature_group))
-    + geom_point(aes(fill = feature_importances), pch = 22, size = 23)
+    + geom_point(aes(fill = feature_importances), pch = 22, size = 25)
     + geom_text(aes(label = rounded_coeff), size = 4)
     + geom_point(data = red_star_df1, aes(x = channel_cleaned, y = feature_group), color = "white", shape = 8, size = 3, position = position_nudge(y = -0.2)) # Red star for Actin and RadialDistribution
     + geom_point(data = red_star_df2, aes(x = channel_cleaned, y = feature_group), color = "white", shape = 8, size = 3, position = position_nudge(y = -0.2)) # Red star for ER and Intensity
@@ -144,7 +144,7 @@ feature_importance_gg
 
 # Filter data to include AreaShape and Neighbors feature groups
 area_shape_neighbors_df <- feat_import_df %>%
-    dplyr::filter(feature_group %in% c("AreaShape", "Neighbors")) %>%
+    dplyr::filter(feature_group %in% c("AreaShape", "Neighbors", "Location")) %>%
     dplyr::mutate(area_shape_indicator = paste(measurement, channel, parameter1, sep = "_"))
 
 # Add rounded coefficient values to the data frame
@@ -244,14 +244,14 @@ correlation_importance_gg
 left_plot <- (
     areashape_neighbors_importance_gg /
     correlation_importance_gg
-) + plot_layout(heights = c(1,1.25))
+) + plot_layout(heights = c(1,1))
 
 left_plot
 
 coefficient_plot <- (
     left_plot |
     free(feature_importance_gg)
-) + plot_layout(widths = c(2,3.5))
+) + plot_layout(widths = c(2,3))
 
 ggsave("./coefficient_plot.png", coefficient_plot, width=21.5, height=7, dpi=500)
 
@@ -312,7 +312,7 @@ bottom_montage
 align_plot <- (
     coefficient_plot /
     bottom_montage
-) + plot_layout(heights = c(1,1))
+) + plot_layout(heights = c(1.25,1))
 
 align_plot
 
@@ -321,6 +321,6 @@ fig_4_gg <- (
 ) + plot_annotation(tag_levels = list(c("A", "", "", "B", "C"))) & theme(plot.tag = element_text(size = 25))
 
 # Save or display the plot
-ggsave(output_main_figure_4, plot = fig_4_gg, dpi = 500, height = 14, width = 23)
+ggsave(output_main_figure_4, plot = fig_4_gg, dpi = 500, height = 13, width = 24)
 
 fig_4_gg
