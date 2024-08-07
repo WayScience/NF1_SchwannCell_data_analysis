@@ -1,0 +1,3 @@
+[submodule "nf1_painting_repo"]
+    path = nf1_painting_repo
+    url = https://github.com/WayScience/nf1_cellpainting_data.git
