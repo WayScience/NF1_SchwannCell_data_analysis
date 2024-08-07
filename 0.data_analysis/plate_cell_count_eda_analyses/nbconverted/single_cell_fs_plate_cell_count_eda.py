@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Cell Count EDA of Single-Cell NF1 Plate Data
-# This analysis focuses on describing single-cell distributions within the NF1 feature-selected single-cell plate data.
+# This analysis focuses on describing single-cell count distributions within the NF1 feature-selected single-cell plate data.
 
 # In[1]:
 
@@ -185,7 +185,7 @@ def set_edge_well(_well):
 # In[9]:
 
 
-# Custom function to retriVeve the first element of metadata
+# Custom function to retrieve the first element of metadata
 def get_first_element(_pdseries):
     return _pdseries.iloc[0]
 
@@ -242,14 +242,6 @@ def visualize_missing_columns_to_cells(_platedf, _plate_name):
 
     else:
         print(na_rows)
-
-    sns.barplot(x="Number of Cells", y="Number of Missing Columns", data=na_rows)
-
-    plt.xlabel("Number of Cells")
-    plt.ylabel("Number of Missing Columns")
-    plt.title("Number of Cells Missing Columns")
-
-    plt.savefig(plate_name_to_path_map[_plate_name] / f"{_plate_name}_cells_missing_columns.png")
 
 
 # In[12]:
@@ -343,15 +335,15 @@ visualize_missing_columns_to_cells(plate3df, "plate_5")
 # In[16]:
 
 
-start_letter = 'B'
-end_letter = 'G'
+start_row = 'B'
+end_row = 'G'
 
-start_num = 1
-end_num = 12
+start_col = 1
+end_col = 12
 
 edge_wells = [
-    f"{chr(wletter)}{wnum}" for wletter in range(ord(start_letter), ord(end_letter) + 1)
-    for wnum in [start_num, end_num]
+    f"{chr(wletter)}{wnum}" for wletter in range(ord(start_row), ord(end_row) + 1)
+    for wnum in [start_col, end_col]
 ]
 
 plate3df["Metadata_Edge_Well"] = plate3df["Metadata_Well"].apply(set_edge_well)
