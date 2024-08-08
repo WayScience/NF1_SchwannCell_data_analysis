@@ -94,12 +94,8 @@ other_feature_group_df <- top_feat_import_df %>%
     dplyr::filter(!feature_group %in% c("AreaShape", "Correlation", "Neighbors", "Location"))
 
 # Create a new data frame for the red star in the Cytoplasm facet for Actin and RadialDistribution
-red_star_df1 <- other_feature_group_df %>%
+red_box_radial <- other_feature_group_df %>%
     dplyr::filter(channel_cleaned == "Actin" & feature_group == "RadialDistribution" & compartment == "Cytoplasm")
-
-# Create a new data frame for the red star in the Cytoplasm facet for ER and Intensity
-red_star_df2 <- other_feature_group_df %>%
-    dplyr::filter(channel_cleaned == "ER" & feature_group == "Intensity" & compartment == "Cytoplasm")
 
 width <- 12
 height <- 6
@@ -109,9 +105,13 @@ options(repr.plot.width = width, repr.plot.height = height)
 feature_importance_gg <- (
     ggplot(other_feature_group_df, aes(x = channel_cleaned, y = feature_group))
     + geom_point(aes(fill = feature_importances), pch = 22, size = 27)
-    + geom_text(aes(label = rounded_coeff), size = 4)
-    + geom_point(data = red_star_df1, aes(x = channel_cleaned, y = feature_group), color = "white", shape = 8, size = 4, position = position_nudge(y = -0.2)) # White star for Actin and RadialDistribution
-    + geom_point(data = red_star_df2, aes(x = channel_cleaned, y = feature_group), color = "white", shape = 8, size = 4, position = position_nudge(y = -0.2)) # White star for ER and Intensity
+    + geom_text(aes(label = rounded_coeff), size = 6)
+    + geom_point(data = red_box_radial, 
+                aes(x = channel_cleaned, y = feature_group), 
+                color = "red", 
+                shape = 0, 
+                size = 25, 
+                stroke = 1.5) # Red box for Actin and RadialDistribution
     + facet_wrap("~compartment", ncol = 3)
     + theme_bw()
     + scale_fill_distiller(
@@ -123,20 +123,20 @@ feature_importance_gg <- (
     + xlab("Channel")
     + ylab("Feature group")
     + theme(
-        axis.text = element_text(size = 12),
-        axis.text.x = element_text(angle = 45, size = 13, vjust = 0.7, hjust = 0.5),
-        axis.title = element_text(size = 14),
-        strip.text = element_text(size = 14),
+        axis.text = element_text(size = 16),
+        axis.text.x = element_text(angle = 45, size = 16, vjust = 0.6, hjust = 0.5),
+        axis.title = element_text(size = 18),
+        strip.text = element_text(size = 18),
         strip.background = element_rect(
             colour = "black",
             fill = "#fdfff4"
         ),
         legend.position = "bottom", # Move legend to bottom
-        legend.title = element_text(size = 14, margin = margin(b = 15)), # Increase space between title and gradient
-        legend.text = element_text(size = 12),
+        legend.title = element_text(size = 16, margin = margin(b = 15)), # Increase space between title and gradient
+        legend.text = element_text(size = 14),
         legend.key.height = unit(1.9, "cm"), # Increase height of legend key
         legend.key.width = unit(2, "cm"), # Optionally, increase width of legend key
-        legend.margin = margin(t = 20),
+        legend.margin = margin(t = 35),
     )
 )
 
@@ -145,7 +145,8 @@ feature_importance_gg
 # Filter data to include AreaShape and Neighbors feature groups
 area_shape_neighbors_df <- feat_import_df %>%
     dplyr::filter(feature_group %in% c("AreaShape", "Neighbors", "Location")) %>%
-    dplyr::mutate(area_shape_indicator = paste(measurement, channel, parameter1, sep = "_"))
+    dplyr::mutate(area_shape_indicator = paste(measurement, channel, parameter1, sep = "_"),
+                  measurement = ifelse(measurement == "SecondClosestDistance", "SCD", measurement))
 
 # Add rounded coefficient values to the data frame
 area_shape_neighbors_df <- area_shape_neighbors_df %>%
@@ -164,8 +165,8 @@ options(repr.plot.width = width, repr.plot.height = height)
 # Create the plot
 areashape_neighbors_importance_gg <- (
     ggplot(top_area_shape_neighbors_df, aes(x = feature_group, y = measurement))
-    + geom_point(aes(fill = feature_importances), pch = 22, size = 16)
-    + geom_text(aes(label = rounded_coeff), size = 4)
+    + geom_point(aes(fill = feature_importances), pch = 22, size = 18)
+    + geom_text(aes(label = rounded_coeff), size = 6)
     + facet_wrap("~compartment", ncol = 3)
     + theme_bw()
     + scale_fill_distiller(
@@ -175,14 +176,12 @@ areashape_neighbors_importance_gg <- (
         limits = c(0, 2.5)
     )
     + xlab("Feature group")
-    + ylab("Feature measurement")
+    + ylab("Measurement")
     + theme(
-        axis.text = element_text(size = 12),
-        axis.text.x = element_text(angle = 45, size = 13, vjust = 0.6, hjust = 0.5),
-        axis.title = element_text(size = 14),
-        legend.text = element_text(size = 12),
-        legend.title = element_text(size = 14),
-        strip.text = element_text(size = 14),
+        axis.text = element_text(size = 16),
+        axis.text.x = element_text(angle = 45, size = 16, vjust = 0.6, hjust = 0.5),
+        axis.title = element_text(size = 18),
+        strip.text = element_text(size = 18),
         strip.background = element_rect(
             colour = "black",
             fill = "#fdfff4"
@@ -205,6 +204,10 @@ top_correlation_df <- correlation_df %>%
     dplyr::group_by(feature_group, channel_cleaned, compartment, channel, parameter1) %>%
     dplyr::slice_max(order_by = feature_importances, n = 1)
 
+# Create a new data frame for the red star in the Cytoplasm facet for Actin and RadialDistribution
+red_box_dapi_er_corr <- top_correlation_df %>%
+    dplyr::filter(channel_cleaned == "Nucleus" & parameter1_cleaned == "ER" & compartment == "Cells")
+
 width <- 12
 height <- 6
 options(repr.plot.width = width, repr.plot.height = height)
@@ -212,8 +215,14 @@ options(repr.plot.width = width, repr.plot.height = height)
 # Create the plot
 correlation_importance_gg <- (
     ggplot(top_correlation_df, aes(x = channel_cleaned, y = parameter1_cleaned))
-    + geom_point(aes(fill = feature_importances), pch = 22, size = 16)
-    + geom_text(aes(label = rounded_coeff), size = 4)
+    + geom_point(aes(fill = feature_importances), pch = 22, size = 18)
+    + geom_text(aes(label = rounded_coeff), size = 6)
+    + geom_point(data = red_box_dapi_er_corr, 
+                aes(x = channel_cleaned, y = parameter1_cleaned), 
+                color = "red", 
+                shape = 0, 
+                size = 16, 
+                stroke = 1.5) # Red box for Correlation DAPI and ER
     + facet_wrap("~compartment", ncol = 3)
     + theme_bw()
     + scale_fill_distiller(
@@ -225,12 +234,10 @@ correlation_importance_gg <- (
     + xlab("Channel (correlation)")
     + ylab("Channel (correlation)")
     + theme(
-        axis.text = element_text(size = 12),
-        axis.text.x = element_text(angle = 45, size = 13, vjust = 0.7, hjust = 0.5),
-        axis.title = element_text(size = 14),
-        legend.text = element_text(size = 12),
-        legend.title = element_text(size = 14),
-        strip.text = element_text(size = 14),
+        axis.text = element_text(size = 16),
+        axis.text.x = element_text(angle = 45, size = 16, vjust = 0.6, hjust = 0.5),
+        axis.title = element_text(size = 18),
+        strip.text = element_text(size = 18),
         strip.background = element_rect(
             colour = "black",
             fill = "#fdfff4"
@@ -244,7 +251,7 @@ correlation_importance_gg
 left_plot <- (
     areashape_neighbors_importance_gg /
     correlation_importance_gg
-) + plot_layout(heights = c(1,1.1))
+) + plot_layout(heights = c(1,1.4))
 
 left_plot
 
@@ -252,33 +259,33 @@ coefficient_plot <- (
     left_plot |
     plot_spacer() |
     free(feature_importance_gg)
-) + plot_layout(widths = c(1,0.05,2))
+) + plot_layout(widths = c(1,0.05,1.5))
 
 ggsave("./coefficient_plot.png", coefficient_plot, width=21.5, height=7, dpi=500)
 
 coefficient_plot
 
-int_feat_path = file.path("./intensity_feature_montage.png")
-imt_feat_img = png::readPNG(int_feat_path)
+corr_feat_path = file.path("./correlation_feature_montage.png")
+corr_feat_img = png::readPNG(corr_feat_path)
 
 # Get the dimensions of the image
-img_height <- nrow(imt_feat_img)
-img_width <- ncol(imt_feat_img)
+img_height <- nrow(corr_feat_img)
+img_width <- ncol(corr_feat_img)
 
 # Calculate the aspect ratio
 aspect_ratio <- img_height / img_width
 
 # Plot the image montage to a ggplot object
-int_montage <- ggplot() +
+corr_montage <- ggplot() +
   annotation_custom(
-    rasterGrob(imt_feat_img, interpolate = TRUE),
+    rasterGrob(corr_feat_img, interpolate = TRUE),
     xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf
   ) +
   theme_void() +
   coord_fixed(ratio = aspect_ratio, clip = "off") +
   theme(plot.margin = margin(0, 0, 0, 0, "cm"))  # Adjust margins as needed
 
-int_montage
+corr_montage
 
 radial_path = file.path("./radial_feature_montage.png")
 radial_img = png::readPNG(radial_path)
@@ -302,19 +309,17 @@ radial_montage <- ggplot() +
 
 radial_montage
 
-
 bottom_montage <- (
-   free(int_montage) | 
-   plot_spacer() |
+   free(corr_montage) | 
    radial_montage
-) + plot_layout(widths = c(1,0.15,1.25))
+) + plot_layout(widths = c(1,1.25))
 
 bottom_montage
 
 align_plot <- (
     coefficient_plot /
     bottom_montage
-) + plot_layout(heights = c(1,1.15))
+) + plot_layout(heights = c(1,1))
 
 align_plot
 
@@ -323,6 +328,6 @@ fig_4_gg <- (
 ) + plot_annotation(tag_levels = list(c("A", "", "", "B", "C"))) & theme(plot.tag = element_text(size = 25))
 
 # Save or display the plot
-ggsave(output_main_figure_4, plot = fig_4_gg, dpi = 500, height = 15, width = 22.5)
+ggsave(output_main_figure_4, plot = fig_4_gg, dpi = 500, height = 15, width = 23.5)
 
 fig_4_gg

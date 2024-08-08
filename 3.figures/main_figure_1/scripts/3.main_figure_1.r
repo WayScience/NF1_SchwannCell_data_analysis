@@ -60,5 +60,3 @@ fig_1_gg <- (
 ggsave(output_main_figure_1, plot = fig_1_gg, dpi = 500, height = 14, width = 14)
 
 fig_1_gg
-
-
