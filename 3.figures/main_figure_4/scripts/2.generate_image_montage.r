@@ -240,7 +240,7 @@ options(repr.plot.width = width, repr.plot.height = height)
 
 # patch the images together
 radial_feat_plot <- (
-    wrap_elements(full = int_patch_text)
+    wrap_elements(full = radial_patch_text)
     + wrap_elements(max_radial_feat_images)
     + wrap_elements(min_radial_feat_images)
     + plot_layout(ncol = 1, heights = c(0.2, 1, 1))

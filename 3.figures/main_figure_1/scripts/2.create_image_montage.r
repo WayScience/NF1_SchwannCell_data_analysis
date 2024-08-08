@@ -127,22 +127,22 @@ blank <- (
 # ggplot of just text
 dapi_text <- (
     ggplot()
-    + geom_text(aes(x = 0.5, y = 0.5, label = "DAPI"), size = text_size) 
+    + geom_text(aes(x = 0.5, y = 0.5, label = "Nuclei\n(DAPI)"), size = text_size) 
     + theme_void()
 )
 gfp_text <- (
     ggplot()
-    + geom_text(aes(x = 0.5, y = 0.5, label = "GFP"), size = text_size) 
+    + geom_text(aes(x = 0.5, y = 0.5, label = "ER\n(GFP)"), size = text_size) 
     + theme_void()
 )
 cy5_text <- (
     ggplot()
-    + geom_text(aes(x = 0.5, y = 0.5, label = "CY5"), size = text_size) 
+    + geom_text(aes(x = 0.5, y = 0.5, label = "Mito\n(CY5)"), size = text_size) 
     + theme_void()
 )
 rfp_text <- (
     ggplot()
-    + geom_text(aes(x = 0.5, y = 0.5, label = "RFP"), size = text_size) 
+    + geom_text(aes(x = 0.5, y = 0.5, label = "Actin\n(RFP)"), size = text_size) 
     + theme_void()
 )
 composite_text <- (

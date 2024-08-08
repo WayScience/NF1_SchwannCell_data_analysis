@@ -86,7 +86,7 @@ histogram_plot <- ggplot(total_counts_per_genotype, aes(x = Metadata_Plate, y = 
         axis.text.x = element_text(size = 18),
         axis.text.y = element_text(size = 18),
         # axis title size
-        axis.title.x = element_text(size = 18),
+        axis.title.x = element_blank(),
         axis.title.y = element_text(size = 18),
         # legend text size
         legend.text = element_text(size = 18),
