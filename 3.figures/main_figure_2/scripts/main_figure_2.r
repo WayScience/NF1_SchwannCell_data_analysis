@@ -99,11 +99,11 @@ histogram_plot
 
 # Path to correlation per plate results
 corr_results_dir <- file.path(
-    "../../0.data_analysis/all_plates_characteristics/construct_correlation_data"
+    "../../0.data_analysis/plate_correlation_analyses/construct_correlation_data"
 )
 
 # Load data
-corr_results_file <- file.path(corr_results_dir, "concatenated_all_plates_correlations.parquet")
+corr_results_file <- file.path(corr_results_dir, "well_agg_plate_genotype_correlations.parquet")
 
 corr_results_df <- arrow::read_parquet(corr_results_file)
 
@@ -111,10 +111,15 @@ corr_results_df <- arrow::read_parquet(corr_results_file)
 corr_results_df$same_genotype <- corr_results_df$Metadata_genotype__group0 == corr_results_df$Metadata_genotype__group1
 
 # Add a new column `same_plate` to check if the correlation row is comparing between the same plate
-corr_results_df$same_plate <- corr_results_df$Metadata_plate__group0 == corr_results_df$Metadata_plate__group1
+corr_results_df$same_plate <- corr_results_df$Metadata_Plate__group0 == corr_results_df$Metadata_Plate__group1
 
 dim(corr_results_df)
 head(corr_results_df)
+
+# Calculate mean correlations for each group
+mean_values <- corr_results_df %>%
+  group_by(same_genotype) %>%
+  summarize(mean_correlation = mean(correlation))
 
 focus_corr_colors = c(
     "TRUE" = "blue",
@@ -125,43 +130,42 @@ focus_corr_labels  = c(
     "FALSE" = "No"
 )
 
-width <- 8
-height <- 10
-options(repr.plot.width = width, repr.plot.height = height)
-
+# Create the plot
 genotype_corr_gg <- (
-    ggplot(corr_results_df, aes(x = correlation))
-    + geom_density(aes(fill = same_genotype), alpha = 0.5)
-    + scale_fill_manual(
-        "Is the\npairwise\ncomparison\nfrom the\nsame genotype?",
-        values = focus_corr_colors,
-        label = focus_corr_labels
-    )
-    + guides(
-        color = guide_legend(
-            override.aes = list(size = 2)
-        )
-    )
-    + labs(x = "pairwise Pearson correlation", y = "Density")
-    + geom_vline(xintercept = 0, linetype = "dashed", color = "darkgrey")
-    + xlim(-1, 1.05)
-    + theme_bw()
-    # change the text size
-    + theme(
-        # x and y axis text size
-        axis.text.x = element_text(size = 18),
-        axis.text.y = element_text(size = 18),
-        # x and y axis title size
-        axis.title.x = element_text(size = 18),
-        axis.title.y = element_text(size = 18),
-        # legend text size
-        legend.text = element_text(size = 18),
-        legend.title = element_text(size = 18),
-    )
+  ggplot(corr_results_df, aes(x = correlation, fill = same_genotype))
+  + stat_density(aes(y = after_stat(scaled)), geom = "density", alpha = 0.5, position = "identity")
+  + scale_fill_manual(
+      "Is the\npairwise\ncomparison\nfrom the\nsame genotype?",
+      values = focus_corr_colors,
+      labels = focus_corr_labels
+  )
+  + guides(
+      color = guide_legend(
+          override.aes = list(size = 2)
+      )
+  )
+  + labs(x = "pairwise Pearson correlation", y = "Density")
+  + geom_vline(xintercept = 0, linetype = "dashed", color = "darkgrey")
+  + geom_vline(data = mean_values, aes(xintercept = mean_correlation, color = same_genotype), 
+               linetype = "dashed", linewidth = 1, show.legend = FALSE)
+  + scale_color_manual(values = focus_corr_colors)  # Use the same colors as the fill
+  + xlim(-1, 1.05)
+  + theme_bw()
+  + theme(
+      # x and y axis text size
+      axis.text.x = element_text(size = 18),
+      axis.text.y = element_text(size = 18),
+      # x and y axis title size
+      axis.title.x = element_text(size = 18),
+      axis.title.y = element_text(size = 18),
+      # legend text size
+      legend.text = element_text(size = 18),
+      legend.title = element_text(size = 18),
+  )
 )
 
-
 genotype_corr_gg
+
 
 align_plot <- (
     histogram_plot |

@@ -111,8 +111,13 @@ def generate_sc_crops(
                 key_dir.mkdir(exist_ok=True, parents=True)
 
                 # Save the cropped image with single_cell and channel information
-                output_filename = str(pathlib.Path(f"{key_dir}/{key}_d{i}_cropped.png"))
-                cv2.imwrite(output_filename, cropped_channel)
+                output_filename = pathlib.Path(f"{key_dir}/{key}_d{i}_cropped.png")
+                
+                # Check if the file already exists
+                if not output_filename.exists():
+                    cv2.imwrite(str(output_filename), cropped_channel)
+                else:
+                    print(f"File {output_filename} already exists. Skipping.")
 
 
 # ## Set paths and variables
@@ -197,15 +202,19 @@ feat_import_df = pd.read_parquet(
     )
 )
 
-# Find the top positive feature (get the second highest feature that is not correlation)
-intensity_feature = feat_import_df.sort_values(by='feature_importances', ascending=True).iloc[1]['feature_names']
+# Find the top positive feature
+correlation_feature = feat_import_df.sort_values(by='feature_importances', ascending=False).iloc[0]['feature_names']
 
 # Find the top negative feature
 radial_feature = feat_import_df.loc[feat_import_df['feature_importances'].idxmin(), 'feature_names']
 
+# Find the second top negative feature
+intensity_feature = feat_import_df.sort_values(by='feature_importances', ascending=True).iloc[1]['feature_names']
+
 # Print the features
-print(intensity_feature)
+print(correlation_feature)
 print(radial_feature)
+print(intensity_feature)
 
 
 # ## Filter plate 5 single-cells to only include isolated cells that are not near the edge of the FOV
@@ -226,12 +235,70 @@ print(filtered_plate5_df.shape)
 filtered_plate5_df.head()
 
 
-# ### Max single-cells for Intensity feature (represent Null)
+# ### Max single-cells for Correlation feature (represent WT)
 
 # In[8]:
 
 
 # Get data frame with the top 3 single-cells from the top WT coefficient
+max_corr_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "WT"].nlargest(
+    3, correlation_feature
+)[
+    [
+        correlation_feature,
+        "Metadata_genotype",
+        "Metadata_Well",
+        "Metadata_Plate",
+        "Metadata_Site",
+        "Metadata_Number_of_Cells_Neighbors_Adjacent",
+        "Metadata_Nuclei_Location_Center_X",
+        "Metadata_Nuclei_Location_Center_Y",
+    ]
+]
+
+# Append the DataFrame and its name to the lists
+list_of_dfs.append(max_corr_feature)
+list_of_names.append("max_corr_feature")
+
+print(max_corr_feature.shape)
+max_corr_feature
+
+
+# ### Min single-cells for Correlation feature (represent Null)
+
+# In[9]:
+
+
+# Get data frame with the top 3 single-cells from the top WT coefficient
+min_corr_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "Null"].nsmallest(
+    3, correlation_feature
+)[
+    [
+        correlation_feature,
+        "Metadata_genotype",
+        "Metadata_Well",
+        "Metadata_Plate",
+        "Metadata_Site",
+        "Metadata_Number_of_Cells_Neighbors_Adjacent",
+        "Metadata_Nuclei_Location_Center_X",
+        "Metadata_Nuclei_Location_Center_Y",
+    ]
+]
+
+# Append the DataFrame and its name to the lists
+list_of_dfs.append(min_corr_feature)
+list_of_names.append("min_corr_feature")
+
+print(min_corr_feature.shape)
+min_corr_feature
+
+
+# ### Max single-cells for Intensity feature (represent Null)
+
+# In[10]:
+
+
+# Get data frame with the top 3 single-cells from the second top Null coefficient
 max_int_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "Null"].nlargest(
     3, intensity_feature
 )[
@@ -257,10 +324,10 @@ max_int_feature
 
 # ### Min single-cells for Intensity feature (represent WT)
 
-# In[9]:
+# In[11]:
 
 
-# Get data frame with the top 3 single-cells from the top WT coefficient
+# Get data frame with the top 3 single-cells from the second top Null coefficient
 min_int_feature = filtered_plate5_df[filtered_plate5_df["Metadata_genotype"] == "WT"].nsmallest(
     3, intensity_feature
 )[
@@ -286,7 +353,7 @@ min_int_feature
 
 # ### Max single-cells for Radial Distribution feature (represent Null)
 
-# In[10]:
+# In[12]:
 
 
 # Get data frame with the top 3 single-cells from the top Null coefficient
@@ -315,7 +382,7 @@ max_radial_feature
 
 # ### Min single-cells for Radial Distribution feature (represent WT)
 
-# In[11]:
+# In[13]:
 
 
 # Get data frame with the top 3 single-cells from the top Null coefficient
@@ -344,7 +411,7 @@ min_radial_feature
 
 # ## Merge feature info into dictionary for processing
 
-# In[12]:
+# In[14]:
 
 
 sc_dict = create_sc_dict(dfs=list_of_dfs, names=list_of_names)
@@ -355,7 +422,7 @@ pprint(list(sc_dict.items())[:2], indent=4)
 
 # ## Generate single-cell crops 
 
-# In[13]:
+# In[15]:
 
 
 generate_sc_crops(
