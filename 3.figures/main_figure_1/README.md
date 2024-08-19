@@ -7,3 +7,9 @@ To generate the first main figure of the manuscript, there are 5 steps to follow
 3. While the crops are still in ImageJ, we manually stack the channels together into one composite image (make sure to keep source images). Then, we add 25 uM scales to each crop using 3.1065 uM/pixel in the `Analyze > Set Scale... module` (as identified from the metadata of the raw images). All crops are saved as PNGs back into the same folder.
 4. [2.create_image_montage.ipynb](./2.create_image_montage.ipynb): Using the updated and colored crops, we can now merge them together to make an image montage figure that labels each crop per channel and per genotype.
 5. [3.main_figure_1.ipynb](./3.main_figure_1.ipynb): Patch together the workflow image and image montage into one main figure.
+
+All steps can be ran with the bash script using the command below:
+
+```bash
+source main_figure_1.sh
+```

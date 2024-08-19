@@ -9,12 +9,12 @@ conda activate nf1_analysis
 jupyter nbconvert --to script --output-dir=scripts/ *.ipynb
 
 # run the notebook for finding single-cell crops
-python scripts/1.find_sc_crops_top_feat.py
+python scripts/1.find_sc_crops.py
 
 # deactivate python env and activate R env
 conda deactivate
 conda activate nf1_figures
 
-# run notebooks to generate image montage and main figure 4
-Rscript scripts/2.generate_image_montage.r
-Rscript scripts/3.main_figure_4.r
+# run notebooks to generate image montage and main figure 1
+Rscript scripts/2.create_image_montage.r
+Rscript scripts/3.main_figure_1.r
