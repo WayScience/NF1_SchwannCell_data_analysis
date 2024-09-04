@@ -310,8 +310,8 @@ radial_montage <- ggplot() +
 radial_montage
 
 bottom_montage <- (
-   free(corr_montage) | 
-   radial_montage
+   free(radial_montage) | 
+   corr_montage
 ) + plot_layout(widths = c(1,1.25))
 
 bottom_montage

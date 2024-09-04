@@ -96,7 +96,7 @@ list_of_images <- list(
 width <- 2.5
 height <- 2.5
 
-text_size <- 8
+text_size <- 10
 
 options(repr.plot.width = width, repr.plot.height = height)
 
@@ -194,17 +194,17 @@ options(repr.plot.width = width, repr.plot.height = height)
 # ggplot of just text
 radial_feat_text <- (
     ggplot()
-    + geom_text(aes(x = 0.5, y = 0.5, label = "Cytoplasm_RadialDistribution_FracAtD_RFP_4of4"), size = text_size) 
+    + geom_text(aes(x = 0.5, y = 0.5, label = "CellProfiler feature:\nCytoplasm_RadialDistribution_FracAtD_RFP_4of4"), size = text_size) 
     + theme_void()
 )
 int_feat_text <- (
     ggplot()
-    + geom_text(aes(x = 0.5, y = 0.5, label = "Cytoplasm_Intensity_MeanIntensityEdge_GFP"), size = text_size) 
+    + geom_text(aes(x = 0.5, y = 0.5, label = "CellProfiler feature:\nCytoplasm_Intensity_MeanIntensityEdge_GFP"), size = text_size) 
     + theme_void()
 )
 corr_feat_text <- (
     ggplot()
-    + geom_text(aes(x = 0.5, y = 0.5, label = "Cells_Correlation_Correlation_DAPI_GFP"), size = text_size) 
+    + geom_text(aes(x = 0.5, y = 0.5, label = "CellProfiler feature:\nCells_Correlation_Correlation_DAPI_GFP"), size = text_size) 
     + theme_void()
 )
 
@@ -233,8 +233,8 @@ options(repr.plot.width = width, repr.plot.height = height)
 radial_patch_text
 
 # Create montage
-width <- 12.5
-height <- 8
+width <- 17.5
+height <- 11
 
 options(repr.plot.width = width, repr.plot.height = height)
 
@@ -259,8 +259,8 @@ ggsave(
 )
 
 # Create montage
-width <- 12.5
-height <- 8
+width <- 17.5
+height <- 11
 
 options(repr.plot.width = width, repr.plot.height = height)
 
@@ -285,8 +285,8 @@ ggsave(
 )
 
 # Create montage
-width <- 12.5
-height <- 8
+width <- 17.5
+height <- 11
 
 options(repr.plot.width = width, repr.plot.height = height)
 
@@ -309,3 +309,5 @@ ggsave(
     ),
     corr_feat_plot, width = width, height = height, dpi = 600
 )
+
+
