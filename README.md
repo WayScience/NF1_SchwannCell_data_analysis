@@ -1,6 +1,6 @@
-[![DOI](https://zenodo.org/badge/624947909.svg)](https://zenodo.org/doi/10.5281/zenodo.13352211)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13694800.svg)](https://doi.org/10.5281/zenodo.13694800)
 
-# NF1 Schwann cell data analysis
+# NF1 Schwann cell morphology signature
 
 We aim to characterize cell morphology signatures of neurofibromin in Schwann cells.
 We applied a modified Cell Painting assay on two isogenic Schwann cell lines, one of the wildtype genotype (*NF1+/+*) and one of the null genotype (*NF1-/-*), both from the same patient.
