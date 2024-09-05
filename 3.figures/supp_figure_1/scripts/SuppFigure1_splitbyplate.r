@@ -2,7 +2,6 @@ suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(grid))
 suppressPackageStartupMessages(library(patchwork))
-suppressPackageStartupMessages(library(platetools))
 
 figure_dir <- "../figures/supplementary"
 output_supp_figure_1 <- file.path(figure_dir, "supp_figure_1_splitbyplate.png")
@@ -16,6 +15,12 @@ UMAP_results_dir <- file.path(
 UMAP_results_file <- file.path(UMAP_results_dir, "UMAP_concat_model_plates_sc_feature_selected.tsv")
 
 UMAP_results_df <- readr::read_tsv(UMAP_results_file)
+
+UMAP_results_df <- UMAP_results_df %>%
+  mutate(Metadata_Plate = recode(Metadata_Plate,
+                        "Plate_3" = "Plate A",
+                        "Plate_3_prime" = "Plate B",
+                        "Plate_5" = "Plate C"))
 
 dim(UMAP_results_df)
 head(UMAP_results_df)
@@ -105,6 +110,19 @@ corr_results_dir <- file.path(
 # Load data
 corr_results_file <- file.path(corr_results_dir, "well_agg_plate_genotype_correlations.parquet")
 corr_results_df <- arrow::read_parquet(corr_results_file)
+
+# Rename plates in both group columns
+corr_results_df <- corr_results_df %>%
+  mutate(
+    Metadata_Plate__group0 = recode(Metadata_Plate__group0,
+                                    "Plate_3" = "Plate A",
+                                    "Plate_3_prime" = "Plate B",
+                                    "Plate_5" = "Plate C"),
+    Metadata_Plate__group1 = recode(Metadata_Plate__group1,
+                                    "Plate_3" = "Plate A",
+                                    "Plate_3_prime" = "Plate B",
+                                    "Plate_5" = "Plate C")
+  )
 
 # Filter rows where Metadata_Plate__group0 matches Metadata_Plate__group1
 filtered_df <- corr_results_df %>%

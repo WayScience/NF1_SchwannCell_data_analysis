@@ -18,6 +18,12 @@ The model shows high performance with with accuracy of 0.85 and 0.80 for the tra
 ![Figure 3](./3.figures/figures/main_figure_3_model_eval.png)
 > *Logistic regression model predicts genotype with high performance.* (A) Precision-recall curves comparing the final model applied to shuffled (dashed line) and non-shuffled data (solid line). Applying the model to a shuffled dataset performed worse than the non-shuffled data, demonstrating a biological signal between genotypes. (B) Confusion matrices from the training and testing data splits show higher performance across genotypes in non-shuffled data compared to the shuffled data. (C) Accuracy scores show high performance classifying cells with both genotypes from the training and testing data splits compared to shuffled data. Both panels B and C visualize the results from the optimized model.
 
+The machine learning model learned from a total of 907 morphology features and assigned weights, or importance scores, per feature. 
+This combination of morphology features represents a high-dimensional signature of how the NF1 genotype influences cell morphology in otherwise isogenic Schwann cells.
+
+![Figure 4](./3.figures/figures/main_figure_4_feature_importance.png)
+> *Significant cell morphology features come from multiple kinds of measurement and across organelles.* (A) Top absolute value coefficients demonstrate which measurements/organelles/compartments are important in determining the differences between NF1 genotypes. Not one feature is important in this prediction; many features in our models are important for making accurate genotype predictions. The red boxes indicate the two most important features based on absolute value. (B) Min/max image montage of the top feature from panel A, representing the highest weighted feature for predicting null NF1 genotype. This shows the visual difference between null cells with the top values of radial distribution in the F-actin cytoskeleton compared to the wildtype cells with the lowest values. The title is the exact CellProfiler feature name. (C) Min/max image montage of the second top features from panel A, representing the top feature for predicting wildtype NF1 genotype. This montage shows the visual difference between the wildtype cells with high correlations between the nucleus and ER compared to the null cells with the lowest values. Both the image montages from panels B and C show composite single-cell images where the colors represent each organelle: blue = nucleus, green = ER, magenta = mitochondria, and red = actin.
+
 We look to improve upon this preliminary model in the future.
 We aim to generate further data which includes the heterozygous genotype (*NF1+/-*).
 AS well, we plan to apply an improved model to large-scale drug screens to capture candidate drugs that make NF1 patient cells look healthy.
@@ -59,5 +65,6 @@ There are two different environments used in this analysis:
 2. [figure_environment.yml](./figure_environment.yml): An R-based environment meant for generating figures.
 
 ```sh
-conda env create ...
+conda env create -f environment.yml
+conda env create -f figure_environment.yml
 ```
